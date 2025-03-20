@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/DTN_2502.iml" filepath="$PROJECT_DIR$/.idea/DTN_2502.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hoang_Trung_Kien/Hoang_Trung_Kien.iml" filepath="$PROJECT_DIR$/Hoang_Trung_Kien/Hoang_Trung_Kien.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MainProject/MainProject.iml" filepath="$PROJECT_DIR$/MainProject/MainProject.iml" />
+    </modules>
+  </component>
+</project>
