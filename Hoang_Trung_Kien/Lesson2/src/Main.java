@@ -36,5 +36,7 @@ public class Main {
         Locale loc = new Locale("vi", "VN");
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy", loc);
         System.out.println(localDateTime.format(dateTimeFormatter));
+
+        System.out.printf("Hoang %d Trung Kien %s ", 1, "mmmm");
     }
 }
