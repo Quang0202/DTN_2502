@@ -3,6 +3,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -37,6 +38,16 @@ public class Main {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MMMM-yyyy", loc);
         System.out.println(localDateTime.format(dateTimeFormatter));
 
-        System.out.printf("Hoang %d Trung Kien %s ", 1, "mmmm");
+        System.out.printf("Hoang %d Trung Kien %s \n", 1, "mmmm");
+        System.out.printf("%10s", "hoang\n"); //căn phải;
+        System.out.printf("%-10s", "hoang");// căn trái;
+        System.out.print("hoang trun kien\n");
+
+        System.out.printf(Locale.US, "%,d\n", 100000000);
+        System.out.printf("%05d \n", 157);
+
+        Random random = new Random();
+        int randomInt = random.nextInt(10, 100);
+        System.out.println(randomInt);
     }
 }
