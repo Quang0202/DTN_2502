@@ -20,13 +20,11 @@ public class Main {
         }
 
         Date date = new Date();
-        System.out.println(date);
         Locale l = Locale.FRANCE;
         DateFormat df = DateFormat.getDateInstance(DateFormat.FULL, l);
         String strDte = df.format(date);
         System.out.println(strDte);
 
-        Date d = new Date();
         System.out.println(date);
         Locale locale = new Locale("vi", "VN");
         DateFormat df1 = DateFormat.getDateInstance(DateFormat.FULL, locale);
