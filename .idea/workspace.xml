@@ -4,11 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3312b2c8-1f71-4e8b-9252-f66f8f818755" name="Changes" comment="" />
+    <list default="true" id="3312b2c8-1f71-4e8b-9252-f66f8f818755" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Answer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/CategoryQuestion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Department.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Exam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/ExamQuestion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Gender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Group.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/GroupAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Position.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Question.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/TypeName.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/TypeQuestion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/lesson2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nhatanh/nhatanh/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,23 +62,57 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.com.programming.nhatanh.lesson2.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/vquan/Videos/VTI_Java/DTN_2502",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+    "last_opened_file_path": "C:/Users/vquan/Videos/VTI_Java/DTN_2502/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
-      </set>
-    </attachedChunks>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vquan\Videos\VTI_Java\DTN_2502\Nhatanh\nhatanh\src\main\java\com\programming\nhatanh" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.com.programming.nhatanh.lesson2.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.programming.nhatanh.Main" />
+      <module name="nhatanh" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.programming.nhatanh.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.programming.nhatanh.lesson2.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.programming.nhatanh.lesson2.Main" />
+      <module name="nhatanh" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.programming.nhatanh.lesson2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.com.programming.nhatanh.lesson2.Main" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -61,11 +122,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742483886977</updated>
-      <workItem from="1742874322057" duration="134000" />
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
 </project>
