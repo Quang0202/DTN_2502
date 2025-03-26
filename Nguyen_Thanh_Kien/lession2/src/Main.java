@@ -418,7 +418,7 @@ public class Main {
     }
 
     public static void exeQuestion4(){
-        System.out.printf("%s", "Tên tôi là " +"Vinh"+ " và tôi đang độc thân\n");
+        System.out.printf("\n%s", "Tên tôi là " +"Vinh"+ " và tôi đang độc thân\n");
     }
 
     public static void exeQuestion5(){
