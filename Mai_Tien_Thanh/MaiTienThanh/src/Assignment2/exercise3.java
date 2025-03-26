@@ -19,5 +19,7 @@ public class exercise3 {
 
         SimpleDateFormat daymonthFommater = new SimpleDateFormat("dd - MM");
         System.out.println("Exam thứ 1 - Ngày tháng tạo: " + daymonthFommater.format(createDate));
+
+        System.out.println("Tôi bị ngu");
     }
 }
