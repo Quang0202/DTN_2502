@@ -1,7 +1,10 @@
+import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
+import java.util.Random;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -170,6 +173,7 @@ public class Main {
         exam1.categoryQuestion = categoryQuestion1;
         exam1.duration = 60;
         exam1.creator = account5;
+        exam1.createDate = LocalDateTime.now();
         Question[] questions1 = {question1, question4};
         exam1.questions = questions1;
         Exam exam2 = new Exam();
@@ -225,5 +229,40 @@ public class Main {
         Excercise2 q = new Excercise2();
         q.ques6(accounts1);
 
+        System.out.println("Question 1:");
+        System.out.print(exam1.examId +" "+ exam1.code +" "+ exam1.title +" "+ exam1.categoryQuestion.categoryName +" "+ exam1.duration +" "+ exam1.creator.fullName+" ");
+        Locale vnLoc = new Locale("vi", "VN");
+        DateTimeFormatter dateTimeFormatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss", vnLoc);
+        System.out.printf(exam1.createDate.format(dateTimeFormatter1)+"\n");
+
+        System.out.println("Question 2:");
+        Exercise3 q1 = new Exercise3();
+        q1.ques2(exam1);
+
+        System.out.println("Question 3:");
+        q1.ques3(exam1);
+
+        System.out.println("Question 4:");
+        q1.ques4(exam1);
+
+        System.out.println("Question 5:");
+        q1.ques5(exam1);
+
+        System.out.println("Question 1:");
+        Random random = new Random();
+        int intRandom = random.nextInt();
+        System.out.println(intRandom);
+
+        System.out.println("Question 2:");
+        Float floatRandom = random.nextFloat();
+        System.out.println(floatRandom);
+
+        System.out.println("Question 3:");
+        int index = random.nextInt(0, accounts1.length);
+        System.out.println(accounts1[index].fullName);
+
+        System.out.println("Question 7:");
+        int randomHundreds = random.nextInt(100, 1000);
+        System.out.println(randomHundreds);
     }
 }
