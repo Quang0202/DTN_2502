@@ -1,7 +1,10 @@
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
@@ -214,7 +217,7 @@ public class Main {
 
         float c = 5.567098f;
         System.out.println("Question 3:");
-        System.out.printf("%1.4f%n\n", c);
+        System.out.printf("%.4f%n\n", c);
 
         String hoten = "Nguyen Van A";
         System.out.println("Question 4:");
@@ -232,8 +235,9 @@ public class Main {
         System.out.println("Question 1:");
         System.out.print(exam1.examId +" "+ exam1.code +" "+ exam1.title +" "+ exam1.categoryQuestion.categoryName +" "+ exam1.duration +" "+ exam1.creator.fullName+" ");
         Locale vnLoc = new Locale("vi", "VN");
-        DateTimeFormatter dateTimeFormatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss", vnLoc);
-        System.out.printf(exam1.createDate.format(dateTimeFormatter1)+"\n");
+        ZonedDateTime zonedDateTime = exam1.createDate.atZone(ZoneId.of("Asia/Ho_Chi_Minh"));
+        DateTimeFormatter dateTimeFormatter1 = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL).withLocale(vnLoc);
+        System.out.printf(zonedDateTime.format(dateTimeFormatter1)+"\n");
 
         System.out.println("Question 2:");
         Exercise3 q1 = new Exercise3();
@@ -261,8 +265,22 @@ public class Main {
         int index = random.nextInt(0, accounts1.length);
         System.out.println(accounts1[index].fullName);
 
+        System.out.println("Question 4:");
+        LocalDate dateTime = LocalDate.of(2024, 07, 24);
+        long startDate = dateTime.toEpochDay();
+        dateTime = LocalDate.of(2024, 12, 20);
+        long endDate = dateTime.toEpochDay();
+        long ranDay = random.nextLong(startDate, endDate);
+        System.out.println(LocalDate.ofEpochDay(ranDay));
+
+        System.out.println("Question 5:");
+        LocalDate date1 = LocalDate.now();
+        LocalDate lastYear = LocalDate.of(date1.getYear()-1, date1.getMonth(), date1.getDayOfMonth());
+
         System.out.println("Question 7:");
         int randomHundreds = random.nextInt(100, 1000);
         System.out.println(randomHundreds);
+
+
     }
 }
