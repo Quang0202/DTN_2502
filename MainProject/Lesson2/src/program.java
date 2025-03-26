@@ -71,8 +71,5 @@ public class program {
         float randomFloat = random.nextFloat(10,20);
         double randomDouble = random.nextDouble(10,20);
         System.out.println(randomInt);
-
-
-
     }
 }
