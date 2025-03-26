@@ -4,6 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -47,5 +48,35 @@ public class Main {
         Random random = new Random();
         int randomInt = random.nextInt(10, 100);
         System.out.println(randomInt);
+
+        Scanner scanner = new Scanner(System.in);
+
+        if (scanner.hasNextInt()) {
+            int num = scanner.nextInt();
+            System.out.println("So vua nhap la " + num);
+        }
+
+        System.out.println("Nhap vao 1 so nguyen: ");
+        while(true) {
+            if (scanner.hasNextInt()) {
+                int num = scanner.nextInt();
+                System.out.println("So vua nhap la " + num);
+                break;
+            } else {
+                System.out.println("Nhap lai: ");
+                scanner.next();
+            }
+        }
+
+//        long numl = scanner.nextLong();
+//        float numf = scanner.nextFloat();
+//        String str = scanner.next();
+//        scanner.nextLine();
+//        String str2 = scanner.nextLine(); //Lay string co ca space.
+//
+//
+//        System.out.println(str);
+//        System.out.println(str2);
+        scanner.close();
     }
 }

@@ -1,6 +1,9 @@
 import model.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Main {
     public static void main(String[] args) {
@@ -200,6 +203,25 @@ public class Main {
         question4(account1);
         question5(groups);
         question6(account1);
+        question7(account1);
+        Account[] account8 = {account, account1, account2};
+        question8(account8);
+        Position[] positions = {position, position1, position2};
+        question9(positions);
+        question10(account8);
+        Department[] departments = {department, department1, department2};
+        question11(departments);
+        question12(departments);
+        question13(account8);
+        question14(account8);
+        question15();
+        question16(account8, departments);
+        exeQuestion1();
+        exeQuestion2();
+        exeQuestion3();
+        exeQuestion4();
+        exeQuestion5();
+        exeQuestion6(account8);
     }
 
     public static void question1(Account account) {
@@ -233,8 +255,8 @@ public class Main {
         }
     }
 
-    public static void question5(Group[] groups){
-        if(groups != null){
+    public static void question5(Group[] groups) {
+        if (groups != null) {
             switch (groups.length) {
                 case 1:
                     System.out.println("Nhóm có một thành viên");
@@ -248,7 +270,7 @@ public class Main {
                 default:
                     System.out.println("Nhóm có nhiều thành viên");
             }
-        }else{
+        } else {
             System.out.println("Nhóm rỗng");
         }
     }
@@ -272,5 +294,290 @@ public class Main {
         } else {
             System.out.println("Nhân viên này chưa có group");
         }
+    }
+
+    public static void question7(Account account) {
+        if (account.getPosition() == null) {
+            System.out.println("Người này không phải là Developer");
+        } else {
+            switch (account.getPosition().getPositionName()) {
+                case "Dev":
+                    System.out.println("Đây là Developer");
+                    break;
+                default:
+                    System.out.println("Người này không phải là Developer");
+            }
+        }
+    }
+
+    public static void question8(Account[] accounts) {
+        for (Account account : accounts) {
+            System.out.println("Email: " + account.getEmail());
+            System.out.println("Full Name: " + account.getFullName());
+            if (account.getPosition() != null) {
+                System.out.println("Position Name: " + account.getPosition().getPositionName());
+            }
+        }
+    }
+
+    public static void question9(Position[] positions) {
+        for (Position position : positions) {
+            System.out.println("Id: " + position.getPositionId());
+            System.out.println("Name: " + position.getPositionName());
+        }
+    }
+
+    public static void question10(Account[] accounts) {
+        for (int i = 0; i < accounts.length; i++) {
+            System.out.println("Thông tin account thứ " + (i + 1) + " là:");
+            System.out.println("Email: " + accounts[i].getEmail());
+            System.out.println("Full name: " + accounts[i].getFullName());
+            if (accounts[i].getPosition() != null) {
+                System.out.println("Phòng ban: " + accounts[i].getPosition().getPositionName());
+            }
+        }
+    }
+
+    public static void question11(Department[] departments) {
+        for (int i = 0; i < departments.length; i++) {
+            System.out.println("Id: " + departments[i].getDepartmentId());
+            System.out.println("Name: " + departments[i].getDepartmentName());
+        }
+    }
+
+    public static void question12(Department[] departments) {
+        for (int i = 0; i < departments.length; i++) {
+            if (i == 2) {
+                break;
+            }
+            System.out.println("Thông tin department thứ " + (i + 1) + " là:");
+            System.out.println("Id: " + departments[i].getDepartmentId());
+            System.out.println("Name: " + departments[i].getDepartmentName());
+        }
+    }
+
+    public static void question13(Account[] accounts) {
+        for (int i = 0; i < accounts.length; i++) {
+            if (i == 1) {
+                continue;
+            }
+            System.out.println("Email: " + accounts[i].getEmail());
+            System.out.println("Full Name: " + accounts[i].getFullName());
+            if (accounts[i].getPosition() != null) {
+                System.out.println("Position Name: " + accounts[i].getPosition().getPositionName());
+            }
+        }
+    }
+
+    public static void question14(Account[] accounts) {
+        for (int i = 0; i < accounts.length; i++) {
+            if (accounts[i].getAccountId() < 4) {
+                System.out.println("Email: " + accounts[i].getEmail());
+                System.out.println("Full Name: " + accounts[i].getFullName());
+                if (accounts[i].getPosition() != null) {
+                    System.out.println("Position Name: " + accounts[i].getPosition().getPositionName());
+                }
+            }
+        }
+    }
+
+    public static void question15() {
+        for (int i = 0; i <= 20; i = i + 2) {
+            System.out.println(i);
+        }
+    }
+
+    public static void question16(Account[] accounts, Department[] departments) {
+        while10(accounts);
+        while11(departments);
+        while12(departments);
+        while13(accounts);
+        while14(accounts);
+        while15();
+    }
+
+    public static void question17(Account[] accounts, Department[] departments) {
+        doWhile10(accounts);
+        doWhile11(departments);
+        doWhile12(departments);
+        doWhile13(accounts);
+        doWhile14(accounts);
+        doWhile15();
+    }
+
+    public static void exeQuestion1(){
+        System.out.printf("%d\n", 5);
+    }
+
+    public static void exeQuestion2(){
+        System.out.printf(Locale.US,"%,d\n", 100000000);
+    }
+
+    public static void exeQuestion3(){
+        System.out.printf("%-15.4f", 5.567098);
+    }
+
+    public static void exeQuestion4(){
+        System.out.printf("%s", "Tên tôi là " +"Vinh"+ " và tôi đang độc thân\n");
+    }
+
+    public static void exeQuestion5(){
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        System.out.printf("%s\n", LocalDateTime.now().format(myFormatObj));
+    }
+
+    public static void exeQuestion6(Account[] accounts) {
+        System.out.printf("%-10s %-10s","Id", "Name");
+        for (Account account : accounts) {
+            System.out.printf("\n%-10s %-10s", account.getAccountId(), account.getFullName());
+        }
+    }
+
+    private static void while10(Account[] accounts) {
+        int i = 0;
+        while (i < accounts.length) {
+            System.out.println("Thông tin account thứ " + (i + 1) + " là:");
+            System.out.println("Email: " + accounts[i].getEmail());
+            System.out.println("Full name: " + accounts[i].getFullName());
+            if (accounts[i].getPosition() != null) {
+                System.out.println("Phòng ban: " + accounts[i].getPosition().getPositionName());
+            }
+            i++;
+        }
+    }
+
+    private static void while11(Department[] departments) {
+        int i = 0;
+        while (i < departments.length) {
+            System.out.println("Id: " + departments[i].getDepartmentId());
+            System.out.println("Name: " + departments[i].getDepartmentName());
+            i++;
+        }
+    }
+
+    private static void while12(Department[] departments) {
+        int i = 0;
+        while (i < departments.length) {
+            if (i == 2) {
+                i++;
+                break;
+            }
+            System.out.println("Thông tin department thứ " + (i + 1) + " là:");
+            System.out.println("Id: " + departments[i].getDepartmentId());
+            System.out.println("Name: " + departments[i].getDepartmentName());
+            i++;
+        }
+    }
+
+    private static void while13(Account[] accounts) {
+        int i = 0;
+        while (i < accounts.length) {
+            if (i == 1) {
+                i++;
+                continue;
+            }
+            System.out.println("Email: " + accounts[i].getEmail());
+            System.out.println("Full Name: " + accounts[i].getFullName());
+            if (accounts[i].getPosition() != null) {
+                System.out.println("Position Name: " + accounts[i].getPosition().getPositionName());
+            }
+            i++;
+        }
+    }
+
+    private static void while14(Account[] accounts) {
+        int i = 0;
+        while (i < accounts.length) {
+            if (accounts[i].getAccountId() < 4) {
+                System.out.println("Email: " + accounts[i].getEmail());
+                System.out.println("Full Name: " + accounts[i].getFullName());
+                if (accounts[i].getPosition() != null) {
+                    System.out.println("Position Name: " + accounts[i].getPosition().getPositionName());
+                }
+            }
+            i++;
+        }
+    }
+
+    private static void while15() {
+        int i = 0;
+        while (i <= 20) {
+            System.out.println(i);
+            i = i + 2;
+        }
+    }
+
+    private static void doWhile10(Account[] accounts) {
+        int i = 0;
+        do {
+            System.out.println("Thông tin account thứ " + (i + 1) + " là:");
+            System.out.println("Email: " + accounts[i].getEmail());
+            System.out.println("Full name: " + accounts[i].getFullName());
+            if (accounts[i].getPosition() != null) {
+                System.out.println("Phòng ban: " + accounts[i].getPosition().getPositionName());
+            }
+            i++;
+        } while (i < accounts.length);
+    }
+
+    private static void doWhile11(Department[] departments) {
+        int i = 0;
+        do {
+            System.out.println("Id: " + departments[i].getDepartmentId());
+            System.out.println("Name: " + departments[i].getDepartmentName());
+            i++;
+        } while (i < departments.length);
+    }
+
+    private static void doWhile12(Department[] departments) {
+        int i = 0;
+        do {
+            if (i == 2) {
+                i++;
+                break;
+            }
+            System.out.println("Thông tin department thứ " + (i + 1) + " là:");
+            System.out.println("Id: " + departments[i].getDepartmentId());
+            System.out.println("Name: " + departments[i].getDepartmentName());
+            i++;
+        } while (i < departments.length);
+    }
+
+    private static void doWhile13(Account[] accounts) {
+        int i = 0;
+        do {
+            if (i == 1) {
+                i++;
+                continue;
+            }
+            System.out.println("Email: " + accounts[i].getEmail());
+            System.out.println("Full Name: " + accounts[i].getFullName());
+            if (accounts[i].getPosition() != null) {
+                System.out.println("Position Name: " + accounts[i].getPosition().getPositionName());
+            }
+            i++;
+        } while (i < accounts.length);
+    }
+
+    private static void doWhile14(Account[] accounts) {
+        int i = 0;
+        do {
+            if (accounts[i].getAccountId() < 4) {
+                System.out.println("Email: " + accounts[i].getEmail());
+                System.out.println("Full Name: " + accounts[i].getFullName());
+                if (accounts[i].getPosition() != null) {
+                    System.out.println("Position Name: " + accounts[i].getPosition().getPositionName());
+                }
+            }
+            i++;
+        }while (i < accounts.length);
+    }
+
+    private static void doWhile15() {
+        int i = 0;
+        do {
+            System.out.println(i);
+            i = i + 2;
+        } while (i <= 20);
     }
 }
