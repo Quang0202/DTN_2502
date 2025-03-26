@@ -1,4 +1,4 @@
-package com.company.exercise;
+package com.company.exercise.TestingSystem2;
 
 import com.company.model.Account;
 import com.company.model.Department;
