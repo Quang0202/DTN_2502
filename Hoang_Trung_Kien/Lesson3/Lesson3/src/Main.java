@@ -19,7 +19,23 @@ public class Main {
         }
 
         Integer num = 10;
+        int d = num;
+        int e = num.intValue();
+        double numd = num.doubleValue();
+        double numd2 = num;
+        Integer num2 = Integer.valueOf(d);
+        Integer num3 = d;
 
+        String test = num2.toString(); //chi convert tu wrapper class Integer, khong the convert tu int.
+        String str1 = "Hoang Khanh Linh";
+        String str2 = new String("Hoang Khanh Linh");
 
+        if (str1.equals(str2)) {
+            System.out.println("bang nhau");
+        } else System.out.println("Khong bang nhau");
+        //Nen dung .equals
+        if (str1 == str2) {
+            System.out.println("bang nhau");
+        } else System.out.println("Khong bang nhau");
     }
 }
