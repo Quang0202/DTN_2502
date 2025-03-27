@@ -10,6 +10,8 @@ public class System_out_printf {
         // question 1
         int soNguyen1 = 5;
         System.out.printf("%d%n", soNguyen1);
+
+
         // question 2
         int soNguyen2 =100000000;
         NumberFormat us = NumberFormat.getInstance(Locale.US);
