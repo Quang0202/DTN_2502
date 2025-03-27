@@ -33,6 +33,17 @@ public class System_out_printf {
         String formattedTime = now.format(formatter);
         System.out.println(formattedTime);
         // question 6
+        thuong(4,2);
+        thuong(46,2);
+        thuong(10,2);
+    }
+
+    public static void thuong(int a, int b) {
+        System.out.println("thuong cua 2 so la : "+ a/b);
+    }
+
+    public void tong(int a, int b, int c) {
+        System.out.println("tong cua 3 so la : "+ (a+ b + c));
     }
 }
 

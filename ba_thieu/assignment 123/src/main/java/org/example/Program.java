@@ -285,7 +285,9 @@ public class Program {
         }
         // question 16
         //
-
+        System_out_printf systemOutPrintf = new System_out_printf();
+        System.out.println("");
+        systemOutPrintf.tong(1,2,3);
 
 
 
