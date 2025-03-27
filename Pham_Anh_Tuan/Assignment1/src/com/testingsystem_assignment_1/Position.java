@@ -13,7 +13,7 @@ public class Position {
     public String toString() {
         return "Position{" +
                 "positionID=" + positionID +
-                ", positionName='" + (positionName == "Developer" ? "Đây là Developer" : "Người này không phải là Developer") + '\'' +
+                ", positionName='" + '\'' +
                 '}';
     }
 }

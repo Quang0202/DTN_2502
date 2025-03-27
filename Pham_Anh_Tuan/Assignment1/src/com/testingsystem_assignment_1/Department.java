@@ -9,6 +9,10 @@ public class Department {
         this.departmentName = departmentName;
     }
 
+    public Department() {
+
+    }
+
 
     @Override
     public String toString() {
