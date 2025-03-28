@@ -6,7 +6,10 @@ import com.programming.nhatanh.entity.Exam;
 
 import java.text.DateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
@@ -61,6 +64,8 @@ public class Main {
                 .setRegion("VN")
                 .build();
         DateTimeFormatter q1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", locale);
+//        ZonedDateTime zonedDateTime = da.atZone(ZoneId.of("Asia/Ho_chi_Minh"));
+//        DateTimeFormatter q1 = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL).withLocale(locale);
         System.out.println(q1.format(newExam.CreateDate));
         //Q2:
         DateTimeFormatter q2 = DateTimeFormatter.ofPattern("yyyy-MM-dd-kk-mm-ss");
@@ -73,7 +78,7 @@ public class Main {
         DateTimeFormatter q4 = DateTimeFormatter.ofPattern("MM");
         System.out.println(q4.format(newExam.CreateDate));
         //Q5
-        DateTimeFormatter q5 = DateTimeFormatter.ofPattern("MM-DD");
+        DateTimeFormatter q5 = DateTimeFormatter.ofPattern("MM-dd");
         System.out.println(q5.format(newExam.CreateDate));
     }
 }
