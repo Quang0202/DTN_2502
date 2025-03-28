@@ -68,6 +68,8 @@ public class Main {
                 temp = "0" + temp;
             }
         }
+//        int num = rand.nextInt(99999);
+//        System.out.printf("%05d", num);
         System.out.println(temp);
     }
 
@@ -79,6 +81,8 @@ public class Main {
                 temp = "0" + temp;
             }
         }
+//        int num = rand.nextInt(99999);
+//        System.out.printf("%02d", num%100);
         System.out.println(temp.substring(temp.length() - 2));
     }
 
@@ -95,17 +99,17 @@ public class Main {
         Account[] accounts = new Account[5];
         for (int i = 0; i < 5; i++) {
             Account account = new Account();
-            account.setEmail("Email" + i);
-            account.setUserName("User name" + i);
-            account.setFullName("Full name" + i);
+            account.setEmail("Email" + (i+1));
+            account.setUserName("User name" + (i+1));
+            account.setFullName("Full name" + (i+1));
             account.setCreateDate(LocalDate.now());
             accounts[i] = account;
         }
     }
 
     public static void exe3Question1() {
-        int salary = 5000;
-        System.out.printf("%.2f\n", (float) salary);
+        Integer salary = 5000;
+        System.out.printf("%.2f\n",  salary.floatValue());
     }
 
     public static void exe3Question2() {
