@@ -48,8 +48,10 @@ public class Main {
 //        exe4Question11();
 //        exe4Question12();
 //        exe4Question13();
-        exe4Question14();
+//        exe4Question14();
+        exe4Question15();
     }
+
 
     public static void question1() {
         float salary = 5240.5F;
@@ -288,5 +290,24 @@ public class Main {
             }
         }
         System.out.println(temp);
+    }
+
+    public static void exe4Question15(){
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Nhap ho ten: ");
+        String val1 = myObj.nextLine().trim();
+        String[] temp = val1.split(" ");
+        String name = "";
+        for (int i =  temp.length-1; i >= 0; i--) {
+            if (temp[i].isEmpty()) {
+                continue;
+            }
+            name += temp[i];
+            if (i == 0) {
+                break;
+            }
+            name += " ";
+        }
+        System.out.println(name);
     }
 }
