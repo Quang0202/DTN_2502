@@ -11,7 +11,7 @@ public class Account {
     public Gender gender;
     public Department department;
     public Position position;
-    Date createDate;
+   public Date createDate;
    public Group[] groups;
 
     public Account(int accountId, String username, String email, String fullName, Gender gender, Department department, Position position, Date createDate) {
@@ -23,6 +23,9 @@ public class Account {
         this.department = department;
         this.position = position;
         this.createDate = createDate;
+    }
+
+    public Account() {
     }
 
     public Account(int accountId, String email, String fullName, Department department) {

@@ -8,8 +8,21 @@ import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Scanner;
 
 public class program {
+    public static Department createDepartment(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Tạo department");
+        Department department = new Department();
+        System.out.println("Nhập vào departmentID: ");
+        department.departmentId = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Nhập vào departmentName");
+        department.departmentName = scanner.nextLine();
+        scanner.close();
+        return department;
+    }
     public static void main(String[] args) {
         int a = 1;
 //        a++;// a+=1
@@ -71,8 +84,37 @@ public class program {
         float randomFloat = random.nextFloat(10,20);
         double randomDouble = random.nextDouble(10,20);
         System.out.println(randomInt);
+        Scanner scanner = new Scanner(System.in);
 
+        int num = scanner.nextInt();
+        System.out.println("Số vừa nhập là :"+num);
 
+        String str = scanner.next();
+        String str2 = scanner.next();
+        System.out.println("Chuỗi vừa nhập :" + str2);
+        scanner.nextLine();
+        String line = scanner.nextLine();
+        System.out.println("chuỗi vừa nhập :"+ line);
+        if(scanner.hasNextInt()) {
+            int inNum = scanner.nextInt();
+            System.out.println("Số vừa nhập là :" + inNum);
+        }
+//         Yêu cầu người dùng nhập vào 1 số nếu nhập sai yêu cầu nhập lại
 
+        while(true){
+            System.out.println("Nhập vào 1 số: ");
+            if(scanner.hasNextInt()){
+                int inNum = scanner.nextInt();
+                System.out.println("Số vừa nhập là: "+ inNum);
+                break;
+            }else {
+                System.out.println("Nhập sai vui lòng nhập lại");
+                scanner.next();
+            }
+        }
+
+        Department department = createDepartment();
+        System.out.println(department);
+        scanner.close();
     }
 }
