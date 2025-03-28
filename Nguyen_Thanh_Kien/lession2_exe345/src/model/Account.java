@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Account {
     private int accountId;
@@ -41,8 +42,8 @@ public class Account {
         return accountId;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setAccountId(int id) {
+        accountId = id;
     }
 
     public String getUserName() {
@@ -86,5 +87,19 @@ public class Account {
     }
 
     public Account() {
+    }
+
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accountId=" + accountId +
+                ", userName='" + userName + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", department=" + department +
+                ", position=" + position +
+                ", createDate=" + createDate +
+                ", email='" + email + '\'' +
+                ", joinDate=" + Arrays.toString(joinDate) +
+                '}';
     }
 }

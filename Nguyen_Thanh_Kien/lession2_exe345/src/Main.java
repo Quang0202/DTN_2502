@@ -204,17 +204,17 @@ public class Main {
         ExamQuestion examQuestion2 = new ExamQuestion();
         examQuestion2.setExamId(3);
 
-        question1(exam);
-        question2(exam);
-        question3(exam);
-        question4(exam);
-        question5(exam);
-        exe4Question1();
-        exe4Question2();
-        exe4Question3();
-        exe4Question4();
-        exe4Question5();
-        exe4Question7();
+//        question1(exam);
+//        question2(exam);
+//        question3(exam);
+//        question4(exam);
+//        question5(exam);
+//        exe4Question1();
+//        exe4Question2();
+//        exe4Question3();
+//        exe4Question4();
+//        exe4Question5();
+//        exe4Question7();
 //        exe5Question1();
 //        exe5Question2();
 //        exe5Question3();
@@ -223,7 +223,7 @@ public class Main {
 //        exe5Question6();
 //        exe5Question7();
 //        exe5Question8();
-//        exe5Question9(accounts, groups);
+        exe5Question9(accounts, groups);
 //        exe5Question10(accounts, groups);
 //        exe5Question11(accounts, groups);
 //        exe6Question1();
@@ -316,7 +316,7 @@ public class Main {
 
     public static void exe5Question4() {
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Nhap ngay sinh nhat: ");
+        System.out.println("Nhap ngay sinh nhat: dd/MM/yyyy");
         myObj.nextLine();
     }
 
@@ -333,27 +333,35 @@ public class Main {
         System.out.println("Nhap email account: ");
         account.setEmail(myObj.nextLine());
         System.out.println("Nhap position account: ");
-        int temp = myObj.nextInt();
+        Position position = createPosition();
+        account.setPosition(position);
+        System.out.println("Account vừa tạo là");
+        System.out.println(account);
+    }
+
+    public static Position createPosition() {
+        Scanner scanner = new Scanner(System.in);
         Position position = new Position();
-        position.setPositionId(temp);
+        System.out.println("Nhập vào id của Position ");
+        int positionID = scanner.nextInt();
+        position.setPositionId(positionID);
+        System.out.println("Nhập vào positionName với: 1,Dev 2,Test, 3,Scrum Master 4, PM");
+        int temp = scanner.nextInt();
         switch (temp) {
             case 1:
                 position.setPositionName("Dev");
                 break;
             case 2:
-                position.setPositionName("Dev");
-                break;
-            case 3:
                 position.setPositionName("Test");
                 break;
-            case 4:
+            case 3:
                 position.setPositionName("Scrum Master");
                 break;
-            case 5:
+            case 4:
                 position.setPositionName("PM");
                 break;
         }
-        account.setPosition(position);
+        return position;
     }
 
     public static void exe5Question6() {
@@ -364,16 +372,22 @@ public class Main {
         myObj.nextLine();
         System.out.println("Nhap name department: ");
         department.setDepartmentName(myObj.nextLine());
+        System.out.println("Department vừa tạo là");
+        System.out.println(department);
     }
 
     public static void exe5Question7() {
         Scanner myObj = new Scanner(System.in);
         while (true) {
             System.out.println("Nhap so chan: ");
-            if (myObj.nextInt() % 2 == 0) {
-                break;
+            if (myObj.hasNextInt()) {
+                if(myObj.nextInt()%2 == 0) {
+                    break;
+                }
+            } else {
+                System.out.println("Nhập sai vui lòng nhập lại");
+                myObj.next();
             }
-            ;
         }
     }
 
@@ -412,15 +426,34 @@ public class Main {
                 break;
             }
         }
+        Group groupChoose = new Group();
         for (int i = 0; i < groups.length; i++) {
             if (groups[i].getGroupName().equals(nameGroup)) {
-                Account[] temp = new Account[groups[i].getAccounts().length + 1];
-                temp = groups[i].getAccounts();
-                temp[temp.length - 1] = accountChoose;
-                groups[i].setAccounts(temp);
+                groupChoose = groups[i];
                 break;
             }
         }
+        // B1 groupChoose accounts [account1, account2]
+        // temp[]= [,,,]
+        // temp[] = [account1, account2, ] - > [account1, account2,account3]
+        // groupChoose accounts  = temp[]
+
+        if(groupChoose.getAccounts() != null) {
+            Account[] accountGroup = groupChoose.getAccounts(); // 2 0,1
+            Account[] temp = new Account[accountGroup.length + 1];//3 0,1,2
+            for(int i=0;i<accountGroup.length;i++){
+                temp[i]= accountGroup[i];
+            }
+            temp[accountGroup.length]  = accountChoose;
+            groupChoose.setAccounts(temp);
+        }
+        else {
+            Account[] temp = new Account[1];
+            temp[0]= accountChoose;
+            groupChoose.setAccounts(temp);
+        }
+
+        System.out.println(groupChoose);
     }
 
     public static void exe5Question10(Account[] accounts, Group[] groups) {
@@ -439,7 +472,7 @@ public class Main {
             }
             myObj.nextLine();
             System.out.println("Bạn có muốn thực hiện chức năng khác không?");
-            if(myObj.nextLine().equals( "Có" )){
+            if (myObj.nextLine().equals("Có")) {
                 continue;
             }
             break;
@@ -457,14 +490,14 @@ public class Main {
                 exe5Question6();
             } else if (temp == 3) {
                 exe5Question9(accounts, groups);
-            } else if (temp == 4){
+            } else if (temp == 4) {
                 addRandomGroup(accounts, groups);
             } else {
                 System.out.println("Mời bạn nhập lại");
             }
             myObj.nextLine();
             System.out.println("Bạn có muốn thực hiện chức năng khác không?");
-            if(myObj.nextLine().equals( "Có" )){
+            if (myObj.nextLine().equals("Có")) {
                 continue;
             }
             break;
@@ -479,27 +512,49 @@ public class Main {
         System.out.println("Nhap username: ");
         Account accountChoose = new Account();
         String username = myObj.nextLine();
+        for (Group group : groups) {
+            System.out.println(group.getGroupName());
+        }
         for (int i = 0; i < accounts.length; i++) {
             if (accounts[i].getUserName().equals(username)) {
                 accountChoose = accounts[i];
                 break;
             }
         }
-        Random rand = new Random();
-        int index = rand.nextInt(accounts.length) ;
-        Account[] temp = new Account[groups[index].getAccounts().length + 1];
-        temp = groups[index].getAccounts();
-        temp[temp.length - 1] = accountChoose;
-        groups[index].setAccounts(temp);
+        Group groupChoose = new Group();
+        Random random = new Random();
+        int index = random.nextInt(groups.length);
+        groupChoose = groups[index];
+        // B1 groupChoose accounts [account1, account2]
+        // temp[]= [,,,]
+        // temp[] = [account1, account2, ] - > [account1, account2,account3]
+        // groupChoose accounts  = temp[]
+
+        if(groupChoose.getAccounts() != null) {
+            Account[] accountGroup = groupChoose.getAccounts(); // 2 0,1
+            Account[] temp = new Account[accountGroup.length + 1];//3 0,1,2
+            for(int i=0;i<accountGroup.length;i++){
+                temp[i]= accountGroup[i];
+            }
+            temp[accountGroup.length]  = accountChoose;
+            groupChoose.setAccounts(temp);
+        }
+        else {
+            Account[] temp = new Account[1];
+            temp[0]= accountChoose;
+            groupChoose.setAccounts(temp);
+        }
+
+        System.out.println(groupChoose);
     }
 
-    public static void exe6Question1(){
+    public static void exe6Question1() {
         for (int i = 0; i < 10; i = i + 2) {
             System.out.println(i);
         }
     }
 
-    public static void exe6Question2(Account[] accounts){
+    public static void exe6Question2(Account[] accounts) {
         for (Account account : accounts) {
             System.out.println("id: " + account.getAccountId());
             System.out.println("full name: " + account.getFullName());
@@ -508,7 +563,7 @@ public class Main {
         }
     }
 
-    public static void exe6Question3(){
+    public static void exe6Question3() {
         for (int i = 0; i < 10; i++) {
             System.out.println(i);
         }
