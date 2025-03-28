@@ -44,7 +44,11 @@ public class Main {
 //        exe4Question7();
 //        exe4Question8(groups);
 //        exe4Question9(groups);
-        exe4Question10();
+//        exe4Question10();
+//        exe4Question11();
+//        exe4Question12();
+//        exe4Question13();
+        exe4Question14();
     }
 
     public static void question1() {
@@ -176,7 +180,7 @@ public class Main {
         String[] temp = val1.split(" ");
         String name = "";
         for (int i = 0; i < temp.length; i++) {
-            if(temp[i].isEmpty()){
+            if (temp[i].isEmpty()) {
                 continue;
             }
             name += String.valueOf(temp[i].charAt(0)).toUpperCase() + temp[i].substring(1).toLowerCase();
@@ -190,7 +194,7 @@ public class Main {
 
     public static void exe4Question8(Group[] groups) {
         for (Group group : groups) {
-            if(group.getGroupName().contains("Java")){
+            if (group.getGroupName().contains("Java")) {
                 System.out.println(group);
             }
         }
@@ -198,24 +202,24 @@ public class Main {
 
     public static void exe4Question9(Group[] groups) {
         for (Group group : groups) {
-            if(group.getGroupName().equals("Java")){
+            if (group.getGroupName().equals("Java")) {
                 System.out.println(group);
             }
         }
     }
 
-    public static void exe4Question10(){
+    public static void exe4Question10() {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Nhap chuoi 1: ");
         String chuoi1 = myObj.nextLine();
         System.out.println("Nhap chuoi 2: ");
         String chuoi2 = myObj.next();
         boolean check = false;
-        if(chuoi1.isEmpty() || chuoi1.length() != chuoi2.length()){
+        if (chuoi1.isEmpty() || chuoi1.length() != chuoi2.length()) {
             System.out.println("KO");
         } else {
             for (int i = 0; i < chuoi1.length(); i++) {
-                if(chuoi1.charAt(i) != chuoi2.charAt(chuoi1.length() - i - 1)) {
+                if (chuoi1.charAt(i) != chuoi2.charAt(chuoi1.length() - i - 1)) {
                     check = false;
                     System.out.println("KO");
                     break;
@@ -223,8 +227,66 @@ public class Main {
                 check = true;
             }
         }
-        if(check){
+        if (check) {
             System.out.println("OK");
         }
+    }
+
+    public static void exe4Question11() {
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Nhap chuoi: ");
+        String chuoi = myObj.nextLine();
+        int count = 0;
+        for (int i = 0; i < chuoi.length(); i++) {
+            if (chuoi.charAt(i) == 'a') {
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+
+    public static void exe4Question12() {
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Nhap chuoi: ");
+        String chuoi = myObj.nextLine();
+        String temp = "";
+        for (int i = chuoi.length() - 1; i >= 0; i--) {
+            temp += chuoi.charAt(i);
+        }
+        System.out.println(temp);
+    }
+
+    public static void exe4Question13() {
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Nhap chuoi: ");
+        String chuoi = myObj.nextLine();
+        boolean check = false;
+        for (int i = 0; i < chuoi.length(); i++) {
+            if (Character.isDigit(chuoi.charAt(i))) {
+                check = false;
+                break;
+            }
+            check = true;
+        }
+        System.out.println(check);
+    }
+
+    public static void exe4Question14() {
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Nhap chuoi: ");
+        String chuoi = myObj.nextLine();
+        System.out.println("Nhap ky tu chi dinh: ");
+        String kyTuChiDinh = myObj.nextLine();
+        System.out.println("Nhap ky tu muon chuyen: ");
+        String kyTuMuonChuyen = myObj.nextLine();
+        String temp = "";
+        for (int i = 0; i < chuoi.length(); i++) {
+            if (chuoi.charAt(i) == kyTuChiDinh.charAt(0)) {
+                temp += kyTuMuonChuyen;
+            } else {
+                temp += chuoi.charAt(i);
+            }
+        }
+        System.out.println(temp);
     }
 }
