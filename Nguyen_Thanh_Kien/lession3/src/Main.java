@@ -1,8 +1,10 @@
 import model.Account;
 import model.Group;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -45,11 +47,12 @@ public class Main {
 //        exe4Question8(groups);
 //        exe4Question9(groups);
 //        exe4Question10();
-//        exe4Question11();
+        exe4Question11();
 //        exe4Question12();
 //        exe4Question13();
 //        exe4Question14();
-        exe4Question15();
+//        exe4Question15();
+//        exe4Question16();
     }
 
 
@@ -182,20 +185,29 @@ public class Main {
     public static void exe4Question7() {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Nhap ho ten: ");
-        String val1 = myObj.nextLine().trim();
-        String[] temp = val1.split(" ");
-        String name = "";
-        for (int i = 0; i < temp.length; i++) {
-            if (temp[i].isEmpty()) {
-                continue;
-            }
-            name += String.valueOf(temp[i].charAt(0)).toUpperCase() + temp[i].substring(1).toLowerCase();
-            if (i == temp.length - 1) {
-                break;
-            }
-            name += " ";
+        String val1 = myObj.nextLine().trim().toUpperCase();
+//        Cach 1 xu ly nhanh bang ham
+        String result = "";
+        String[] temp = Arrays.stream(val1.split(" ")).filter(e -> !e.isEmpty()).toArray(String[]::new);
+        for (String s : temp) {
+            result += s.charAt(0) + s.substring(1).toLowerCase() + " ";
         }
-        System.out.println(name);
+        System.out.println(result.substring(0, result.length() - 1));
+
+//       Cach 2 Xy ly bang vong lap for
+//        String[] temp = val1.split(" ");
+//        String name = "";
+//        for (int i = 0; i < temp.length; i++) {
+//            if (temp[i].isEmpty()) {
+//                continue;
+//            }
+//            name += temp[i].charAt(0) + temp[i].substring(1).toLowerCase();
+//            if (i == temp.length - 1) {
+//                break;
+//            }
+//            name += " ";
+//        }
+//        System.out.println(name);
     }
 
     public static void exe4Question8(Group[] groups) {
@@ -220,21 +232,30 @@ public class Main {
         String chuoi1 = myObj.nextLine();
         System.out.println("Nhap chuoi 2: ");
         String chuoi2 = myObj.next();
-        boolean check = false;
-        if (chuoi1.isEmpty() || chuoi1.length() != chuoi2.length()) {
-            System.out.println("KO");
-        } else {
-            for (int i = 0; i < chuoi1.length(); i++) {
-                if (chuoi1.charAt(i) != chuoi2.charAt(chuoi1.length() - i - 1)) {
-                    check = false;
-                    System.out.println("KO");
-                    break;
-                }
-                check = true;
-            }
-        }
-        if (check) {
+
+//        cach 1 xu ly bang vong lap for
+//        boolean check = false;
+//        if (chuoi1.isEmpty() || chuoi1.length() != chuoi2.length()) {
+//            System.out.println("KO");
+//        } else {
+//            for (int i = 0; i < chuoi1.length(); i++) {
+//                if (chuoi1.charAt(i) != chuoi2.charAt(chuoi1.length() - i - 1)) {
+//                    check = false;
+//                    System.out.println("KO");
+//                    break;
+//                }
+//                check = true;
+//            }
+//        }
+//        if (check) {
+//            System.out.println("OK");
+//        }
+
+//        cach 2 xu ly nhanh bang ham
+        if (chuoi2.contentEquals(new StringBuilder(chuoi1).reverse())) {
             System.out.println("OK");
+        } else {
+            System.out.println("KO");
         }
     }
 
@@ -242,11 +263,24 @@ public class Main {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Nhap chuoi: ");
         String chuoi = myObj.nextLine();
+//        cach 1 xu ly bang for
+//        int count = 0;
+//        for (int i = 0; i < chuoi.length(); i++) {
+//            if (chuoi.charAt(i) == 'a') {
+//                count++;
+//            }
+//        }
+//        System.out.println(count);
+
+//        cach 2 xu ly bang indexOf
+        int index = 0;
         int count = 0;
-        for (int i = 0; i < chuoi.length(); i++) {
-            if (chuoi.charAt(i) == 'a') {
-                count++;
+        while (true) {
+            index = chuoi.indexOf("a", index + 1);
+            if (index == -1) {
+                break;
             }
+            count++;
         }
         System.out.println(count);
     }
@@ -255,26 +289,36 @@ public class Main {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Nhap chuoi: ");
         String chuoi = myObj.nextLine();
-        String temp = "";
-        for (int i = chuoi.length() - 1; i >= 0; i--) {
-            temp += chuoi.charAt(i);
-        }
-        System.out.println(temp);
+
+//        cach 1 dung vong lap for
+//        String temp = "";
+//        for (int i = chuoi.length() - 1; i >= 0; i--) {
+//            temp += chuoi.charAt(i);
+//        }
+//        System.out.println(temp);
+
+//        cach 2 xu ly nhanh bang ham
+        System.out.println(new StringBuilder(chuoi).reverse().toString());
     }
 
     public static void exe4Question13() {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Nhap chuoi: ");
         String chuoi = myObj.nextLine();
-        boolean check = false;
-        for (int i = 0; i < chuoi.length(); i++) {
-            if (Character.isDigit(chuoi.charAt(i))) {
-                check = false;
-                break;
-            }
-            check = true;
-        }
-        System.out.println(check);
+
+//        cach 1 xu ly for
+//        boolean check = false;
+//        for (int i = 0; i < chuoi.length(); i++) {
+//            if (Character.isDigit(chuoi.charAt(i))) {
+//                check = false;
+//                break;
+//            }
+//            check = true;
+//        }
+//        System.out.println(check);
+
+//       cach 2 xu ly nhanh bang regular expression
+        System.out.println(!chuoi.matches(".*\\d.*"));
     }
 
     public static void exe4Question14() {
@@ -285,33 +329,91 @@ public class Main {
         String kyTuChiDinh = myObj.nextLine();
         System.out.println("Nhap ky tu muon chuyen: ");
         String kyTuMuonChuyen = myObj.nextLine();
-        String temp = "";
-        for (int i = 0; i < chuoi.length(); i++) {
-            if (chuoi.charAt(i) == kyTuChiDinh.charAt(0)) {
-                temp += kyTuMuonChuyen;
-            } else {
-                temp += chuoi.charAt(i);
-            }
-        }
-        System.out.println(temp);
+//        cach  1 dung for
+//        String temp = "";
+//        for (int i = 0; i < chuoi.length(); i++) {
+//            if (chuoi.charAt(i) == kyTuChiDinh.charAt(0)) {
+//                temp += kyTuMuonChuyen;
+//            } else {
+//                temp += chuoi.charAt(i);
+//            }
+//        }
+//        System.out.println(temp);
+
+//        cach 2 dung ham replace
+        System.out.println(chuoi.replaceAll(kyTuChiDinh, kyTuMuonChuyen));
     }
 
-    public static void exe4Question15(){
+    public static void exe4Question15() {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Nhap ho ten: ");
         String val1 = myObj.nextLine().trim();
-        String[] temp = val1.split(" ");
-        String name = "";
-        for (int i =  temp.length-1; i >= 0; i--) {
-            if (temp[i].isEmpty()) {
-                continue;
+
+//        cach 1 xu ly bang for
+//        String[] temp = val1.split(" ");
+//        String name = "";
+//        for (int i = temp.length - 1; i >= 0; i--) {
+//            if (temp[i].isEmpty()) {
+//                continue;
+//            }
+//            name += temp[i];
+//            if (i != 0) {
+//                name += " ";
+//            }
+//        }
+//
+//
+//        System.out.println(name);
+
+
+//        cach 2 xu ly nhanh bang ham
+        String[] temp = Arrays.stream(val1.split(" ")).filter(e -> !e.isEmpty()).toArray(String[]::new);
+        Collections.reverse(Arrays.asList(temp));
+        System.out.println(String.join(" ", temp));
+
+    }
+
+    public static void exe4Question16() {
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Nhap chuoi: ");
+        String chuoi = myObj.nextLine();
+        System.out.println("Nhap so nguyen n: ");
+        int n = myObj.nextInt();
+        if (chuoi.length() % n != 0) {
+            System.out.println("KO");
+        } else {
+//            cach 1 xu ly chi tiet bang vong for
+//            int count = 1;
+//            String[] result = new String[chuoi.length() / n];
+//            String temp = "";
+//            for (int i = 0; i < chuoi.length(); i++) {
+//                if(i <= n * count - 1){
+//                    temp += chuoi.charAt(i);
+//                    result[count - 1] = temp;
+//                } else {
+////                   reset temp
+//                    temp = "";
+//                    count++;
+////                   check again index
+//                    i--;
+//                }
+//            }
+//            for (String s : result) {
+//                System.out.println(s);
+//            }
+
+//            cach 2 xu ly nhanh bang ham
+            int index = 0;
+            int count = 0;
+            String[] result = new String[chuoi.length() / n];
+            while (index < chuoi.length()) {
+                result[count] = chuoi.substring(index, Math.min(index + n, chuoi.length()));
+                index += n;
+                count++;
             }
-            name += temp[i];
-            if (i == 0) {
-                break;
+            for (String s : result) {
+                System.out.println(s);
             }
-            name += " ";
         }
-        System.out.println(name);
     }
 }
