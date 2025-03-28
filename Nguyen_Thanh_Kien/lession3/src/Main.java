@@ -1,4 +1,5 @@
 import model.Account;
+import model.Group;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -9,21 +10,41 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        question1();
-        question2();
-        question3();
+        Group group = new Group();
+        group.setGroupId(1);
+        group.setGroupName("Golang Java");
+        group.setCreateDate(LocalDate.parse("2022-01-12"));
+
+        Group group1 = new Group();
+        group1.setGroupId(2);
+        group1.setGroupName("Java");
+        group1.setCreateDate(LocalDate.parse("2023-01-12"));
+
+        Group group2 = new Group();
+        group2.setGroupId(3);
+        group2.setGroupName("TestJavaGolang");
+        group2.setCreateDate(LocalDate.parse("2024-11-12"));
+
+        Group[] groups = {group, group1, group2};
+
+//        question1();
+//        question2();
+//        question3();
 //        question4();
-        exe2Question1();
-        exe3Question1();
-        exe3Question2();
-        exe3Question3();
+//        exe2Question1();
+//        exe3Question1();
+//        exe3Question2();
+//        exe3Question3();
 //        exe4Question1();
 //        exe4Question2();
 //        exe4Question3();
 //        exe4Question4();
 //        exe4Question5();
 //        exe4Question6();
-        exe4Question7();
+//        exe4Question7();
+//        exe4Question8(groups);
+//        exe4Question9(groups);
+        exe4Question10();
     }
 
     public static void question1() {
@@ -165,5 +186,45 @@ public class Main {
             name += " ";
         }
         System.out.println(name);
+    }
+
+    public static void exe4Question8(Group[] groups) {
+        for (Group group : groups) {
+            if(group.getGroupName().contains("Java")){
+                System.out.println(group);
+            }
+        }
+    }
+
+    public static void exe4Question9(Group[] groups) {
+        for (Group group : groups) {
+            if(group.getGroupName().equals("Java")){
+                System.out.println(group);
+            }
+        }
+    }
+
+    public static void exe4Question10(){
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Nhap chuoi 1: ");
+        String chuoi1 = myObj.nextLine();
+        System.out.println("Nhap chuoi 2: ");
+        String chuoi2 = myObj.next();
+        boolean check = false;
+        if(chuoi1.isEmpty() || chuoi1.length() != chuoi2.length()){
+            System.out.println("KO");
+        } else {
+            for (int i = 0; i < chuoi1.length(); i++) {
+                if(chuoi1.charAt(i) != chuoi2.charAt(chuoi1.length() - i - 1)) {
+                    check = false;
+                    System.out.println("KO");
+                    break;
+                }
+                check = true;
+            }
+        }
+        if(check){
+            System.out.println("OK");
+        }
     }
 }
