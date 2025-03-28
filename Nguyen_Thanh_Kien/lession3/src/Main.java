@@ -11,8 +11,11 @@ public class Main {
         question1();
         question2();
         question3();
-        question4();
+//        question4();
         exe2Question1();
+        exe3Question1();
+        exe3Question2();
+        exe3Question3();
     }
 
     public static void question1() {
@@ -63,5 +66,20 @@ public class Main {
             account.setCreateDate(LocalDate.now());
             accounts[i] = account;
         }
+    }
+
+    public static void exe3Question1(){
+        int salary = 5000;
+        System.out.printf("%.2f\n", (float) salary);
+    }
+
+    public static void exe3Question2(){
+        String value = "1234567";
+        System.out.println(Integer.parseInt(value));
+    }
+
+    public static void exe3Question3(){
+        Integer value = Integer.valueOf("1234567");
+        System.out.println((int) value);
     }
 }
