@@ -1,10 +1,10 @@
 package com.company.model;
 
 public class Answer {
-    int answerId;
-    String content;
-    Question question;
-    boolean isCorrect;
+    private int answerId;
+    private String content;
+    private Question question;
+    private boolean isCorrect;
 
     public Answer(int answerId, String content, Question question, boolean isCorrect) {
         this.answerId = answerId;

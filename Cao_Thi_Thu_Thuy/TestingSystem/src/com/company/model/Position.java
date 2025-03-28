@@ -1,8 +1,8 @@
 package com.company.model;
 
 public class Position {
-    int positionId;
-    EPositionName positionName;
+    private int positionId;
+    private EPositionName positionName;
 
     public Position(int positionId, EPositionName positionName) {
         this.positionId = positionId;

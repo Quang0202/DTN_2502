@@ -3,13 +3,13 @@ package com.company.model;
 import java.time.LocalDate;
 
 public class Exam {
-    int examId;
-    String code;
-    String title;
-    CategoryQuestion categoryQuestion;
-    int duration;
-    Account createAccount;
-    LocalDate createDate;
+    private int examId;
+    private String code;
+    private String title;
+    private CategoryQuestion categoryQuestion;
+    private int duration;
+    private Account createAccount;
+    private LocalDate createDate;
 
     public Exam(int examId, String code, String title, CategoryQuestion categoryQuestion, int duration, Account createAccount, LocalDate createDate) {
         this.examId = examId;

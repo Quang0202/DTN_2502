@@ -3,9 +3,9 @@ package com.company.model;
 import java.time.LocalDate;
 
 public class GroupAccount {
-    Group group;
-    Account account;
-    LocalDate joinDate;
+    private Group group;
+    private Account account;
+    private LocalDate joinDate;
 
     public GroupAccount(Group group, Account account, LocalDate joinDate) {
         this.group = group;

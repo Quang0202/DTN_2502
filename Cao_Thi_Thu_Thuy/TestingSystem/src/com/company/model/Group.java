@@ -3,10 +3,10 @@ package com.company.model;
 import java.time.LocalDate;
 
 public class Group {
-    int groupId;
-    String groupName;
-    Account createAccount;
-    LocalDate createDate;
+    private int groupId;
+    private String groupName;
+    private Account createAccount;
+    private LocalDate createDate;
 
     public Group(int groupId, String groupName, Account createAccount, LocalDate createDate) {
         this.groupId = groupId;

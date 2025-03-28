@@ -3,12 +3,12 @@ package com.company.model;
 import java.time.LocalDate;
 
 public class Question {
-    int questionId;
-    String content;
-    CategoryQuestion categoryQuestion;
-    TypeQuestion typeQuestion;
-    Account createAccount;
-    LocalDate createDate;
+    private int questionId;
+    private String content;
+    private CategoryQuestion categoryQuestion;
+    private TypeQuestion typeQuestion;
+    private Account createAccount;
+    private LocalDate createDate;
 
     public Question(int questionId, String content, CategoryQuestion categoryQuestion, TypeQuestion typeQuestion, Account createAccount, LocalDate createDate) {
         this.questionId = questionId;

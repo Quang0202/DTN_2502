@@ -1,8 +1,8 @@
 package com.company.model;
 
 public class ExamQuestion {
-    Exam exam;
-    Question question;
+    private Exam exam;
+    private Question question;
 
     public ExamQuestion(Exam exam, Question question) {
         this.exam = exam;

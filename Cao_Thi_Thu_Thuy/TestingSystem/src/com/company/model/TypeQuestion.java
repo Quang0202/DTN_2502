@@ -1,8 +1,8 @@
 package com.company.model;
 
 public class TypeQuestion {
-    int typeId;
-    ETypeQuestion typeName;
+    private int typeId;
+    private ETypeQuestion typeName;
 
     public TypeQuestion(int typeId, ETypeQuestion typeName) {
         this.typeId = typeId;

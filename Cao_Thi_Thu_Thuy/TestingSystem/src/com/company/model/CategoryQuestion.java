@@ -1,8 +1,8 @@
 package com.company.model;
 
 public class CategoryQuestion {
-    int categoryId;
-    String categoryName;
+    private int categoryId;
+    private String categoryName;
 
     public CategoryQuestion(int categoryId, String categoryName) {
         this.categoryId = categoryId;
