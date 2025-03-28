@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -214,6 +215,20 @@ public class Main {
         exe4Question4();
         exe4Question5();
         exe4Question7();
+//        exe5Question1();
+//        exe5Question2();
+//        exe5Question3();
+//        exe5Question4();
+//        exe5Question5();
+//        exe5Question6();
+//        exe5Question7();
+//        exe5Question8();
+//        exe5Question9(accounts, groups);
+//        exe5Question10(accounts, groups);
+//        exe5Question11(accounts, groups);
+//        exe6Question1();
+//        exe6Question2(accounts);
+//        exe6Question3();
     }
 
     public static void question1(Exam exam) {
@@ -266,15 +281,240 @@ public class Main {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String datePrevious = LocalDateTime.now().plusYears(-1).format(formatter);
         String dateNow = LocalDateTime.now().format(formatter);
-        Date randomDate = new Date(getRandomTimeBetweenTwoDates(datePrevious,dateNow));
+        Date randomDate = new Date(getRandomTimeBetweenTwoDates(datePrevious, dateNow));
         System.out.println(dateFormat.format(randomDate));
     }
 
-    public static void exe4Question7(){
-            Random rand = new Random();
-            System.out.println(rand.nextInt(900) + 100);
+    public static void exe4Question7() {
+        Random rand = new Random();
+        System.out.println(rand.nextInt(900) + 100);
     }
-    private static long getRandomTimeBetweenTwoDates (String startDate, String endDate) {
+
+    public static void exe5Question1() {
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Nhap so nguyen thu 1: ");
+        myObj.nextInt();
+        System.out.println("Nhap so nguyen thu 2: ");
+        myObj.nextInt();
+        System.out.println("Nhap so nguyen thu 3: ");
+        myObj.nextInt();
+    }
+
+    public static void exe5Question2() {
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Nhap so thuc thu 1: ");
+        myObj.nextFloat();
+        System.out.println("Nhap so thuc thu 2: ");
+        myObj.nextFloat();
+    }
+
+    public static void exe5Question3() {
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Nhap ho va ten: ");
+        myObj.nextLine();
+    }
+
+    public static void exe5Question4() {
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Nhap ngay sinh nhat: ");
+        myObj.nextLine();
+    }
+
+    public static void exe5Question5() {
+        Scanner myObj = new Scanner(System.in);
+        Account account = new Account();
+        System.out.println("Nhap id account: ");
+        account.setAccountId(myObj.nextInt());
+        myObj.nextLine();
+        System.out.println("Nhap username account: ");
+        account.setUserName(myObj.nextLine());
+        System.out.println("Nhap full name account: ");
+        account.setFullName(myObj.nextLine());
+        System.out.println("Nhap email account: ");
+        account.setEmail(myObj.nextLine());
+        System.out.println("Nhap position account: ");
+        int temp = myObj.nextInt();
+        Position position = new Position();
+        position.setPositionId(temp);
+        switch (temp) {
+            case 1:
+                position.setPositionName("Dev");
+                break;
+            case 2:
+                position.setPositionName("Dev");
+                break;
+            case 3:
+                position.setPositionName("Test");
+                break;
+            case 4:
+                position.setPositionName("Scrum Master");
+                break;
+            case 5:
+                position.setPositionName("PM");
+                break;
+        }
+        account.setPosition(position);
+    }
+
+    public static void exe5Question6() {
+        Scanner myObj = new Scanner(System.in);
+        Department department = new Department();
+        System.out.println("Nhap id department: ");
+        department.setDepartmentId(myObj.nextInt());
+        myObj.nextLine();
+        System.out.println("Nhap name department: ");
+        department.setDepartmentName(myObj.nextLine());
+    }
+
+    public static void exe5Question7() {
+        Scanner myObj = new Scanner(System.in);
+        while (true) {
+            System.out.println("Nhap so chan: ");
+            if (myObj.nextInt() % 2 == 0) {
+                break;
+            }
+            ;
+        }
+    }
+
+    public static void exe5Question8() {
+        Scanner myObj = new Scanner(System.in);
+        while (true) {
+            System.out.println("mời bạn nhập vào chức năng muốn sử dụng: ");
+            int temp = myObj.nextInt();
+            if (temp == 1) {
+                exe5Question5();
+                break;
+            } else if (temp == 2) {
+                exe5Question6();
+                break;
+            }
+            System.out.println("Mời bạn nhập lại");
+        }
+    }
+
+    public static void exe5Question9(Account[] accounts, Group[] groups) {
+        Scanner myObj = new Scanner(System.in);
+        for (Account account : accounts) {
+            System.out.println(account.getUserName());
+        }
+        System.out.println("Nhap username: ");
+        Account accountChoose = new Account();
+        String username = myObj.nextLine();
+        for (Group group : groups) {
+            System.out.println(group.getGroupName());
+        }
+        System.out.println("Nhap ten group: ");
+        String nameGroup = myObj.nextLine();
+        for (int i = 0; i < accounts.length; i++) {
+            if (accounts[i].getUserName().equals(username)) {
+                accountChoose = accounts[i];
+                break;
+            }
+        }
+        for (int i = 0; i < groups.length; i++) {
+            if (groups[i].getGroupName().equals(nameGroup)) {
+                Account[] temp = new Account[groups[i].getAccounts().length + 1];
+                temp = groups[i].getAccounts();
+                temp[temp.length - 1] = accountChoose;
+                groups[i].setAccounts(temp);
+                break;
+            }
+        }
+    }
+
+    public static void exe5Question10(Account[] accounts, Group[] groups) {
+        Scanner myObj = new Scanner(System.in);
+        while (true) {
+            System.out.println("mời bạn nhập vào chức năng muốn sử dụng: ");
+            int temp = myObj.nextInt();
+            if (temp == 1) {
+                exe5Question5();
+            } else if (temp == 2) {
+                exe5Question6();
+            } else if (temp == 3) {
+                exe5Question9(accounts, groups);
+            } else {
+                System.out.println("Mời bạn nhập lại");
+            }
+            myObj.nextLine();
+            System.out.println("Bạn có muốn thực hiện chức năng khác không?");
+            if(myObj.nextLine().equals( "Có" )){
+                continue;
+            }
+            break;
+        }
+    }
+
+    public static void exe5Question11(Account[] accounts, Group[] groups) {
+        Scanner myObj = new Scanner(System.in);
+        while (true) {
+            System.out.println("mời bạn nhập vào chức năng muốn sử dụng: ");
+            int temp = myObj.nextInt();
+            if (temp == 1) {
+                exe5Question5();
+            } else if (temp == 2) {
+                exe5Question6();
+            } else if (temp == 3) {
+                exe5Question9(accounts, groups);
+            } else if (temp == 4){
+                addRandomGroup(accounts, groups);
+            } else {
+                System.out.println("Mời bạn nhập lại");
+            }
+            myObj.nextLine();
+            System.out.println("Bạn có muốn thực hiện chức năng khác không?");
+            if(myObj.nextLine().equals( "Có" )){
+                continue;
+            }
+            break;
+        }
+    }
+
+    private static void addRandomGroup(Account[] accounts, Group[] groups) {
+        Scanner myObj = new Scanner(System.in);
+        for (Account account : accounts) {
+            System.out.println(account.getUserName());
+        }
+        System.out.println("Nhap username: ");
+        Account accountChoose = new Account();
+        String username = myObj.nextLine();
+        for (int i = 0; i < accounts.length; i++) {
+            if (accounts[i].getUserName().equals(username)) {
+                accountChoose = accounts[i];
+                break;
+            }
+        }
+        Random rand = new Random();
+        int index = rand.nextInt(accounts.length) ;
+        Account[] temp = new Account[groups[index].getAccounts().length + 1];
+        temp = groups[index].getAccounts();
+        temp[temp.length - 1] = accountChoose;
+        groups[index].setAccounts(temp);
+    }
+
+    public static void exe6Question1(){
+        for (int i = 0; i < 10; i = i + 2) {
+            System.out.println(i);
+        }
+    }
+
+    public static void exe6Question2(Account[] accounts){
+        for (Account account : accounts) {
+            System.out.println("id: " + account.getAccountId());
+            System.out.println("full name: " + account.getFullName());
+            System.out.println("email: " + account.getEmail());
+            System.out.println("username: " + account.getUserName());
+        }
+    }
+
+    public static void exe6Question3(){
+        for (int i = 0; i < 10; i++) {
+            System.out.println(i);
+        }
+    }
+
+    private static long getRandomTimeBetweenTwoDates(String startDate, String endDate) {
         long beginTime = Timestamp.valueOf(startDate).getTime();
         long endTime = Timestamp.valueOf(endDate).getTime();
         long diff = endTime - beginTime + 1;
