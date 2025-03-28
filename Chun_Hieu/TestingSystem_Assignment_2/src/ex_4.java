@@ -26,11 +26,14 @@ public class ex_4 {
         System.out.println(randomDate);
 
         //Question 5
-        int quakhu = (int) LocalDate.of(2024, 3, 26).toEpochDay();
-        int hientai = (int) LocalDate.now().toEpochDay();
-        long randomIntt = quakhu + random.nextInt(hientai - quakhu);
-        LocalDate randomDatee = LocalDate.ofEpochDay(randomIntt);
-        System.out.println(randomDatee);
+//        int quakhu = (int) LocalDate.of(2024, 3, 26).toEpochDay();
+//        int hientai = (int) LocalDate.now().toEpochDay();
+//        long randomIntt = quakhu + random.nextInt(hientai - quakhu);
+//        LocalDate randomDatee = LocalDate.ofEpochDay(randomIntt);
+//        System.out.println(randomDatee);
+
+        LocalDate now = LocalDate.now();
+        LocalDate date = LocalDate.of(now.getYear() - 1, now.getMonthValue(), now.getDayOfMonth() );
 
     }
 }
