@@ -1,3 +1,6 @@
+import model.Account;
+
+import java.time.LocalDate;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,6 +12,7 @@ public class Main {
         question2();
         question3();
         question4();
+        exe2Question1();
     }
 
     public static void question1() {
@@ -47,5 +51,17 @@ public class Main {
         System.out.println("Nhap so nguyen thu 2: ");
         int b = myObj.nextInt();
         System.out.println((float) a /b);
+    }
+
+    public static void exe2Question1(){
+        Account[] accounts = new Account[5];
+        for (int i = 0; i < 5; i++) {
+            Account account = new Account();
+            account.setEmail("Email" + i);
+            account.setUserName("User name" + i);
+            account.setFullName("Full name" + i);
+            account.setCreateDate(LocalDate.now());
+            accounts[i] = account;
+        }
     }
 }
