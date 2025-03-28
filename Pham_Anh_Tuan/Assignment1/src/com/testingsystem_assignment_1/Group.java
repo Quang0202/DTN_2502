@@ -15,6 +15,9 @@ public class Group {
         this.createDate = createDate;
     }
 
+    public Group(int groupId, String group_b) {
+    }
+
     @Override
     public String toString() {
         return "Group{" +
