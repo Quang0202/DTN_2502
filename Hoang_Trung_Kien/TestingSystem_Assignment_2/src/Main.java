@@ -8,6 +8,7 @@ import java.time.format.FormatStyle;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -281,6 +282,88 @@ public class Main {
         int randomHundreds = random.nextInt(100, 1000);
         System.out.println(randomHundreds);
 
+        System.out.println("Excercise 5:");
+        System.out.println("Question 1:");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhap vao 3 so nguyen: ");
+        int n1 = scanner.nextInt();
+        int n2 = scanner.nextInt();
+        int n3 = scanner.nextInt();
+        System.out.println(n1 + " " + n2 + " " + n3);
 
+        System.out.println("Question 2:");
+        System.out.println("Nhap vao 2 so thuc: ");
+        float f1 = scanner.nextFloat();
+        float f2 = scanner.nextFloat();
+        System.out.println(f1 + " " + f2);
+
+        System.out.println("Question 3:");
+        System.out.println("Nhap ho va ten: ");
+        scanner.nextLine();
+        String name = scanner.nextLine();
+        System.out.println(name);
+
+        System.out.println("Question 4: ");
+        int day = 0;
+        System.out.println("Ngay:");
+        while (true) {
+        if (scanner.hasNextInt()) {
+            day = scanner.nextInt();
+                if (day >= 1 && day <= 31) {
+                    break;
+                } else {
+                    System.out.println("Vui long nhap ngay hop le");
+                }
+            }
+        }
+        int thang = 0;
+        System.out.println("Thang:");
+        while (true) {
+        if (scanner.hasNextInt()) {
+            thang = scanner.nextInt();
+                if (thang >= 1 && thang <= 12) {
+                    break;
+                } else {
+                    System.out.println("Vui long nhap thang hop le");
+                }
+            }
+        }
+        System.out.println("Nam:");
+        int nam = scanner.nextInt();
+        System.out.println("Sinh nhat: " + day + "/" + thang + "/" + nam);
+
+        Exercise5 exercise5 = new Exercise5();
+//        exercise5.createAccount();
+
+        System.out.println("Nhap so chan: ");
+        while (true) {
+        if (scanner.hasNextInt()) {
+            int num = scanner.nextInt();
+                if (num % 2 == 0) {
+                    System.out.println("So chan vua nhap la " + num);
+                    break;
+                } else {
+                    System.out.println(("Nhap lai:"));
+                }
+            }
+        }
+
+        System.out.println("Question 8:");
+        System.out.println("mời bạn nhập vào chức năng muốn sử dụng");
+        while (true) {
+            int type = scanner.nextInt();
+            if (type == 1) {
+                exercise5.createAccount();
+                break;
+            } else if (type == 2) {
+                exercise5.createDepartment();
+                break;
+            } else {
+                System.out.println("khong co chuc nang nay, vui long nhap lai:");
+            }
+        }
+
+        System.out.println("Question 9:");
+        exercise5.addGroup(accounts1, groups1);
     }
 }
