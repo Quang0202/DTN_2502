@@ -1,7 +1,7 @@
 import model.Account;
+import model.Department;
 import model.Group;
 
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,6 +12,38 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+
+        Department department = new Department();
+        department.setDepartmentId(1);
+        department.setDepartmentName("Sale");
+        department.setAddress("Hà Nội");
+
+        Department department1 = new Department();
+        department1.setDepartmentId(2);
+        department1.setDepartmentName("Sale");
+
+        Department department2 = new Department();
+        department2.setDepartmentId(3);
+        department2.setDepartmentName("Marketing");
+
+        Department department3 = new Department();
+        department3.setDepartmentId(4);
+        department3.setDepartmentName("Waiting room");
+
+        Department department4 = new Department();
+        department4.setDepartmentId(5);
+        department4.setDepartmentName("Accounting");
+
+        Department department5 = new Department();
+        department5.setDepartmentId(6);
+        department5.setDepartmentName("Sale");
+
+        Department department6 = new Department();
+        department6.setDepartmentId(7);
+        department6.setDepartmentName("Boss of director");
+
+
+        Department[] departments = {department, department1, department2, department3, department4, department5, department6};
         Group group = new Group();
         group.setGroupId(1);
         group.setGroupName("Golang Java");
@@ -47,12 +79,20 @@ public class Main {
 //        exe4Question8(groups);
 //        exe4Question9(groups);
 //        exe4Question10();
-        exe4Question11();
+//        exe4Question11();
 //        exe4Question12();
 //        exe4Question13();
 //        exe4Question14();
 //        exe4Question15();
 //        exe4Question16();
+//        exe5Question1(department);
+//        exe5Question2(departments);
+//        exe5Question3(department);
+//        exe5Question4(department);
+//        exe5Question5(department,department1);
+//        exe5Question5(department,department2);
+//        exe5Question6(departments);
+//        exe5Question7(departments);
     }
 
 
@@ -416,4 +456,83 @@ public class Main {
             }
         }
     }
+
+    public static void exe5Question1(Department department){
+        System.out.println(department.toString());
+    }
+
+    public static void exe5Question2(Department[] departments){
+        for (Department department : departments) {
+            System.out.println(department.toString());
+        }
+    }
+
+    public static void exe5Question3(Department department){
+        System.out.println(department.getAddress());
+    }
+
+    public static void exe5Question4(Department department){
+        String nameCheck = "Phòng A";
+        System.out.println(department.checkDepartmentName(nameCheck));
+    }
+
+    public static void exe5Question5(Department department1, Department department2){
+        System.out.println(department1.compareDepartment(department2));
+    }
+
+    public static void exe5Question6(Department[] departments){
+        bubbleSort(departments);
+        for (Department department : departments) {
+            System.out.println(department.toString());
+        }
+    }
+
+    public static void exe5Question7(Department[] departments){
+        bubbleSort2(departments);
+        for (Department department : departments) {
+            System.out.println(department.toString());
+        }
+    }
+
+    private static void bubbleSort(Department[] departments){
+        boolean swapped = false;
+
+        for (int i = 0; i < departments.length - 1; i++) {
+            for (int j = 0; j < departments.length - i - 1; j++) {
+                Department temp;
+                if (departments[j].getDepartmentName().toLowerCase().compareTo(departments[j + 1].getDepartmentName().toLowerCase()) > 0 ) {
+                    temp = departments[j];
+                    departments[j] = departments[j + 1];
+                    departments[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            // If no two elements were swapped, then break
+            if (!swapped)
+                break;
+        }
+    }
+
+    private static void bubbleSort2(Department[] departments){
+        boolean swapped = false;
+
+        for (int i = 0; i < departments.length - 1; i++) {
+            for (int j = 0; j < departments.length - i - 1; j++) {
+                Department temp;
+                String[] nameTemp1 = departments[j].getDepartmentName().split(" ");
+                String[] nameTemp2 = departments[j + 1].getDepartmentName().split(" ");
+                if (nameTemp1[nameTemp1.length-1].toLowerCase().compareTo(nameTemp2[nameTemp2.length-1].toLowerCase()) > 0 ) {
+                    temp = departments[j];
+                    departments[j] = departments[j + 1];
+                    departments[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            // If no two elements were swapped, then break
+            if (!swapped)
+                break;
+        }
+    }
+
+
 }
