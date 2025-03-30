@@ -19,7 +19,7 @@ public class Main {
         kySu.setGioiTinh(Gender.Nam);
         kySu.setDiaChi("a");
         kySu.setNganhDaoTao("b");
-        kySu.setHoTen("kien");
+        kySu.setHoTen("nguyen thanh kien");
         kySus.add(kySu);
         menu();
     }
@@ -41,16 +41,92 @@ public class Main {
             case 2:
                 timKiemTheoHoTen();
                 break;
+            case 3:
+                displayList();
+            case 4:
+                deleteByName();
             default:
                 System.exit(0);
         }
     }
 
-    private static void themCanBo() {
+    private static void displayChildMenu() {
         System.out.println("Chọn loại cán bộ: ");
         System.out.println("1. Kỹ sư");
         System.out.println("2. Công nhân");
         System.out.println("3. Nhân viên");
+    }
+
+    private static void deleteByName() {
+        displayChildMenu();
+        Scanner myScanner = new Scanner(System.in);
+        int chon = myScanner.nextInt();
+        myScanner.nextLine();
+        System.out.println("Nhập tên cán bộ muốn xoá: ");
+        String name = myScanner.nextLine();
+        switch (chon) {
+            case 1:
+                kySus = (ArrayList<KySu>) kySus.stream()
+                        .filter(e -> {
+                            if(e.getHoTen().contains(" ")){
+                               return !e.getHoTen().substring(e.getHoTen().lastIndexOf(" ") + 1).equalsIgnoreCase(name);
+                            } else {
+                                return !e.getHoTen().equalsIgnoreCase(name);
+                            }
+                        })
+                        .collect(Collectors.toList());
+                break;
+            case 2:
+                congNhans = (ArrayList<CongNhan>) congNhans.stream()
+                        .filter(e -> {
+                            if(e.getHoTen().contains(" ")){
+                                return !e.getHoTen().substring(e.getHoTen().lastIndexOf(" ") + 1).equalsIgnoreCase(name);
+                            } else {
+                                return !e.getHoTen().equalsIgnoreCase(name);
+                            }
+                        })
+                        .collect(Collectors.toList());
+                break;
+            case 3:
+                nhanViens = (ArrayList<NhanVien>) nhanViens.stream()
+                        .filter(e -> {
+                            if(e.getHoTen().contains(" ")){
+                                return !e.getHoTen().substring(e.getHoTen().lastIndexOf(" ") + 1).equalsIgnoreCase(name);
+                            } else {
+                                return !e.getHoTen().equalsIgnoreCase(name);
+                            }
+                        })
+                        .collect(Collectors.toList());
+                break;
+        }
+        System.out.println("Delete complete!!! Enter continue...");
+        myScanner.nextLine();
+        menu();
+    }
+
+    private static void displayList() {
+        displayChildMenu();
+        Scanner myScanner = new Scanner(System.in);
+        int chon = myScanner.nextInt();
+        myScanner.nextLine();
+        switch (chon) {
+            case 1:
+                System.out.println(kySus.toString());
+                break;
+            case 2:
+                System.out.println(congNhans.toString());
+                break;
+            case 3:
+                System.out.println(nhanViens.toString());
+                break;
+        }
+        System.out.println("Enter continue");
+        myScanner.nextLine();
+        menu();
+    }
+
+    private static void themCanBo() {
+        displayChildMenu();
         Scanner myScanner = new Scanner(System.in);
         int chon = myScanner.nextInt();
         myScanner.nextLine();
@@ -107,10 +183,7 @@ public class Main {
     }
 
     private static void timKiemTheoHoTen() {
-        System.out.println("Chọn loại cán bộ: ");
-        System.out.println("1. Kỹ sư");
-        System.out.println("2. Công nhân");
-        System.out.println("3. Nhân viên");
+        displayChildMenu();
         Scanner myScanner = new Scanner(System.in);
         int chon = myScanner.nextInt();
         myScanner.nextLine();
