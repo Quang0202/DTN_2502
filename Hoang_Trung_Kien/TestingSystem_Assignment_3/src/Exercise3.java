@@ -3,7 +3,7 @@ import static java.lang.Integer.parseInt;
 public class Exercise3 {
     public void ques1() {
         Integer salary = 5000;
-        float fsalary = salary;
+        float fsalary = salary.floatValue();
         System.out.printf("%.2f%n", fsalary);
     }
 
@@ -15,8 +15,7 @@ public class Exercise3 {
     }
 
     public void ques3() {
-        String str = "1234567";
-        int a = parseInt(str);
-        System.out.println(a);
+        Integer str = Integer.valueOf("1234567");
+        System.out.println((int) str);
     }
 }
