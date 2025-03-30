@@ -68,8 +68,8 @@ public class Main {
             case 1:
                 kySus = (ArrayList<KySu>) kySus.stream()
                         .filter(e -> {
-                            if(e.getHoTen().contains(" ")){
-                               return !e.getHoTen().substring(e.getHoTen().lastIndexOf(" ") + 1).equalsIgnoreCase(name);
+                            if (e.getHoTen().contains(" ")) {
+                                return !e.getHoTen().substring(e.getHoTen().lastIndexOf(" ") + 1).equalsIgnoreCase(name);
                             } else {
                                 return !e.getHoTen().equalsIgnoreCase(name);
                             }
@@ -79,7 +79,7 @@ public class Main {
             case 2:
                 congNhans = (ArrayList<CongNhan>) congNhans.stream()
                         .filter(e -> {
-                            if(e.getHoTen().contains(" ")){
+                            if (e.getHoTen().contains(" ")) {
                                 return !e.getHoTen().substring(e.getHoTen().lastIndexOf(" ") + 1).equalsIgnoreCase(name);
                             } else {
                                 return !e.getHoTen().equalsIgnoreCase(name);
@@ -90,7 +90,7 @@ public class Main {
             case 3:
                 nhanViens = (ArrayList<NhanVien>) nhanViens.stream()
                         .filter(e -> {
-                            if(e.getHoTen().contains(" ")){
+                            if (e.getHoTen().contains(" ")) {
                                 return !e.getHoTen().substring(e.getHoTen().lastIndexOf(" ") + 1).equalsIgnoreCase(name);
                             } else {
                                 return !e.getHoTen().equalsIgnoreCase(name);
@@ -125,11 +125,8 @@ public class Main {
         menu();
     }
 
-    private static void themCanBo() {
-        displayChildMenu();
+    private static CanBo add(int type) {
         Scanner myScanner = new Scanner(System.in);
-        int chon = myScanner.nextInt();
-        myScanner.nextLine();
         System.out.println("Nhập tên: ");
         String name = myScanner.nextLine();
         System.out.println("Nhập tuổi: ");
@@ -139,14 +136,30 @@ public class Main {
         myScanner.nextLine();
         System.out.println("Nhập địa chỉ:");
         String address = myScanner.nextLine();
+        CanBo canBo;
+        if (type == 1) {
+            canBo = new KySu();
+        } else if (type == 2) {
+            canBo = new CongNhan();
+        } else {
+            canBo = new NhanVien();
+        }
+        canBo.setDiaChi(address);
+        canBo.setHoTen(name);
+        canBo.setGioiTinh(Gender.get(gender));
+        canBo.setTuoi(age);
+        return canBo;
+    }
 
+    private static void themCanBo() {
+        displayChildMenu();
+        Scanner myScanner = new Scanner(System.in);
+        int chon = myScanner.nextInt();
+        myScanner.nextLine();
+        CanBo canBo = add(chon);
         switch (chon) {
             case 1:
-                KySu kySu = new KySu();
-                kySu.setDiaChi(address);
-                kySu.setHoTen(name);
-                kySu.setGioiTinh(Gender.get(gender));
-                kySu.setTuoi(age);
+                KySu kySu = (KySu) canBo;
                 System.out.println("Nhập ngành đào tao:");
                 kySu.setNganhDaoTao(myScanner.nextLine());
                 kySus.add(kySu);
@@ -154,11 +167,7 @@ public class Main {
                 myScanner.nextLine();
                 break;
             case 2:
-                CongNhan congNhan = new CongNhan();
-                congNhan.setDiaChi(address);
-                congNhan.setHoTen(name);
-                congNhan.setGioiTinh(Gender.get(gender));
-                congNhan.setTuoi(age);
+                CongNhan congNhan = (CongNhan) canBo;
                 System.out.println("Nhập bậc (1-10):");
                 congNhan.setBac(myScanner.nextInt());
                 myScanner.nextLine();
@@ -167,11 +176,7 @@ public class Main {
                 myScanner.nextLine();
                 break;
             case 3:
-                NhanVien nhanVien = new NhanVien();
-                nhanVien.setDiaChi(address);
-                nhanVien.setHoTen(name);
-                nhanVien.setGioiTinh(Gender.get(gender));
-                nhanVien.setTuoi(age);
+                NhanVien nhanVien = (NhanVien) canBo;
                 System.out.println("Nhập công việc:");
                 nhanVien.setCongViec(myScanner.nextLine());
                 nhanViens.add(nhanVien);

@@ -48,7 +48,7 @@ public class DocumentManagement {
         Scanner sc = new Scanner(System.in);
         int choice = sc.nextInt();
         sc.nextLine();
-        Document document = add();
+        Document document = add(choice);
         switch (choice) {
             case 1:
                 Book book = (Book) document;
@@ -74,7 +74,6 @@ public class DocumentManagement {
                 System.out.println("Nhập ngày phát hành:\n");
                 newspaper.setDayOfPublication(sc.nextInt());
                 newspapers.add(newspaper);
-                sc.nextLine();
                 break;
         }
         System.out.println("Thêm thành công!!! Enter to continue...");
@@ -82,8 +81,15 @@ public class DocumentManagement {
         mainMenu();
     }
 
-    private static Document add() {
-        Document document = new Book();
+    private static Document add(int choice) {
+        Document document;
+        if(choice == 1) {
+            document = new Book();
+        } else if(choice == 2) {
+            document = new Magazine();
+        } else {
+            document = new Newspaper();
+        }
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập mã tài liệu:");
         document.setCode(sc.nextLine());
