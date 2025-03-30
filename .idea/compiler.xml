@@ -9,9 +9,5 @@
         <module name="nhatanh" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Nhatanh" target="1.8" />
-      <module name="untitled" target="23" />
-    </bytecodeTargetLevel>
   </component>
 </project>

@@ -263,9 +263,11 @@ public class Homework3 {
         while (true) {
             System.out.println("Nhập số: ");
             int inputNumber = scanner.nextInt();
-            if (inputNumber % 2 == 0) {
-                System.out.println(inputNumber);
-                break;
+            if (scanner.hasNextInt()) {
+                if (inputNumber % 2 == 0) {
+                    System.out.println(inputNumber);
+                    break;
+                }
             }
         }
 

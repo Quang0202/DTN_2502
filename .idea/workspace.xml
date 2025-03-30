@@ -4,146 +4,66 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3312b2c8-1f71-4e8b-9252-f66f8f818755" name="Changes" comment="">
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Answer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/CategoryQuestion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Department.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Exam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/ExamQuestion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Gender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Group.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/GroupAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Position.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Question.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/TypeName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/TypeQuestion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/lesson2/Main.java" afterDir="false" />
+    <list default="true" id="6bfa1fed-b006-433b-9215-6967948e2fa4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/lesson3/Homework4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/DTN_2502.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DTN_2502.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nhatanh/nhatanh/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/Main.java" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pham_Anh_Tuan/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pham_Anh_Tuan/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pham_Anh_Tuan/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pham_Anh_Tuan/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pham_Anh_Tuan/Pham_Anh_Tuan.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pham_Anh_Tuan/src/com/Main.java" beforeDir="false" />
->>>>>>> origin/main
-=======
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
->>>>>>> 87fecb9d25f09d8f466ec19fe68770780bbe09d1
+      <change beforePath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/lesson3/Homework3.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/lesson3/Homework3.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;VQNA&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Quang0202/DTN_2502.git&quot;,
-    &quot;accountId&quot;: &quot;16466a0a-63a6-478f-97df-ef90542912b1&quot;
-  }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 1
-}</component>
-  <component name="ProjectId" id="2uaPoXRlW5nHJSmd5cWXRZi2TzH" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 87fecb9d25f09d8f466ec19fe68770780bbe09d1
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.com.programming.nhatanh.lesson2.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/DTN_2502/Hoang_Trung_Kien/TestingSystem_Assignment_2",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "VQNA"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\vquan\Videos\VTI_Java\DTN_2502\Nhatanh\nhatanh\src\main\java\com\programming\nhatanh" />
-    </key>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Quang0202/DTN_2502.git",
+    "accountId": "16466a0a-63a6-478f-97df-ef90542912b1"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2v1BnIFjKtOxh7JQmpVrJbszNHx" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="openDirectoriesWithSingleClick" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunManager" selected="Application.com.programming.nhatanh.lesson2.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.programming.nhatanh.Main" />
-      <module name="nhatanh" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.programming.nhatanh.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-<<<<<<< HEAD
-=======
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Homework4.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
->>>>>>> origin/main
-=======
->>>>>>> 87fecb9d25f09d8f466ec19fe68770780bbe09d1
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 87fecb9d25f09d8f466ec19fe68770780bbe09d1
-    <configuration name="com.programming.nhatanh.lesson2.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.programming.nhatanh.lesson2.Main" />
+    <configuration name="Homework4" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.programming.nhatanh.lesson3.Homework4" />
       <module name="nhatanh" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.programming.nhatanh.lesson2.*" />
+          <option name="PATTERN" value="com.programming.nhatanh.lesson3.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -153,24 +73,18 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.programming.nhatanh.lesson2.Main" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Homework4" />
       </list>
     </recent_temporary>
-<<<<<<< HEAD
-=======
->>>>>>> origin/main
-=======
->>>>>>> 87fecb9d25f09d8f466ec19fe68770780bbe09d1
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3312b2c8-1f71-4e8b-9252-f66f8f818755" name="Changes" comment="" />
-      <created>1742483886977</created>
+      <changelist id="6bfa1fed-b006-433b-9215-6967948e2fa4" name="Changes" comment="" />
+      <created>1743302865980</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1742483886977</updated>
+      <updated>1743302865980</updated>
     </task>
     <servers />
   </component>
