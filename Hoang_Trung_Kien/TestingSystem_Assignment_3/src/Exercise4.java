@@ -23,12 +23,13 @@ public class Exercise4 {
     }
 
     public void ques3() {
+        Exercise4 e = new Exercise4();
         System.out.println("Nhap ten cua ban: ");
         String name = scanner.nextLine();
 //        System.out.println(name.substring(0, 1).toUpperCase() + name.substring(1));
         String[] strs = name.split("\\s+");
         for (String s : strs) {
-            System.out.print(s.substring(0, 1).toUpperCase() + s.substring(1) + " ");
+            System.out.print(e.toUpperFirstLetter(s) + " ");
         }
     }
 
@@ -36,11 +37,15 @@ public class Exercise4 {
         System.out.println("Nhap ten cua ban: ");
         String name = scanner.nextLine();
         for (int i = 0; i < name.length(); i++) {
-            Character c = name.charAt(i);
-            if (c.toString().matches("[a-z]") || c.toString().matches("[A-Z]")) {
-                System.out.println((c.toString().toUpperCase()));
+            String c = name.charAt(i) + "";
+            if (c.matches("[a-z]") || c.matches("[A-Z]")) {
+                System.out.println((c.toUpperCase()));
             }
         }
+    }
+
+    public String toUpperFirstLetter(String s) {
+        return s.substring(0, 1).toUpperCase() + s.substring(1);
     }
 
     public void ques5() {
@@ -55,21 +60,19 @@ public class Exercise4 {
         System.out.println("Nhap ho va ten: ");
         String name = scanner.nextLine();
         String[] strs = name.split("\\s+");
-        switch (strs.length) {
-            case 2:
-                System.out.println("Ho la: " + strs[0]);
-                System.out.println("Ten la: " + strs[1]);
-                break;
-            case 3:
-                System.out.println("Ho la: " + strs[0]);
-                System.out.println("Ten dem la: " + strs[1]);
-                System.out.println("Ten la: " + strs[2]);
+        System.out.println("Ho la: " + strs[0]);
+        String temp = "";
+        for (int i = 1; i < name.length() - 1; i++) {
+            temp += strs[i];
         }
+        System.out.println("Ten dem la: " + temp);
+        System.out.println("Ten la: " + strs[strs.length-1]);
     }
 
     public void ques7() {
         System.out.println("Nhap ho va ten: ");
         String name = scanner.nextLine();
+        name = name.trim();
         String[] strs = name.split("\\s+");
         int i = strs.length;
         for (String s : strs) {
@@ -85,12 +88,15 @@ public class Exercise4 {
             if (group.groupName.matches(".*Java.*")) {
                 System.out.println(group);
             }
+            if (group.groupName.contains("Java")) {
+                System.out.println(group);
+            }
         }
     }
 
     public void ques9(Group[] groups) {
         for (Group group : groups) {
-            if (group.groupName.matches("Java")) {
+            if (group.groupName.equals("Java")) {
                 System.out.println(group);
             }
         }
@@ -103,7 +109,7 @@ public class Exercise4 {
             for (int i = 0; i < s1.length(); i++) {
                 if (s1.charAt(i) != s2.charAt(s2.length() - i - 1)) {
                     System.out.println("KO");
-                    break;
+                    return;
                 }
                 if (i == s1.length() - 1 && s1.charAt(i) == s2.charAt(0))
                     System.out.println("OK");
@@ -119,6 +125,8 @@ public class Exercise4 {
             }
         }
         System.out.println("a xuat hien " + count + " lan");
+        s = s.replaceAll("[^a]", "");
+        System.out.println(s.length());
     }
 
     public void ques12(String s) {
@@ -130,7 +138,8 @@ public class Exercise4 {
     }
 
     public void ques13(String s) {
-        System.out.println(s.matches(".*[0-9].*"));
+        System.out.println(!s.matches(".*[0-9].*"));
+        System.out.println(!s.matches(".*\\d.*"));
     }
 
     public void ques14(String s) {
@@ -157,15 +166,8 @@ public class Exercise4 {
         if (s.length() % n != 0) {
             System.out.println("KO");
         } else {
-            int k = 1;
-            for (int i = 0; i < s.length(); i++) {
-                if (k == n) {
-                    System.out.println(s.charAt(i));
-                    k = 1;
-                } else {
-                    System.out.print(s.charAt(i));
-                    k++;
-                }
+            for (int i = 0; i < s.length(); i+=n) {
+                System.out.println(s.substring(i, i+n));
             }
         }
     }

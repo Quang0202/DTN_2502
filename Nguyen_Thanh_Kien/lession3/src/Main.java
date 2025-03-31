@@ -3,10 +3,7 @@ import model.Department;
 import model.Group;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -14,6 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         Department department = new Department();
+        department.getAddress();
         department.setDepartmentId(1);
         department.setDepartmentName("Sale");
         department.setAddress("Hà Nội");
@@ -69,6 +67,7 @@ public class Main {
 //        exe3Question1();
 //        exe3Question2();
 //        exe3Question3();
+
 //        exe4Question1();
 //        exe4Question2();
 //        exe4Question3();
@@ -84,7 +83,7 @@ public class Main {
 //        exe4Question13();
 //        exe4Question14();
 //        exe4Question15();
-//        exe4Question16();
+        exe4Question16();
 //        exe5Question1(department);
 //        exe5Question2(departments);
 //        exe5Question3(department);
@@ -142,9 +141,9 @@ public class Main {
         Account[] accounts = new Account[5];
         for (int i = 0; i < 5; i++) {
             Account account = new Account();
-            account.setEmail("Email" + (i+1));
-            account.setUserName("User name" + (i+1));
-            account.setFullName("Full name" + (i+1));
+            account.setEmail("Email" + (i + 1));
+            account.setUserName("User name" + (i + 1));
+            account.setFullName("Full name" + (i + 1));
             account.setCreateDate(LocalDate.now());
             accounts[i] = account;
         }
@@ -152,7 +151,7 @@ public class Main {
 
     public static void exe3Question1() {
         Integer salary = 5000;
-        System.out.printf("%.2f\n",  salary.floatValue());
+        System.out.printf("%.2f\n", salary.floatValue());
     }
 
     public static void exe3Question2() {
@@ -168,8 +167,10 @@ public class Main {
     public static void exe4Question1() {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Nhap xau ky tu: ");
-        String val = myObj.nextLine();
-        System.out.println(val.length());
+        String val = myObj.nextLine();//nguyen  van a
+        val = val.trim();
+        String[] arrStr = val.split("\\s+");
+        System.out.println(arrStr.length);
     }
 
     public static void exe4Question2() {
@@ -185,7 +186,12 @@ public class Main {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Nhap ten: ");
         String val1 = myObj.nextLine();
-        System.out.println(String.valueOf(val1.charAt(0)).toUpperCase() + val1.substring(1));
+        //System.out.println(String.valueOf(val1.charAt(0)).toUpperCase() + val1.substring(1));
+        System.out.println(capFirstLetter(val1));
+    }
+
+    public static String capFirstLetter(String str) {
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 
     public static void exe4Question4() {
@@ -193,7 +199,8 @@ public class Main {
         System.out.println("Nhap ten: ");
         String val1 = myObj.nextLine();
         for (int i = 0; i < val1.length(); i++) {
-            System.out.println("Ký tự thứ " + (i + 1) + " là: " + String.valueOf(val1.charAt(i)).toUpperCase());
+            System.out.println("Ký tự thứ " + (i + 1) + " là: " + String.valueOf(val1.charAt(i)).toUpperCase());// ("" + val1.charAt(i)).toUpperCase()
+//            System.out.println("Ký tự thứ " + (i + 1) + " là: " + (""+val1.charAt(i)).toUpperCase());
         }
     }
 
@@ -213,26 +220,24 @@ public class Main {
         String[] temp = val1.split(" ");
         System.out.println("Ho la: " + temp[0]);
         String tempName = "";
-        for (int i = 0; i < temp.length - 1; i++) {
-            if (i != 0) {
-                tempName += temp[i];
-            }
+        for (int i = 1; i < temp.length - 1; i++) {
+            tempName += temp[i] + " ";
         }
-        System.out.println("Ten dem la: " + tempName);
+        System.out.println("Ten dem la: " + tempName.trim());
         System.out.println("Ten la: " + temp[temp.length - 1]);
     }
 
     public static void exe4Question7() {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Nhap ho ten: ");
-        String val1 = myObj.nextLine().trim().toUpperCase();
-//        Cach 1 xu ly nhanh bang ham
-        String result = "";
-        String[] temp = Arrays.stream(val1.split(" ")).filter(e -> !e.isEmpty()).toArray(String[]::new);
-        for (String s : temp) {
-            result += s.charAt(0) + s.substring(1).toLowerCase() + " ";
-        }
-        System.out.println(result.substring(0, result.length() - 1));
+//        String val1 = myObj.nextLine().trim().toUpperCase();
+////        Cach 1 xu ly nhanh bang ham
+//        String result = "";
+//        String[] temp = Arrays.stream(val1.split(" ")).filter(e -> !e.isEmpty()).toArray(String[]::new);
+//        for (String s : temp) {
+//            result += s.charAt(0) + s.substring(1).toLowerCase() + " ";
+//        }
+//        System.out.println(result.substring(0, result.length() - 1));
 
 //       Cach 2 Xy ly bang vong lap for
 //        String[] temp = val1.split(" ");
@@ -248,6 +253,17 @@ public class Main {
 //            name += " ";
 //        }
 //        System.out.println(name);
+        String str = myObj.nextLine();
+        str = str.trim();
+        str = str.replaceAll("\\s+", " ");
+
+        String[] arrStr = str.split(" ");
+        String result = "";
+        for (String s : arrStr) {
+            result += capFirstLetter(s) + " ";
+        }
+        System.out.println(result.trim());
+
     }
 
     public static void exe4Question8(Group[] groups) {
@@ -292,7 +308,9 @@ public class Main {
 //        }
 
 //        cach 2 xu ly nhanh bang ham
-        if (chuoi2.contentEquals(new StringBuilder(chuoi1).reverse())) {
+        StringBuilder stringBuilder = new StringBuilder(chuoi1);
+        String temp = stringBuilder.reverse().toString();
+        if (chuoi2.equals(temp)) {
             System.out.println("OK");
         } else {
             System.out.println("KO");
@@ -313,16 +331,22 @@ public class Main {
 //        System.out.println(count);
 
 //        cach 2 xu ly bang indexOf
-        int index = 0;
-        int count = 0;
-        while (true) {
-            index = chuoi.indexOf("a", index + 1);
-            if (index == -1) {
-                break;
-            }
-            count++;
-        }
-        System.out.println(count);
+//        int index = 0;
+//        int count = 0;
+//        while (true) {
+//            index = chuoi.indexOf("a", index + 1);// abcxyzxabc
+//            if (index == -1) {
+//                break;
+//            }
+//            count++;
+//        }
+//        System.out.println(count);
+        // cách 3 sử dụng replace all
+        chuoi = chuoi.replaceAll("[^a]", "");
+        System.out.println(chuoi);
+        System.out.println(chuoi.length());
+        // cách 4 sử dụng filter
+//        long count = chuoi.chars().filter(ch -> ch == 'a').count();
     }
 
     public static void exe4Question12() {
@@ -349,7 +373,7 @@ public class Main {
 //        cach 1 xu ly for
 //        boolean check = false;
 //        for (int i = 0; i < chuoi.length(); i++) {
-//            if (Character.isDigit(chuoi.charAt(i))) {
+//            if (Character.isDigit(chuoi.charAt(i))) {// chuoi.charAt(i)>='0' && chuoi.charAt(i)<='9'
 //                check = false;
 //                break;
 //            }
@@ -357,7 +381,7 @@ public class Main {
 //        }
 //        System.out.println(check);
 
-//       cach 2 xu ly nhanh bang regular expression
+//       cach 2 xu ly nhanh bang regular expression // a1818
         System.out.println(!chuoi.matches(".*\\d.*"));
     }
 
@@ -443,67 +467,96 @@ public class Main {
 //            }
 
 //            cach 2 xu ly nhanh bang ham
-            int index = 0;
-            int count = 0;
-            String[] result = new String[chuoi.length() / n];
-            while (index < chuoi.length()) {
-                result[count] = chuoi.substring(index, Math.min(index + n, chuoi.length()));
-                index += n;
-                count++;
+//            int index = 0;
+//            int count = 0;
+//            String[] result = new String[chuoi.length() / n];
+//            while (index < chuoi.length()) {
+//                result[count] = chuoi.substring(index, Math.min(index + n, chuoi.length()));
+//                index += n;
+//                count++;
+//            }
+//            for (String s : result) {
+//                System.out.println(s);
+//            }
+            // cabdef 2
+            for (int i = 0; i < chuoi.length(); i += n) {
+                String result = chuoi.substring(i, i + n);
+                System.out.println(result);
             }
-            for (String s : result) {
-                System.out.println(s);
-            }
+
         }
     }
 
-    public static void exe5Question1(Department department){
+    public static void exe5Question1(Department department) {
         System.out.println(department.toString());
     }
 
-    public static void exe5Question2(Department[] departments){
+    public static void exe5Question2(Department[] departments) {
         for (Department department : departments) {
             System.out.println(department.toString());
         }
     }
 
-    public static void exe5Question3(Department department){
+    public static void exe5Question3(Department department) {
         System.out.println(department.getAddress());
     }
 
-    public static void exe5Question4(Department department){
+    public static void exe5Question4(Department department) {
         String nameCheck = "Phòng A";
-        System.out.println(department.checkDepartmentName(nameCheck));
+//        System.out.println(department.checkDepartmentName(nameCheck));
     }
 
-    public static void exe5Question5(Department department1, Department department2){
+    public static void exe5Question5(Department department1, Department department2) {
         System.out.println(department1.compareDepartment(department2));
     }
 
-    public static void exe5Question6(Department[] departments){
-        bubbleSort(departments);
-        for (Department department : departments) {
-            System.out.println(department.toString());
-        }
+    public static void exe5Question6(Department[] departments) {
+//        bubbleSort(departments);
+//        for (Department department : departments) {
+//            System.out.println(department.toString());
+//        }
+        Arrays.sort(departments, new Comparator<Department>() {
+            @Override
+            public int compare(Department o1, Department o2) {
+                return o1.getDepartmentName().compareTo(o2.getDepartmentName());
+            }
+        });
     }
 
-    public static void exe5Question7(Department[] departments){
-        bubbleSort2(departments);
-        for (Department department : departments) {
-            System.out.println(department.toString());
-        }
-    }
+    public static void exe5Question7(Department[] departments) {
+//        bubbleSort2(departments);
+//        for (Department department : departments) {
+//            System.out.println(department.toString());
+//        }
+        Arrays.sort(departments, new Comparator<Department>() {
+            @Override
+            public int compare(Department o1, Department o2) {
+                String[] arrStr1 = o1.getDepartmentName().trim().split("\\s+");
 
-    private static void bubbleSort(Department[] departments){
+                String[] arrStr2 = o2.getDepartmentName().trim().split("\\s+");
+
+                String str1 = arrStr1[arrStr1.length-1];
+                String str2 = arrStr2[arrStr2.length -1];
+                return str1.compareTo(str2);
+            }
+        });
+    }
+// 0 1 2  3 4
+// 1,3,10,2,4,
+// 1,2, 10,3,4
+// 1,2,3,10,4
+
+    private static void bubbleSort(Department[] departments) {
         boolean swapped = false;
 
         for (int i = 0; i < departments.length - 1; i++) {
-            for (int j = 0; j < departments.length - i - 1; j++) {
+
+            for (int j = i+1; j < departments.length; j++) {
                 Department temp;
-                if (departments[j].getDepartmentName().toLowerCase().compareTo(departments[j + 1].getDepartmentName().toLowerCase()) > 0 ) {
-                    temp = departments[j];
-                    departments[j] = departments[j + 1];
-                    departments[j + 1] = temp;
+                if (departments[i].getDepartmentName().compareTo(departments[j].getDepartmentName()) > 0) {
+                    temp = departments[i];
+                    departments[i] = departments[j];
+                    departments[j] = temp;
                     swapped = true;
                 }
             }
@@ -513,7 +566,7 @@ public class Main {
         }
     }
 
-    private static void bubbleSort2(Department[] departments){
+    private static void bubbleSort2(Department[] departments) {
         boolean swapped = false;
 
         for (int i = 0; i < departments.length - 1; i++) {
@@ -521,7 +574,7 @@ public class Main {
                 Department temp;
                 String[] nameTemp1 = departments[j].getDepartmentName().split(" ");
                 String[] nameTemp2 = departments[j + 1].getDepartmentName().split(" ");
-                if (nameTemp1[nameTemp1.length-1].toLowerCase().compareTo(nameTemp2[nameTemp2.length-1].toLowerCase()) > 0 ) {
+                if (nameTemp1[nameTemp1.length - 1].toLowerCase().compareTo(nameTemp2[nameTemp2.length - 1].toLowerCase()) > 0) {
                     temp = departments[j];
                     departments[j] = departments[j + 1];
                     departments[j + 1] = temp;

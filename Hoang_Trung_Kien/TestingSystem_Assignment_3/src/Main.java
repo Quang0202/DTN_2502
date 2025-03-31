@@ -54,6 +54,6 @@ public class Main {
 //        exercise5.ques4(departments);
 //        exercise5.ques5(departments);
 //        exercise5.ques6();
-        exercise5.ques7();
+//        exercise5.ques7();
     }
 }
