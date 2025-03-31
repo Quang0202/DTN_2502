@@ -1,7 +1,10 @@
+import model.Department;
+import model.Person;
+import model.Student;
+import model.Teacher;
+
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Objects;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -52,6 +55,7 @@ public class Main {
         System.out.println(str1.indexOf("Kh")); // tra ve index dau tien (-1 neu khong ton tai)
 //        thay the chuoi con thanh chuoi moi
         System.out.println(str1.replace("Khanh Linh", "Trung Kien"));
+        str1 = str1.trim(); // Xoa space o dau va cuoi.
 //        thay the su dung regex (bieu thuc chinh quy)
         System.out.println(str1.replaceAll("\\s+", " "));
 //        \\s : dấu cách
@@ -74,17 +78,17 @@ public class Main {
         }
 
         Department department1 = new Department();
-        department1.departmentId = 1;
-        department1.departmentName = "nguyen van a";
+        department1.setDepartmentId(1);
+        department1.setDepartmentName("nguyen van a");
         Department department2 = new Department();
-        department2.departmentId = 2;
-        department2.departmentName = "nguyen van b";
+        department2.setDepartmentId(2);
+        department2.setDepartmentName("nguyen van b");
         Department department3 = new Department();
-        department3.departmentId = 3;
-        department3.departmentName = "nguyen van c";
+        department3.setDepartmentId(3);
+        department3.setDepartmentName("nguyen van c");
         Department department4 = new Department();
-        department4.departmentId = 2;
-        department4.departmentName = "nguyen van d";
+        department4.setDepartmentId(2);
+        department4.setDepartmentName("nguyen van d");
         Department[] departments = {department1, department2, department3, department4};
         System.out.println(department1.equals(department2));
 
@@ -99,14 +103,21 @@ public class Main {
         Arrays.sort(departments, new Comparator<Department>() {
             @Override
             public int compare(Department o1, Department o2) {
-                if (o1.departmentId == o2.departmentId) {
-                    return o1.departmentName.compareTo(o2.departmentName);
+                if (o1.getDepartmentId() == o2.getDepartmentId()) {
+                    return o1.getDepartmentName().compareTo(o2.getDepartmentName());
                 }
-                return o1.departmentId - o2.departmentId;
+                return o1.getDepartmentId() - o2.getDepartmentId();
             }
         });
         for (Department department : departments)
             System.out.println(department);
-    }
 
+        Student student1 = new Student("Hoang Khanh Linh", 19, "English Studies");
+        System.out.println(student1);
+        student1.goToSchool();
+
+        Person[] people = new Person[5];
+        people[0] = student1;
+    }
 }
+

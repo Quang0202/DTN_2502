@@ -1,7 +1,9 @@
+package model;
+
 import java.util.Objects;
 
 public class Department {
-    int departmentId;
+    int getDepartmentId;
     String departmentName;
 
     @Override
@@ -18,9 +20,25 @@ public class Department {
 
     @Override
     public String toString() {
-        return "Department{" +
-                "departmentId=" + departmentId +
+        return "model.Department{" +
+                "departmentId=" + getDepartmentId +
                 ", departmentName='" + departmentName + '\'' +
                 '}';
+    }
+
+    public void setDepartmentId(int getDepartmentId) {
+        this.getDepartmentId = getDepartmentId;
+    }
+
+    public int getDepartmentId() {
+        return getDepartmentId;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 }
