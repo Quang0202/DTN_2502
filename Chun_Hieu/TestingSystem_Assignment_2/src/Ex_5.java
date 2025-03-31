@@ -130,12 +130,14 @@ public class Ex_5 {
         while (true) {
             System.out.println("Nhập vào 1 số chẵn:");
             int choice = sc.nextInt();
-            if (choice %2 == 0) {
-                System.out.println("Số vừa nhập là: " + choice);
-                break;
-            } else {
-                System.out.println("Vui lòng nhập lại");
-                sc.next();
+            if(sc.hasNextInt()) {
+                if (choice % 2 == 0) {
+                    System.out.println("Số vừa nhập là: " + choice);
+                    break;
+                } else {
+                    System.out.println("Vui lòng nhập lại");
+                    sc.next();
+                }
             }
         }
         // Question 8
@@ -146,12 +148,14 @@ public class Ex_5 {
             int choice2 = sc.nextInt();
             sc.nextLine();
             if (choice2 == 1){
-                Account account = createAccount();
-                System.out.println(account);
+//                Account account = createAccount();
+//                System.out.println(account);
+                createAccount();
                 break;
             } else if (choice2 == 2){
-                Department department = createDepartment();
-                System.out.println(department);
+//                Department department = createDepartment();
+//                System.out.println(department);
+                createDepartment();
                 break;
             } else {
                 System.out.println("Mời nhập lại");
@@ -160,6 +164,7 @@ public class Ex_5 {
         }
 
         // Question 9
+
 
 
     }

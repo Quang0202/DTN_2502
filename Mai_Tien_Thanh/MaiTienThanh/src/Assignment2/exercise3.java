@@ -21,6 +21,6 @@ public class exercise3 {
         System.out.println("Exam thứ 1 - Ngày tháng tạo: " + daymonthFommater.format(createDate));
 
         System.out.println("Tôi bị ngu");
-        System.out.println("Tôi không ngu")
+        System.out.println("Tôi không ngu");
     }
 }

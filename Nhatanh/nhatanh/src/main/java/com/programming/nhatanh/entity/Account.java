@@ -28,4 +28,11 @@ public class Account {
                 '}';
     }
 
+    public String AccountInfo(){
+        return "Email: " + email + "\n" +
+                "Username: '" + userName + "\n" +
+                "FullName: '" + fullName + "\n" +
+                "CreateDate: '" + createDate + "\n";
+    }
+
 }

@@ -304,36 +304,11 @@ public class Main {
         System.out.println(name);
 
         System.out.println("Question 4: ");
-        int day = 0;
-        System.out.println("Ngay:");
-        while (true) {
-        if (scanner.hasNextInt()) {
-            day = scanner.nextInt();
-                if (day >= 1 && day <= 31) {
-                    break;
-                } else {
-                    System.out.println("Vui long nhap ngay hop le");
-                }
-            }
-        }
-        int thang = 0;
-        System.out.println("Thang:");
-        while (true) {
-        if (scanner.hasNextInt()) {
-            thang = scanner.nextInt();
-                if (thang >= 1 && thang <= 12) {
-                    break;
-                } else {
-                    System.out.println("Vui long nhap thang hop le");
-                }
-            }
-        }
-        System.out.println("Nam:");
-        int nam = scanner.nextInt();
-        System.out.println("Sinh nhat: " + day + "/" + thang + "/" + nam);
+        System.out.println("Ngay sinh nhat: dd/MM/yyyy");
+        scanner.nextLine();
 
         Exercise5 exercise5 = new Exercise5();
-//        exercise5.createAccount();
+        Account account6 = exercise5.createAccount();
 
         System.out.println("Nhap so chan: ");
         while (true) {
