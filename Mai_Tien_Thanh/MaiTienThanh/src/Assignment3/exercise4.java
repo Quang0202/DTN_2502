@@ -140,7 +140,18 @@ public class exercise4 {
         String chuoimoi = chuoiq14.replace(kitugocq14,kituchuyenq14);
         System.out.println("Chuỗi mới q14: " + chuoimoi);
 
+        //question15
+        System.out.print("Nhập chuỗi q15: ");
+        String chuoiq15 = scanner.nextLine().trim();
+        String ketqua = daotu(chuoiq15);
+        System.out.println("Chuỗi đã đảo là: " + "\"" + ketqua + "\"");
 
+        //question16
+        System.out.print("Nhập chuỗi q16: ");
+        String chuoiq16 = scanner.nextLine().trim();
+        System.out.print("Nhập số: ");
+        int nums = Integer.parseInt(scanner.nextLine().trim());
+        chiachuoi(chuoiq16, nums);
     }
 
     //question3
@@ -156,5 +167,40 @@ public class exercise4 {
             }
         }
         return capital.toString().trim();
+    }
+    public static String daotu(String str){
+        str = str.trim();
+        int len = str.length();
+        StringBuilder word = new StringBuilder();
+        StringBuilder ketqua = new StringBuilder();
+
+        for(int i = len - 1; i>=0; i--){
+            if(str.charAt(i) != ' '){
+                word.insert(0, str.charAt(i));
+            }else if(word.length() > 0){
+                if(ketqua.length()>0){
+                    ketqua.append(" ");
+                }
+                ketqua.append(word);
+                word.setLength(0);
+            }
+        }
+        if(word.length() > 0){
+            if(ketqua.length()>0){
+                ketqua.append(" ");
+            }
+            ketqua.append(word);
+        }
+        return ketqua.toString();
+    }
+
+    public static void chiachuoi(String str, int n){
+        if(str.length() % n != 0){
+            System.out.println("KO!");
+            return;
+        }
+        for(int i = 0 ; i < str.length() ; i+=n){
+            System.out.println(str.substring(i,i+n));
+        }
     }
 }
