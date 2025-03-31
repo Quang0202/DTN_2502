@@ -1,3 +1,5 @@
+package Assignment3;
+
 public class exercise2 {
     public static void main(String[] args) {
         int[] new_array = new int[6];

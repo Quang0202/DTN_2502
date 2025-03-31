@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="6bfa1fed-b006-433b-9215-6967948e2fa4" name="Changes" comment="" />
+=======
+    <list default="true" id="6bfa1fed-b006-433b-9215-6967948e2fa4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mai_Tien_Thanh/MaiTienThanh/MaiTienThanh2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Mai_Tien_Thanh/MaiTienThanh/MaiTienThanh2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mai_Tien_Thanh/MaiTienThanh/src/MaiTienThanh.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Mai_Tien_Thanh/MaiTienThanh/src/MaiTienThanh.iml" afterDir="false" />
+    </list>
+>>>>>>> 3935b65 (Mai_Tien_Thanh)
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,8 +50,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+<<<<<<< HEAD
     "ignore.preview.features.used": "true",
     "kotlin-language-version-configured": "true",
+=======
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/thanh/OneDrive/Máy tính/Javacore/DTN_2502/Cao_Thi_Thu_Thuy",
+>>>>>>> 3935b65 (Mai_Tien_Thanh)
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -84,7 +97,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1743302865980</updated>
+<<<<<<< HEAD
       <workItem from="1743392961060" duration="10000" />
+=======
+      <workItem from="1743388785945" duration="44000" />
+      <workItem from="1743388862351" duration="14000" />
+>>>>>>> 3935b65 (Mai_Tien_Thanh)
     </task>
     <servers />
   </component>
