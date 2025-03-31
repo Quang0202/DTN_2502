@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bfa1fed-b006-433b-9215-6967948e2fa4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/lesson3/Homework4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/DTN_2502.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DTN_2502.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/entity/Department.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/lesson3/Homework3.java" beforeDir="false" afterPath="$PROJECT_DIR$/Nhatanh/nhatanh/src/main/java/com/programming/nhatanh/lesson3/Homework3.java" afterDir="false" />
-    </list>
+    <list default="true" id="6bfa1fed-b006-433b-9215-6967948e2fa4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,22 +13,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "VQNA"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;VQNA&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Quang0202/DTN_2502.git",
-    "accountId": "16466a0a-63a6-478f-97df-ef90542912b1"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Quang0202/DTN_2502.git&quot;,
+    &quot;accountId&quot;: &quot;16466a0a-63a6-478f-97df-ef90542912b1&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 2
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2v1BnIFjKtOxh7JQmpVrJbszNHx" />
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
@@ -53,8 +40,12 @@
   "keyToString": {
     "Application.Homework4.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true"
+    "ignore.preview.features.used": "true",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
@@ -77,6 +68,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -85,7 +84,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1743302865980</updated>
+      <workItem from="1743392961060" duration="10000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
