@@ -33,7 +33,6 @@ public class Exercise5 {
                 break;
 
         }
-
         return account;
     }
 
@@ -59,7 +58,7 @@ public class Exercise5 {
             if (group.groupName.equals(groupname))
                 tempg = group;
         }
-        Group[] groups1 = new Group[tempa.groups.length +1];
+        Group[] groups1 = new Group[tempa.groups.length + 1];
         for (int i = 0; i < tempa.groups.length; i++) {
             groups1[i] = tempa.groups[i];
         }

@@ -40,5 +40,9 @@ public class Main {
              System.out.println("str1 != str2");
          }
 
+         Department d = new Department();
+
+
+
     }
 }

@@ -1,3 +1,5 @@
+package Assignment3;
+
 public class exercise3 {
     public static void main(String[] args) {
         //question 1
