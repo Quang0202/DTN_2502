@@ -106,6 +106,8 @@ public class Homework4 {
     }
 
     public static void exercise4question1(String input) {
+        input = input.trim();
+        String[] arrStr = input.split("\\s");
         System.out.println(input.length());
     }
 
@@ -150,9 +152,11 @@ public class Homework4 {
         if (input != null) {
             String regex = " ";
             String[] myArray = input.split(regex);
-            System.out.printf("Họ là: %s \n", myArray[0]);
-            System.out.printf("Tên đệm  là: %s \n", myArray[1]);
-            System.out.printf("Tên là: %s \n", myArray[2]);
+            if (myArray.length >= 3) {
+                System.out.printf("Họ là: %s \n", myArray[0]);
+                System.out.printf("Tên đệm  là: %s \n", myArray[1]);
+                System.out.printf("Tên là: %s \n", myArray[2]);
+            }
         }
         scanner.close();
     }
@@ -163,11 +167,11 @@ public class Homework4 {
         String input = scanner.nextLine();
         if (input != null) {
             input = input.trim();
-            String regex = " ";
+            String regex = "\\s+";
             String[] myArray = input.split(regex);
             StringBuilder result = new StringBuilder();
-            for (int i = 0; i < myArray.length; i++) {
-                String cap = myArray[i].substring(0, 1).toUpperCase() + myArray[i].substring(1) + " ";
+            for (String string : myArray) {
+                String cap = string.substring(0, 1).toUpperCase() + string.substring(1) + " ";
                 result.append(cap);
 
             }
@@ -179,6 +183,7 @@ public class Homework4 {
     public static void exercise4question8(Group[] departments) {
         for (Group i : departments) {
             if (i.groupName.toLowerCase().contains("Java".toLowerCase())) {
+//                if (i.groupName.indexOf("Java") > -1) {
                 System.out.println(i);
             }
         }
@@ -196,12 +201,12 @@ public class Homework4 {
         int count = 0;
         s1 = s1.toLowerCase();
 
-        String rev = "";
+        StringBuilder rev = new StringBuilder();
         for (int i = s1.length() - 1; i >= 0; i--) {
-            rev = rev + s1.charAt(i);
+            rev.append(s1.charAt(i));
         }
 
-        System.out.println(Objects.equals(rev, s2.toLowerCase()));
+        System.out.println(Objects.equals(rev.toString(), s2.toLowerCase()));
     }
 
     public static void exercise4question11(String stringInput) {
@@ -250,7 +255,7 @@ public class Homework4 {
         System.out.println("Input string: \n");
         if (s1 != null) {
             s1 = s1.trim();
-            String regex = " ";
+            String regex = "\\s+";
             String[] myArray = s1.split(regex);
             StringBuilder result = new StringBuilder();
             for (int i = myArray.length - 1; i >= 0; i--) {

@@ -1,14 +1,54 @@
-package com.programming.nhatanh.entity;
+package com.vti.entity;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class Group {
-    public int groupId;
-    public String groupName;
-    public Account creator;
-    public LocalDateTime createDate;
-    public List<Account> accounts;
+    private int groupId;
+    private String groupName;
+    private Account creator;
+    private LocalDateTime createDate;
+    private List<Account> accounts;
+
+    public int getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public Account getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Account creator) {
+        this.creator = creator;
+    }
+
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
+    }
 
     public Group() {
     }
@@ -26,7 +66,7 @@ public class Group {
         this.createDate = createDate;
         for (String i : usernames) {
             Account newAccount = new Account();
-            newAccount.userName = i;
+            newAccount.setUserName(i);
             accounts.add(newAccount);
         }
 
