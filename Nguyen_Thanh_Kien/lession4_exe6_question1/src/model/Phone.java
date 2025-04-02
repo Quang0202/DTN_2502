@@ -3,7 +3,15 @@ package model;
 import java.util.ArrayList;
 
 public abstract class Phone {
-    protected ArrayList<Contact> contacts = new ArrayList<>();
+    private ArrayList<Contact> contacts = new ArrayList<>();
+
+    public ArrayList<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(ArrayList<Contact> contacts) {
+        this.contacts = contacts;
+    }
 
     public abstract void insertContact(String name, String phone);
     public abstract void removeContact(String name);

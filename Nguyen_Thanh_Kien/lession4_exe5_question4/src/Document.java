@@ -1,7 +1,7 @@
 public abstract class Document {
-    protected String code;
-    protected String imprint;
-    protected int totalNumberOfPublications;
+    private String code;
+    private String imprint;
+    private int totalNumberOfPublications;
 
     public String getCode() {
         return code;

@@ -1,7 +1,7 @@
 package model;
 
 public abstract class Student extends Person {
-    protected int id;
+    private int id;
 
     public Student(int id, String name) {
         super(name);

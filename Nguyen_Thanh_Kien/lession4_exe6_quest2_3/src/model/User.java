@@ -1,8 +1,8 @@
 package model;
 
 public abstract class User {
-    protected String name;
-    protected Double salaryRatio;
+    private String name;
+    private Double salaryRatio;
 
     public abstract Double calculateSalary();
 
