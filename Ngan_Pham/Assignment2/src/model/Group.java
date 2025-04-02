@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 public class Group {
     private int groupId;
@@ -60,17 +59,5 @@ public class Group {
     }
 
     public Group() {
-    }
-
-    @Override
-    public String toString() {
-        return "Group{" +
-                "groupId=" + groupId +
-                ", groupName='" + groupName + '\'' +
-                ", creator=" + creator +
-                ", createDate=" + createDate +
-                ", accounts=" + Arrays.toString(accounts) +
-                ", joinDate=" + Arrays.toString(joinDate) +
-                '}';
     }
 }
