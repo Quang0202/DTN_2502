@@ -5,17 +5,17 @@ import com.vti.backend.*;
 import java.text.ParseException;
 import java.util.Scanner;
 
-public class L4E5Q3 {
+public class L4E5Q5 {
     public static void main(String[] args) throws ParseException {
         Scanner scanner = new Scanner(System.in);
         QLCB qlcb = new QLCB();
         boolean validResponse = true;
         while (validResponse) {
             System.out.println("mời bạn nhập vào chức năng muốn sử dụng");
-            System.out.println("1. Thêm cán bộ");
-            System.out.println("2. Tìm cán bộ");
-            System.out.println("3. Hiển thị cán bộ");
-            System.out.println("4. Xoá cán bộ");
+            System.out.println("1. Thêm tài liệu");
+            System.out.println("2. Tìm tài liệu");
+            System.out.println("3. Hiển thị tài liệu");
+            System.out.println("4. Xoá tài liệu");
             System.out.println("5. Ngừng chương trình");
             int inputRequestNumber = scanner.nextInt();
             switch (inputRequestNumber) {
