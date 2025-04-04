@@ -7,10 +7,10 @@ public class CongNhan extends CanBo{
     public String toString() {
         return "CongNhan{" +
                 "bac=" + bac +
-                ", hoTen='" + hoTen + '\'' +
-                ", tuoi=" + tuoi +
-                ", gioiTinh=" + gioiTinh +
-                ", diaChi='" + diaChi + '\'' +
+                ", hoTen='" + super.getHoTen() + '\'' +
+                ", tuoi=" + super.getTuoi() +
+                ", gioiTinh=" + super.getGioiTinh() +
+                ", diaChi='" + super.getDiaChi() + '\'' +
                 '}';
     }
 

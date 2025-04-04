@@ -1,10 +1,10 @@
 package model;
 
 public abstract class CanBo {
-    protected String hoTen;
-    protected int tuoi;
-    protected Gender gioiTinh;
-    protected String diaChi;
+    private String hoTen;
+    private int tuoi;
+    private Gender gioiTinh;
+    private String diaChi;
 
     public String getHoTen() {
         return hoTen;

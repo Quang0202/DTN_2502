@@ -8,17 +8,21 @@ public class VietnamesePhone extends Phone {
 
     @Override
     public void insertContact(String name, String phone) {
-        this.contacts.add(new Contact(name, phone));
+        super.getContacts().add(new Contact(name, phone));
     }
 
     @Override
     public void removeContact(String name) {
-        this.contacts = (java.util.ArrayList<Contact>) this.contacts.stream().filter(e -> !e.getName().equalsIgnoreCase(name)).collect(Collectors.toList());
+        super.setContacts(
+                (java.util.ArrayList<Contact>) super.getContacts().stream()
+                        .filter(e -> !e.getName().equalsIgnoreCase(name))
+                        .collect(Collectors.toList())
+        );
     }
 
     @Override
     public void updateContact(String name, String newPhone) {
-        this.contacts.forEach(e -> {
+        super.getContacts().forEach(e -> {
             if (e.getName().equalsIgnoreCase(name)) {
                 e.setNumber(newPhone);
             }
@@ -27,7 +31,7 @@ public class VietnamesePhone extends Phone {
 
     @Override
     public void searchContacts(String name) {
-        this.contacts.forEach(e -> {
+        super.getContacts().forEach(e -> {
             if (e.getName().equalsIgnoreCase(name)) {
                 System.out.println(e.toString());
             }
@@ -37,7 +41,7 @@ public class VietnamesePhone extends Phone {
     @Override
     public String toString() {
         return "VietnamesePhone{" +
-                "contacts=" + contacts +
+                "contacts=" + super.getContacts() +
                 '}';
     }
 }

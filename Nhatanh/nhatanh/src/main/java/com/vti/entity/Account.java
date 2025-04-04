@@ -102,7 +102,7 @@ public class Account {
                 ", email='" + email + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", gender=" + gender +
-                ", department=" + (department != null ? department.departmentName : "Nhân viên này chưa có phòng ban") +
+                ", department=" + (department != null ? department.getDepartmentName() : "Nhân viên này chưa có phòng ban") +
                 ", position=" + position +
                 ", createDate=" + createDate +
                 '}';

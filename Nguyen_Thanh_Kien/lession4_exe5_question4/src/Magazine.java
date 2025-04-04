@@ -11,9 +11,9 @@ public class Magazine extends Document{
         return "Magazine{" +
                 "numberOfPublications=" + numberOfPublications +
                 ", monthOfPublications=" + monthOfPublications +
-                ", code='" + code + '\'' +
-                ", imprint='" + imprint + '\'' +
-                ", totalNumberOfPublications=" + totalNumberOfPublications +
+                ", code='" + super.getCode() + '\'' +
+                ", imprint='" + super.getImprint() + '\'' +
+                ", totalNumberOfPublications=" + super.getTotalNumberOfPublications() +
                 '}';
     }
 

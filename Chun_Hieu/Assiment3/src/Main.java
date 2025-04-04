@@ -122,6 +122,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập 1 xâu kí tự: ");
         String chuoi = sc.nextLine();
+        chuoi = chuoi.trim();
         String[] chuoiArray = chuoi.split("\\s+");
         System.out.println("Só lượng từ trong chuỗi: " + chuoiArray.length);
     }
@@ -139,8 +140,14 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         System.out.println("NHập tên: ");
         String ten = sc.nextLine();
-        String chinhsua = ten.substring(0,1).toUpperCase() + ten.substring(1).toLowerCase();
-        System.out.println(chinhsua);
+//        String chinhsua = ten.substring(0,1).toUpperCase() + ten.substring(1).toLowerCase();
+        System.out.println(capFirstLetter(ten));
+        System.out.println(ten);
+
+    }
+
+    public static String capFirstLetter(String str) {
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 
     public static void ex4_question4() {
@@ -148,7 +155,7 @@ public class Main {
         System.out.println("Nhập tên: ");
         String ten = sc.nextLine();
         for (int i = 0; i < ten.length(); i++) {
-            System.out.println("Kí tự thứ: " + (i + 1)+ " là " + ten.charAt(i));
+            System.out.println("Kí tự thứ: " + (i + 1)+ " là " + String.valueOf(ten.charAt(i)).toUpperCase()); // có thể cộng thêm chuỗi rỗng để thay thees String.
         }
     }
 
@@ -206,8 +213,8 @@ public class Main {
     public static void ex4_question11() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập chuỗi: ");
-        String input = sc.nextLine();
-        long count = input.chars().filter(ch -> ch == 'a').count();
+        String chuoi = sc.nextLine();
+        long count = chuoi.chars().filter(ch -> ch == 'a').count();
         System.out.println("Số lần xuất hiện của 'a': " + count);
     }
 
