@@ -1,10 +1,11 @@
+package model;
+
 import java.util.Scanner;
 
 public class ScannerUtils {
     public static int inputInt(String errorMessage) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("Nhap vao 1 so nguyen: ");
             String input = scanner.nextLine();
             try {
                 return Integer.parseInt(input);
@@ -17,7 +18,6 @@ public class ScannerUtils {
     public static float inputFloat(String errorMessage) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("Nhap vao 1 so float: ");
             String input = scanner.nextLine();
             try {
                 return Float.parseFloat(input);
@@ -30,7 +30,6 @@ public class ScannerUtils {
     public static Double inputDouble(String errorMessage) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("Nhap vao 1 so double: ");
             String input = scanner.nextLine();
             try {
                 return Double.parseDouble(input);
@@ -42,7 +41,6 @@ public class ScannerUtils {
 
     public static String inputString() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhap vao 1 chuoi: ");
-        return scanner.nextLine();
+        return scanner.next();
     }
 }
