@@ -9,10 +9,10 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 //        question 1
-        System.out.println(FileManager.isFileExist(pathFolderName + "\\\\test.txt"));
-
+//        System.out.println(FileManager.isFileExist(pathFolderName + "\\\\test.txt"));
 //        question 2
 //        FileManager.createNewFile(pathFolderName + "\\\\test.txt");
+//        FileManager.createNewFile(System.getProperty("user.dir") + "\\src\\document2", "\\\\test.txt");
 
 //        question 4
 //        FileManager.deleteFile(pathFolderName + "test.txt");

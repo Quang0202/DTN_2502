@@ -13,10 +13,12 @@ public class FileManager {
 
 
     public static Boolean isFileExist(String filename) {
+        checkDirExists(rootPath + "\\" +filename);
         return new File(rootPath + "\\" + formatPath(filename)).exists();
     }
 
     public static void createNewFile(String filename) {
+        checkDirExists(rootPath + "\\" +filename);
         File file = new File(rootPath + "\\" +formatPath(filename));
         try {
             if (file.createNewFile()) {
@@ -29,7 +31,22 @@ public class FileManager {
         }
     }
 
+    public static void createNewFile(String path, String fileName){
+        checkDirExists(formatPath(path) + "\\" + formatPath(fileName));
+        File file = new File(formatPath(path) + "\\" + formatPath(fileName));
+        try {
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                throw new IOException("File already exists");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void deleteFile(String filename) throws IOException {
+        checkDirExists(rootPath + "\\" + formatPath(filename));
         File file = new File(rootPath + filename);
         if (file.delete()) {
             System.out.println("File deleted: " + file.getName());
@@ -65,6 +82,9 @@ public class FileManager {
     }
 
     public static void copyFile(String sourceFile, String distinationPath, String newName){
+        checkDirExists(rootPath + "\\" + formatPath(distinationPath));
+        checkDirExists(rootPath + "\\" + formatPath(sourceFile));
+
         File oldSourceFile = new File(rootPath + formatPath(sourceFile));
         File newSourcefile = new File(rootPath + formatPath(distinationPath) + "\\" + formatPath(newName));
         if(!oldSourceFile.exists()){
@@ -81,6 +101,9 @@ public class FileManager {
     }
 
     public static void copyFile(String sourceFile, String newPath){
+        checkDirExists(rootPath + "\\" + formatPath(newPath));
+        checkDirExists(rootPath + "\\" + formatPath(sourceFile));
+
         File oldSourceFile = new File(rootPath + formatPath(sourceFile));
         File newSourcefile = new File(rootPath + formatPath(newPath));
         if(!oldSourceFile.exists()){
@@ -100,5 +123,11 @@ public class FileManager {
         return Arrays.stream(path.split("\\\\"))
                 .filter(e -> !e.equals("\\"))
                 .collect(Collectors.joining("\\"));
+    }
+
+    private static void checkDirExists(String path){
+        if(!new File(path).exists()){
+            throw new RuntimeException("Path is not exists !!!");
+        }
     }
 }
