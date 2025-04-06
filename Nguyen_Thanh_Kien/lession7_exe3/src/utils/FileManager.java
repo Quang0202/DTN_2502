@@ -186,34 +186,43 @@ public class FileManager {
         String[] s = fileLink.split("/");
         String name = s[s.length - 1];
         String pathFolder = rootPath + formatPath(folder) + "\\" + name;
-        String removeDocFileName = removeDocFileName(name);
+        String nameNotExtension = removeExtension(name);
+        String typeExtension = name.substring(name.lastIndexOf("."));
         File file = new File(pathFolder);
         if (file.exists()) {
-            List<String> temp = getAllFileName(folder).stream()
-                    .filter(e -> e.equals(name) ||
-                            (removeDocFileName(e).startsWith(removeDocFileName) && checkNameFile(e.substring(e.indexOf(removeDocFileName) + removeDocFileName.length(), e.lastIndexOf("."))))
+            List<String> listFile = getAllFileName(folder);
+            for (int i = 0; i < listFile.size(); i++) {
+                listFile.set(i, removeExtension(listFile.get(i)));
+            }
+            listFile = listFile.stream()
+                    .filter(fileName -> fileName.equals(nameNotExtension) ||
+                            (fileName.startsWith(nameNotExtension) && checkNameFileValid(fileName))
                     ).collect(Collectors.toList());
 
-            if (!temp.isEmpty()) {
-                if (temp.size() == 1) {
-                    pathFolder = removeDocFileName(pathFolder) + " (2)" + pathFolder.substring(pathFolder.lastIndexOf("."));
+            if (!listFile.isEmpty()) {
+                if (listFile.size() == 1) {
+                    pathFolder = nameNotExtension + " (2)" + typeExtension;
                 } else {
-                    temp.sort(new Comparator<String>() {
+                    listFile.sort(new Comparator<String>() {
                         @Override
                         public int compare(String o1, String o2) {
-                            return getNumberOfFileByFileName(o1, removeDocFileName) - getNumberOfFileByFileName(o2, removeDocFileName);
+                            return getNumberOfFileByFileName(o1) - getNumberOfFileByFileName(o2);
                         }
                     });
                     boolean check = false;
-                    for (int i = 0; i < temp.size(); i++) {
-                        if (getNumberOfFileByFileName(temp.get(i), removeDocFileName) != i) {
-                            pathFolder = removeDocFileName(pathFolder) + " (" + (i + 1) + ")" + pathFolder.substring(pathFolder.lastIndexOf("."));
+                    for (int i = 0; i < listFile.size(); i++) {
+                        if (getNumberOfFileByFileName(listFile.get(i)) != 0 && i == 0) {
+                            pathFolder = rootPath + formatPath(folder) + "\\" + nameNotExtension + typeExtension;
+                            break;
+                        }
+                        if (getNumberOfFileByFileName(listFile.get(i)) != (i + 1) && i != 0) {
+                            pathFolder = rootPath + formatPath(folder) + "\\" + nameNotExtension + " (" + (i + 1) + ")" + typeExtension;
                             check = true;
                             break;
                         }
                     }
                     if (!check) {
-                        pathFolder = removeDocFileName(pathFolder) + " (" + (temp.size() + 1) + ")" + pathFolder.substring(pathFolder.lastIndexOf("."));
+                        pathFolder = rootPath + formatPath(folder) + "\\" + nameNotExtension + " (" + (listFile.size() + 1) + ")" + typeExtension;
                     }
                 }
             }
@@ -239,29 +248,31 @@ public class FileManager {
         System.out.println("Download successfully");
     }
 
-    private static Boolean checkNameFile(String fileName) {
-        if (fileName.startsWith(" (") && fileName.endsWith(")") && fileName.length() > 3) {
-            String temp = fileName.substring(2, fileName.lastIndexOf(")"));
-            try {
-                Integer.parseInt(temp);
-                return true;
-            } catch (NumberFormatException e) {
-                return false;
+    private static Boolean checkNameFileValid(String fileName) {
+        if (fileName.contains(" (") && fileName.charAt(fileName.length() - 1) == ')') {
+            fileName = fileName.substring(fileName.lastIndexOf(" ("));
+            if (fileName.length() > 3) {
+                try {
+                    Integer.parseInt(fileName.substring(2, fileName.lastIndexOf(")")));
+                    return true;
+                } catch (NumberFormatException e) {
+                    return false;
+                }
             }
+            return false;
         }
         return false;
     }
 
-    private static String removeDocFileName(String fileName) {
+    private static String removeExtension(String fileName) {
         return fileName.substring(0, fileName.lastIndexOf("."));
     }
 
-    private static Integer getNumberOfFileByFileName(String fileName, String name) {
-        fileName = removeDocFileName(fileName).replace(name, "");
-        if (fileName.isEmpty()) {
+    private static Integer getNumberOfFileByFileName(String fileName) {
+        if (!fileName.contains("(")) {
             return 0;
-        } else {
-            return Integer.parseInt(fileName.substring(2, fileName.lastIndexOf(")"))) - 1;
         }
+        fileName = fileName.substring(fileName.lastIndexOf("(") + 1, fileName.length() - 1);
+        return Integer.parseInt(fileName);
     }
 }
