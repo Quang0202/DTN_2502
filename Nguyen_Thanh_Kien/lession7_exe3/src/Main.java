@@ -28,5 +28,12 @@ public class Main {
 //        question 7
 //        FileManager.copyFile(pathFolderName + "\\\\test.txt\\", "\\\\src\\document2\\abc.txt");
 //        FileManager.copyFile(pathFolderName + "test.txt", "\\src\\document2", "xyz.txt");
+
+//      question 8
+//        FileManager.moveFile(pathFolderName + "test.txt", "\\src\\document2\\test.txt");
+
+//      question 9
+//        FileManager.renameFile(pathFolderName + "test1.txt", "rename.txt");
+        
     }
 }
