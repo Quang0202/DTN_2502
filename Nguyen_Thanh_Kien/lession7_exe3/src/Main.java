@@ -34,6 +34,11 @@ public class Main {
 
 //      question 9
 //        FileManager.renameFile(pathFolderName + "test1.txt", "rename.txt");
-        
+
+//      question 10
+//        FileManager.createNewFolder("\\src\\newFolder");
+
+//      question 11
+        FileManager.downloadFile("https://file-examples.net/wp-content/uploads/2024/02/SampleTextFile_1MB.txt",pathFolderName);
     }
 }

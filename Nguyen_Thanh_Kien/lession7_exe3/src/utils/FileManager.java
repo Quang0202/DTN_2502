@@ -1,14 +1,17 @@
 package utils;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class FileManager {
@@ -153,10 +156,112 @@ public class FileManager {
         checkDirExists(rootPath + pathFile);
         File file = new File(rootPath + pathFile);
         File file2 = new File(rootPath + pathFile.substring(0, pathFile.lastIndexOf("\\")) + "\\" + newName);
-        if(!file.renameTo(file2)){
+        if (!file.renameTo(file2)) {
             System.out.println("Cannot rename");
         } else {
             System.out.println("Rename Successfully");
+        }
+    }
+
+    public static void createNewFolder(String newPathFolder) {
+        checkDirExists(rootPath + newPathFolder.substring(0, newPathFolder.lastIndexOf("\\")));
+        File theDir = new File(rootPath + formatPath(newPathFolder));
+        if (!theDir.exists()) {
+            if (theDir.mkdirs()) {
+                System.out.println("Folder created");
+            } else {
+                System.out.println("Folder not created");
+            }
+        } else {
+            throw new RuntimeException("Folder name already exists !!!");
+        }
+    }
+
+    public static void downloadFile(String fileLink, String folder) throws IOException {
+        checkDirExists(rootPath + folder.substring(0, folder.lastIndexOf("\\")));
+        File theDir = new File(rootPath + formatPath(folder));
+        if (!theDir.exists()) {
+            createNewFolder(formatPath(folder));
+        }
+        String[] s = fileLink.split("/");
+        String name = s[s.length - 1];
+        String pathFolder = rootPath + formatPath(folder) + "\\" + name;
+        String removeDocFileName = removeDocFileName(name);
+        File file = new File(pathFolder);
+        if (file.exists()) {
+            List<String> temp = getAllFileName(folder).stream()
+                    .filter(e -> e.equals(name) ||
+                            (removeDocFileName(e).startsWith(removeDocFileName) && checkNameFile(e.substring(e.indexOf(removeDocFileName) + removeDocFileName.length(), e.lastIndexOf("."))))
+                    ).collect(Collectors.toList());
+
+            if (!temp.isEmpty()) {
+                if (temp.size() == 1) {
+                    pathFolder = removeDocFileName(pathFolder) + " (2)" + pathFolder.substring(pathFolder.lastIndexOf("."));
+                } else {
+                    temp.sort(new Comparator<String>() {
+                        @Override
+                        public int compare(String o1, String o2) {
+                            return getNumberOfFileByFileName(o1, removeDocFileName) - getNumberOfFileByFileName(o2, removeDocFileName);
+                        }
+                    });
+                    boolean check = false;
+                    for (int i = 0; i < temp.size(); i++) {
+                        if (getNumberOfFileByFileName(temp.get(i), removeDocFileName) != i) {
+                            pathFolder = removeDocFileName(pathFolder) + " (" + (i + 1) + ")" + pathFolder.substring(pathFolder.lastIndexOf("."));
+                            check = true;
+                            break;
+                        }
+                    }
+                    if (!check) {
+                        pathFolder = removeDocFileName(pathFolder) + " (" + (temp.size() + 1) + ")" + pathFolder.substring(pathFolder.lastIndexOf("."));
+                    }
+                }
+            }
+        }
+
+
+        URL url = new URL(fileLink);
+        URLConnection connection = url.openConnection();
+        int size = connection.getContentLength();
+        InputStream in = connection.getInputStream();
+        FileOutputStream out = new FileOutputStream(pathFolder);
+        int byteDownloaded = 0;
+        byte[] b = new byte[1024];
+        int length = in.read(b);
+        while (length != -1) {
+            byteDownloaded += length;
+            System.out.println(byteDownloaded * 100f / size + "%");
+            out.write(b, 0, length);
+            length = in.read(b);
+        }
+        out.close();
+        in.close();
+        System.out.println("Download successfully");
+    }
+
+    private static Boolean checkNameFile(String fileName) {
+        if (fileName.startsWith(" (") && fileName.endsWith(")") && fileName.length() > 3) {
+            String temp = fileName.substring(2, fileName.lastIndexOf(")"));
+            try {
+                Integer.parseInt(temp);
+                return true;
+            } catch (NumberFormatException e) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    private static String removeDocFileName(String fileName) {
+        return fileName.substring(0, fileName.lastIndexOf("."));
+    }
+
+    private static Integer getNumberOfFileByFileName(String fileName, String name) {
+        fileName = removeDocFileName(fileName).replace(name, "");
+        if (fileName.isEmpty()) {
+            return 0;
+        } else {
+            return Integer.parseInt(fileName.substring(2, fileName.lastIndexOf(")"))) - 1;
         }
     }
 }
