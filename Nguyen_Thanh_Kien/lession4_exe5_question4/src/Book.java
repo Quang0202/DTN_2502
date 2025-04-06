@@ -26,9 +26,9 @@ public class Book extends Document {
         return "Book{" +
                 "author='" + author + '\'' +
                 ", numberOfPages=" + numberOfPages +
-                ", code='" + code + '\'' +
-                ", imprint='" + imprint + '\'' +
-                ", totalNumberOfPublications=" + totalNumberOfPublications +
+                ", code='" + super.getCode() + '\'' +
+                ", imprint='" + super.getImprint() + '\'' +
+                ", totalNumberOfPublications=" + super.getTotalNumberOfPublications() +
                 '}';
     }
 }

@@ -18,4 +18,12 @@ public class Department {
 
         return departmentName.equals(that.departmentName);
     }
+
+    public Department() {
+    }
+
+    public Department(String departmentName) {
+        this.departmentId = 0;
+        this.departmentName = departmentName;
+    }
 }

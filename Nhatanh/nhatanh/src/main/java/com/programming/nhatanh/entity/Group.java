@@ -10,6 +10,28 @@ public class Group {
     public LocalDateTime createDate;
     public List<Account> accounts;
 
+    public Group() {
+    }
+
+    public Group(String groupName, Account creator, LocalDateTime createDate, List<Account> accounts) {
+        this.groupName = groupName;
+        this.creator = creator;
+        this.createDate = createDate;
+        this.accounts = accounts;
+    }
+
+    public Group(String groupName, Account creator, LocalDateTime createDate, String[] usernames) {
+        this.groupName = groupName;
+        this.creator = creator;
+        this.createDate = createDate;
+        for (String i : usernames) {
+            Account newAccount = new Account();
+            newAccount.userName = i;
+            accounts.add(newAccount);
+        }
+
+    }
+
     @Override
     public String toString() {
         return "Group{" +
@@ -20,4 +42,6 @@ public class Group {
                 ", accounts=" + accounts +
                 '}';
     }
+
+
 }

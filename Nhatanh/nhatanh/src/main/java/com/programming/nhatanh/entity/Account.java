@@ -35,4 +35,30 @@ public class Account {
                 "CreateDate: '" + createDate + "\n";
     }
 
+    public Account() {
+    }
+
+    public Account(int accountId, String email, String firstName, String lastName) {
+        this.accountId = accountId;
+        this.email = email;
+        this.fullName = firstName + " "  + lastName;
+    }
+
+    public Account(int accountId, String email, String firstName, String lastName, Position position) {
+        this.accountId = accountId;
+        this.email = email;
+        this.fullName = firstName + " "  + lastName;
+        this.position = position;
+        this.createDate = LocalDateTime.now();
+    }
+
+    public Account(int accountId, String email, String firstName, String lastName, Position position, LocalDateTime createDate) {
+        this.accountId = accountId;
+        this.email = email;
+        this.fullName = firstName + " "  + lastName;
+        this.position = position;
+        this.createDate = createDate;
+    }
+
+
 }

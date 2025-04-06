@@ -34,8 +34,8 @@ public class HighSchoolStudent extends Student {
         return "HighSchoolStudent{" +
                 "clazz='" + clazz + '\'' +
                 ", desiredUniversity='" + desiredUniversity + '\'' +
-                ", id=" + id +
-                ", name='" + name + '\'' +
+                ", id=" + super.getId() +
+                ", name='" + super.getName() + '\'' +
                 '}';
     }
 }

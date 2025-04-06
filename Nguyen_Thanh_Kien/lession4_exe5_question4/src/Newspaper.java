@@ -5,9 +5,9 @@ public class Newspaper extends Document{
     public String toString() {
         return "Newspaper{" +
                 "dayOfPublication=" + dayOfPublication +
-                ", code='" + code + '\'' +
-                ", imprint='" + imprint + '\'' +
-                ", totalNumberOfPublications=" + totalNumberOfPublications +
+                ", code='" + super.getCode() + '\'' +
+                ", imprint='" + super.getImprint() + '\'' +
+                ", totalNumberOfPublications=" + super.getTotalNumberOfPublications() +
                 '}';
     }
 

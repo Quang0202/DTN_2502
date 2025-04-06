@@ -12,7 +12,7 @@ public class Manager extends User {
 
     @Override
     public Double calculateSalary() {
-        return this.salaryRatio * SALARY_COEFICIENT;
+        return super.getSalaryRatio() * SALARY_COEFICIENT;
     }
 
     @Override
