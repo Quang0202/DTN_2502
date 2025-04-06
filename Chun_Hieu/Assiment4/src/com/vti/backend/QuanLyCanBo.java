@@ -6,12 +6,28 @@ import com.vti.entity.KySu;
 import com.vti.entity.NhanVien;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
 public class QuanLyCanBo {
-    private List<CanBo> danhSachCanBo = new ArrayList<>();
+
+    private ArrayList<CanBo> danhSachCanBo = new ArrayList<>();
+
+//     danhSachCanBo.add(canbo);
+//        danhSachCanBo.remove(0);
+//        danhSachCanBo.get(0);
+//        danhSachCanBo.removeIf(canBo -> canBo.getHoTen().equals("abc") && canBo.getDiaChi().equals("xyz"));
+//
+//        for(CanBo canBo: danhSachCanBo){
+//        if(canBo.getHoTen().equals("abc")){
+//            danhSachCanBo.remove(canBo);
+//        }
+//    }
+
+
     public void themCanBo() {
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Chọn loại cán bộ:");
@@ -79,6 +95,7 @@ public class QuanLyCanBo {
             System.out.println(cb);
         }
     }
+
     public void xoaCanBo(String ten) {
         danhSachCanBo.removeIf(cb -> cb.getHoTen().equalsIgnoreCase(ten));
     }

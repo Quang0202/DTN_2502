@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 public  class Student extends Person {
     private String clazz;
@@ -25,11 +25,15 @@ public  class Student extends Person {
         this.clazz = clazz;
     }
 
-
     @Override
-    public void diemDanh() {
-
+    public void gotoSchool() {
+        System.out.println("Student go to school");
     }
+
+//    @Override
+//    public void diemDanh() {
+//
+//    }
 
     @Override
     public String toString() {

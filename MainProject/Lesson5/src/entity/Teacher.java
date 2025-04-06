@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 public class Teacher extends Person {
     private String major;
@@ -24,10 +24,10 @@ public class Teacher extends Person {
         super.gotoSchool();
     }
 
-    @Override
-    public void diemDanh() {
-        System.out.println(super.getName()+ " Châm công");
-    }
+//    @Override
+//    public void diemDanh() {
+//        System.out.println(super.getName()+ " Châm công");
+//    }
 
     @Override
     public String toString() {

@@ -4,13 +4,11 @@ import java.time.LocalDate;
 
 public class Account {
     private int accountID;
-    private String Email;
-    private String Username;
-    private String FirstName;
-    private String LastName;
+    private String email;
+    private String userName;
     private String fullName;
-    private String position;
-    LocalDate createDate;
+    private Position position;
+    private LocalDate createDate;
 
     public int getAccountID() {
         return accountID;
@@ -21,42 +19,26 @@ public class Account {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
-    public String getUsername() {
-        return Username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        Username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getFirstName() {
-        return FirstName;
-    }
-
-    public void setFirstName(String firstName) {
-        FirstName = firstName;
-    }
-
-    public String getLastName() {
-        return LastName;
-    }
-
-    public void setLastName(String lastName) {
-        LastName = lastName;
-    }
-
-    public String getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 
@@ -80,28 +62,22 @@ public class Account {
     }
     public Account(int accountID, String email, String username, String firstName, String lastName) {
         this.accountID = accountID;
-        Email = email;
-        Username = username;
-        FirstName = firstName;
-        LastName = lastName;
+        this.email = email;
+        this.userName = username;
         this.fullName = firstName + " " + lastName;
     }
-    public Account(int accountID, String email, String username, String firstName, String lastName, String position) {
+    public Account(int accountID, String email, String username, String firstName, String lastName, Position position) {
         this.accountID = accountID;
-        Email = email;
-        Username = username;
-        FirstName = firstName;
-        LastName = lastName;
+        this.email = email;
+        this.userName = username;
         this.fullName = firstName + " " + lastName;
         this.position = position;
         this.createDate = LocalDate.now();
     }
-    public Account(int accountID, String email, String username, String firstName, String lastName, LocalDate createDate, String position) {
+    public Account(int accountID, String email, String username, String firstName, String lastName, LocalDate createDate, Position position) {
         this.accountID = accountID;
-        Email = email;
-        Username = username;
-        FirstName = firstName;
-        LastName = lastName;
+        this.email = email;
+        this.userName = username;
         this.fullName = firstName + " " + lastName;
         this.position = position;
         this.createDate = createDate;
@@ -111,10 +87,8 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "accountID=" + accountID +
-                ", Email='" + Email + '\'' +
-                ", Username='" + Username + '\'' +
-                ", FirstName='" + FirstName + '\'' +
-                ", LastName='" + LastName + '\'' +
+                ", Email='" + email + '\'' +
+                ", Username='" + userName + '\'' +
                 ", fullName='" + fullName + '\'' +
                 ", position='" + position + '\'' +
                 ", createDate=" + createDate +

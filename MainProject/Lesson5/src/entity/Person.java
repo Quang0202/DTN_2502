@@ -1,6 +1,6 @@
-package model;
+package entity;
 
-public abstract class Person {
+public class Person {
     private String name;
     private int age;
     private String sex;
@@ -53,7 +53,7 @@ public abstract class Person {
         System.out.println("Person goto school");
     }
 
-    public abstract void diemDanh();
+//    public abstract void diemDanh();
 
     @Override
     public String toString() {

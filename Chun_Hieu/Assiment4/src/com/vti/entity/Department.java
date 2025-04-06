@@ -9,6 +9,7 @@ public class Department {
     // Ex_1_Question1_b
     public Department(String departmentName) {
         this.departmentName = departmentName;
+
     }
 
     public int getDepartmentID() {

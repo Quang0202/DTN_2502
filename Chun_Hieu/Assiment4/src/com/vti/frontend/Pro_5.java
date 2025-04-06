@@ -1,11 +1,38 @@
 package com.vti.frontend;
 
 import com.vti.backend.QuanLyCanBo;
+import com.vti.entity.CanBo;
+import com.vti.entity.CongNhan;
 
 import java.util.Scanner;
 
 public class Pro_5 {
+
+    public static void print(CongNhan cn){
+
+    }
+
+    public static void print2(CanBo cb){
+
+    }
     public static void main(String[] args) {
+
+//        CanBo canBo = new CongNhan("hoten",19,"nam","HN",1);// instance of CongNhan, Canbo
+//        System.out.println(canBo);
+//        CanBo canBo1 = new CanBo("canbo",2,"nu","TH");// instance of CanBo
+//        CongNhan congNhan = (CongNhan) canBo1;
+//        congNhan.getBac();
+//        ((CongNhan) canBo).setBac(2);
+//        print((CongNhan) canBo);
+//        print((CongNhan) canBo1);
+//
+//        CongNhan congNhan1 = new CongNhan("hoten",19,"nam","HN",1);
+//        print2(congNhan1);
+//        if(canBo1 instanceof CanBo){
+//
+//        }
+
+
         QuanLyCanBo quanLyCanBo = new QuanLyCanBo();
         Scanner sc = new Scanner(System.in);
         while (true) {
