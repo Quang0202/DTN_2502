@@ -230,7 +230,7 @@ public class FileManager {
         int length = in.read(b);
         while (length != -1) {
             byteDownloaded += length;
-            System.out.println(byteDownloaded * 100f / size + "%");
+            System.out.println(String.format("%.2f", byteDownloaded * 100f / size) + "%");
             out.write(b, 0, length);
             length = in.read(b);
         }
