@@ -14,8 +14,8 @@ public class Ex_4_2 {
         System.out.println(circle2);
         System.out.println(circle3);
 
-        Account_4 ac1 = new Account_4("23","Chun",5000);
-        Account_4 ac2 = new Account_4("25","Hieu",3000);
+        Account_4 ac1 = new Account_4("23","Ethan",5000);
+        Account_4 ac2 = new Account_4("25","Ngan",3000);
         System.out.println(ac1);
         ac1.credit(2000);
         System.out.println(ac1);

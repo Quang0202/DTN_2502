@@ -7,9 +7,9 @@ public class Main {
         System.out.println(department);
         System.out.println(department1);
         Account account1 = new Account();
-        Account account2 = new Account(1,"chun@gmail.com","Chun Hieu","Chun","Hieu");
-        Account account3 = new Account(2,"hieu@gmail.com","Hieu Chun","Hieu","Chun","Admin");
-        Account account4 = new Account(3,"trang@gmail.com","Trang","Dai","Trang", LocalDate.of(2025, 10,10),"Member");
+        Account account2 = new Account(1,"ethan@gmail.com","Ethan Pham","Ethan","Pham");
+        Account account3 = new Account(2,"orm@gmail.com","Orm Korn","Orm","Korn","Admin");
+        Account account4 = new Account(3,"tho@gmail.com","Tho Huynh","Tho","Huynh", LocalDate.of(2025, 10,10),"Member");
         System.out.println(account1);
         System.out.println(account2);
         System.out.println(account3);

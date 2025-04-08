@@ -12,7 +12,7 @@ public class Excercise3 {
                 new Account(5, "aston@gmail.com", "aston", "as", "ton"),
                 new Account(6, "lexus@gmail.com", "lexus", "le", "xus")
         };
-        String[] usernames = {"Chun", "Pes"};
+        String[] usernames = {"Ethan", "Pes"};
         Group group1 = new Group();
         Group group2 = new Group("Group2",creator,member, LocalDate.of(2020,10,10));
         Group group3 = new Group("Group3",creator,usernames,LocalDate.of(2020,10,10));

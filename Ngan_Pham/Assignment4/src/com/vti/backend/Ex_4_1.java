@@ -4,7 +4,7 @@ import com.vti.entity.Student;
 
 public class Ex_4_1 {
     public void question4(){
-        Student student = new Student("Chun", "Ha Noi");
+        Student student = new Student("Ethan", "Binh Duong");
         student.setDiem(3);
         student.thongtinSv();
         student.congthemDiem(4.5f);
