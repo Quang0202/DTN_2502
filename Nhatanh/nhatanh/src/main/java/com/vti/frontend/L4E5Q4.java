@@ -8,7 +8,7 @@ import com.vti.backend.TapChi;
 import java.text.ParseException;
 import java.util.Scanner;
 
-public class L4E5Q5 {
+public class L4E5Q4 {
     public static void main(String[] args) throws ParseException {
         Scanner scanner = new Scanner(System.in);
         QLTL qlcb = new QLTL();
