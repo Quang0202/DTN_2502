@@ -1,15 +1,30 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
-
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Department department = new Department();
+        Department department1 = new Department("Sale");
+        System.out.println(department);
+        System.out.println(department1);
+        Account account1 = new Account();
+        Account account2 = new Account(1,"chun@gmail.com","Chun Hieu","Chun","Hieu");
+        Account account3 = new Account(2,"hieu@gmail.com","Hieu Chun","Hieu","Chun","Admin");
+        Account account4 = new Account(3,"trang@gmail.com","Trang","Dai","Trang", LocalDate.of(2025, 10,10),"Member");
+        System.out.println(account1);
+        System.out.println(account2);
+        System.out.println(account3);
+        System.out.println(account4);
+        Account creator = new Account(4, "porche@gmail.com", "porche", "Por", "che");
+        Account[] member = {
+                new Account(5, "aston@gmail.com", "aston", "as", "ton"),
+                new Account(6, "lexus@gmail.com", "lexus", "le", "xus")
+        };
+        String[] usernames = {"Chun", "Pes"};
+        Group group1 = new Group();
+        Group group2 = new Group("Group2",creator,member,LocalDate.of(2020,10,10));
+        Group group3 = new Group("Group3",creator,usernames,LocalDate.of(2020,10,10));
+        System.out.println(group1);
+        System.out.println(group2);
+        System.out.println(group3);
     }
 }
