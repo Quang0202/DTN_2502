@@ -1,9 +1,6 @@
 package com.vti.backend;
 
-import com.vti.entity.CanBo;
-import com.vti.entity.CongNhan;
-import com.vti.entity.KySu;
-import com.vti.entity.NhanVien;
+import com.vti.entity.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +8,8 @@ import java.util.Scanner;
 
 public class Exercise5 {
 
-    private List<CanBo> danhSachCanBo;
-    private Scanner scanner;
+    private final List<CanBo> danhSachCanBo;
+    private final Scanner scanner;
 
     public Exercise5() {
         danhSachCanBo = new ArrayList<>();
@@ -124,5 +121,10 @@ public class Exercise5 {
         System.out.println("Chương trình kết thúc.");
         scanner.close();
         System.exit(0);
+    }
+
+    public void question3(){
+        HighSchoolStudent student = new HighSchoolStudent(1, "Nam", "Chuyên Văn", "Đại học công nghệ");
+        student.printInfo();
     }
 }
