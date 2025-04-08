@@ -32,6 +32,7 @@ public class Account {
 
     public void transferTo(Account account, int amount){
         account.debit(amount);
+        credit(amount);
     }
 
 }

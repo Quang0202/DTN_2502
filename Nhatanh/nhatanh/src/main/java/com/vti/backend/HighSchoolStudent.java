@@ -1,6 +1,6 @@
 package com.vti.backend;
 
-public abstract class HighSchoolStudent extends Student {
+public class HighSchoolStudent extends Student {
 
     private String clazz;
     private String desiredUniversity;
