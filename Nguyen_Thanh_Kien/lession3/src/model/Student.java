@@ -1,6 +1,6 @@
 package model;
 
-public class Student extends Person {
+public  class Student extends Person {
     private String clazz;
     private String group;
 
@@ -23,6 +23,12 @@ public class Student extends Person {
 
     public void setClazz(String clazz) {
         this.clazz = clazz;
+    }
+
+
+    @Override
+    public void diemDanh() {
+
     }
 
     @Override

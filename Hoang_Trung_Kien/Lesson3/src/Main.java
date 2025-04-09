@@ -1,8 +1,8 @@
-import model.Department;
-import model.Person;
-import model.Student;
-import model.Teacher;
+import model1.Department;
+import model1.Person;
+import model1.Student;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -118,6 +118,13 @@ public class Main {
 
         Person[] people = new Person[5];
         people[0] = student1;
+
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        arrayList.add(1);
+        arrayList.remove(1);
+        Integer i = 10;
+        arrayList.remove(i);
+        arrayList.get(0);
     }
 }
 

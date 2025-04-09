@@ -1,5 +1,7 @@
 package com.vti.entity;
 
+import java.util.ArrayList;
+
 public class QLCB {
     public CanBo[] themCanBo(CanBo[] canBos, String name) {
         CanBo[] newCanBos = new CanBo[canBos.length + 1];
@@ -28,6 +30,9 @@ public class QLCB {
     }
 
     public CanBo[] deleteCanbo(CanBo[] canBos, String name) {
+
+        ArrayList<CanBo> canBos1 = new ArrayList<>();
+        canBos1.removeIf(CanBo -> CanBo.getName().equals("Khanh Linh"));
         CanBo[] newCanBos = new CanBo[canBos.length - 1];
         int i = 0;
         for (CanBo canBo : canBos) {
@@ -37,6 +42,7 @@ public class QLCB {
             }
         }
         return newCanBos;
+
     }
 
     public void exit() {
