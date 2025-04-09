@@ -1,8 +1,13 @@
 package com.company.backend.TestingSystem4;
 
 public abstract class User {
-    protected String name;
-    protected double salaryRatio;
+    private String name;
+    private double salaryRatio;
+
+    public User(String name, double salaryRatio) {
+        this.name = name;
+        this.salaryRatio = salaryRatio;
+    }
 
     public String getName() {
         return name;
