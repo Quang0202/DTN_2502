@@ -5,11 +5,12 @@ import com.vti.backend.Exercise5;
 import java.util.Scanner;
 
 public class Program5 {
-    private static Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         Exercise5 exercise5 = new Exercise5();
 //        exercise5.question1();
+        exercise5.question3();
         while (true) {
             System.out.println("\n===== QUẢN LÝ CÁN BỘ =====");
             System.out.println("1. Thêm cán bộ");
