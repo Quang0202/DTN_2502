@@ -1,4 +1,4 @@
-public class Person {
+public abstract class Person {
     private String name;
     private int age;
     private String sex;
@@ -10,6 +10,7 @@ public class Person {
         this.sex = sex;
         this.address = address;
     }
+    public abstract void diemDanh();
 
     @Override
     public String toString() {

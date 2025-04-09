@@ -1,11 +1,19 @@
 package com.vti.frontend;
 
 import com.vti.backend.QuanLyCanBo;
+import com.vti.entity.CanBo;
+import com.vti.entity.CongNhan;
 
 import java.util.Scanner;
 
 public class Pro_5 {
     public static void main(String[] args) {
+        CanBo canBo = new CongNhan("chunhieu", 13,"nam", "HN", 1); // instanceof CongNhan, CanBo
+        System.out.println(canBo);
+
+        CongNhan congNhan = (CongNhan) canBo;
+        congNhan.getBac();
+
         QuanLyCanBo quanLyCanBo = new QuanLyCanBo();
         Scanner sc = new Scanner(System.in);
         while (true) {
