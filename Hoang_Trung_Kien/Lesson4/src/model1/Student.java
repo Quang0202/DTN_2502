@@ -1,4 +1,4 @@
-package model;
+package model1;
 
 public class Student extends Person {
     private String clazz;
@@ -37,5 +37,10 @@ public class Student extends Person {
     public void goToSchool() {
         System.out.println("Student go to school");
         super.goToSchool();
+    }
+
+    @Override
+    public void doingHomework() {
+        System.out.println(super.getName() + " lam bai tap");
     }
 }
