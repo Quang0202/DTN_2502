@@ -2,21 +2,14 @@ package model;
 
 public class Student {
     private static int countId = 0;
-    private int id;
+    private final int id;
     private String name;
-
-    public static int getCountId() {
-        return countId;
-    }
 
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

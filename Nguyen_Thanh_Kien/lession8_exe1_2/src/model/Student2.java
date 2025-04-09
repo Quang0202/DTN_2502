@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Student2 {
     private static int countId = 0;
-    private int id;
+    private final int id;
     private String name;
     private Double score;
     private LocalDate birthday;
@@ -29,10 +29,6 @@ public class Student2 {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
