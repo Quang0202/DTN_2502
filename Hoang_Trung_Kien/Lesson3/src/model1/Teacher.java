@@ -1,4 +1,4 @@
-package model;
+package model1;
 
 public class Teacher extends Person{
     private String major;
