@@ -1,4 +1,4 @@
-package model;
+package MaiTienThanh.src.com.vti.entity;
 
 public class CategoryQuestion {
     private int categoryId;

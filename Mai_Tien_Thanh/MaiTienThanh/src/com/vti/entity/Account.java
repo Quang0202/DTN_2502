@@ -1,4 +1,4 @@
-package model;
+package MaiTienThanh.src.com.vti.entity;
 
 import java.time.LocalDate;
 public class Account {
@@ -10,9 +10,12 @@ public class Account {
     private Position position;
     private LocalDate createDate;
 
-    public Account() {
-    }
+    public Account(){
 
+    }
+    public Account(String username){
+        this.username = username;
+    }
     public Account(int accountId, String email, String username, String fullName, Department department, Position position, LocalDate createDate) {
         this.accountId = accountId;
         this.email = email;
@@ -22,6 +25,32 @@ public class Account {
         this.position = position;
         this.createDate = createDate;
     }
+
+    public Account(int accountID, String email, String username, String firstName, String lastName){
+        this.accountId = accountID;
+        this.email = email;
+        this.username = username;
+        fullName = firstName + " " + lastName;
+    }
+
+    public Account(int accountID, String email, String username, String firstName, String lastName, Position position, LocalDate createDate) {
+        this.accountId = accountID;
+        this.email = email;
+        this.username = username;
+        fullName = firstName + " " + lastName;
+        this.position = position;
+        this.createDate = createDate;
+    }
+
+    public Account(int accountId, String email, String username, String firstName, String lastName, Position position) {
+        this.accountId = accountId;
+        this.email = email;
+        this.username = username;
+        fullName = firstName + " " + lastName;
+        this.position = position;
+
+    }
+
 
     public int getAccountId() {
         return accountId;

@@ -1,8 +1,10 @@
-package model;
+package MaiTienThanh.src.com.vti.entity;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class Group {
+    private  Account[] accounts;
     private int groupId;
     private String groupName;
     private Account createAccount;
@@ -14,6 +16,25 @@ public class Group {
         this.createAccount = createAccount;
         this.createDate = createDate;
     }
+
+    public Group(String groupName, Account createAccount, LocalDate createDate, Account[] accounts) {
+        this.groupName = groupName;
+        this.createAccount = createAccount;
+        this.createDate = createDate;
+        this.accounts = accounts;
+
+    }
+    public Group(String GroupName, Account createAccount, LocalDate createDate, String[] usernames) {
+        this.groupName = GroupName;
+        this.createAccount = createAccount;
+        this.createDate = createDate;
+        this.accounts = new Account[usernames.length];
+        for (int i = 0; i < usernames.length; i++) {
+            accounts[i] = new Account(usernames[i]);
+        }
+    }
+
+
 
     public int getGroupId() {
         return groupId;
@@ -47,3 +68,4 @@ public class Group {
         this.createDate = createDate;
     }
 }
+

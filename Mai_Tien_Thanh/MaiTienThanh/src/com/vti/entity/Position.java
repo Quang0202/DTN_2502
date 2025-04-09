@@ -1,4 +1,4 @@
-package model;
+package MaiTienThanh.src.com.vti.entity;
 
 public class Position {
     private int positionId;
@@ -25,3 +25,4 @@ public class Position {
         this.positionName = positionName;
     }
 }
+

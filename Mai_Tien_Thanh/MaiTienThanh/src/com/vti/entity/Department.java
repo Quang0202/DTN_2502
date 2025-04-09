@@ -1,4 +1,4 @@
-package model;
+package MaiTienThanh.src.com.vti.entity;
 
 public class Department {
     private int departmentId;
@@ -8,6 +8,7 @@ public class Department {
         this.departmentId = departmentId;
         this.departmentName = departmentName;
     }
+
 
     public int getDepartmentId() {
         return departmentId;
@@ -37,7 +38,7 @@ public class Department {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        model.Department that = (model.Department) o;
+        Department that = (Department) o;
         return departmentName.equals(that.departmentName);
     }
 

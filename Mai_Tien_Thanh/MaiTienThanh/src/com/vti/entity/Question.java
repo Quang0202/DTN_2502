@@ -1,4 +1,4 @@
-package model;
+package MaiTienThanh.src.com.vti.entity;
 
 import java.time.LocalDate;
 
@@ -67,3 +67,4 @@ public class Question {
         this.createDate = createDate;
     }
 }
+

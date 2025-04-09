@@ -1,4 +1,4 @@
-package model;
+package MaiTienThanh.src.com.vti.entity;
 
 import java.time.LocalDate;
 
@@ -37,3 +37,4 @@ public class GroupAccount {
         this.joinDate = joinDate;
     }
 }
+
