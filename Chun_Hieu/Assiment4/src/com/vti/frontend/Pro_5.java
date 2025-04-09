@@ -16,6 +16,13 @@ public class Pro_5 {
 
     }
     public static void main(String[] args) {
+<<<<<<< HEAD
+        CanBo canBo = new CongNhan("chunhieu", 13,"nam", "HN", 1); // instanceof CongNhan, CanBo
+        System.out.println(canBo);
+
+        CongNhan congNhan = (CongNhan) canBo;
+        congNhan.getBac();
+=======
 
 //        CanBo canBo = new CongNhan("hoten",19,"nam","HN",1);// instance of CongNhan, Canbo
 //        System.out.println(canBo);
@@ -32,6 +39,7 @@ public class Pro_5 {
 //
 //        }
 
+>>>>>>> b956cb9129fa54a72c5385b8bc00232d42a20e79
 
         QuanLyCanBo quanLyCanBo = new QuanLyCanBo();
         Scanner sc = new Scanner(System.in);
