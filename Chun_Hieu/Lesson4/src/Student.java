@@ -19,7 +19,12 @@ public class Student extends Person {
         return group;
     }
 
-    public void setGroup(String group) {
+    public void setGroup(String group)  {
         this.group = group;
+    }
+
+    @Override
+    public void diemDanh() {
+        System.out.println(super.getName() + " Diem danh");
     }
 }

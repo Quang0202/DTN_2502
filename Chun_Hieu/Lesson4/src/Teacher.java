@@ -2,8 +2,8 @@ public class Teacher extends Person {
     private String major;
 
 
-    public Teacher(int age, String major) {
-        super(age);
+    public Teacher(String name, String major) {
+        super(name);
         this.major = major;
     }
 
@@ -13,6 +13,11 @@ public class Teacher extends Person {
 
     public void setMajor(String major) {
         this.major = major;
+    }
+
+    @Override
+    public void diemDanh() {
+        System.out.println(super.getName() + " Cham cong");
     }
 
     @Override
