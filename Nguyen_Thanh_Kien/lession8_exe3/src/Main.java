@@ -50,21 +50,21 @@ public class Main {
         salaries.add(1);
         salaries.add(2);
         Employee employee = new Employee<Integer>(1,"Kien", salaries);
-        System.out.println(employee.toString());
+        System.out.println(employee);
         System.out.println(employee.getLastSalary());
 
         List<Float> salariesFloat = new ArrayList<>();
         salariesFloat.add(1.1F);
         salariesFloat.add(2.3F);
         employee = new Employee<Float>(1,"Kien", salariesFloat);
-        System.out.println(employee.toString());
+        System.out.println(employee);
         System.out.println(employee.getLastSalary());
 
         List<Double> salariesDouble = new ArrayList<>();
         salariesDouble.add(1.3);
         salariesDouble.add(2.4);
         employee = new Employee<Double>(1,"Kien", salariesDouble);
-        System.out.println(employee.toString());
+        System.out.println(employee);
         System.out.println(employee.getLastSalary());
     }
 
