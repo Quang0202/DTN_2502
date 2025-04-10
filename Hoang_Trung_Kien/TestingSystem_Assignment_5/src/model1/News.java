@@ -72,7 +72,7 @@ public class News implements INews {
     }
 
     @Override
-    public float Calculate() {
+    public void Calculate() {
         int[] Rates = new int[3];
         Scanner scanner = new Scanner(System.in);
         int sum = 0;
@@ -82,6 +82,5 @@ public class News implements INews {
             sum += r;
         }
         averageRate = (float) sum/3;
-        return (float) sum /3;
     }
 }

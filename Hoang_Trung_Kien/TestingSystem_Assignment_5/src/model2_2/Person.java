@@ -63,9 +63,16 @@ public class Person {
     }
 
     public void showInfo() {
-        System.out.println("Ho ten: " + name + "\n" +
-                            "Gender: " + gender + "\n" +
-                            "Date Of Birth: " + dateOfBirth + "\n" +
-                            "Address: " + address);
+        System.out.println(this);
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }
