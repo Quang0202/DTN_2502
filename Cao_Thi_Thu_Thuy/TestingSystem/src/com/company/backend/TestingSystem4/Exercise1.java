@@ -3,6 +3,7 @@ package com.company.backend.TestingSystem4;
 import com.company.entity.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Exercise1 {
     public void q1(){
@@ -24,7 +25,7 @@ public class Exercise1 {
     public void q3(){
         Group group_a = new Group();
         System.out.println("Câu a: " + group_a.toString());
-        Group group_b = new Group("Groupb", new Account(), LocalDate.of(2022, 3, 4), new Account[2]);
+        Group group_b = new Group("Groupb", new Account(), LocalDate.of(2022, 3, 4), new ArrayList<Account>());
         System.out.println("Câu b: " + group_b);
         String[] usernames = {"Account 1", "Account 2"};
         Group group_c = new Group("Groupc", new Account(), LocalDate.of(2022, 3, 4), usernames);

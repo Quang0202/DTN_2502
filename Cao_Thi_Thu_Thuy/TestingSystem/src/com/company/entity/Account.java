@@ -1,5 +1,8 @@
 package com.company.entity;
 
+import com.company.backend.TestingSystem6.InvalidAgeInputingException;
+import com.company.entity.TestingSystem6.ScannerUtils;
+
 import java.time.LocalDate;
 
 public class Account {
@@ -10,8 +13,17 @@ public class Account {
     private Department department;
     private Position position;
     private LocalDate createDate;
+    private ScannerUtils scannerUtils = new ScannerUtils();
 
     public Account() {
+        System.out.print("Nhập email: ");
+        email = scannerUtils.inputString();
+        System.out.print("Nhập username: ");
+        username = scannerUtils.inputString();
+        System.out.println("Nhập department: ");
+        department = new Department();
+        position = new Position();
+        createDate = LocalDate.now();
     }
 
     public Account(String username) {
@@ -118,5 +130,32 @@ public class Account {
                 ", position=" + position +
                 ", createDate=" + createDate +
                 '}';
+    }
+    public int inputAge() throws InvalidAgeInputingException {
+        System.out.print("Enter your age: ");
+        int inputAge = scannerUtils.inputInt("Age have to be integer");
+
+        if (inputAge <= 0) {
+            throw new InvalidAgeInputingException("The age must be greater than 0");
+        }
+        return inputAge;
+    }
+    public int inputAccountAge() {
+        int age = -1;
+        while (true) {
+            try {
+                age = inputAge();
+                if (age < 18) {
+                    System.out.println("Your age must be greater than 18");
+                    continue;
+                }
+                break;
+            } catch (InvalidAgeInputingException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a number.");
+            }
+        }
+        return age;
     }
 }

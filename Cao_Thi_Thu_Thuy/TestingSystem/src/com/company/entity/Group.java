@@ -1,19 +1,37 @@
 package com.company.entity;
 
+import com.company.entity.TestingSystem6.ScannerUtils;
+
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Group {
     private int groupId;
     private String groupName;
     private Account createAccount;
     private LocalDate createDate;
-    private Account[] accounts;
+    private List<Account> accounts = new ArrayList<>();
+    private ScannerUtils scannerUtils = new ScannerUtils();
 
     public Group() {
+        System.out.print("Nhập tên group: ");
+        groupName = scannerUtils.inputString();
+        createDate = LocalDate.now();
+        System.out.println("Nhập tài khoản tạo group");
+        createAccount = new Account();
+        System.out.print("Số người muốn thêm vào nhóm: ");
+        int n = scannerUtils.inputInt("Please input integer");
+        for (int i = 0; i < n; i++){
+            System.out.println("Nhập tài khoản thứ " + (i + 1));
+            Account account = new Account();
+            accounts.add(account);
+        }
     }
 
-    public Group(String groupName, Account createAccount, LocalDate createDate, Account[] accounts) {
+    public Group(String groupName, Account createAccount, LocalDate createDate, List<Account> accounts) {
         this.groupName = groupName;
         this.createAccount = createAccount;
         this.createDate = createDate;
@@ -23,9 +41,8 @@ public class Group {
         this.groupName = groupName;
         this.createAccount = createAccount;
         this.createDate = createDate;
-        this.accounts = new Account[usernames.length];
         for(int i = 0; i < usernames.length; i++){
-            accounts[i] = new Account(usernames[i]);
+            accounts.add(new Account(usernames[i]));
         }
     }
 
@@ -68,11 +85,11 @@ public class Group {
         this.createDate = createDate;
     }
 
-    public Account[] getAccounts() {
+    public List<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(Account[] accounts) {
+    public void setAccounts(List<Account> accounts) {
         this.accounts = accounts;
     }
 
@@ -83,7 +100,7 @@ public class Group {
                 ", groupName='" + groupName + '\'' +
                 ", createAccount=" + createAccount +
                 ", createDate=" + createDate +
-                ", accounts=" + Arrays.toString(accounts) +
+                ", accounts=" + accounts.toString() +
                 '}';
     }
 }
