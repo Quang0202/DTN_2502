@@ -5,6 +5,8 @@ public class ThiSinh {
     private String name;
     private String address;
     private String uuTien;
+    private Khoi khoi;
+    private String monthi;
 
     public ThiSinh() {
     }
