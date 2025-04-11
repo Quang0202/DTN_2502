@@ -40,8 +40,9 @@ public class PositionDaoImpl implements Dao<Position> {
             position.setPositionName(rs.getString("position_name"));
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            close();
         }
-        close();
         return Optional.of(position);
     }
 
@@ -59,8 +60,9 @@ public class PositionDaoImpl implements Dao<Position> {
             pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            close();
         }
-        close();
     }
 
     @Override
@@ -73,8 +75,9 @@ public class PositionDaoImpl implements Dao<Position> {
             pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            close();
         }
-        close();
     }
 
     @Override
@@ -86,8 +89,9 @@ public class PositionDaoImpl implements Dao<Position> {
             pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            close();
         }
-        close();
     }
 
     public List<Position> getAll(String[] columns) {
@@ -111,9 +115,10 @@ public class PositionDaoImpl implements Dao<Position> {
             } else {
                 throw new RuntimeException("Columns is empty");
             }
-            close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            close();
         }
         return positions;
     }

@@ -1,3 +1,4 @@
+import dao.impls.AccountDaoImpl;
 import dao.impls.DepartmentDaoImpl;
 import dao.impls.PositionDaoImpl;
 import model.Department;
@@ -13,6 +14,7 @@ import java.util.Scanner;
 public class Main {
     private static final PositionDaoImpl positionDao = new PositionDaoImpl();
     private static final DepartmentDaoImpl departmentDao = new DepartmentDaoImpl();
+    private static final AccountDaoImpl accountDao = new AccountDaoImpl();
 
     public static void main(String[] args) {
 //        exe1Question1();
@@ -26,7 +28,14 @@ public class Main {
 //        exe2Question5();
 //        exe2Question6();
 //        exe2Question7();
-        Exe2Question8.getAllAccounts();
+//        Exe2Question8.getAllAccounts();
+//        Exe2Question8.findById();
+//        Exe2Question8.addNewAccount();
+//        Exe2Question8.updateFullNameAccount();
+//        Exe2Question8.deleteAccount();
+//        exe3Question1();
+//        Tạo data để test tránh sử dụng mất dữ liệu
+//        exe4Question1();
     }
 
     private static void exe1Question1() {
@@ -131,11 +140,37 @@ public class Main {
         int id = scanner.nextInt();
         Optional<Department> department = departmentDao.findById(id);
         if (department.isPresent()) {
+            if(departmentDao.isDepartmentExistsAccount(id)){
+                throw new RuntimeException("Can not delete department id: " + id + ". Because exists reference key account");
+            };
             departmentDao.delete(department.get());
             System.out.println("Department deleted");
         } else {
             throw new RuntimeException("Department id: " + id + " not found");
         }
+    }
+
+    private static void exe3Question1(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhap id department muon xoa: ");
+        int id = scanner.nextInt();
+        Optional<Department> department = departmentDao.findById(id);
+        if (department.isPresent()) {
+            if(departmentDao.isDepartmentExistsAccount(id)){
+                throw new RuntimeException("Can not delete department id: " + id + ". Because exists reference key account");
+            };
+            departmentDao.deleteDepartmentUsingProcedure(id);
+            System.out.println("Department deleted");
+        } else {
+            throw new RuntimeException("Department id: " + id + " not found");
+        }
+    }
+
+    private static void exe4Question1(){
+        //        Tạo data để test tránh sử dụng mất dữ liệu
+
+//        accountDao.deleteAccountAndDepartment(12);
+//        System.out.println("Deleted");
     }
 
     private static void getConnection() {

@@ -10,6 +10,10 @@ public class Position {
     private int positionId;
     private String positionName;
 
+    public Position(int positionId) {
+        this.positionId = positionId;
+    }
+
     public Position(String positionName) {
         this.positionName = positionName;
     }

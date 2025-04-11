@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class DepartmentDaoImpl implements Dao <Department> {
+public class DepartmentDaoImpl implements Dao<Department> {
     private static Connection connect;
     private static PreparedStatement pst;
     private static ResultSet rs;
@@ -34,8 +34,9 @@ public class DepartmentDaoImpl implements Dao <Department> {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            close();
         }
-        close();
         return departments;
     }
 
@@ -55,8 +56,9 @@ public class DepartmentDaoImpl implements Dao <Department> {
             department.setDepartmentName(rs.getString("department_name"));
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            close();
         }
-        close();
         return Optional.of(department);
     }
 
@@ -77,8 +79,9 @@ public class DepartmentDaoImpl implements Dao <Department> {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            close();
         }
-        close();
         return departments;
     }
 
@@ -91,6 +94,8 @@ public class DepartmentDaoImpl implements Dao <Department> {
             pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            close();
         }
         close();
     }
@@ -105,8 +110,9 @@ public class DepartmentDaoImpl implements Dao <Department> {
             pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            close();
         }
-        close();
     }
 
     @Override
@@ -118,8 +124,9 @@ public class DepartmentDaoImpl implements Dao <Department> {
             pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            close();
         }
-        close();
     }
 
     public Boolean isDepartmentNameExists(String name) {
@@ -133,6 +140,37 @@ public class DepartmentDaoImpl implements Dao <Department> {
             return rs.next();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            close();
+        }
+    }
+
+    public Boolean isDepartmentExistsAccount(int departmentId) {
+        getConnection();
+        List<Department> departments = new ArrayList<>();
+        try {
+            pst = connect.prepareStatement("SELECT * FROM Account WHERE department_id = ?");
+            pst.setInt(1, departmentId);
+            pst.setMaxRows(1);
+            rs = pst.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close();
+        }
+    }
+
+    public void deleteDepartmentUsingProcedure(int id) {
+        getConnection();
+        try {
+            pst = connect.prepareCall("call sp_delete_department(?)");
+            pst.setInt(1, id);
+            pst.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            close();
         }
     }
 
