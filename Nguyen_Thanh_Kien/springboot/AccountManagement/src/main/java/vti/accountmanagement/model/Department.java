@@ -1,25 +1,30 @@
 package vti.accountmanagement.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.Length;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "Department")
-@Data
-@ToString
+@Table(name = "department")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Department {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long departmentId;
+@Getter
+@Setter
+public class Department implements Serializable {
 
-    @Column(nullable = false, unique = true)
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "DepartmentID")
+    private Integer departmentId;
+
+    @Column(name="DepartmentName", nullable = false, unique = true)
     private String departmentName;
 
     @OneToMany(mappedBy="department")

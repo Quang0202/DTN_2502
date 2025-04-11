@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -14,12 +16,17 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Position {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long positionId;
+public class Position implements Serializable {
 
-    @Column(nullable = false, unique = true)
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="PositionID")
+    private Integer positionId;
+
+    @Column(nullable = false, unique = true, name="PositionName")
     private String positionName;
 
     @OneToMany(mappedBy="position")
