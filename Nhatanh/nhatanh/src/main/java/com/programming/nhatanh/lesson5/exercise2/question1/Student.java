@@ -42,11 +42,11 @@ public class Student implements IStudent{
 
     @Override
     public void họcBài() {
-        System.out.println(name + " đi dọn vệ sinh");
+        System.out.println(name + " đang học bài");
     }
 
     @Override
     public void điDọnVệSinh() {
-        System.out.println(name + " đang học bài");
+        System.out.println(name + " đi dọn vệ sinh");
     }
 }

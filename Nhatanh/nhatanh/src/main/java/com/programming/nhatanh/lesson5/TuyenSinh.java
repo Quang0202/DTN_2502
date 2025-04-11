@@ -22,7 +22,7 @@ public class TuyenSinh implements ITuyenSinh {
 
     @Override
     public void findStudent(String id) {
-        var result = thiSinhArrayList.stream().filter(e -> Objects.equals(e.getSobaodanh(), id)).findFirst().orElse(null);
+        var result = thiSinhArrayList.stream().filter(e -> Objects.equals(e.getSobaodanh(), id));
         System.out.println(result);
     }
 }

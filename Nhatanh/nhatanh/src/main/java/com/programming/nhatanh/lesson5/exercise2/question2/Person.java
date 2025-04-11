@@ -55,24 +55,19 @@ public class Person {
     }
 
     public void showInfo() {
-        System.out.println("Person{" +
-                "name='" + name + '\'' +
-                ", gender=" + gender +
-                ", DoB=" + DoB +
-                ", address='" + address + '\'' +
-                '}');
+        System.out.println(this);
     }
 
     public void inputInfo() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập tên:");
-        this.name = scanner.next();
+        this.name = scanner.nextLine();
         System.out.println("Nhập giới tính (MALE / FEMALE): ");
-        this.gender = Gender.valueOf(scanner.next());
+        this.gender = Gender.valueOf(scanner.nextLine());
         System.out.println("Nhập ngày sinh:");
-        this.DoB = scanner.next();
+        this.DoB = scanner.nextLine();
         System.out.println("Nhập địa chỉ:");
-        this.address = scanner.next();
+        this.address = scanner.nextLine();
         scanner.close();
 
     }
