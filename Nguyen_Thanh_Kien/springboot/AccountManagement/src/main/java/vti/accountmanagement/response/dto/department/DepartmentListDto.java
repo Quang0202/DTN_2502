@@ -7,4 +7,5 @@ import lombok.Setter;
 @Setter
 public class DepartmentListDto {
     private String departmentName;
+    private String departmentId;
 }

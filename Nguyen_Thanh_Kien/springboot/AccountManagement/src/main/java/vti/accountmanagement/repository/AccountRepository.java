@@ -9,4 +9,7 @@ import java.util.List;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Integer> {
     List<Account> findByDepartment_DepartmentId(int id);
+    Boolean existsAccountByEmail(String email);
+    Boolean existsAccountByUsername(String username);
+    Boolean existsAccountByEmailAndAccountIdNot(String email, int id);
 }

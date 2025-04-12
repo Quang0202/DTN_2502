@@ -29,4 +29,8 @@ public class Department implements Serializable {
 
     @OneToMany(mappedBy="department")
     private List<Account> accounts;
+
+    public Department(Integer departmentId) {
+        this.departmentId = departmentId;
+    }
 }

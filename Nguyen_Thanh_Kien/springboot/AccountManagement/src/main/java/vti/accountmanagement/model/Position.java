@@ -1,10 +1,8 @@
 package vti.accountmanagement.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import vti.accountmanagement.enums.PositionName;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -12,8 +10,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "Position")
-@Data
-@ToString
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Position implements Serializable {
@@ -27,8 +25,13 @@ public class Position implements Serializable {
     private Integer positionId;
 
     @Column(nullable = false, unique = true, name="PositionName")
-    private String positionName;
+    @Enumerated(EnumType.STRING)
+    private PositionName positionName;
 
     @OneToMany(mappedBy="position")
     private List<Account> accounts;
+
+    public Position(Integer positionId) {
+        this.positionId = positionId;
+    }
 }

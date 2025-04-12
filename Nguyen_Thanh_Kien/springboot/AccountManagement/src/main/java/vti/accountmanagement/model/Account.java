@@ -1,15 +1,9 @@
 package vti.accountmanagement.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -22,6 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
+@EntityListeners(AuditingEntityListener.class)
 public class Account implements Serializable {
 
     @Serial
@@ -29,18 +24,21 @@ public class Account implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "AccountID")
     private Integer accountId;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, name = "Username")
     private String username;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, name = "Email")
     private String email;
 
+    @Column(name = "FullName")
     private String fullName;
 
     @CreatedDate
-    private Date createdAt;
+    @Column(name = "CreateDate")
+    private Date createDate;
 
     @ManyToOne
     @JoinColumn(name = "PositionID")

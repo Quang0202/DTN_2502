@@ -7,5 +7,5 @@ import vti.accountmanagement.model.Position;
 @Repository
 public interface PositionRepository extends JpaRepository<Position, Integer> {
     Position findByPositionId(int id);
-    Position findByPositionName(String name);
+//    Position findByPositionName(String name);
 }

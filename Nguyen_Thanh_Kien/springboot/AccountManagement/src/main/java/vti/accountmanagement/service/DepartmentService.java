@@ -1,18 +1,17 @@
 package vti.accountmanagement.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import vti.accountmanagement.model.Department;
 import vti.accountmanagement.request.department.DepartmentCreateRequest;
 import vti.accountmanagement.request.department.DepartmentUpdateRequest;
 import vti.accountmanagement.response.dto.department.DepartmentListDto;
 
-import java.util.List;
-import java.util.Optional;
 
 
 @Service
 public interface DepartmentService {
-    List<DepartmentListDto> getAll();
+    Page<DepartmentListDto> getAll(Pageable pageable);
 //    Optional<T> findById(Long id);
     void save(DepartmentCreateRequest department);
     void update(DepartmentUpdateRequest department);
