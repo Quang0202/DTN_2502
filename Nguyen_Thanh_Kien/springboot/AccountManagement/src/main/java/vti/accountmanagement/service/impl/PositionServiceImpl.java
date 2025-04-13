@@ -19,10 +19,10 @@ public class PositionServiceImpl implements PositionService {
     private final ObjectMapperUtils objectMapperUtils = new ObjectMapperUtils();
 
     @Override
-    public Page<PositionListDto>  getAll(Pageable pageable) {
+    public Page<PositionListDto>  getAll(Pageable pageable, String search) {
         Page<Position> positions;
         try{
-            positions = positionRepository.findAll(pageable);
+            positions = positionRepository.findAll(pageable,search);
         } catch (Exception e){
 //            catch truong hop trong enum khong ton tai name hien co trong database
             throw new CustomException(e.getMessage());

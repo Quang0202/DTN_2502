@@ -7,7 +7,7 @@ import vti.accountmanagement.response.dto.position.PositionListDto;
 
 @Service
 public interface PositionService {
-    Page<PositionListDto> getAll(Pageable pageable);
+    Page<PositionListDto> getAll(Pageable pageable, String search);
 //    Optional<T> findById(Long id);
 //    void save(T t);
 //    void update(T t);
