@@ -30,8 +30,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     private final ObjectMapperUtils objectMapperUtils = new ObjectMapperUtils();
 
     @Override
-    public Page<DepartmentListDto> getAll(Pageable pageable) {
-        Page<Department> departments = departmentRepository.findAll(pageable);
+    public Page<DepartmentListDto> getAll(Pageable pageable, String search) {
+        Page<Department> departments = departmentRepository.findAll(pageable, search);
         return objectMapperUtils.mapEntityPageIntoDtoPage(departments, DepartmentListDto.class);
     }
 

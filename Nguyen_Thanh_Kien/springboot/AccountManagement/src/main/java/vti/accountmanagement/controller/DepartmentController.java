@@ -32,9 +32,11 @@ public class DepartmentController {
             @RequestParam(defaultValue = "10")
             Integer size,
             @RequestParam(defaultValue = "departmentId,asc")
-            String[] sort
+            String[] sort,
+            @RequestParam(required = false, defaultValue = "")
+            String search
     ) {
-        return ResponseEntity.ok(departmentService.getAll(PageRequest.of(page, size, SortUtils.getSort(sort))));
+        return ResponseEntity.ok(departmentService.getAll(PageRequest.of(page, size, SortUtils.getSort(sort)), search));
     }
 
     @PostMapping("/create")

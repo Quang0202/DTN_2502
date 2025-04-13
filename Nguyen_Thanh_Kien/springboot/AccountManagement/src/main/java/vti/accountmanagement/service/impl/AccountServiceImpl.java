@@ -32,13 +32,13 @@ public class AccountServiceImpl implements AccountService {
     private final MessageSource messageSource;
 
     @Override
-    public Page<AccountListDto> getAll(Pageable pageable) {
+    public Page<AccountListDto> getAll(Pageable pageable, String search) {
         objectMapperUtils.getModelMapper().typeMap(Account.class, AccountListDto.class)
                 .addMappings(m -> {
                     m.map(acc -> acc.getDepartment().getDepartmentName(), AccountListDto::setDepartmentName);
                     m.map(acc -> acc.getPosition().getPositionName(), AccountListDto::setPositionName);
                 });
-        Page<Account> accounts = accountRepository.findAll(pageable);
+        Page<Account> accounts = accountRepository.findAll(pageable,search);
         return objectMapperUtils.mapEntityPageIntoDtoPage(accounts, AccountListDto.class);
     }
 

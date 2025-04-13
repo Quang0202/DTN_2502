@@ -33,9 +33,11 @@ public class AccountController {
             @RequestParam(defaultValue = "10")
             Integer size,
             @RequestParam(defaultValue = "accountId,asc")
-            String[] sort
+            String[] sort,
+            @RequestParam(required = false, defaultValue = "")
+            String search
     ) {
-        return ResponseEntity.ok(accountService.getAll(PageRequest.of(page, size, SortUtils.getSort(sort))));
+        return ResponseEntity.ok(accountService.getAll(PageRequest.of(page, size, SortUtils.getSort(sort)), search));
     }
 
     @GetMapping("/{id}")

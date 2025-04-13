@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import vti.accountmanagement.enums.PositionName;
 import vti.accountmanagement.service.PositionService;
 import vti.accountmanagement.utils.ConstantUtils;
 import vti.accountmanagement.utils.SortUtils;
@@ -32,9 +33,11 @@ public class PositionController {
             @RequestParam(defaultValue = "10")
             Integer size,
             @RequestParam(defaultValue = "positionId,asc")
-            String[] sort
+            String[] sort,
+            @RequestParam(required = false, defaultValue = "")
+            String search
     ) {
-        return ResponseEntity.ok(positionService.getAll(PageRequest.of(page, size, SortUtils.getSort(sort))));
+        return ResponseEntity.ok(positionService.getAll(PageRequest.of(page, size, SortUtils.getSort(sort)), search));
     }
 
 }

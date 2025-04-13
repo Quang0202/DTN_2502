@@ -34,4 +34,5 @@ public class Position implements Serializable {
     public Position(Integer positionId) {
         this.positionId = positionId;
     }
+
 }

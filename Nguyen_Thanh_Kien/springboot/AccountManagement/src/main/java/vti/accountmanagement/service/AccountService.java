@@ -11,7 +11,7 @@ import vti.accountmanagement.response.dto.account.AccountListDto;
 
 @Service
 public interface AccountService {
-    Page<AccountListDto> getAll(Pageable pageable);
+    Page<AccountListDto> getAll(Pageable pageable, String search);
     AccountInfoDto getAccountById(int id);
     void save(AccountCreateRequest account);
     void update(AccountUpdateRequest account);
