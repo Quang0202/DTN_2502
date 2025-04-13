@@ -6,6 +6,5 @@ public class Program4 {
     public static void main(String[] args) {
         Exercise4 ex = new Exercise4();
         ex.question1();
-
     }
 }
