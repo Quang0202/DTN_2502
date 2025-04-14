@@ -18,4 +18,13 @@ public class Exercise5 {
         QLCB qlcb = new QLCB();
         qlcb.menuLuaChon();
     }
+
+    public void question3(){
+        HighSchoolStudent hsStudent = new HighSchoolStudent(1, "Thanh", "12A3", "HUST");
+        hsStudent.hienThi();
+    }
+
+    public void question4(){
+        new QLTV().menu();
+    }
 }
