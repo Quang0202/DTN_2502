@@ -20,28 +20,28 @@ public class ScannerUtils {
     public float inputFloat(String errorMessage) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            if (scanner.hasNextFloat()) {
+            if (scanner.hasNextLine()) {
                 try {
-                    return scanner.nextFloat();
+                    return Float.parseFloat(scanner.nextLine());
                 }
-                catch (Exception e) {
+                catch (NumberFormatException e) {
                     System.out.println(errorMessage);
                 }
-            } else scanner.nextLine();
+            }
         }
     }
 
     public double inputDouble(String errorMessage) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            if (scanner.hasNextDouble()) {
+            if (scanner.hasNextLine()) {
                 try {
-                    return scanner.nextDouble();
+                    return Float.parseFloat(scanner.nextLine());
                 }
-                catch (Exception e) {
+                catch (NumberFormatException e) {
                     System.out.println(errorMessage);
                 }
-            } else scanner.nextLine();
+            }
         }
     }
 

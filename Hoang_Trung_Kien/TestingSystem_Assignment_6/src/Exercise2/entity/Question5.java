@@ -25,5 +25,18 @@ public class Question5 {
                 }
             }
         }
+
+//        while (true) {
+//            if (scanner.hasNextInt()) {
+//                int a = scanner.nextInt();
+//                if (a < 0) {
+//                    System.out.println("Wrong inputing! The age must be greater than 0, please input again.");
+//                } else
+//                    return a;
+//            }else {
+//                System.out.println("wrong inputing! Please input an age as int, input again.");
+//                scanner.next();
+//            }
+//        }
     }
 }
