@@ -296,20 +296,21 @@ public class FileManager {
                 boolean check = false;
                 if (!listFile.get(0).equals(nameNotExtension)) {
                     pathFolder = formatPath(folder) + "\\" + nameNotExtension + typeExtension;
-                }
-                for (int i = 1; i < listFile.size(); i++) {
+                } else {
+                    for (int i = 1; i < listFile.size(); i++) {
 //                        lấy ra số của tên file a (2) sẽ trả về 2, sau đó kiểm tra để gán số hợp lệ
 //                        kiểm tra trong trường hợp có 1 file bị xóa mất chuỗi liên tục ví dụ đã có
 //                        a (1) a (3) thì gán tên tiếp theo là a (2)
-                    if (getNumberOfFileByFileName(listFile.get(i)) != (i + 1)) {
-                        pathFolder = formatPath(folder) + "\\" + nameNotExtension + " (" + (i + 1) + ")" + typeExtension;
-                        check = true;
-                        break;
+                        if (getNumberOfFileByFileName(listFile.get(i)) != (i + 1)) {
+                            pathFolder = formatPath(folder) + "\\" + nameNotExtension + " (" + (i + 1) + ")" + typeExtension;
+                            check = true;
+                            break;
+                        }
                     }
-                }
 //                    trường hợp không bị mất chuỗi liên tục thì set tên cộng thêm số độ dài danh sách + 1
-                if (!check) {
-                    pathFolder = formatPath(folder) + "\\" + nameNotExtension + " (" + (listFile.size() + 1) + ")" + typeExtension;
+                    if (!check) {
+                        pathFolder = formatPath(folder) + "\\" + nameNotExtension + " (" + (listFile.size() + 1) + ")" + typeExtension;
+                    }
                 }
             }
         }

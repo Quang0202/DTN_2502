@@ -45,7 +45,7 @@ public class Main {
 //        FileManager.createNewFolder("\\src\\newFolder");
 
 //      question 11
-//        FileManager.downloadFile("https://file-examples.net/wp-content/uploads/2024/02/SampleTextFile_1MB.txt",pathFolderName);
+        FileManager.downloadFile("https://file-examples.net/wp-content/uploads/2024/02/SampleTextFile_1MB.txt",pathFolderName);
 
 //      exe4 question 1
 //        System.out.println(IOManager.readFile(pathFolderName + "rename.txt"));
