@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import vti.accountmanagement.request.department.DepartmentCreateRequest;
@@ -18,11 +19,13 @@ import vti.accountmanagement.utils.SortUtils;
 @RequestMapping("/api/department")
 @AllArgsConstructor
 @Validated
+@PreAuthorize("hasAnyRole('ADMIN','USER')")
 public class DepartmentController {
 
     private final DepartmentService departmentService;
 
     @GetMapping("")
+    @PreAuthorize("hasAuthority('admin:read')")
     public ResponseEntity<?> getDepartment(
             @Min(value = 0, message = "Page must not be less than 0")
             @RequestParam(defaultValue = "0")

@@ -2,6 +2,7 @@ package vti.accountmanagement.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import vti.accountmanagement.enums.PositionName;
 
 import java.io.Serial;
@@ -14,6 +15,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Position implements Serializable {
 
     @Serial
@@ -22,14 +24,14 @@ public class Position implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="PositionID")
-    private Integer positionId;
+    Integer positionId;
 
     @Column(nullable = false, unique = true, name="PositionName")
     @Enumerated(EnumType.STRING)
-    private PositionName positionName;
+    PositionName positionName;
 
     @OneToMany(mappedBy="position")
-    private List<Account> accounts;
+    List<Account> accounts;
 
     public Position(Integer positionId) {
         this.positionId = positionId;

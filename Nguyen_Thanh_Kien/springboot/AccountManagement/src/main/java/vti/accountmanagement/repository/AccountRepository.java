@@ -8,10 +8,13 @@ import org.springframework.stereotype.Repository;
 import vti.accountmanagement.model.Account;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Integer> {
     List<Account> findByDepartment_DepartmentId(int id);
+
+    Optional<Account> findByUsername(String username);
 
     Boolean existsAccountByEmail(String email);
 

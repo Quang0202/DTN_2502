@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import vti.accountmanagement.enums.Role;
 import vti.accountmanagement.exception.CustomException;
 import vti.accountmanagement.model.Account;
 import vti.accountmanagement.model.Department;
@@ -18,7 +20,6 @@ import vti.accountmanagement.response.dto.account.AccountInfoDto;
 import vti.accountmanagement.response.dto.account.AccountListDto;
 import vti.accountmanagement.service.AccountService;
 import vti.accountmanagement.utils.ObjectMapperUtils;
-
 import java.util.Locale;
 
 @Service
@@ -30,6 +31,7 @@ public class AccountServiceImpl implements AccountService {
     private final PositionRepository positionRepository;
     private final ObjectMapperUtils objectMapperUtils = new ObjectMapperUtils();
     private final MessageSource messageSource;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public Page<AccountListDto> getAll(Pageable pageable, String search) {
@@ -74,7 +76,8 @@ public class AccountServiceImpl implements AccountService {
         acc = objectMapperUtils.map(account, Account.class);
         acc.setDepartment(new Department(account.getDepartmentId()));
         acc.setPosition(new Position(account.getPositionId()));
-
+        acc.setPassword(passwordEncoder.encode(acc.getPassword()));
+        acc.setRole(Role.valueOf(account.getRole().toUpperCase()));
         accountRepository.save(acc);
     }
 

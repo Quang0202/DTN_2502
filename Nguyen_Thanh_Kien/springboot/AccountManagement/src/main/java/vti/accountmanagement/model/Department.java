@@ -2,6 +2,7 @@ package vti.accountmanagement.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.hibernate.Length;
 
 import java.io.Serial;
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Department implements Serializable {
 
     @Serial
@@ -22,13 +24,13 @@ public class Department implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DepartmentID")
-    private Integer departmentId;
+    Integer departmentId;
 
     @Column(name="DepartmentName", nullable = false, unique = true)
-    private String departmentName;
+    String departmentName;
 
     @OneToMany(mappedBy="department")
-    private List<Account> accounts;
+    List<Account> accounts;
 
     public Department(Integer departmentId) {
         this.departmentId = departmentId;
