@@ -1,7 +1,5 @@
 package com.vti.entity;
 
-import java.util.StringJoiner;
-
 public class Circle {
     private double radius = 1.0;
     private String color = "red";
