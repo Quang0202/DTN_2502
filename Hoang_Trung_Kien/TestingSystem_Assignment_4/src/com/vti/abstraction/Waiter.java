@@ -6,7 +6,7 @@ public class Waiter extends User {
     }
 
     @Override
-    public void calculatePay() {
-        System.out.println("Luong = " + getSalaryRatio() * 220);
+    public double calculatePay() {
+        return getSalaryRatio() * 220;
     }
 }

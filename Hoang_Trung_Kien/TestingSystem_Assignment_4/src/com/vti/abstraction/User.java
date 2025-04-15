@@ -25,7 +25,7 @@ public abstract class User {
         this.salaryRatio = salaryRatio;
     }
 
-    public abstract void calculatePay();
+    public abstract double calculatePay();
 
     public void displayInfor() {
         System.out.println(this);

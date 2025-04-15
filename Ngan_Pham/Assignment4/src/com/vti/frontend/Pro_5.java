@@ -17,6 +17,13 @@ public class Pro_5 {
     }
     public static void main(String[] args) {
 
+        CanBo canBo = new CongNhan("ethanpham", 19,"nu", "BD", 1); // instanceof CongNhan, CanBo
+        System.out.println(canBo);
+
+        CongNhan congNhan = (CongNhan) canBo;
+        congNhan.getBac();
+
+
 //        CanBo canBo = new CongNhan("hoten",19,"nam","HN",1);// instance of CongNhan, Canbo
 //        System.out.println(canBo);
 //        CanBo canBo1 = new CanBo("canbo",2,"nu","TH");// instance of CanBo

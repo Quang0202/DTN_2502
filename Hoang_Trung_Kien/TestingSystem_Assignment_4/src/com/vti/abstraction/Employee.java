@@ -6,7 +6,7 @@ public class Employee extends User {
     }
 
     @Override
-    public void calculatePay() {
-        System.out.println("Luong = " + getSalaryRatio() * 420);
+    public double calculatePay() {
+        return getSalaryRatio() * 420;
     }
 }

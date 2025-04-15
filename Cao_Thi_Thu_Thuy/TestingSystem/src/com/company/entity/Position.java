@@ -9,6 +9,10 @@ public class Position {
         this.positionName = positionName;
     }
 
+    public Position() {
+
+    }
+
     public int getPositionId() {
         return positionId;
     }

@@ -31,7 +31,7 @@ public class Main {
         float c = 5.567098f;
         System.out.println("");
         System.out.printf("%5.2f%n", c);
-        //Q4
+        //Q3
         String d = "Nguyễn Văn A";
         System.out.println("");
         System.out.printf("Tên tôi là %s và tôi đang độc thân.", d);
@@ -74,7 +74,7 @@ public class Main {
         //Q3
         DateTimeFormatter q3 = DateTimeFormatter.ofPattern("yyyy");
         System.out.println(q3.format(newExam.CreateDate));
-        //Q4
+        //Q3
         DateTimeFormatter q4 = DateTimeFormatter.ofPattern("MM");
         System.out.println(q4.format(newExam.CreateDate));
         //Q5
