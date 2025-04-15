@@ -94,5 +94,7 @@ public class Exercise2 {
     public void q12(){
         Account account = new Account();
         System.out.println("Age set to: " + account.inputAccountAge());
+        int[] ints = new int[0];
+        System.out.println(ints.length);
     }
 }
