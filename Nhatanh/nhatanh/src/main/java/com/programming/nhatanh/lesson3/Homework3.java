@@ -198,7 +198,7 @@ public class Homework3 {
         System.out.println(arrayQ3[randomIndex]);
 
 
-        //Q4
+        //Q3
         LocalDate dateTime = LocalDate.of(1995, 7, 24);
         var numdate = dateTime.toEpochDay();
         LocalDate endDate = LocalDate.of(1995, 12, 20);
@@ -245,7 +245,7 @@ public class Homework3 {
         var stringInput2 = scanner.next();
         System.out.printf("%s %s ", stringInput1, stringInput2);
 
-        //Q4
+        //Q3
         System.out.println("Nhập ngày: ");
         String dateInput = scanner.next();
 

@@ -1,7 +1,7 @@
 package Exercise2.entity;
 
 public class Department {
-    ScannerUtils scannerUtils = new ScannerUtils();
+    private ScannerUtils scannerUtils = new ScannerUtils();
     private int id;
     private String name;
 

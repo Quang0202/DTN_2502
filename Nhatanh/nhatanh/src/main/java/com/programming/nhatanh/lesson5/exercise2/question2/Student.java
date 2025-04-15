@@ -35,22 +35,19 @@ public class Student extends Person{
 
     @Override
     public void showInfo() {
-        System.out.println("Student{" +
-                "studentCode='" + studentCode + '\'' +
-                ", GPA=" + GPA +
-                ", email='" + email + '\'' +
-                '}');
+        System.out.println(this);
     }
 
     @Override
     public void inputInfo() {
+        super.inputInfo();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập Mã sinh viên:");
-        this.studentCode = scanner.next();
+        this.studentCode = scanner.nextLine();
         System.out.println("Nhập Điểm trung bình: ");
-        this.GPA = scanner.nextFloat();
-        System.out.println("NhậpEmail:");
-        this.email = scanner.next();
+        this.GPA = (float) scanner.nextDouble();
+        System.out.println("Nhập Email:");
+        this.email = scanner.nextLine();
         scanner.close();
     }
 

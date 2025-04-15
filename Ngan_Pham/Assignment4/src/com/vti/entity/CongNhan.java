@@ -1,7 +1,5 @@
 package com.vti.entity;
 
-import java.util.StringJoiner;
-
 public class CongNhan extends CanBo{
     private int bac;
 
