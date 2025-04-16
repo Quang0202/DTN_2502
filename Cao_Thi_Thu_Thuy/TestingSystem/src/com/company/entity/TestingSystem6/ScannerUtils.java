@@ -1,9 +1,11 @@
 package com.company.entity.TestingSystem6;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class ScannerUtils{
+public class ScannerUtils implements Serializable {
+    private static final long serialVersionUID = 1L;
     private static Scanner scanner = new Scanner(System.in);
     public int inputInt(String errorMessage){
         int integer;

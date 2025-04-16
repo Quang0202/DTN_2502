@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileManager {
-    public boolean isFileExists(String pathFile){
+    public static boolean isFileExists(String pathFile){
         File file = new File(pathFile);
         return file.exists();
     }
