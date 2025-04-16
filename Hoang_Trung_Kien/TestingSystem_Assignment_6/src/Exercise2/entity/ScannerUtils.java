@@ -20,14 +20,14 @@ public class ScannerUtils {
     public float inputFloat(String errorMessage) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            if (scanner.hasNextFloat()) {
+            if (scanner.hasNextLine()) {
                 try {
-                    return scanner.nextFloat();
+                    return Float.parseFloat(scanner.nextLine());
                 }
-                catch (Exception e) {
+                catch (NumberFormatException e) {
                     System.out.println(errorMessage);
                 }
-            } else scanner.nextLine();
+            }
         }
     }
 

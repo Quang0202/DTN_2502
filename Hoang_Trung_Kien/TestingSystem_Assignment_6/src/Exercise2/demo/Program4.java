@@ -8,7 +8,7 @@ public class Program4 {
     public static void main(String[] args) {
 //        Scanner scanner = new Scanner(System.in);
         try {
-            getIndex(1);
+            getIndex(3);
         }
         catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Cannot find department.");
