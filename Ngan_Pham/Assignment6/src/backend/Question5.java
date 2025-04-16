@@ -3,12 +3,12 @@ package backend;
 import java.util.Scanner;
 
 public class Question5 {
-
+//đã gộp chung với Q6
     public static int inputAge() {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.print("Nhập tuổi: ");
+            System.out.print("Nhập tuổi của bạn: ");
             String input = scanner.nextLine();
 
             try {

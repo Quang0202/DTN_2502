@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ScannerUtils {
     private static Scanner scanner = new Scanner(System.in);
 
-    public static   int inputInt(String errorMessage) {
+    public static  int inputInt(String errorMessage) {
         while (true) {
             String input = scanner.nextLine();
             try {
@@ -17,7 +17,6 @@ public class ScannerUtils {
         }
     }
 
-    // Nhập float
     public static float inputFloat(String errorMessage) {
         while (true) {
             String input = scanner.nextLine();
@@ -30,7 +29,6 @@ public class ScannerUtils {
         }
     }
 
-    // Nhập double
     public static double inputDouble(String errorMessage) {
         while (true) {
             String input = scanner.nextLine();
@@ -43,7 +41,6 @@ public class ScannerUtils {
         }
     }
 
-    // Nhập chuỗi (không cần xử lý ngoại lệ)
     public static String inputString() {
         return scanner.nextLine();
     }
