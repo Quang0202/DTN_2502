@@ -1,10 +1,17 @@
 package com.company.entity;
 
+import com.company.entity.TestingSystem6.ScannerUtils;
+
 public class Department {
     private int departmentId;
     private String departmentName;
+    private ScannerUtils scannerUtils = new ScannerUtils();
 
     public Department() {
+        System.out.print("Nhập id phòng ban: ");
+        departmentId = scannerUtils.inputInt("Id is integer");
+        System.out.print("Nhập tên phòng ban: ");
+        departmentName = scannerUtils.inputString();
     }
 
     public Department(String departmentName) {

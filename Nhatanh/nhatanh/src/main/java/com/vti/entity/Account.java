@@ -1,6 +1,9 @@
 package com.vti.entity;
 
+import com.vti.exception.InvalidAgeInputingException;
+
 import java.time.LocalDateTime;
+import java.util.Scanner;
 
 public class Account {
     private int accountId;
@@ -8,6 +11,7 @@ public class Account {
     private String email;
     private String fullName;
     private Gender gender;
+    private int age;
     private Department department;
     private Position position;
     private LocalDateTime createDate;
@@ -140,5 +144,44 @@ public class Account {
         this.createDate = createDate;
     }
 
+    public int getAge() {
+        return age;
+    }
 
+
+    public void inputAge() {
+        Scanner scanner = new Scanner(System.in);
+
+        String input = scanner.nextLine();
+        try {
+            age = Integer.parseInt(input);
+            if (age > 0) {
+                System.out.println(age);
+            } else {
+                throw new InvalidAgeInputingException("The age must be greater than 0");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Wrong inputting! Please input an age as int, input again.");
+        } catch (InvalidAgeInputingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void inputAccountAge() throws InvalidAgeInputingException {
+        Scanner scanner = new Scanner(System.in);
+
+        String input = scanner.nextLine();
+        try {
+            age = Integer.parseInt(input);
+            if (age > 18) {
+                System.out.println(age);
+            } else {
+                throw new InvalidAgeInputingException("The age must be greater than 18");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Wrong inputting! Please input an age as int, input again.");
+        } catch (InvalidAgeInputingException e) {
+            throw new InvalidAgeInputingException("The age must be greater than 18");
+        }
+    }
 }

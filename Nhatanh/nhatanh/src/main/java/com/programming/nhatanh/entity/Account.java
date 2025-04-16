@@ -1,5 +1,7 @@
 package com.programming.nhatanh.entity;
 
+import com.programming.nhatanh.lesson6.exercise2.entity.ScannerUtils;
+
 import java.time.LocalDateTime;
 
 public class Account {
@@ -36,6 +38,12 @@ public class Account {
     }
 
     public Account() {
+        ScannerUtils scannerUtils = new ScannerUtils();
+        userName = scannerUtils.inputString();
+        email = scannerUtils.inputString();
+        fullName = scannerUtils.inputString();
+        gender = Gender.valueOf(scannerUtils.inputString());
+        createDate =LocalDateTime.now();
     }
 
     public Account(int accountId, String email, String firstName, String lastName) {
@@ -59,6 +67,7 @@ public class Account {
         this.position = position;
         this.createDate = createDate;
     }
+
 
 
 }

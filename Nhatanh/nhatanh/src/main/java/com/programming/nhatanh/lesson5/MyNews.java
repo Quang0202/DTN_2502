@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class MyNews {
     public static void main(String[] args) throws ParseException {
+        ArrayList<News> newNews = new ArrayList<>();
 
-        News news = new News();
 
         Scanner scanner = new Scanner(System.in);
         boolean validResponse = true;
@@ -22,14 +22,15 @@ public class MyNews {
             int inputRequestNumber = scanner.nextInt();
             switch (inputRequestNumber) {
                 case 1:
+                    News news = new News();
                     System.out.println("Nhập Title: ");
-                    String inputTitle = scanner.next();
+                    String inputTitle = scanner.nextLine();
                     System.out.println("Nhập PublishDate: ");
-                    String inputPublishDate = scanner.next();
+                    String inputPublishDate = scanner.nextLine();
                     System.out.println("Nhập Author: ");
-                    String inputAuthor = scanner.next();
+                    String inputAuthor = scanner.nextLine();
                     System.out.println("Nhập Content: ");
-                    String inputContent = scanner.next();
+                    String inputContent = scanner.nextLine();
                     System.out.println("Nhập 3 đánh giá (số):");
                     int inputRating1 = scanner.nextInt();
                     int inputRating2 = scanner.nextInt();
@@ -40,12 +41,17 @@ public class MyNews {
                     news.setAuthor(inputAuthor);
                     news.setContent(inputContent);
                     news.setRates(inputRatingArray);
+                    newNews.add(news);
                     break;
                 case 2:
-                   news.display();
+                    for(News i : newNews){
+                        i.display();
+                    }
                     break;
                 case 3:
-                    news.calculate();
+                    for(News i : newNews){
+                        i.calculate();
+                    }
                     break;
                 case 4:
                     validResponse = false;

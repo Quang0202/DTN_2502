@@ -35,7 +35,7 @@ public class Account {
                 '}';
     }
 
-    public int inputAge() {
+    public int inputAge() throws InvalidAgeInputingException {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             if (scanner.hasNextLine()) {
@@ -43,37 +43,46 @@ public class Account {
                     int x = Integer.parseInt(scanner.nextLine());
                     if (x <= 0)
                         throw new InvalidAgeInputingException("The age must be greater than 0");
-                    return x;
+                    else if (x <18){
+                        System.out.println("Your age must be greater than 18");
+                    } else {
+                        return x;
+                    }
                 }
                 catch (NumberFormatException e) {
                     System.out.println("Vui long nhap 1 so nguyen.");
-                } catch (InvalidAgeInputingException e) {
-                    throw new RuntimeException(e);
                 }
             }
         }
     }
 
     public int inputAccountAge() {
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            if (scanner.hasNextLine()) {
-                try {
-                    int x = Integer.parseInt(scanner.nextLine());
-                    if (x <= 0)
-                        throw new InvalidAgeInputingException("The age must be greater than 0");
-                    else if (x < 18) {
-                        System.out.println("Your age must be greater than 18");
-                    } else
-                        return x;
-                }
-                catch (NumberFormatException e) {
-                    System.out.println("Vui long nhap 1 so nguyen.");
-                }
-                catch (InvalidAgeInputingException e) {
-                    System.out.println(e.getMessage());
-                }
-            }
+//        Scanner scanner = new Scanner(System.in);
+//        while (true) {
+//            if (scanner.hasNextLine()) {
+//                try {
+//                    int x = Integer.parseInt(scanner.nextLine());
+//                    if (x <= 0)
+//                        throw new InvalidAgeInputingException("The age must be greater than 0");
+//                    else if (x < 18) {
+//                        System.out.println("Your age must be greater than 18");
+//                    }
+//                    return x;
+//                }
+//                catch (NumberFormatException e) {
+//                    System.out.println("Vui long nhap 1 so nguyen.");
+//                }
+//                catch (InvalidAgeInputingException e) {
+//                    System.out.println(e.getMessage());
+//                }
+//            }
+//        }
+        int age = 0;
+        try {
+           age = inputAge();
+        } catch (InvalidAgeInputingException e) {
+            System.out.println(e.getMessage());
         }
+        return age;
     }
 }

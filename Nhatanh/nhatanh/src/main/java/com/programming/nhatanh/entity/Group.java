@@ -1,7 +1,11 @@
 package com.programming.nhatanh.entity;
 
+
+import com.programming.nhatanh.lesson6.exercise2.entity.ScannerUtils;
+
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Scanner;
 
 public class Group {
     public int groupId;
@@ -11,6 +15,23 @@ public class Group {
     public List<Account> accounts;
 
     public Group() {
+        Scanner scanner = new Scanner(System.in);
+        ScannerUtils scannerUtils = new ScannerUtils();
+        groupId = scannerUtils.inputInt("Invalid input");
+        groupName = scannerUtils.inputString();
+        String inputDate = scannerUtils.inputString();
+        LocalDateTime newLocalDateTime = LocalDateTime.parse(inputDate);
+        creator = new Account();
+        System.out.print("Bạn muốn add bao nhiêu account: ");
+        int x = scanner.nextInt();
+        if(x == 0){
+            return;
+        }
+        for (int i = 0; i < x; i++) {
+            Account newAccount = new Account();
+            accounts.add(newAccount);
+        }
+
     }
 
     public Group(String groupName, Account creator, LocalDateTime createDate, List<Account> accounts) {

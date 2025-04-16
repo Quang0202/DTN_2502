@@ -34,14 +34,14 @@ public class ScannerUtils {
     public double inputDouble(String errorMessage) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            if (scanner.hasNextDouble()) {
+            if (scanner.hasNextLine()) {
                 try {
-                    return scanner.nextDouble();
+                    return Float.parseFloat(scanner.nextLine());
                 }
-                catch (Exception e) {
+                catch (NumberFormatException e) {
                     System.out.println(errorMessage);
                 }
-            } else scanner.nextLine();
+            }
         }
     }
 
