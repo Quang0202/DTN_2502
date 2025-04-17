@@ -2,7 +2,10 @@ package com.company.entity;
 
 import com.company.entity.TestingSystem6.ScannerUtils;
 
-public class Department {
+import java.io.Serializable;
+
+public class Department implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int departmentId;
     private String departmentName;
     private ScannerUtils scannerUtils = new ScannerUtils();

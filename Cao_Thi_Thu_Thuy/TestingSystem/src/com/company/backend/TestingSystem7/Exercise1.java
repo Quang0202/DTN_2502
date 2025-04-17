@@ -17,19 +17,23 @@ public class Exercise1 {
     }
     public void q2(List<Student> students){
         // B1.
-        Student.setMoneyGroup(Student.getMoneyGroup() + students.size() * 100);
+        for(Student s: students){
+            s.nopQuy(100);
+        }
         Student.printMoneyGroup("B1");
         // B2.
-        Student.setMoneyGroup(Student.getMoneyGroup() - 50);
+        students.get(0).layQuy(50);
         Student.printMoneyGroup("B2");
         // B3.
-        Student.setMoneyGroup(Student.getMoneyGroup() - 20);
+        students.get(0).layQuy(20);
         Student.printMoneyGroup("B3");
         // B4.
-        Student.setMoneyGroup(Student.getMoneyGroup() - 150);
+        students.get(0).layQuy(150);
         Student.printMoneyGroup("B4");
         // B5.
-        Student.setMoneyGroup(Student.getMoneyGroup() + students.size() * 50);
+        for(Student s: students){
+            s.nopQuy(50);
+        }
         Student.printMoneyGroup("B5");
     }
     public void q3(){
