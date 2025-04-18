@@ -34,11 +34,12 @@ public class IOManager {
 
     public void writeObject(Object object, String path, String fileName) throws Exception {
         File folder = new File(path);
-        if (!fileManager.isFolder(path)) {
+        if(!folder.exists()){
             folder.mkdir();
         }
-        var pathFile = path + "\\" + fileName;
-        FileOutputStream out = new FileOutputStream(path, false);
+
+        var pathFile = path + File.separator + fileName;
+        FileOutputStream out = new FileOutputStream(pathFile,false);
         ObjectOutputStream objectOut = new ObjectOutputStream(out);
         objectOut.writeObject(object);
         out.close();
@@ -50,17 +51,14 @@ public class IOManager {
         if (!fileManager.isFileExists(filePath)) {
             throw new Exception("Error! File Not Exist.");
         }
-        FileInputStream in = null;
-        ObjectInputStream objectIn = null;
-        try {
-            in = new FileInputStream(filePath);
-            objectIn = new ObjectInputStream(in);
+        try( FileInputStream in = new FileInputStream(filePath);
+             ObjectInputStream objectIn = new ObjectInputStream(in)){
             System.out.println("READ_FILE_SUCCESS");
             return objectIn.readObject();
-        } finally {
-            in.close();
-            objectIn.close();
+        } catch (Exception e){
+            System.out.println();
         }
+        return null;
     }
 
 }
