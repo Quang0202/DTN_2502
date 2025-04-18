@@ -22,9 +22,7 @@ public class IOManager {
         return output.toString();
     }
 
-    public void writeFile(String pathFile, boolean isContinuing, String content) throws
-            Exception {
-
+    public void writeFile(String pathFile, boolean isContinuing, String content) throws Exception {
         if (!fileManager.isFileExists(pathFile)) {
             throw new Exception("Error! File Not Exist.");
         }
@@ -35,11 +33,12 @@ public class IOManager {
     }
 
     public void writeObject(Object object, String path, String fileName) throws Exception {
-        var pathFile = path + "\\" + fileName;
-        if (!fileManager.isFileExists(pathFile)) {
-            throw new Exception("Error! File Not Exist.");
+        File folder = new File(path);
+        if (!fileManager.isFolder(path)) {
+            folder.mkdir();
         }
-        FileOutputStream out = new FileOutputStream(pathFile);
+        var pathFile = path + "\\" + fileName;
+        FileOutputStream out = new FileOutputStream(path, false);
         ObjectOutputStream objectOut = new ObjectOutputStream(out);
         objectOut.writeObject(object);
         out.close();
