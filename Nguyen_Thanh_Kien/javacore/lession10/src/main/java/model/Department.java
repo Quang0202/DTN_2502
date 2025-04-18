@@ -1,13 +1,16 @@
 package model;
 
+import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 @Data
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Department {
-    private int departmentId;
-    private String departmentName;
+    int departmentId;
+    String departmentName;
 
     public Department(String departmentName) {
         this.departmentName = departmentName;
