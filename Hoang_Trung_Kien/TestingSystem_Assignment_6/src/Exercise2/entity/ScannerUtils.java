@@ -3,7 +3,8 @@ package Exercise2.entity;
 import java.util.Scanner;
 
 public class ScannerUtils {
-    public int inputInt(String errorMessage) {
+
+    public  int inputInt(String errorMessage) {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             if (scanner.hasNextLine()) {
