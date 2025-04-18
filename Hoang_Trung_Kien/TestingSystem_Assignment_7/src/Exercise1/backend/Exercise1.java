@@ -16,9 +16,8 @@ public class Exercise1 {
             studentArrayList.add(student1);
             studentArrayList.add(student2);
             studentArrayList.add(student3);
-        }
-        catch (Exception e) {
-            System.out.println("chi duoc tao toi da 7 hoc sinh");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
         Student.setCollege("Đại học bách khoa");
@@ -36,20 +35,25 @@ public class Exercise1 {
 
     public void ques2() {
         for (Student student : studentArrayList) {
-            Student.chargeMoney(100000);
+            student.chargeMoney(100000);
         }
         System.out.println("Tien quy: " + Student.getMoneyGroup());
 
-        Student.useMoney(50000);
+        studentArrayList.get(0).useMoney(50000);
         System.out.println("Mua bim bim, banh keo");
         System.out.println("Tien quy: " + Student.getMoneyGroup());
 
-        Student.useMoney(20000);
+        studentArrayList.get(1).useMoney(20000);
         System.out.println("Mua banh mi");
         System.out.println("Tien quy: " + Student.getMoneyGroup());
 
-        Student.useMoney(150000);
+        studentArrayList.get(2).useMoney(150000);
         System.out.println("Mua do dung hoc tap");
+        System.out.println("Tien quy: " + Student.getMoneyGroup());
+
+        for (Student student : studentArrayList) {
+            student.chargeMoney(50000);
+        }
         System.out.println("Tien quy: " + Student.getMoneyGroup());
     }
 

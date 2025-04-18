@@ -9,7 +9,7 @@ public class Program1 {
 //        q.ques1();
 //        q.ques2();
 //        q.ques3();
-//        q.ques6();
-        q.ques8();
+        q.ques6();
+//        q.ques8();
     }
 }
