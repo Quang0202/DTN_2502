@@ -1,4 +1,4 @@
-package com.programming.nhatanh.lesson7.entity;
+package com.programming.nhatanh.lesson8.entity;
 
 public abstract class HinhHoc {
 
