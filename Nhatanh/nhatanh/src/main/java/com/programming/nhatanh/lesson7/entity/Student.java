@@ -1,6 +1,8 @@
 package com.programming.nhatanh.lesson7.entity;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
 
     private final int id;
     private String name;
@@ -48,11 +50,11 @@ public class Student {
     }
 
     public String getCollege() {
-        return college;
+        return Student.college;
     }
 
     public void setCollege(String newCollege){
-        college = newCollege;
+        Student.college = newCollege;
     }
 
     public final void study(){
@@ -64,7 +66,7 @@ public class Student {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", college=" + college +
+                ", college=" + Student.college +
                 '}';
     }
 }
