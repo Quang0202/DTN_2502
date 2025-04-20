@@ -1,6 +1,6 @@
-package backend;
+package Exercise1.backend;
 
-import entity.Student;
+import Exercise1.entity.Student;
 
 import java.util.*;
 
@@ -29,7 +29,7 @@ public class Exercise1 {
     }
 
     public static void ques1f() {
-        students.reversed();
+        System.out.println(students.reversed());
     }
 
     public static Student ques1g(int id) {
@@ -41,17 +41,19 @@ public class Exercise1 {
         return null;
     }
 
-    public static Student ques1h(String name) {
+    public static ArrayList<Student> ques1h(String name) {
+        ArrayList<Student> result = new ArrayList<>();
         for (Student student : students) {
             if (student.getName().equals(name)) {
-                return student;
+                result.add(student);
             }
         }
-        return null;
+        return result;
     }
 
     public static void ques1i() {
-        ArrayList<Student> temp = students;
+        ArrayList<Student> temp = new ArrayList<>();
+        temp = students;
         for (int i = 0; i < students.size(); i++) {
             boolean isChecked = false;
             for (int j = students.size() - 1; j > i; j--) {
@@ -105,6 +107,11 @@ public class Exercise1 {
         studentSet.add(new Student("nvh"));
         studentSet.add(new Student("tvn"));
         studentSet.add(new Student("nva"));
+    }
 
+    public void ques6() {
+        Map<Integer, String> students = new HashMap<>();
+        students.put(1, "nvn");
+        Student student = new Student(students.get(1));
     }
 }

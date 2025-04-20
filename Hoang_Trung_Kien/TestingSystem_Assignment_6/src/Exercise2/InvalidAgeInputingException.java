@@ -1,4 +1,4 @@
-package Exercise2.entity;
+package Exercise2;
 
 public class InvalidAgeInputingException extends Exception {
     public InvalidAgeInputingException(String message) {

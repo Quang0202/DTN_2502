@@ -1,6 +1,4 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -27,6 +25,14 @@ public class Main {
         queue.add("nvb");
         queue.offer("nvc");
         queue.poll(); // tuong tu pop
-        
+
+        Map<String, String> map = new HashMap<>();
+        map.put("a", "nguyen van a");
+        map.put("b", "nguyen van b");
+        map.put("c", "nguyen van c");
+
+        System.out.println(map.get("a"));
+        Set<String> keys = map.keySet();
+
     }
 }

@@ -1,4 +1,4 @@
-package Exercise2.entity;
+package Exercise2;
 
 public class Position {
     private ScannerUtils scannerUtils = new ScannerUtils();
