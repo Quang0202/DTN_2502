@@ -8,9 +8,9 @@ public class Student {
     private static int countStudent = 0;
     private static  final int MAX_STUDENTS = 7;
 
-    public Student(int id, String name) {
+    public Student(int id, String name) throws Exception {
         if (countStudent >= MAX_STUDENTS) {
-            throw new RuntimeException("Không thể tạo thêm học sinh. Đã đạt giới hạn " + MAX_STUDENTS);
+            throw new Exception("Không thể tạo thêm học sinh. Đã đạt giới hạn " + MAX_STUDENTS);
         }
         this.id = id;
         this.name = name;
@@ -19,8 +19,9 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Id: " + id + ", name: " + name + ", college: " + college;
+        return "Id: " + id + ", name: " + name + ", college: " + Student.college;
     }
+
     public static void printMoneyGroup(String step){
         System.out.println("Sau " + step + ", quỹ lớp còn lại: " + moneyGroup);
     }
@@ -53,6 +54,16 @@ public class Student {
 
     public static int getCountStudent() {
         return countStudent;
+    }
+
+    public void nopQuy(double money){
+        System.out.println(name + " nộp quỹ "+ money);
+        Student.moneyGroup += money;
+    }
+
+    public void layQuy(double money){
+        System.out.println(name + " lấy quỹ "+ money);
+        moneyGroup -= money;
     }
 
     public static void setCountStudent(int countStudent) {

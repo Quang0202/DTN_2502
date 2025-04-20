@@ -11,9 +11,6 @@ public class Student {
         return count;
     }
 
-    public Student() {
-    }
-
     public Student(int id, String name) throws Exception {
         if (count <= 6) {
             this.id = id;
@@ -60,11 +57,11 @@ public class Student {
         return moneyGroup;
     }
 
-    public static void chargeMoney(int money) {
+    public void chargeMoney(int money) {
         Student.moneyGroup += money;
     }
 
-    public static void useMoney(int money) {
+    public void useMoney(int money) {
         Student.moneyGroup -= money;
     }
 }

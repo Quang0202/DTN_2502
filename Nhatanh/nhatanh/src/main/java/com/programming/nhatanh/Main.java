@@ -2,13 +2,15 @@ package com.programming.nhatanh;
 
 import com.programming.nhatanh.entity.Department;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
-    public static Department createDepartment(){
+    public static Department createDepartment() {
         // Nhập department
         Scanner scanner = new Scanner(System.in);
 
@@ -23,7 +25,7 @@ public class Main {
         return newDepartment;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         LocalDate resultz = LocalDate.ofEpochDay(0);
         System.out.println(resultz);
 
@@ -33,10 +35,10 @@ public class Main {
         double randomDouble = random.nextDouble(10, 100);
         System.out.println(random.nextInt(10));
 
-        LocalDate dateTime = LocalDate.of(1992,5,13);
+        LocalDate dateTime = LocalDate.of(1992, 5, 13);
         var numdate = dateTime.toEpochDay();
         System.out.println(numdate);
-        LocalDate endDate = LocalDate.of(1995,8,20);
+        LocalDate endDate = LocalDate.of(1995, 8, 20);
         var numEndDate = endDate.toEpochDay();
         var resultDate = random.nextLong(numdate, numEndDate);
         LocalDate result = LocalDate.ofEpochDay(resultDate);
@@ -58,9 +60,9 @@ public class Main {
         String line = scanner.nextLine();
 
 
-        while(true){
+        while (true) {
             System.out.println("Nhập vào 1 số:");
-            if(scanner.hasNextInt()){
+            if (scanner.hasNextInt()) {
                 int num = scanner.nextInt();
                 System.out.println("Số vừa nhập: " + num);
                 break;
@@ -77,6 +79,15 @@ public class Main {
 
         String str = 100 + "";
 
-
+        try (FileOutputStream fileOutputStream = new FileOutputStream("//C:", true)
+        ) {
+//        FileOutputStream fileOutputStream = new FileOutputStream("//C:", true);
+            String outStr = "acd";
+            byte[] outByte = outStr.getBytes();
+            fileOutputStream.write(outByte);
+            fileOutputStream.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
