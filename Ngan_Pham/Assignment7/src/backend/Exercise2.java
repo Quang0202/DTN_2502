@@ -1,8 +1,5 @@
 package backend;
 
-import entity.MyMath;
-import entity.Student2;
-
 public class Exercise2 {
 //    final variable
 //    Tạo class MyMath, khai báo final variable số PI = 3.14
@@ -27,6 +24,10 @@ public class Exercise2 {
 //    Hãy thiết kế chương trình để tất cả các học sinh đều có method study()
 //    như nhau (nghĩa là PrimaryStudent, SecondaryStudent không thể override được method study())
     public void question3() {
+
+    }
+
+    public void question4() {
 
     }
 }
