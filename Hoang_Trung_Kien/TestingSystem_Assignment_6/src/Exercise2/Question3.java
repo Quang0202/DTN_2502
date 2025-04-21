@@ -1,4 +1,4 @@
-package Exercise2.entity;
+package Exercise2;
 
 public class Question3 {
     public static void main(String[] args) {

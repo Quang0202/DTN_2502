@@ -1,7 +1,6 @@
 package Exercise2.demo;
 
-import Exercise2.entity.Account;
-import Exercise2.entity.InvalidAgeInputingException;
+import Exercise2.Account;
 
 public class Program11 {
     public static void main(String[] args) {

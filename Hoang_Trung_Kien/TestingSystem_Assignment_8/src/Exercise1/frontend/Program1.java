@@ -1,7 +1,6 @@
-package frontend;
+package Exercise1.frontend;
 
-import backend.Exercise1;
-import entity.Student;
+import Exercise1.backend.Exercise1;
 
 public class Program1 {
     public static void main(String[] args) {

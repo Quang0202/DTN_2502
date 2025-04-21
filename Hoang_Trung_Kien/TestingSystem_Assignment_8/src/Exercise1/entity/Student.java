@@ -1,4 +1,4 @@
-package entity;
+package Exercise1.entity;
 
 public class Student {
     private int id;
