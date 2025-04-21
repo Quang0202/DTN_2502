@@ -1,10 +1,24 @@
 package vti.accountmanagement.response.dto.authenticate;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class AuthenticationResponse {
-    private String accessToken;
+    String accessToken;
+    String tokenType = "Bearer";
+    Long expiresIn;
+
+    public AuthenticationResponse(String accessToken, Long expiresIn) {
+        this.accessToken = accessToken;
+        this.expiresIn = expiresIn;
+    }
+
+    public AuthenticationResponse(String accessToken, String tokenType, Long expiresIn) {
+        this.accessToken = accessToken;
+        this.tokenType = tokenType;
+        this.expiresIn = expiresIn;
+    }
 }

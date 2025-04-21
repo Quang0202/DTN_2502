@@ -1,13 +1,13 @@
 package vti.accountmanagement.service.impl;
 
 import lombok.AllArgsConstructor;
-import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import vti.accountmanagement.enums.Role;
 import vti.accountmanagement.exception.CustomException;
+import vti.accountmanagement.exception.DuplicateException;
 import vti.accountmanagement.model.Account;
 import vti.accountmanagement.model.Department;
 import vti.accountmanagement.model.Position;
@@ -19,8 +19,8 @@ import vti.accountmanagement.request.account.AccountUpdateRequest;
 import vti.accountmanagement.response.dto.account.AccountInfoDto;
 import vti.accountmanagement.response.dto.account.AccountListDto;
 import vti.accountmanagement.service.AccountService;
+import vti.accountmanagement.utils.MessageUtil;
 import vti.accountmanagement.utils.ObjectMapperUtils;
-import java.util.Locale;
 
 @Service
 @AllArgsConstructor
@@ -30,7 +30,6 @@ public class AccountServiceImpl implements AccountService {
     private final DepartmentRepository departmentRepository;
     private final PositionRepository positionRepository;
     private final ObjectMapperUtils objectMapperUtils = new ObjectMapperUtils();
-    private final MessageSource messageSource;
     private final PasswordEncoder passwordEncoder;
 
     @Override
@@ -48,7 +47,7 @@ public class AccountServiceImpl implements AccountService {
     public AccountInfoDto getAccountById(int id) {
         Account account = accountRepository.findById(id).orElse(null);
         if (account == null) {
-            throw new CustomException(messageSource.getMessage("account.id.not.exists", null, Locale.ENGLISH));
+            throw new CustomException(MessageUtil.get("account.id.not.exists"));
         }
         objectMapperUtils.getModelMapper().typeMap(Account.class, AccountInfoDto.class)
                 .addMappings(m -> {
@@ -61,16 +60,16 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void save(AccountCreateRequest account) {
         if (accountRepository.existsAccountByEmail(account.getEmail())) {
-            throw new CustomException(messageSource.getMessage("account.email.exists", null, Locale.ENGLISH));
+            throw new DuplicateException(MessageUtil.get("account.email.exists"));
         }
         if (accountRepository.existsAccountByUsername(account.getUsername())) {
-            throw new CustomException(messageSource.getMessage("account.username.exists", null, Locale.ENGLISH));
+            throw new DuplicateException(MessageUtil.get("account.username.exists"));
         }
         if (!positionRepository.existsById(account.getPositionId())) {
-            throw new CustomException(messageSource.getMessage("position.id.not.exists", null, Locale.ENGLISH));
+            throw new CustomException(MessageUtil.get("position.id.not.exists"));
         }
         if (!departmentRepository.existsById(account.getDepartmentId())) {
-            throw new CustomException(messageSource.getMessage("department.id.not.exists", null, Locale.ENGLISH));
+            throw new CustomException(MessageUtil.get("department.id.not.exists"));
         }
         Account acc = new Account();
         acc = objectMapperUtils.map(account, Account.class);
@@ -85,16 +84,16 @@ public class AccountServiceImpl implements AccountService {
     public void update(AccountUpdateRequest account) {
         Account acc = accountRepository.findById(account.getAccountId()).orElse(null);
         if (acc == null) {
-            throw new CustomException(messageSource.getMessage("account.id.not.exists", null, Locale.ENGLISH));
+            throw new CustomException(MessageUtil.get("account.id.not.exists"));
         }
         if (accountRepository.existsAccountByEmailAndAccountIdNot(account.getEmail(), account.getAccountId())) {
-            throw new CustomException(messageSource.getMessage("account.email.exists", null, Locale.ENGLISH));
+            throw new DuplicateException(MessageUtil.get("account.email.exists"));
         }
         if (!positionRepository.existsById(account.getPositionId())) {
-            throw new CustomException(messageSource.getMessage("position.id.not.exists", null, Locale.ENGLISH));
+            throw new CustomException(MessageUtil.get("position.id.not.exists"));
         }
         if (!departmentRepository.existsById(account.getDepartmentId())) {
-            throw new CustomException(messageSource.getMessage("department.id.not.exists", null, Locale.ENGLISH));
+            throw new CustomException(MessageUtil.get("department.id.not.exists"));
         }
         objectMapperUtils.getModelMapper().map(account,acc);
         acc.setPosition(new Position(account.getPositionId()));
@@ -106,7 +105,7 @@ public class AccountServiceImpl implements AccountService {
     public void delete(Integer id) {
         Account acc = accountRepository.findById(id).orElse(null);
         if (acc == null) {
-            throw new CustomException(messageSource.getMessage("account.id.not.exists", null, Locale.ENGLISH));
+            throw new CustomException(MessageUtil.get("account.id.not.exists"));
         }
         accountRepository.delete(acc);
     }
