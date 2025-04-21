@@ -3,11 +3,11 @@ package entity;
 public class MyMath {
 
     public static int max(int a, int b) {
-        return a > b ? a : b;
+        return (a >= b) ? a : b;
     }
 
     public static int min(int a, int b) {
-        return a < b ? a : b;
+        return (a >= b) ? b : a;
     }
 
     public static int max(int a, int b, int c) {
