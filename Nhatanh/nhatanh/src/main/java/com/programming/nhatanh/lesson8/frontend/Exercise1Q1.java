@@ -4,7 +4,7 @@ import com.programming.nhatanh.lesson8.entity.Student;
 
 import java.util.*;
 
-public class Exercise1 {
+public class Exercise1Q1 {
     public static ArrayList<Student> students = new ArrayList<>();
     public static ArrayList<Student> studentCopies = new ArrayList<>();
     public static Student findById(int id){
@@ -13,7 +13,7 @@ public class Exercise1 {
 
 
     public static Student findByName(String name){
-        return students.stream().filter(e -> Objects.equals(e.getName(), name)).toList().getFirst();
+        return students.stream().filter(e -> e.getName().equalsIgnoreCase(name)).toList().getFirst();
     }
 
     public static void printDuplicate(){
@@ -44,10 +44,10 @@ public class Exercise1 {
         System.out.println(students.getLast());
 //        d) Thêm 1 phần tử vào vị trí đầu của students
         Student newStudent1 = new Student(students.size(), "Nguyễn Y");
-        students.addFirst(newStudent1);
+        students.add(0, newStudent1);
 //        e) Thêm 1 phần tử vào vị trí cuối của students
         Student newStudent2 = new Student(students.size(), "Nguyễn Y");
-        students.addLast(newStudent2);
+        students.add(newStudent2);
 //        f) Đảo ngược vị trí của students
         Collections.reverse(students);
 //        g) Tạo 1 method tìm kiếm student theo id

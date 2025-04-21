@@ -2,12 +2,11 @@ package com.programming.nhatanh.lesson8.frontend;
 
 import com.programming.nhatanh.lesson8.entity.Student;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-public class Exercise2 {
+public class Exercise1Q2 {
     public static void main(String[] args)  {
 
 //        Nguyễn Văn Nam, Nguyễn Văn Huyên, Trần Văn Nam, Nguyễn Văn A
@@ -26,15 +25,13 @@ public class Exercise2 {
             studentQueue.add(newStudent);
         }
 
-        for(Student i : studentStack){
-            System.out.println(i);
+        for(int i = 0; i < 4; i++){
+            System.out.println(studentStack.pop());
         }
-
-        for (Student i : studentQueue){
-            System.out.println(i);
+        System.out.println(" ");
+        for (int i = 0; i < 4; i++){
+            System.out.println(studentQueue.poll());
         }
-
-
 
     }
 }
