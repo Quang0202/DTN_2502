@@ -1,10 +1,13 @@
 package Exercise1.entity;
 
 public class Student {
+    private static  int count=0;
     private int id;
     private String name;
 
     public Student(String name) {
+        count++;
+        id = count;
         this.name = name;
     }
 
