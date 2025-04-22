@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import vti.accountmanagement.config.JwtService;
 import vti.accountmanagement.model.CustomUserDetails;
 import vti.accountmanagement.request.authenticate.AuthenticationRequest;
-import vti.accountmanagement.response.dto.authenticate.AuthenticationResponse;
+import vti.accountmanagement.response.authenticate.AuthenticationResponse;
 import vti.accountmanagement.service.AuthenticationService;
 
 @Service
