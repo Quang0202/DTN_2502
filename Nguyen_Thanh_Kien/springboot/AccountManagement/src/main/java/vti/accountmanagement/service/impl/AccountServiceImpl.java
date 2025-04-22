@@ -39,7 +39,7 @@ public class AccountServiceImpl implements AccountService {
                     m.map(acc -> acc.getDepartment().getDepartmentName(), AccountListDto::setDepartmentName);
                     m.map(acc -> acc.getPosition().getPositionName(), AccountListDto::setPositionName);
                 });
-        Page<Account> accounts = accountRepository.findAll(pageable,search);
+        Page<Account> accounts = accountRepository.findAll(pageable, search);
         return objectMapperUtils.mapEntityPageIntoDtoPage(accounts, AccountListDto.class);
     }
 
@@ -95,7 +95,7 @@ public class AccountServiceImpl implements AccountService {
         if (!departmentRepository.existsById(account.getDepartmentId())) {
             throw new CustomException(MessageUtil.get("department.id.not.exists"));
         }
-        objectMapperUtils.getModelMapper().map(account,acc);
+        objectMapperUtils.getModelMapper().map(account, acc);
         acc.setPosition(new Position(account.getPositionId()));
         acc.setDepartment(new Department(account.getDepartmentId()));
         accountRepository.save(acc);
