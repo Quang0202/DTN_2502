@@ -56,16 +56,6 @@ public class Student {
         return countStudent;
     }
 
-    public void nopQuy(double money){
-        System.out.println(name + " nộp quỹ "+ money);
-        Student.moneyGroup += money;
-    }
-
-    public void layQuy(double money){
-        System.out.println(name + " lấy quỹ "+ money);
-        moneyGroup -= money;
-    }
-
     public static void setCountStudent(int countStudent) {
         Student.countStudent = countStudent;
     }
