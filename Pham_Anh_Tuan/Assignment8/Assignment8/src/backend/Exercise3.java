@@ -64,8 +64,9 @@ public class Exercise3 {
 
     // Question 6
     public void question6() {
-        MyMap<String, String> student = new MyMap<>("SV001", "Nguyen Van A");
-        System.out.println("Key: " + student.getKey() + ", Value: " + student.getValue());
+        StudentEx3Q6<String, String> studentEx3Q6 = new StudentEx3Q6<>("SV001", "Nguyen Van A");
+//        MyMap<String, String> student = new MyMap<>("SV001", "Nguyen Van A");
+        System.out.println("Key: " + studentEx3Q6.getKey() + ", Value: " + studentEx3Q6.getValue());
     }
 
     // Question 7

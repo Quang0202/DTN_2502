@@ -24,6 +24,7 @@ public class Exercise4 {
     }
 
     public <T extends Number & Comparable<T>> T getMax(T a, T b) {
+
         return a.compareTo(b) > 0 ? a : b;
     }
 
