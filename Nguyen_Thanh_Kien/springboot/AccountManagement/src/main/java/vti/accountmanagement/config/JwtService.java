@@ -6,8 +6,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import vti.accountmanagement.enums.Role;
+import vti.accountmanagement.model.CustomUserDetails;
 
 import java.security.Key;
 import java.util.Date;
@@ -32,13 +35,22 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
-    public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+    public String generateToken(CustomUserDetails userDetails) {
+        Map<String, Object> extraClaims = new HashMap<>();
+//        set claim custom
+        extraClaims.put("fullName", userDetails.getFullName());
+
+        // Nếu bạn chỉ dùng 1 role:
+        extraClaims.put("role", userDetails.getAuthorities().stream()
+                .findFirst()
+                .map(GrantedAuthority::getAuthority)
+                .orElse(Role.USER.name()));
+        return generateToken(extraClaims, userDetails);
     }
 
     public String generateToken(
             Map<String, Object> extraClaims,
-            UserDetails userDetails
+            CustomUserDetails userDetails
     ) {
         return buildToken(extraClaims, userDetails, jwtExpiration);
     }
@@ -75,6 +87,15 @@ public class JwtService {
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
+    }
+
+
+    // Lấy thời gian còn lại của token (tính bằng giây)
+    public Long getExpirationTime(String token) {
+        Date now = new Date();
+        Date expiration = extractExpiration(token);
+        long expiresIn = (expiration.getTime() - now.getTime()) / 1000;
+        return expiresIn > 0 ? expiresIn : 0L;
     }
 
     private boolean isTokenExpired(String token) {

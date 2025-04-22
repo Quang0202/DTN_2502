@@ -5,16 +5,11 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import vti.accountmanagement.enums.Role;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "Account")
@@ -25,7 +20,7 @@ import java.util.Set;
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @EntityListeners(AuditingEntityListener.class)
-public class Account implements Serializable, UserDetails {
+public class Account implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -60,10 +55,6 @@ public class Account implements Serializable, UserDetails {
     Department department;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    Role role;
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return role.getAuthorities();
-    }
 }

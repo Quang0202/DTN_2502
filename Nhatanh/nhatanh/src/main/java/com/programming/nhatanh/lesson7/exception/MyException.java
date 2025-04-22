@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class MyException extends Exception implements Serializable {
     private static final long serialVersionUID = 1L;
-    private StackTraceElement[] stackTrace;
+    private String  stackTrace;
     private LocalDateTime time;
     private String reason;
 
@@ -14,13 +14,13 @@ public class MyException extends Exception implements Serializable {
     @Override
     public String toString() {
         return "MyException{" +
-                "stackTrace=" + Arrays.toString(stackTrace) +
+                "stackTrace=" + stackTrace +
                 ", time=" + time +
                 ", reason='" + reason + '\'' +
                 ", message='" + super.getMessage()+ " }";
     }
 
-    public MyException(String message, String reason, StackTraceElement[] stackTrace, LocalDateTime time) {
+    public MyException(String message, String reason, String stackTrace, LocalDateTime time) {
         super(message);
         this.reason = reason;
         this.stackTrace = stackTrace;

@@ -15,17 +15,16 @@ public class Exercise5 {
         Student newStudent2 = new Student(2, "Nguyễn Văn B");
         Student newStudent3 = new Student(3, "Nguyễn Văn C");
 //        List<Student> students  = Arrays.asList(newStudent1,newStudent2,newStudent3);
-//        FileOutputStream fileOutputStream = new FileOutputStream("/Users/doquang/Documents/Test/StudentInformation.ser");
-//        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
 ////        objectOutputStream.write(newStudent1);
 ////        objectOutputStream.write(newStudent2);
 ////        objectOutputStream.write(newStudent3);
 //        objectOutputStream.writeObject(students);
 //        objectOutputStream.close();
 //
-//        FileInputStream fileInputStream = new FileInputStream("/Users/doquang/Documents/Test/StudentInformation.ser");
+        FileInputStream fileInputStream = new FileInputStream("/Users/doquang/Documents/Test/StudentInformation.ser");
 //
-//        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 //
 //        List<Student> studentResult = (List<Student>) objectInputStream.readObject();
 //        for(Student student: studentResult){

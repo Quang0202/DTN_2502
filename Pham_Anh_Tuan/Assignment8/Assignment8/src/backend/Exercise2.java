@@ -13,7 +13,7 @@ public class Exercise2 {
 
     public Exercise2() {
         students = new ArrayList<>();
-        students.add(new StudentExercise2("Nam", LocalDate.of(2001, 5, 10), 8.5));
+        students.add(new StudentExercise2("Nam", LocalDate.of(2001, 5, 15), 8.5));
         students.add(new StudentExercise2("An", LocalDate.of(2000, 3, 25), 7.8));
         students.add(new StudentExercise2("Binh", LocalDate.of(2001, 5, 10), 9.0));
         students.add(new StudentExercise2("Nam", LocalDate.of(2001, 5, 10), 6.5));
@@ -35,6 +35,21 @@ public class Exercise2 {
                 .comparing(StudentExercise2::getName)
                 .thenComparing(StudentExercise2::getBirthDate)
                 .thenComparingDouble(StudentExercise2::getScore));
+
+//        Collections.sort(sortedList, new Comparator<StudentExercise2>() {
+//            @Override
+//            public int compare(StudentExercise2 o1, StudentExercise2 o2) {
+//                if(o1.getName().equals(o1.getName())){
+//                    if(o1.getBirthDate().equals(o2.getBirthDate())){
+//                        return (int) (o1.getScore() - o2.getScore());
+//                    }else{
+//                        return o1.getBirthDate().compareTo(o1.getBirthDate());
+//                    }
+//                } else {
+//                    return o1.getName().compareTo(o2.getName());
+//                }
+//            }
+//        });
 
         System.out.println("\nQuestion 2: Sort by name → birthDate → score:");
         sortedList.forEach(System.out::println);

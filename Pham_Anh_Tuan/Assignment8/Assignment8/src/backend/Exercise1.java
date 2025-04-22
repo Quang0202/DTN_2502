@@ -217,7 +217,23 @@ public class Exercise1 {
                 .sorted(Map.Entry.comparingByValue(Comparator.nullsLast(String::compareTo)))
                 .forEach(e -> System.out.println("ID: " + e.getKey() + ", Name: " + e.getValue()));
 
+        List<Map.Entry<Integer, String>> entryList = new ArrayList<>();
+        entryList.addAll(studentMap.entrySet());
+        Collections.sort(entryList, new Comparator<Map.Entry<Integer, String>>() {
+            @Override
+            public int compare(Map.Entry<Integer, String> o1, Map.Entry<Integer, String> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+        for(Map.Entry<Integer,String> entry: entryList){
+            System.out.println(entry.getKey()+" "+ entry.getValue());
+        }
+
         Set<Map.Entry<Integer, String>> entrySet = studentMap.entrySet();
+        Set<Integer> idSet = studentMap.keySet();
+        Set<String> nameSet = new HashSet<>();
+        nameSet.addAll(studentMap.values());
+
         System.out.println("\nQuestion 7d: Map converted to Set:");
         entrySet.forEach(entry -> System.out.println("ID: " + entry.getKey() + ", Name: " + entry.getValue()));
     }

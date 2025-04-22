@@ -1,7 +1,6 @@
 package Exercise2.demo;
 
-import Exercise2.entity.Department;
-import Exercise2.entity.ScannerUtils;
+import Exercise2.ScannerUtils;
 
 public class Program4 {
 //    static Department[] departments = {new Department(), new Department(), new Department()};

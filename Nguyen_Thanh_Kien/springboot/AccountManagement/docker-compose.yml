@@ -1,0 +1,12 @@
+version: '3'
+services:
+  app:
+    build: .
+    container_name: account-management
+    ports:
+      - "8080:8080"  # Mở cổng 8080 ra ngoài để truy cập
+    volumes:
+      - ./target:/app/target  # Mount thư mục target chứa file JAR đã build
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev  # Thiết lập profile cho Spring Boot (dev profile)
+    # Không cần command nữa, vì đã có ENTRYPOINT trong Dockerfile

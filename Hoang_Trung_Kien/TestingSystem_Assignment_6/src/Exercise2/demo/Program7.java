@@ -1,6 +1,6 @@
 package Exercise2.demo;
 
-import Exercise2.entity.ScannerUtils;
+import Exercise2.ScannerUtils;
 
 public class Program7 {
     public static void main(String[] args) {
