@@ -2,7 +2,7 @@ package com.programming.nhatanh.lesson8.entity;
 
 import java.io.Serializable;
 
-public class Student implements Serializable {
+public class Student implements Comparable<Student> {
 
     private final int id;
     private String name;
@@ -68,5 +68,10 @@ public class Student implements Serializable {
                 ", name='" + name + '\'' +
                 ", college=" + Student.college +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return this.name.compareToIgnoreCase(o.getName());
     }
 }

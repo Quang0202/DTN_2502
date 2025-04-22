@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-//        question1();
+        question1();
 //        question3();
 //        question4();
 //        question5();
@@ -31,9 +31,11 @@ public class Main {
         System.out.println("Number 4: " + students.get(3));
         System.out.println("First: " + students.get(0) + "\nLast: " + students.get(students.size() - 1));
         students.add(0, new Student("Neymar"));
-        students.add(students.size(), new Student("Terry"));
+        students.add(new Student("Terry"));
         System.out.println("List after add 2 student: " + students);
+
         Collections.reverse(students);
+
         System.out.println("List after reverse: " + students);
         System.out.println("Find Student id = 2 : " + findStudentById(2, students).toString());
         System.out.println("Find Student name = james : " + findStudentByName("james", students).toString());
@@ -60,18 +62,41 @@ public class Main {
     }
 
     private static void showStudentDuplicateName(List<Student> students) {
-        Set<String> results = new HashSet<>();
-        Set<String> temp = new HashSet<>();
-
+//        Set<String> results = new HashSet<>();
+//        Set<String> temp = new HashSet<>();
+//
+//        for (Student std : students) {
+//            if (!temp.add(std.getName())) {
+//                results.add(std.getName());
+//            }
+//        }
+//
+//        if (!results.isEmpty()) {
+//            System.out.println("Name duplicated: " + results);
+//        } else {
+//            System.out.println("Not have name duplicated.");
+//        }
+        Map<String, List<Student>> mapStudent = new HashMap<>();
         for (Student std : students) {
-            if (!temp.add(std.getName())) {
-                results.add(std.getName());
-            }
+           if(mapStudent.containsKey(std.getName())){
+               List<Student> temp = mapStudent.get(std.getName());
+               temp.add(std);
+           }else {
+               List<Student> temp = new ArrayList<>();
+               temp.add(std);
+               mapStudent.put(std.getName(), temp);
+           }
         }
-        if (!results.isEmpty()) {
-            System.out.println("Name duplicated: " + results);
-        } else {
-            System.out.println("Not have name duplicated.");
+
+
+        Set<String> keys = mapStudent.keySet();
+        for(String key: keys){
+            List<Student> studentList = mapStudent.get(key);
+            if(studentList.size()>1){
+                for(Student student: studentList){
+                    System.out.println(student);
+                }
+            }
         }
     }
 

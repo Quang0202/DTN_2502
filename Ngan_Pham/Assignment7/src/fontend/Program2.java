@@ -8,5 +8,6 @@ public class Program2 {
 //        ex2.question1();
 //        ex2.question2();
 //        ex2.question3();
+//        ex2.question4();
     }
 }

@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import vti.accountmanagement.request.account.AccountCreateRequest;
 import vti.accountmanagement.request.authenticate.AuthenticationRequest;
-import vti.accountmanagement.response.dto.authenticate.AuthenticationResponse;
 import vti.accountmanagement.service.AuthenticationService;
 
 @RestController
