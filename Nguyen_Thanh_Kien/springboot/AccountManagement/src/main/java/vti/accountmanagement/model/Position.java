@@ -23,14 +23,15 @@ public class Position implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="PositionID")
+    @Column(name = "PositionID")
     Integer positionId;
 
-    @Column(nullable = false, unique = true, name="PositionName")
+    @Column(nullable = false, unique = true, name = "PositionName")
     @Enumerated(EnumType.STRING)
     PositionName positionName;
 
-    @OneToMany(mappedBy="position")
+    @OneToMany(mappedBy = "position")
+    @Transient
     List<Account> accounts;
 
     public Position(Integer positionId) {

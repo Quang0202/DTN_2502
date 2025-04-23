@@ -14,7 +14,7 @@ public class SortUtils {
     }
 
     public static Sort getSort(String[] sort) {
-        List<Order> orders = new ArrayList<Order>();
+        List<Order> orders = new ArrayList<>();
         if (sort[0].contains(",")) {
             // will sort more than 2 columns
             for (String sortOrder : sort) {

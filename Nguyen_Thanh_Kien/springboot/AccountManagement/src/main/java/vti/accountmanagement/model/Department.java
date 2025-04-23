@@ -7,7 +7,6 @@ import lombok.experimental.FieldDefaults;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
-
 @Entity
 @Table(name = "department")
 @AllArgsConstructor
@@ -29,6 +28,7 @@ public class Department implements Serializable {
     String departmentName;
 
     @OneToMany(mappedBy="department")
+    @Transient
     List<Account> accounts;
 
     public Department(Integer departmentId) {

@@ -11,13 +11,9 @@ public class MessageUtil {
     private static MessageSource messageSource;
 
     @Autowired
-    public MessageUtil(MessageSource messageSource) {
+    private MessageUtil(MessageSource messageSource) {
         MessageUtil.messageSource = messageSource;
     }
-
-//    public static String get(String key, Object... args) {
-//        return MessageUtil.get(key, args, LocaleContextHolder.getLocale());
-//    }
 
     public static String get(String key) {
         return messageSource.getMessage(key, null, LocaleContextHolder.getLocale());
