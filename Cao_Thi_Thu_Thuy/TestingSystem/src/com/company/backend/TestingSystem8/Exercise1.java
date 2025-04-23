@@ -324,6 +324,15 @@ public class Exercise1 {
         for (Student s: studentList) {
             System.out.println("ID: " + s.getId() + ", Name: " + s.getName());
         }
+        // Cách 2
+//        List<Map.Entry<Integer, String>> entryList = new ArrayList<>();
+//        entryList.addAll(studentMap.entrySet());
+//        Collections.sort(entryList, new Comparator<Map.Entry<Integer, String>>() {
+//            @Override
+//            public int compare(Map.Entry<Integer, String> o1, Map.Entry<Integer, String> o2) {
+//                return o1.getValue().compareTo(o2.getValue());
+//            }
+//        });
 
         // d
         Set<Student> studenSet = new HashSet<>();
