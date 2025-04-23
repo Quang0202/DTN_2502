@@ -1,6 +1,7 @@
 package vti.data;
+import java.io.Serializable;
 
-public class Department {
+public class Department implements Serializable {
     public Department(int department_id, String department_name) {
         this.department_id = department_id;
         this.department_name = department_name;

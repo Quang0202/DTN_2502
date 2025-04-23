@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.nio.channels.FileChannel;
+import java.util.Scanner;
 
 public class filemanager {
     public static void main(String[] args) throws Exception {

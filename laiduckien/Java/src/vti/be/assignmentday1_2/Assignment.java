@@ -18,6 +18,8 @@ public class Assignment {
         Position position2 = new Position(2, "sys");
         Position position3 = new Position(3, "net");
         // Group
+
+
         Account account1 = null;
         Group group1 = null;
         Account account2 = null;
