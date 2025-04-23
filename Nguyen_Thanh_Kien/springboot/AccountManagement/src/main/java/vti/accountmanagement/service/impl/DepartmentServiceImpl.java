@@ -44,7 +44,7 @@ public class DepartmentServiceImpl implements DepartmentService {
             Department dep = objectMapperUtils.map(department, Department.class);
             departmentRepository.save(dep);
         } else {
-            throw new DuplicateException(MessageUtil.get(DEPARTMENT_NAME_EXISTS));
+            throw new DuplicateException(MessageUtil.getMessage(DEPARTMENT_NAME_EXISTS));
         }
     }
 
@@ -52,13 +52,13 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void update(DepartmentUpdateRequest department) {
         Department dep = departmentRepository.findById(department.getDepartmentId()).orElse(null);
         if (dep == null) {
-            throw new CustomException(MessageUtil.get(DEPARTMENT_ID_NOT_EXISTS));
+            throw new CustomException(MessageUtil.getMessage(DEPARTMENT_ID_NOT_EXISTS));
         }
         if (departmentRepository.findByDepartmentNameAndDepartmentIdNot(department.getDepartmentName(), department.getDepartmentId()) == null) {
             dep = objectMapperUtils.map(department, Department.class);
             departmentRepository.save(dep);
         } else {
-            throw new DuplicateException(MessageUtil.get(DEPARTMENT_NAME_EXISTS));
+            throw new DuplicateException(MessageUtil.getMessage(DEPARTMENT_NAME_EXISTS));
         }
     }
 
@@ -67,11 +67,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void delete(Integer id) {
         Department department = departmentRepository.findByDepartmentId(id);
         if (department == null) {
-            throw new CustomException(MessageUtil.get(DEPARTMENT_ID_NOT_EXISTS));
+            throw new CustomException(MessageUtil.getMessage(DEPARTMENT_ID_NOT_EXISTS));
         }
         List<Account> accounts = accountRepository.findByDepartment_DepartmentId(id);
         if (accounts != null && !accounts.isEmpty()) {
-            throw new CustomException(MessageUtil.get("department.id.exists.reference.key.account"));
+            throw new CustomException(MessageUtil.getMessage("department.id.exists.reference.key.account"));
         }
         departmentRepository.delete(department);
     }

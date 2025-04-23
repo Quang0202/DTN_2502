@@ -12,8 +12,8 @@ public class SecurityUtil {
 
     public static CustomUserDetails getCurrentUser() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (principal instanceof CustomUserDetails) {
-            return (CustomUserDetails) principal;
+        if (principal instanceof CustomUserDetails userDetails) {
+            return userDetails;
         }
         throw new IllegalStateException("Current user is not authenticated");
     }

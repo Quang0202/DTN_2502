@@ -1,5 +1,6 @@
 package vti.accountmanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -31,8 +32,8 @@ public class Position implements Serializable {
     PositionName positionName;
 
     @OneToMany(mappedBy = "position")
-    @Transient
-    List<Account> accounts;
+    @JsonManagedReference
+    private List<Account> accounts;
 
     public Position(Integer positionId) {
         this.positionId = positionId;
