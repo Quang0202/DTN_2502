@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.Locale;
 
 @Component
-public class MessageUtil {
+public class MessageUtil { //NOSONAR
 
     private static MessageSource messageSource;
 
