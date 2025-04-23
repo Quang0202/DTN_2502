@@ -1,5 +1,7 @@
 package MaiTienThanh.src.com.vti.entity;
 
+import MaiTienThanh.src.com.vti.backend.Lesson6.Exercise1.Question2.InvalidAgeInputingException;
+import MaiTienThanh.src.com.vti.entity.Lesson6.ScannerUtils;
 import java.time.LocalDate;
 public class Account {
     private int accountId;
@@ -9,6 +11,7 @@ public class Account {
     private Department department;
     private Position position;
     private LocalDate createDate;
+    private ScannerUtils scannerUtils = new ScannerUtils();
 
     public Account(){
 
@@ -119,5 +122,32 @@ public class Account {
                 ", position=" + position +
                 ", createDate=" + createDate +
                 '}';
+    }
+    public int inputAge() throws InvalidAgeInputingException {
+        System.out.print("Enter your age: ");
+        int inputAge = scannerUtils.inputInt("Age have to be integer");
+
+        if (inputAge <= 0) {
+            throw new InvalidAgeInputingException("The age must be greater than 0");
+        }
+        return inputAge;
+    }
+    public int inputAccountAge() {
+        int age = -1;
+        while (true) {
+            try {
+                age = inputAge();
+                if (age < 18) {
+                    System.out.println("Your age must be greater than 18");
+                    continue;
+                }
+                break;
+            } catch (InvalidAgeInputingException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a number.");
+            }
+        }
+        return age;
     }
 }
