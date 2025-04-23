@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import vti.accountmanagement.enums.PositionName;
+import vti.accountmanagement.utils.PositionNameConverter;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -28,7 +29,7 @@ public class Position implements Serializable {
     Integer positionId;
 
     @Column(nullable = false, unique = true, name = "PositionName")
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = PositionNameConverter.class)
     PositionName positionName;
 
     @OneToMany(mappedBy = "position")

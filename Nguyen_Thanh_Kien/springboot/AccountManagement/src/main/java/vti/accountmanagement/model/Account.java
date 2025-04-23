@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "Account")
+@Table(name = "account")
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,13 +31,13 @@ public class Account implements Serializable {
     @Column(name = "AccountID")
     Integer accountId;
 
-    @Column(nullable = false, unique = true, name = "Username")
+    @Column(nullable = false, unique = true, name = "username")
     String username;
 
     @Column(name = "password")
     String password;
 
-    @Column(nullable = false, unique = true, name = "Email")
+    @Column(nullable = false, unique = true, name = "email")
     String email;
 
     @Column(name = "FullName")
