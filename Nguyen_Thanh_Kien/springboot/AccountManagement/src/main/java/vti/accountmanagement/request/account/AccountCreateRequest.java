@@ -18,8 +18,10 @@ import vti.accountmanagement.enums.Role;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AccountCreateRequest {
     @Trim
-    @Pattern(regexp = "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$",
-            message = "{account.email.invalid}")
+    @Pattern(
+            regexp = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$",
+            message = "{account.email.invalid}"
+    )
     String email;
 
     @NotNull(message = "{account.username.required}")

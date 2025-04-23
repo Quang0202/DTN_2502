@@ -12,7 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.web.servlet.NoHandlerFoundException;
 import vti.accountmanagement.exception.CustomException;
@@ -28,12 +27,12 @@ public class ExceptionHandlerConfig {
 
 //    exception handle validate @RequestBody
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<?>  handleInvalidArgument(MethodArgumentNotValidException ex, HttpServletRequest request) {
+    public ResponseEntity<ApiError>  handleInvalidArgument(MethodArgumentNotValidException ex, HttpServletRequest request) {
         List<ApiSubError> errors = ex.getBindingResult()
                 .getFieldErrors()
                 .stream()
                 .map(error -> new ApiSubError(error.getField(), error.getDefaultMessage()))
-                .collect(Collectors.toList());
+                .toList();
 
         ApiError response = new ApiError(
                 HttpStatus.BAD_REQUEST.value(),
@@ -46,14 +45,14 @@ public class ExceptionHandlerConfig {
 
 //    xử lý exception @RequestParam, @PathVariable
     @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<?> handleInvalidArgument(ConstraintViolationException ex, HttpServletRequest request) {
+    public ResponseEntity<ApiError> handleInvalidArgument(ConstraintViolationException ex, HttpServletRequest request) {
         List<ApiSubError> errors = ex.getConstraintViolations().stream()
                 .map(violation -> {
                     String field = violation.getPropertyPath().toString();
                     String message = violation.getMessage();
                     return new ApiSubError(field, message);
                 })
-                .collect(Collectors.toList());
+                .toList();
         ApiError res = new ApiError(
                 HttpStatus.BAD_REQUEST.value(),
                 "Validation failed",
@@ -66,7 +65,7 @@ public class ExceptionHandlerConfig {
 
 //    handle property name
     @ExceptionHandler(PropertyReferenceException.class)
-    public ResponseEntity<?> handleInvalidArgument(PropertyReferenceException ex, HttpServletRequest request) {
+    public ResponseEntity<ApiError> handleInvalidArgument(PropertyReferenceException ex, HttpServletRequest request) {
         ApiError error = new ApiError(
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),
@@ -77,7 +76,7 @@ public class ExceptionHandlerConfig {
 
 //    exception custom handle
     @ExceptionHandler(CustomException.class)
-    public ResponseEntity<?> handleInvalidArgument(CustomException ex, HttpServletRequest request) {
+    public ResponseEntity<ApiError> handleInvalidArgument(CustomException ex, HttpServletRequest request) {
         ApiError error = new ApiError(
                 HttpStatus.BAD_REQUEST.value(),
                 ex.getMessage(),
@@ -88,7 +87,7 @@ public class ExceptionHandlerConfig {
 
 //    exception duplicate data
     @ExceptionHandler(DuplicateException.class)
-    public ResponseEntity<?> handleInvalidArgument(DuplicateException ex, HttpServletRequest request) {
+    public ResponseEntity<ApiError> handleInvalidArgument(DuplicateException ex, HttpServletRequest request) {
         ApiError error = new ApiError(
                 HttpStatus.CONFLICT.value(),
                 ex.getMessage(),
@@ -99,7 +98,7 @@ public class ExceptionHandlerConfig {
 
 //    check body null response 400 thay vì 401
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<?> handleBadRequest(HttpMessageNotReadableException ex, HttpServletRequest request) {
+    public ResponseEntity<ApiError> handleBadRequest(HttpMessageNotReadableException ex, HttpServletRequest request) {
         ApiError error = new ApiError(
                 HttpStatus.BAD_REQUEST.value(),
                 "Invalid or empty request body",

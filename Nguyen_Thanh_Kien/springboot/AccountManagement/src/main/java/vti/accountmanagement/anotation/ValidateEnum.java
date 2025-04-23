@@ -1,11 +1,7 @@
 package vti.accountmanagement.anotation;
 
-import com.fasterxml.jackson.annotation.JacksonAnnotationsInside;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import vti.accountmanagement.anotation.execute.FormatWhiteSpaceExecute;
 import vti.accountmanagement.anotation.execute.ValidateEnumExecute;
 
 import java.lang.annotation.ElementType;
@@ -21,5 +17,4 @@ public @interface ValidateEnum {
     String message() default "{name} must be one of {enumClass}";
     Class<? extends Enum<?>> enumClass();
     Class<?>[] groups() default {};
-    Class<? extends Payload>[] payload() default {};
 }

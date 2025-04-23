@@ -31,7 +31,7 @@ public class ObjectMapperUtils {
     public <D, T> List<D> mapAll(final Collection<T> entityList, Class<D> outCLass) {
         return entityList.stream()
                 .map(entity -> map(entity, outCLass))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public <D, T> Page<D> mapEntityPageIntoDtoPage(Page<T> entities, Class<D> outCLass) {

@@ -31,6 +31,7 @@ public class AccountServiceImpl implements AccountService {
     private final PositionRepository positionRepository;
     private final ObjectMapperUtils objectMapperUtils = new ObjectMapperUtils();
     private final PasswordEncoder passwordEncoder;
+    private static final String ACCOUNT_ID_NOT_EXISTS = "account.id.not.exists";
 
     @Override
     public Page<AccountListDto> getAll(Pageable pageable, String search) {
@@ -47,7 +48,7 @@ public class AccountServiceImpl implements AccountService {
     public AccountInfoDto getAccountById(int id) {
         Account account = accountRepository.findById(id).orElse(null);
         if (account == null) {
-            throw new CustomException(MessageUtil.get("account.id.not.exists"));
+            throw new CustomException(MessageUtil.get(ACCOUNT_ID_NOT_EXISTS));
         }
         objectMapperUtils.getModelMapper().typeMap(Account.class, AccountInfoDto.class)
                 .addMappings(m -> {
@@ -84,7 +85,7 @@ public class AccountServiceImpl implements AccountService {
     public void update(AccountUpdateRequest account) {
         Account acc = accountRepository.findById(account.getAccountId()).orElse(null);
         if (acc == null) {
-            throw new CustomException(MessageUtil.get("account.id.not.exists"));
+            throw new CustomException(MessageUtil.get(ACCOUNT_ID_NOT_EXISTS));
         }
         if (accountRepository.existsAccountByEmailAndAccountIdNot(account.getEmail(), account.getAccountId())) {
             throw new DuplicateException(MessageUtil.get("account.email.exists"));
@@ -105,7 +106,7 @@ public class AccountServiceImpl implements AccountService {
     public void delete(Integer id) {
         Account acc = accountRepository.findById(id).orElse(null);
         if (acc == null) {
-            throw new CustomException(MessageUtil.get("account.id.not.exists"));
+            throw new CustomException(MessageUtil.get(ACCOUNT_ID_NOT_EXISTS));
         }
         accountRepository.delete(acc);
     }

@@ -3,7 +3,6 @@ package vti.accountmanagement.model;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.hibernate.Length;
 
 import java.io.Serial;
 import java.io.Serializable;

@@ -3,7 +3,6 @@ package vti.accountmanagement.anotation;
 import com.fasterxml.jackson.annotation.JacksonAnnotationsInside;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import vti.accountmanagement.anotation.execute.FormatWhiteSpaceExecute;
 import vti.accountmanagement.anotation.execute.TrimExecute;
 
 import java.lang.annotation.ElementType;

@@ -13,5 +13,4 @@ public interface PositionRepository extends JpaRepository<Position, Integer> {
     @Query(value = "SELECT pos FROM Position pos " +
             "WHERE CAST(pos.positionName AS string) LIKE %:search%")
     Page<Position> findAll(Pageable pageable, String search);
-//    Position findByPositionName(String name);
 }

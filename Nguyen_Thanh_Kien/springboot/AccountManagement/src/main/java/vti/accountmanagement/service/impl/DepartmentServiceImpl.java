@@ -29,6 +29,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     private final AccountRepository accountRepository;
     private final MessageSource messageSource;
     private final ObjectMapperUtils objectMapperUtils = new ObjectMapperUtils();
+    private static final String DEPARTMENT_ID_NOT_EXISTS = "department.id.not.exists";
+    private static final String DEPARTMENT_NAME_EXISTS = "department.name.exists";
 
     @Override
     public Page<DepartmentListDto> getAll(Pageable pageable, String search) {
@@ -42,7 +44,7 @@ public class DepartmentServiceImpl implements DepartmentService {
             Department dep = objectMapperUtils.map(department, Department.class);
             departmentRepository.save(dep);
         } else {
-            throw new DuplicateException(MessageUtil.get("department.name.exists"));
+            throw new DuplicateException(MessageUtil.get(DEPARTMENT_NAME_EXISTS));
         }
     }
 
@@ -50,13 +52,13 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void update(DepartmentUpdateRequest department) {
         Department dep = departmentRepository.findById(department.getDepartmentId()).orElse(null);
         if (dep == null) {
-            throw new CustomException(MessageUtil.get("department.id.not.exists"));
+            throw new CustomException(MessageUtil.get(DEPARTMENT_ID_NOT_EXISTS));
         }
         if (departmentRepository.findByDepartmentNameAndDepartmentIdNot(department.getDepartmentName(), department.getDepartmentId()) == null) {
             dep = objectMapperUtils.map(department, Department.class);
             departmentRepository.save(dep);
         } else {
-            throw new DuplicateException(MessageUtil.get("department.name.exists"));
+            throw new DuplicateException(MessageUtil.get(DEPARTMENT_NAME_EXISTS));
         }
     }
 
@@ -65,7 +67,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void delete(Integer id) {
         Department department = departmentRepository.findByDepartmentId(id);
         if (department == null) {
-            throw new CustomException(MessageUtil.get("department.id.not.exists"));
+            throw new CustomException(MessageUtil.get(DEPARTMENT_ID_NOT_EXISTS));
         }
         List<Account> accounts = accountRepository.findByDepartment_DepartmentId(id);
         if (accounts != null && !accounts.isEmpty()) {
