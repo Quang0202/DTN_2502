@@ -29,5 +29,7 @@ public class E1Q6_7 {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
 
         System.out.println(sortedMap);
+        Set<Map.Entry<Integer, Student>> entrySet = studentMap.entrySet();
+        entrySet.forEach(System.out::println);
     }
 }
