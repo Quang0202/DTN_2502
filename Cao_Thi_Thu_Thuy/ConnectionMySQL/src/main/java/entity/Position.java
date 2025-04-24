@@ -2,9 +2,9 @@ package entity;
 
 public class Position {
     private int positionId;
-    private EPositionName positionName;
+    private String positionName;
 
-    public Position(int positionId, EPositionName positionName) {
+    public Position(int positionId, String positionName) {
         this.positionId = positionId;
         this.positionName = positionName;
     }
@@ -21,11 +21,19 @@ public class Position {
         this.positionId = positionId;
     }
 
-    public EPositionName getPositionName() {
+    public String getPositionName() {
         return positionName;
     }
 
-    public void setPositionName(EPositionName positionName) {
+    public void setPositionName(String positionName) {
         this.positionName = positionName;
+    }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "positionId=" + positionId +
+                ", positionName='" + positionName + '\'' +
+                '}';
     }
 }
