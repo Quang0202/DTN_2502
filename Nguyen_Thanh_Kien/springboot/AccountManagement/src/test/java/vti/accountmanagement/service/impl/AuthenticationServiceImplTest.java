@@ -1,8 +1,10 @@
 package vti.accountmanagement.service.impl;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import vti.accountmanagement.config.JwtService;
@@ -60,5 +62,22 @@ class AuthenticationServiceImplTest {
         verify(authenticationManager, times(1)).authenticate(any(UsernamePasswordAuthenticationToken.class));
         verify(jwtService, times(1)).generateToken(userDetails);
         verify(jwtService, times(1)).getExpirationTime(jwtToken);
+    }
+
+    @Test
+    void authenticate_ShouldThrowException_WhenAuthenticationFails() {
+        // Arrange
+        AuthenticationRequest request = new AuthenticationRequest("wrongUser", "wrongPass");
+
+        when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
+                .thenThrow(new BadCredentialsException("Invalid credentials"));
+
+        // Act & Assert
+        Assertions.assertThrows(BadCredentialsException.class, () -> {
+            authenticationService.authenticate(request);
+        });
+
+        verify(authenticationManager, times(1)).authenticate(any(UsernamePasswordAuthenticationToken.class));
+        verifyNoInteractions(jwtService);
     }
 }
