@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import vti.accountmanagement.exception.CustomException;
+import vti.accountmanagement.exception.NotFoundException;
 import vti.accountmanagement.payload.ApiError;
 import vti.accountmanagement.service.CustomUserDetailsService;
 
@@ -55,7 +55,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(authToken);
                 }
-            } catch (CustomException e) {
+            } catch (NotFoundException e) {
                 ApiError error = new ApiError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage(), request.getRequestURI());
                 response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 response.setContentType("application/json");

@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import vti.accountmanagement.exception.CustomException;
+import vti.accountmanagement.exception.NotFoundException;
 import vti.accountmanagement.exception.DuplicateException;
 import vti.accountmanagement.model.Account;
 import vti.accountmanagement.model.Department;
@@ -52,7 +52,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void update(DepartmentUpdateRequest department) {
         Department dep = departmentRepository.findById(department.getDepartmentId()).orElse(null);
         if (dep == null) {
-            throw new CustomException(MessageUtil.getMessage(DEPARTMENT_ID_NOT_EXISTS));
+            throw new NotFoundException(MessageUtil.getMessage(DEPARTMENT_ID_NOT_EXISTS));
         }
         if (departmentRepository.findByDepartmentNameAndDepartmentIdNot(department.getDepartmentName(), department.getDepartmentId()) == null) {
             dep = objectMapperUtils.map(department, Department.class);
@@ -67,11 +67,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void delete(Integer id) {
         Department department = departmentRepository.findByDepartmentId(id);
         if (department == null) {
-            throw new CustomException(MessageUtil.getMessage(DEPARTMENT_ID_NOT_EXISTS));
+            throw new NotFoundException(MessageUtil.getMessage(DEPARTMENT_ID_NOT_EXISTS));
         }
         List<Account> accounts = accountRepository.findByDepartment_DepartmentId(id);
         if (accounts != null && !accounts.isEmpty()) {
-            throw new CustomException(MessageUtil.getMessage("department.id.exists.reference.key.account"));
+            throw new NotFoundException(MessageUtil.getMessage("department.id.exists.reference.key.account"));
         }
         departmentRepository.delete(department);
     }

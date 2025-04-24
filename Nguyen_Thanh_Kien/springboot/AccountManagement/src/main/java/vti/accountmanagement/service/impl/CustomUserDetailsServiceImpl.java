@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import vti.accountmanagement.exception.CustomException;
+import vti.accountmanagement.exception.NotFoundException;
 import vti.accountmanagement.model.Account;
 import vti.accountmanagement.model.CustomUserDetails;
 import vti.accountmanagement.repository.AccountRepository;
@@ -26,9 +26,9 @@ public class CustomUserDetailsServiceImpl implements CustomUserDetailsService {
             Throwable rootCause = getRootCause(ex);
             if (rootCause instanceof IllegalArgumentException &&
                     rootCause.getMessage().contains("No enum constant")) {
-                throw new CustomException("Invalid enum value: " + rootCause.getMessage());
+                throw new NotFoundException("Invalid enum value: " + rootCause.getMessage());
             }
-            throw new CustomException("Authentication failed: " + rootCause.getMessage());
+            throw new NotFoundException("Authentication failed: " + rootCause.getMessage());
         }
     }
 

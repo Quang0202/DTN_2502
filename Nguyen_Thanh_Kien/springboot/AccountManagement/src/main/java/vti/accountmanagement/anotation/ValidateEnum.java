@@ -1,6 +1,7 @@
 package vti.accountmanagement.anotation;
 
 import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 import vti.accountmanagement.anotation.execute.ValidateEnumExecute;
 
 import java.lang.annotation.ElementType;
@@ -17,4 +18,5 @@ public @interface ValidateEnum {
     @SuppressWarnings("java:S1452")
     Class<? extends Enum<?>> enumClass();
     Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
 }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import java.util.List;
 
 import org.springframework.web.servlet.NoHandlerFoundException;
-import vti.accountmanagement.exception.CustomException;
+import vti.accountmanagement.exception.NotFoundException;
 import vti.accountmanagement.exception.DuplicateException;
 import vti.accountmanagement.payload.ApiError;
 import vti.accountmanagement.payload.ApiSubError;
@@ -27,9 +27,9 @@ import vti.accountmanagement.utils.ConstantUtils;
 @RestControllerAdvice
 public class ExceptionHandlerConfig {
 
-//    exception handle validate @RequestBody
+    //    exception handle validate @RequestBody
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ApiError>  handleInvalidArgument(MethodArgumentNotValidException ex, HttpServletRequest request) {
+    public ResponseEntity<ApiError> handleInvalidArgument(MethodArgumentNotValidException ex, HttpServletRequest request) {
         List<ApiSubError> errors = ex.getBindingResult()
                 .getFieldErrors()
                 .stream()
@@ -46,7 +46,7 @@ public class ExceptionHandlerConfig {
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
-//    xử lý exception @RequestParam, @PathVariable
+    //    xử lý exception @RequestParam, @PathVariable
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<ApiError> handleInvalidArgument(ConstraintViolationException ex, HttpServletRequest request) {
         List<ApiSubError> errors = ex.getConstraintViolations().stream()
@@ -66,7 +66,7 @@ public class ExceptionHandlerConfig {
         return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
     }
 
-//    handle property name
+    //    handle property name
     @ExceptionHandler(PropertyReferenceException.class)
     public ResponseEntity<ApiError> handleInvalidArgument(PropertyReferenceException ex, HttpServletRequest request) {
         ApiError error = new ApiError(
@@ -78,19 +78,19 @@ public class ExceptionHandlerConfig {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-//    exception custom handle
-    @ExceptionHandler(CustomException.class)
-    public ResponseEntity<ApiError> handleInvalidArgument(CustomException ex, HttpServletRequest request) {
+    //    exception custom handle
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ApiError> handleInvalidArgument(NotFoundException ex, HttpServletRequest request) {
         ApiError error = new ApiError(
-                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),
                 request.getRequestURI()
         );
         log.error(ConstantUtils.CUSTOM_EXCEPTION, ex.getMessage(), ex);
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
-//    exception duplicate data
+    //    exception duplicate data
     @ExceptionHandler(DuplicateException.class)
     public ResponseEntity<ApiError> handleInvalidArgument(DuplicateException ex, HttpServletRequest request) {
         ApiError error = new ApiError(
@@ -102,7 +102,7 @@ public class ExceptionHandlerConfig {
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
     }
 
-//    check body null response 400 thay vì 401
+    //    check body null response 400 thay vì 401
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ApiError> handleBadRequest(HttpMessageNotReadableException ex, HttpServletRequest request) {
         ApiError error = new ApiError(
@@ -114,7 +114,7 @@ public class ExceptionHandlerConfig {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-//   xử lý url không tồn tại thì báo 404 thay vì 401
+    //   xử lý url không tồn tại thì báo 404 thay vì 401
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<ApiError> handleNotFound(NoHandlerFoundException ex, HttpServletRequest request) {
 
@@ -142,7 +142,7 @@ public class ExceptionHandlerConfig {
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-//    handle exception sai ten dang nhap hoac mat khau
+    //    handle exception sai ten dang nhap hoac mat khau
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<ApiError> handleBadCredentials(BadCredentialsException ex, HttpServletRequest request) {
         ApiError apiError = new ApiError(

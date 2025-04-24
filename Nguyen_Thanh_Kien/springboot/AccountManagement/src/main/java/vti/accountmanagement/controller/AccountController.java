@@ -4,11 +4,11 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import vti.accountmanagement.payload.PageResponse;
 import vti.accountmanagement.repository.AccountRepository;
 import vti.accountmanagement.request.account.AccountCreateRequest;
 import vti.accountmanagement.request.account.AccountUpdateRequest;
@@ -27,7 +27,7 @@ public class AccountController {
     private final AccountRepository accountRepository;
 
     @GetMapping("")
-    public ResponseEntity<Page<AccountListDto>> getDepartment(
+    public ResponseEntity<PageResponse<AccountListDto>> getDepartment(
             @Min(value = 0, message = "Page must not be less than 0")
             @RequestParam(defaultValue = "0")
             Integer page,
@@ -40,7 +40,9 @@ public class AccountController {
             @RequestParam(required = false, defaultValue = "")
             String search
     ) {
-        return ResponseEntity.ok(accountService.getAll(PageRequest.of(page, size, SortUtils.getSort(sort)), search));
+        return ResponseEntity.ok(new PageResponse<>(
+                accountService.getAll(PageRequest.of(page, size, SortUtils.getSort(sort)), search
+        )));
     }
 
     @GetMapping("/{id}")

@@ -1,0 +1,6 @@
+projectKey=account-management
+serverUrl=http://192.168.1.99:9000
+serverVersion=25.4.0.105899
+dashboardUrl=http://192.168.1.99:9000/dashboard?id=account-management
+ceTaskId=0938f528-8b78-45ac-ac82-e30e21bb0543
+ceTaskUrl=http://192.168.1.99:9000/api/ce/task?id=0938f528-8b78-45ac-ac82-e30e21bb0543

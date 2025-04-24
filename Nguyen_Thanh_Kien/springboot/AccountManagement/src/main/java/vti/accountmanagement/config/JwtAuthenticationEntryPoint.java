@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
-import vti.accountmanagement.exception.CustomException;
+import vti.accountmanagement.exception.NotFoundException;
 import vti.accountmanagement.payload.ApiError;
 
 import java.io.IOException;
@@ -23,7 +23,7 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
             throws IOException {
 
         Throwable rootCause = getRootCause(authException);
-        String message = rootCause instanceof CustomException
+        String message = rootCause instanceof NotFoundException
                 ? rootCause.getMessage()
                 : "Unauthorized: Token is missing or invalid";
 

@@ -7,7 +7,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import vti.accountmanagement.config.JwtService;
-import vti.accountmanagement.exception.CustomException;
 import vti.accountmanagement.model.CustomUserDetails;
 import vti.accountmanagement.request.authenticate.AuthenticationRequest;
 import vti.accountmanagement.response.authenticate.AuthenticationResponse;
