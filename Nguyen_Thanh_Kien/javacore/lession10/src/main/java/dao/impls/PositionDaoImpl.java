@@ -1,6 +1,7 @@
 package dao.impls;
 
 import dao.Dao;
+import lombok.Cleanup;
 import model.Position;
 import utils.ConnectionUtil;
 

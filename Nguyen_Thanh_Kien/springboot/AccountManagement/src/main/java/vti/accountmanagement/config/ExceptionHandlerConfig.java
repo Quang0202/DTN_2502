@@ -2,6 +2,7 @@ package vti.accountmanagement.config;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -21,7 +22,7 @@ import vti.accountmanagement.payload.ApiSubError;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
 
-
+@Slf4j
 @RestControllerAdvice
 public class ExceptionHandlerConfig {
 
@@ -40,6 +41,7 @@ public class ExceptionHandlerConfig {
                 request.getRequestURI(),
                 errors
         );
+        log.error("Custom exception: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
@@ -59,7 +61,7 @@ public class ExceptionHandlerConfig {
                 request.getRequestURI(),
                 errors
         );
-
+        log.error("Custom exception: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(res, HttpStatus.BAD_REQUEST);
     }
 
@@ -71,6 +73,7 @@ public class ExceptionHandlerConfig {
                 ex.getMessage(),
                 request.getRequestURI()
         );
+        log.error("Custom exception: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
@@ -82,6 +85,7 @@ public class ExceptionHandlerConfig {
                 ex.getMessage(),
                 request.getRequestURI()
         );
+        log.error("Custom exception: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
@@ -93,6 +97,7 @@ public class ExceptionHandlerConfig {
                 ex.getMessage(),
                 request.getRequestURI()
         );
+        log.error("Custom exception: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
     }
 
@@ -104,6 +109,7 @@ public class ExceptionHandlerConfig {
                 "Invalid or empty request body",
                 request.getRequestURI()
         );
+        log.error("Custom exception: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
@@ -116,6 +122,7 @@ public class ExceptionHandlerConfig {
                 "Not Found",
                 request.getRequestURI()
         );
+        log.error("Custom exception: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
@@ -130,6 +137,7 @@ public class ExceptionHandlerConfig {
                 ex.getMessage(),
                 request.getRequestURI()
         );
+        log.error("Custom exception: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -141,6 +149,7 @@ public class ExceptionHandlerConfig {
                 "Invalid username or password.",
                 request.getRequestURI()
         );
+        log.error("Custom exception: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(apiError, HttpStatus.UNAUTHORIZED);
     }
 }

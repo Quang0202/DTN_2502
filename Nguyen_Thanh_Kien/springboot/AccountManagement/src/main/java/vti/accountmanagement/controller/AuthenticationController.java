@@ -2,6 +2,7 @@ package vti.accountmanagement.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +12,7 @@ import vti.accountmanagement.request.authenticate.AuthenticationRequest;
 import vti.accountmanagement.response.authenticate.AuthenticationResponse;
 import vti.accountmanagement.service.AuthenticationService;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -22,6 +24,7 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody @Valid AuthenticationRequest request
     ) {
+        log.info("Login request received: {}", request.getUsername());
         return ResponseEntity.ok(authenticationService.authenticate(request));
     }
 }
