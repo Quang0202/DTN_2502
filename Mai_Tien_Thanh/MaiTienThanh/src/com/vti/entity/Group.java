@@ -1,7 +1,6 @@
 package MaiTienThanh.src.com.vti.entity;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 public class Group {
     private  Account[] accounts;
@@ -10,7 +9,7 @@ public class Group {
     private Account createAccount;
     private LocalDate createDate;
 
-    public Group(int groupId, String groupName, Account createAccount, LocalDate createDate) {
+    public Group() {
         this.groupId = groupId;
         this.groupName = groupName;
         this.createAccount = createAccount;

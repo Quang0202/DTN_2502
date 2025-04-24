@@ -52,6 +52,7 @@ public class Exercise3 {
         MyMap<Integer, String> student1 = new MyMap<>(1, "khanh linh");
         Student<Integer> student = new Student<>(student1.getKey(), student1.getValue());
         System.out.println(student);
+        StudentQues6<Integer, String> student2 = new StudentQues6<>(2, "hoang khanh linh");
     }
 
     public void ques7() {

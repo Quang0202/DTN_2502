@@ -1,5 +1,5 @@
 package vti.accountmanagement.enums;
 
 public enum PositionName {
-    Dev, Test, Scrum_Master, PM;
+    DEV, TEST, SCRUM_MASTER, PM;
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @GetMapping("")
-    public ResponseEntity<?> getUser(@RequestParam String name) {
+    public ResponseEntity<String> getUser(@RequestParam String name) {
 
             return ResponseEntity.ok("Hello " + name);
     }

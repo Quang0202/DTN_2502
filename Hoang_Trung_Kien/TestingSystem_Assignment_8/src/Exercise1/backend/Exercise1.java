@@ -113,5 +113,24 @@ public class Exercise1 {
         Map<Integer, String> students = new HashMap<>();
         students.put(1, "nvn");
         Student student = new Student(students.get(1));
+        for (Student s : studentSet) {
+            students.put(s.getId(), s.getName());
+        }
+    }
+
+    public void ques7() {
+        Map<Integer, String> students = new HashMap<>();
+        for (Student s : studentSet) {
+            students.put(s.getId(), s.getName());
+        }
+        // in ra key
+        students.keySet().forEach(System.out::println);
+        // in ra value
+        students.values().forEach(System.out::println);
+
+        Set<Map.Entry<Integer, String>> entrySet = students.entrySet();
+        Set<Integer> idSet = students.keySet();
+        Set<String> nameSet = new HashSet<>();
+        nameSet.addAll(students.values());
     }
 }

@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class Exercise1 {
     public void question1(){
-        Department department2 = new Department(1,"Dev");
+        Department department2 = new Department();
         System.out.println("Câu b: " + department2.toString());
     }
     public void question2(){

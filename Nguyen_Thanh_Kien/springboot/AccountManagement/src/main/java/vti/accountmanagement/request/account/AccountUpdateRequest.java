@@ -16,8 +16,10 @@ public class AccountUpdateRequest {
     private int accountId;
 
     @Trim
-    @Pattern(regexp = "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$",
-            message = "{account.email.invalid}")
+    @Pattern(
+            regexp = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$",
+            message = "{account.email.invalid}"
+    )
     private String email;
 
     @NotNull(message = "{account.fullName.required}")

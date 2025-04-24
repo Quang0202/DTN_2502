@@ -12,7 +12,6 @@ import vti.accountmanagement.response.dto.department.DepartmentListDto;
 @Service
 public interface DepartmentService {
     Page<DepartmentListDto> getAll(Pageable pageable, String search);
-//    Optional<T> findById(Long id);
     void save(DepartmentCreateRequest department);
     void update(DepartmentUpdateRequest department);
     void delete(Integer id);

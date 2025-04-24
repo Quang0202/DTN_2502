@@ -22,7 +22,7 @@ public class CustomUserDetails implements UserDetails {
     String password;
     String username;
     String fullName;
-    Collection<? extends GrantedAuthority> authorities;
+    transient Collection<? extends GrantedAuthority> authorities;
 
     public static CustomUserDetails fromUser(Account account) {
         Role role = account.getRole();

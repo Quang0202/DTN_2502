@@ -34,6 +34,12 @@ public class Exercise2 {
         students.sort(new Comparator<Student>() {
             @Override
             public int compare(Student o1, Student o2) {
+                if (o1.getName().equals(o2.getName())) {
+                    if (o1.getDateOfBirth().equals(o2.getDateOfBirth())) {
+                        return (int) (o1.getScore() - o2.getScore());
+                    }
+                    return o1.getDateOfBirth().compareTo(o2.getDateOfBirth());
+                }
                 return o1.getName().compareTo(o2.getName());
             }
         });

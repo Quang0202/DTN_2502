@@ -23,9 +23,24 @@ public class E2Q2 {
         listStudent.add(newStudent5);
         listStudent.sort(
                 Comparator.comparing(StudentE2::getName)
-                        .thenComparing(StudentE2::getGPA)
                         .thenComparing(StudentE2::getDoB)
+                        .thenComparing(StudentE2::getGPA)
         );
+
+        listStudent.sort(new Comparator<StudentE2>() {
+            @Override
+            public int compare(StudentE2 o1, StudentE2 o2) {
+                if (o1.getName().equalsIgnoreCase(o2.getName())) {
+                    if (o1.getDoB().equals(o2.getDoB())) {
+                        return (int) (o1.getGPA() - o2.getGPA());
+                    } else {
+                        return o1.getDoB().compareTo(o2.getDoB());
+                    }
+                } else {
+                    return o1.getName().compareToIgnoreCase(o2.getName());
+                }
+            }
+        });
         System.out.println(listStudent);
     }
 }

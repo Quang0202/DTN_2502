@@ -1,14 +1,13 @@
 package vti.accountmanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.hibernate.Length;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
-
 @Entity
 @Table(name = "department")
 @AllArgsConstructor
@@ -29,8 +28,9 @@ public class Department implements Serializable {
     @Column(name="DepartmentName", nullable = false, unique = true)
     String departmentName;
 
-    @OneToMany(mappedBy="department")
-    List<Account> accounts;
+    @OneToMany(mappedBy = "department")
+    @JsonManagedReference
+    private List<Account> accounts;
 
     public Department(Integer departmentId) {
         this.departmentId = departmentId;

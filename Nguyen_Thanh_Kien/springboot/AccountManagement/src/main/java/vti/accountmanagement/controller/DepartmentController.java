@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import vti.accountmanagement.request.department.DepartmentCreateRequest;
 import vti.accountmanagement.request.department.DepartmentUpdateRequest;
+import vti.accountmanagement.response.dto.department.DepartmentListDto;
 import vti.accountmanagement.service.DepartmentService;
 import vti.accountmanagement.utils.ConstantUtils;
 import vti.accountmanagement.utils.SortUtils;
@@ -26,7 +28,7 @@ public class DepartmentController {
 
     @GetMapping("")
     @PreAuthorize("hasAuthority('admin:read')")
-    public ResponseEntity<?> getDepartment(
+    public ResponseEntity<Page<DepartmentListDto>> getDepartment(
             @Min(value = 0, message = "Page must not be less than 0")
             @RequestParam(defaultValue = "0")
             Integer page,
@@ -43,19 +45,19 @@ public class DepartmentController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<?> createDepartment(@RequestBody @Valid DepartmentCreateRequest department) {
+    public ResponseEntity<String> createDepartment(@RequestBody @Valid DepartmentCreateRequest department) {
         departmentService.save(department);
         return ResponseEntity.ok("Create department successfully");
     }
 
     @PostMapping("/update")
-    public ResponseEntity<?> updateDepartment(@RequestBody @Valid DepartmentUpdateRequest department) {
+    public ResponseEntity<String> updateDepartment(@RequestBody @Valid DepartmentUpdateRequest department) {
         departmentService.update(department);
         return ResponseEntity.ok("Update department successfully");
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<?> deleteDepartment(@PathVariable Integer id) {
+    public ResponseEntity<String> deleteDepartment(@PathVariable Integer id) {
         departmentService.delete(id);
         return ResponseEntity.ok("Delete department successfully");
     }

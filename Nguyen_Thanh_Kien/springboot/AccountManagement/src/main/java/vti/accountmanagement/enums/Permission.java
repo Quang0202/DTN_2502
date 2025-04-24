@@ -13,5 +13,5 @@ public enum Permission {
     ADMIN_DELETE("admin:delete")
     ;
 
-    private final String permission;
+    private final String permissionCode;
 }
