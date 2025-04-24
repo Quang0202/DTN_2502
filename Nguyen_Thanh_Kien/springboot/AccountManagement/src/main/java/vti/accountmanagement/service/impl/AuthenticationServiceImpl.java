@@ -31,7 +31,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 )
         );
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
-        String jwtToken = "test fail test jenkin";
+        String jwtToken = jwtService.generateToken(userDetails);
         Long expiresIn = jwtService.getExpirationTime(jwtToken);
         return new AuthenticationResponse(jwtToken, expiresIn);
     }
