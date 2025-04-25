@@ -1,10 +1,10 @@
-package Exercise1;
+package org.example;
 
-public class Department {
+public class Position {
     private int id;
     private String name;
 
-    public Department(int id, String name) {
+    public Position(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -17,19 +17,19 @@ public class Department {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Exercise1.Department{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

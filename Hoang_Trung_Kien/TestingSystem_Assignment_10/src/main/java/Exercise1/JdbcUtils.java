@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.util.Properties;
 
 public class JdbcUtils {
+    private static Connection connection;
     public static Connection getConnection() {
         try {
             Properties properties = new Properties();
@@ -16,7 +17,7 @@ public class JdbcUtils {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            Connection connection = DriverManager.getConnection(url, userName, password);
+            connection = DriverManager.getConnection(url, userName, password);
 
             System.out.println("Connect success!");
 
