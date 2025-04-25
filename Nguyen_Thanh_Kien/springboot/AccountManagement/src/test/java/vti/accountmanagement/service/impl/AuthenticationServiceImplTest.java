@@ -1,8 +1,11 @@
 package vti.accountmanagement.service.impl;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,18 +18,17 @@ import vti.accountmanagement.response.authenticate.AuthenticationResponse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 class AuthenticationServiceImplTest {
 
+    @Mock
     private AuthenticationManager authenticationManager;
-    private JwtService jwtService;
-    private AuthenticationServiceImpl authenticationService;
 
-    @BeforeEach
-    void setUp() {
-        authenticationManager = mock(AuthenticationManager.class);
-        jwtService = mock(JwtService.class);
-        authenticationService = new AuthenticationServiceImpl(authenticationManager, jwtService);
-    }
+    @Mock
+    private JwtService jwtService;
+
+    @InjectMocks
+    private AuthenticationServiceImpl authenticationService;
 
     @Test
     void authenticate_ShouldReturnAuthenticationResponse() {

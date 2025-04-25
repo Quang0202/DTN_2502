@@ -2,14 +2,21 @@ package vti.accountmanagement.request.department;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 import vti.accountmanagement.anotation.FormatWhiteSpace;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class DepartmentUpdateRequest {
+
+    @NotNull(message = "{department.id.required}")
+    private Integer departmentId;
 
     @NotNull(message = "{department.name.required}")
     @NotBlank(message = "{department.name.required}")
@@ -17,6 +24,5 @@ public class DepartmentUpdateRequest {
     @FormatWhiteSpace
     private String departmentName;
 
-    @NotNull(message = "{department.id.required}")
-    private Integer departmentId;
+
 }
