@@ -36,6 +36,11 @@ public class Position implements Serializable {
     @JsonManagedReference
     private List<Account> accounts;
 
+    public Position(Integer positionId, PositionName positionName) {
+        this.positionId = positionId;
+        this.positionName = positionName;
+    }
+
     public Position(Integer positionId) {
         this.positionId = positionId;
     }

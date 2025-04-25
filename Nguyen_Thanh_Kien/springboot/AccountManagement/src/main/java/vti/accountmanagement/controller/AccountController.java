@@ -40,9 +40,9 @@ public class AccountController {
             @RequestParam(required = false, defaultValue = "")
             String search
     ) {
-        return ResponseEntity.ok(new PageResponse<>(
+        return ResponseEntity.ok(
                 accountService.getAll(PageRequest.of(page, size, SortUtils.getSort(sort)), search
-        )));
+        ));
     }
 
     @GetMapping("/{id}")
@@ -53,18 +53,18 @@ public class AccountController {
     @PostMapping("/create")
     public ResponseEntity<String> createAccount(@Valid @RequestBody AccountCreateRequest account){
         accountService.save(account);
-        return ResponseEntity.ok("Account created");
+        return ResponseEntity.ok(ConstantUtils.CREATE_SUCCESSFULLY);
     }
 
     @PostMapping("/update")
     public ResponseEntity<String> updateAccount(@Valid @RequestBody AccountUpdateRequest account){
         accountService.update(account);
-        return ResponseEntity.ok("Account updated");
+        return ResponseEntity.ok(ConstantUtils.UPDATE_SUCCESSFULLY);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<String> deleteAccount(@PathVariable Integer id) {
         accountService.delete(id);
-        return ResponseEntity.ok("Account deleted");
+        return ResponseEntity.ok(ConstantUtils.DELETE_SUCCESSFULLY);
     }
 }

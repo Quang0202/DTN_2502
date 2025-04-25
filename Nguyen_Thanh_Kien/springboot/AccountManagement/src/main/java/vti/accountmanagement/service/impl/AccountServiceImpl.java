@@ -11,6 +11,7 @@ import vti.accountmanagement.exception.DuplicateException;
 import vti.accountmanagement.model.Account;
 import vti.accountmanagement.model.Department;
 import vti.accountmanagement.model.Position;
+import vti.accountmanagement.payload.PageResponse;
 import vti.accountmanagement.repository.AccountRepository;
 import vti.accountmanagement.repository.DepartmentRepository;
 import vti.accountmanagement.repository.PositionRepository;
@@ -34,14 +35,14 @@ public class AccountServiceImpl implements AccountService {
     private static final String ACCOUNT_ID_NOT_EXISTS = "account.id.not.exists";
 
     @Override
-    public Page<AccountListDto> getAll(Pageable pageable, String search) {
+    public PageResponse<AccountListDto> getAll(Pageable pageable, String search) {
         objectMapperUtils.getModelMapper().typeMap(Account.class, AccountListDto.class)
                 .addMappings(m -> {
                     m.map(acc -> acc.getDepartment().getDepartmentName(), AccountListDto::setDepartmentName);
                     m.map(acc -> acc.getPosition().getPositionName(), AccountListDto::setPositionName);
                 });
         Page<Account> accounts = accountRepository.findAll(pageable, search);
-        return objectMapperUtils.mapEntityPageIntoDtoPage(accounts, AccountListDto.class);
+        return new PageResponse<>(objectMapperUtils.mapEntityPageIntoDtoPage(accounts, AccountListDto.class));
     }
 
     @Override

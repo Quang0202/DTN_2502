@@ -10,6 +10,7 @@ import vti.accountmanagement.exception.NotFoundException;
 import vti.accountmanagement.exception.DuplicateException;
 import vti.accountmanagement.model.Account;
 import vti.accountmanagement.model.Department;
+import vti.accountmanagement.payload.PageResponse;
 import vti.accountmanagement.repository.AccountRepository;
 import vti.accountmanagement.repository.DepartmentRepository;
 import vti.accountmanagement.request.department.DepartmentCreateRequest;
@@ -33,9 +34,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     private static final String DEPARTMENT_NAME_EXISTS = "department.name.exists";
 
     @Override
-    public Page<DepartmentListDto> getAll(Pageable pageable, String search) {
+    public PageResponse<DepartmentListDto> getAll(Pageable pageable, String search) {
         Page<Department> departments = departmentRepository.findAll(pageable, search);
-        return objectMapperUtils.mapEntityPageIntoDtoPage(departments, DepartmentListDto.class);
+        return new PageResponse<>(objectMapperUtils.mapEntityPageIntoDtoPage(departments, DepartmentListDto.class));
     }
 
     @Override

@@ -35,4 +35,9 @@ public class Department implements Serializable {
     public Department(Integer departmentId) {
         this.departmentId = departmentId;
     }
+
+    public Department(Integer departmentId, String departmentName) {
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
+    }
 }

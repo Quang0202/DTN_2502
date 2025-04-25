@@ -14,11 +14,13 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import vti.accountmanagement.config.WebSecurityConfig;
 import vti.accountmanagement.exception.NotFoundException;
+import vti.accountmanagement.payload.PageResponse;
 import vti.accountmanagement.request.account.AccountCreateRequest;
 import vti.accountmanagement.request.account.AccountUpdateRequest;
 import vti.accountmanagement.response.dto.account.AccountInfoDto;
 import vti.accountmanagement.response.dto.account.AccountListDto;
 import vti.accountmanagement.service.AccountService;
+import vti.accountmanagement.utils.ConstantUtils;
 import vti.accountmanagement.utils.MessageUtil;
 
 import java.time.LocalDate;
@@ -45,7 +47,7 @@ class AccountControllerTest {
     void getAll_success() throws Exception {
         List<AccountListDto> accounts = List.of(new AccountListDto());
         Page<AccountListDto> page = new PageImpl<>(accounts);
-        when(accountService.getAll(any(), any())).thenReturn(page);
+        when(accountService.getAll(any(), any())).thenReturn(new PageResponse<>(page));
 
         // Thực hiện kiểm tra API
         mockMvc.perform(get("/api/account")
@@ -94,8 +96,7 @@ class AccountControllerTest {
     @Test
     @DisplayName("POST /create - Success")
     void createAccount_success() throws Exception {
-        AccountCreateRequest account;
-        account = new AccountCreateRequest();
+        AccountCreateRequest account = new AccountCreateRequest();
         account.setEmail("test@example.com");
         account.setUsername("testuser");
         account.setFullName("Test User");
@@ -103,52 +104,36 @@ class AccountControllerTest {
         account.setRole("USER");
         account.setDepartmentId(1);
         account.setPositionId(1);
-
+        String requestJson = new ObjectMapper().writeValueAsString(account);
         doNothing().when(accountService).save(any(AccountCreateRequest.class));
 
         mockMvc.perform(post("/api/account/create")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("""
-                                {
-                                "email": "test@example.com",
-                                "username": "testuser",
-                                "fullName": "Test User",
-                                "password": "password123",
-                                "role": "USER",
-                                "departmentId": 1,
-                                "positionId": 1
-                                }"""))
+                        .content(requestJson))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Account created"));
+                .andExpect(content().string(ConstantUtils.CREATE_SUCCESSFULLY));
     }
 
     @Test
     @DisplayName("POST /create - Fail (Invalid Data)")
     void createAccount_fail_invalidData() throws Exception {
-        AccountCreateRequest account;
-        account = new AccountCreateRequest();
-        account.setEmail("");  // Email rỗng
+        AccountCreateRequest account = new AccountCreateRequest();
+        account.setEmail("test1234example.com");
         account.setUsername("testuser");
         account.setFullName("Test User");
         account.setPassword("password123");
         account.setRole("USER");
         account.setDepartmentId(1);
         account.setPositionId(1);
-
+        String requestJson = new ObjectMapper().writeValueAsString(account);
+        String expectedMessage = MessageUtil.getMessage("account.email.invalid");
         mockMvc.perform(post("/api/account/create")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("""
-                                {
-                                "email": "",
-                                "username": "testuser",
-                                "fullName": "Test User",
-                                "password": "password123",
-                                "role": "USER",
-                                "departmentId": 1,
-                                "positionId": 1
-                                }"""))
+                        .content(requestJson))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.message").value("Validation failed"));
+                .andExpect(jsonPath("$.message").value("Validation failed"))
+                .andExpect(jsonPath("$.errors[0].field").value("email"))
+                .andExpect(jsonPath("$.errors[0].message").value(expectedMessage));
     }
 
     @Test
@@ -168,7 +153,7 @@ class AccountControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(validRequestJson))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Account updated"));
+                .andExpect(content().string(ConstantUtils.UPDATE_SUCCESSFULLY));
     }
 
     @Test
@@ -182,7 +167,6 @@ class AccountControllerTest {
         invalidRequest.setDepartmentId(1);
         invalidRequest.setPositionId(1);
         String invalidRequestJson = new ObjectMapper().writeValueAsString(invalidRequest);
-        // Lấy thông điệp từ messages.properties
         String expectedMessage = MessageUtil.getMessage("account.email.invalid");
 
         mockMvc.perform(post("/api/account/update")
@@ -202,18 +186,18 @@ class AccountControllerTest {
 
         mockMvc.perform(delete("/api/account/{id}", 1))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Account deleted"));
+                .andExpect(content().string(ConstantUtils.DELETE_SUCCESSFULLY));
     }
 
     @Test
     @DisplayName("DELETE /api/account/{id} - Fail (Account not found)")
     void deleteAccount_fail_accountNotFound() throws Exception {
-
-        doThrow(new NotFoundException("Account not found")).when(accountService).delete(999);
+        String expectedMessage = MessageUtil.getMessage("account.id.not.exists");
+        doThrow(new NotFoundException(expectedMessage)).when(accountService).delete(999);
 
         mockMvc.perform(delete("/api/account/{id}", 999))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.message").value("Account not found"));
+                .andExpect(jsonPath("$.message").value(expectedMessage));
     }
 
 }
