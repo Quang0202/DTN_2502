@@ -29,13 +29,15 @@ public class Exercise3 {
 //    Sau đó in ra thông tin của động cơ
 
     public void question2() {
-        Car car = new Car("Volvo xc90", "V8-E");
-        Car.Engine engine = car.new Engine();
-        engine.setEngineType("Crysler");
-
-        System.out.println("Car Name: " + car.getName());
-        System.out.println("Car Type: " + car.getType());
-        System.out.println("Engine Type: " + engine.getEngineType());
+//        Car car = new Car("Volvo xc90", "V8-E");
+//        Car.Engine engine = car.new Engine();
+//        engine.setEngineType("Crysler");
+//
+//        System.out.println("Car Name: " + car.getName());
+//        System.out.println("Car Type: " + car.getType());
+//        System.out.println("Engine Type: " + engine.getEngineType());
+        Car car = new Car("Volvo xc90", "V8-E", "Crysler");
+        System.out.println(car.getEngine());
     }
 
     public void question3() {
