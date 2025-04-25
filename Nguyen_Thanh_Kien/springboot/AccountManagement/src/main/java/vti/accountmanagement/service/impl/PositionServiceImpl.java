@@ -21,12 +21,7 @@ public class PositionServiceImpl implements PositionService {
 
     @Override
     public PageResponse<PositionListDto> getAll(Pageable pageable, String search) {
-        Page<Position> positions;
-        try{
-            positions = positionRepository.findAll(pageable,search);
-        } catch (Exception e){
-            throw new NotFoundException(e.getMessage());
-        }
+        Page<Position> positions = positionRepository.findAll(pageable,search);
         return new PageResponse<>(objectMapperUtils.mapEntityPageIntoDtoPage(positions, PositionListDto.class));
     }
 }
