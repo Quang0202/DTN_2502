@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Import(WebSecurityConfig.class)
 @AutoConfigureMockMvc(addFilters = false)
-public class PositionControllerTest {
+class PositionControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
