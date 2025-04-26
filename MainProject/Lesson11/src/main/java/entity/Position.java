@@ -1,12 +1,12 @@
-package com.vti.entity;
+package entity;
 
 public class Position {
     private int positionId;
     private String positionName;
 
-    public Position(int positionId, String positionName) {
-        this.positionId = positionId;
+    public Position(String positionName, int positionId) {
         this.positionName = positionName;
+        this.positionId = positionId;
     }
 
     public int getPositionId() {
@@ -27,7 +27,7 @@ public class Position {
 
     @Override
     public String toString() {
-        return "Position{" +
+        return "entity.Position{" +
                 "positionId=" + positionId +
                 ", positionName='" + positionName + '\'' +
                 '}';

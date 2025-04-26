@@ -1,13 +1,10 @@
-package com.programming.nhatanh.lesson10.backend;
+package com.programming.nhatanh.lesson10.backend.repository;
 
-import com.programming.nhatanh.entity.Department;
-import com.programming.nhatanh.lesson10.entity.Account;
-import com.programming.nhatanh.lesson10.entity.Gender;
+import com.programming.nhatanh.lesson10.backend.Utils.JdbcUtils;
+import com.vti.entity.Position;
 
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PositionRepository {
 
@@ -31,6 +28,23 @@ public class PositionRepository {
             e.printStackTrace();
         }
     }
+    //E1Q2
+    public Position getPositionById(int id) throws SQLException {
+        String sql = "SELECT * FROM Position "  +
+                "WHERE positionID = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                return new Position(resultSet.getInt(1),resultSet.getString(2));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     //E1Q3
     public void createPosition(String positionName) throws SQLException {

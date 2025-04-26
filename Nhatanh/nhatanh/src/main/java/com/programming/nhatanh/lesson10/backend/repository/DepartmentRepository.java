@@ -1,8 +1,8 @@
-package com.programming.nhatanh.lesson10.backend;
+package com.programming.nhatanh.lesson10.backend.repository;
 
 import com.programming.nhatanh.entity.Department;
+import com.programming.nhatanh.lesson10.backend.Utils.JdbcUtils;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 public class DepartmentRepository {
     private final Connection connection;
 
-    public DepartmentRepository() throws SQLException, ClassNotFoundException, IOException {
+    public DepartmentRepository() {
         connection = JdbcUtils.getConnection();
     }
 

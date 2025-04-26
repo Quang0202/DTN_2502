@@ -26,6 +26,11 @@ public class Department {
         this.departmentId = 0;
         this.departmentName = departmentName;
     }
+    public Department(int departmentId,String departmentName) {
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
+    }
+
 
     public int getDepartmentId() {
         return departmentId;

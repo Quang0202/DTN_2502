@@ -1,8 +1,9 @@
-package com.programming.nhatanh.lesson10.entity;
+package com.programming.nhatanh.lesson10.backend.entity;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.ZoneId;
+import com.vti.entity.Department;
+import com.vti.entity.Position;
+
+import java.time.LocalDateTime;
 
 public class Account {
     private int accountId;
@@ -10,8 +11,10 @@ public class Account {
     private String userName;
     private String fullName;
     private String departmentName;
+    private Department department;
     private Integer positionId;
-    private LocalDate createDate;
+    private Position position;
+    private LocalDateTime createDate;
     private Gender gender;
 
     public int getAccountId() {
@@ -42,6 +45,7 @@ public class Account {
         return fullName;
     }
 
+
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
@@ -58,15 +62,31 @@ public class Account {
         return positionId;
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     public void setPositionId(Integer positionId) {
         this.positionId = positionId;
     }
 
-    public Date getCreateDate() {
-        return (Date) Date.from(createDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+    public LocalDateTime getCreateDate() {
+        return createDate;
     }
 
-    public void setCreateDate(LocalDate createDate) {
+    public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
 
@@ -78,7 +98,7 @@ public class Account {
         this.gender = gender;
     }
 
-    public Account(int accountId, String email, String userName, String fullName, String departmentName, Integer positionId, LocalDate createDate, Gender gender) {
+    public Account(int accountId, String email, String userName, String fullName, String departmentName, Integer positionId, LocalDateTime createDate, Gender gender) {
         this.accountId = accountId;
         this.email = email;
         this.userName = userName;
@@ -99,8 +119,8 @@ public class Account {
                 ", email='" + email + '\'' +
                 ", userName='" + userName + '\'' +
                 ", fullName='" + fullName + '\'' +
-                ", departmentName='" + departmentName + '\'' +
-                ", positionId=" + positionId +
+                ", department=" + department +
+                ", position=" + position +
                 ", createDate=" + createDate +
                 ", gender=" + gender +
                 '}';
