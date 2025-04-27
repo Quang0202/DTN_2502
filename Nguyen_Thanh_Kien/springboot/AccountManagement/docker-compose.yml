@@ -1,5 +1,6 @@
+name: docker-account-management
 services:
-  jenkins-dark:
+  jenkins:
     build:
       context: .
       dockerfile: Dockerfile.jenkins
