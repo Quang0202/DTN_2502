@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.jenkins
-    image: jenkins-with-docker
+    image: karobest10/jenkins-dark
     container_name: jenkins-dark
     user: root
     privileged: true
@@ -13,11 +13,16 @@ services:
     volumes:
       - jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Xms1024m -Xmx4096m
     depends_on:
-      - sonarqube  # ✅ Jenkins chờ SonarQube
+      - sonarqube
 
   sonarqube:
-    image: sonarqube:community
+    image: karobest10/sonarqube
+    build:
+      context: .
+      dockerfile: Dockerfile.sonarqube
     container_name: sonarqube
     ports:
       - "9000:9000"
