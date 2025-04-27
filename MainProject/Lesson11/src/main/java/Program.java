@@ -11,8 +11,8 @@ public class Program {
     public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
 
         System.out.printf("%-10s| %-10s| %-10s \n","email","fullName","password");
-        String str = "nguye nvana@vti.com.vn";
-        String regex = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9]+[.][a-zA-Z0-9.]+";
+        String str = "nguyenvana@vti.com.vn";
+        String regex = "^[A-Za-z](.*)([@]{1})(.{1,})(\\.)(.{1,})";
         System.out.println(str.matches(regex));
         if(str.charAt(0) >= 'A' && str.charAt(0) <= 'Z'){
 
