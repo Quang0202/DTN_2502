@@ -1,6 +1,6 @@
 package frontend;
 
-import backend.Exercise1;
+import backend.controller.Exercise1;
 
 public class Program1 {
     public static void main(String[] args) {

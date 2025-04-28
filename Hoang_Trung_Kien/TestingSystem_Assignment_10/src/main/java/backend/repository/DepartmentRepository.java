@@ -1,4 +1,7 @@
-package entity;
+package backend.repository;
+
+import backend.entity.Department;
+import utils.JdbcUtils;
 
 import java.sql.*;
 import java.util.ArrayList;

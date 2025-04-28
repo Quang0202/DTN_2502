@@ -1,4 +1,4 @@
-package entity;
+package utils;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -13,7 +13,7 @@ public class JdbcUtils {
         try {
             if (connection == null || connection.isClosed()) {
                 Properties properties = new Properties();
-                properties.load(new FileInputStream("D:\\DTN_2502\\Hoang_Trung_Kien\\TestingSystem_Assignment_10\\src\\main\\resources\\jdbc.properties"));
+                properties.load(new FileInputStream("D:\\DTN_2502\\Hoang_Trung_Kien\\TestingSystem_Assignment_11\\src\\main\\resources\\jdbc.properties"));
                 String url = properties.getProperty("url");
                 String userName = properties.getProperty("userName");
                 String password = properties.getProperty("password");

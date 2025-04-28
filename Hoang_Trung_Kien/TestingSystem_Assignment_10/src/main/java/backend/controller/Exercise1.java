@@ -1,7 +1,7 @@
-package backend;
+package backend.controller;
 
-import entity.Position;
-import entity.PositionRepository;
+import backend.entity.Position;
+import backend.repository.PositionRepository;
 
 import java.util.List;
 
