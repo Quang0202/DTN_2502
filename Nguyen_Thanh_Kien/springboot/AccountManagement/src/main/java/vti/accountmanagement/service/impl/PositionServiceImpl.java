@@ -4,8 +4,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import vti.accountmanagement.exception.CustomException;
+import vti.accountmanagement.exception.NotFoundException;
 import vti.accountmanagement.model.Position;
+import vti.accountmanagement.payload.PageResponse;
 import vti.accountmanagement.repository.PositionRepository;
 import vti.accountmanagement.response.dto.position.PositionListDto;
 import vti.accountmanagement.service.PositionService;
@@ -19,14 +20,8 @@ public class PositionServiceImpl implements PositionService {
     private final ObjectMapperUtils objectMapperUtils = new ObjectMapperUtils();
 
     @Override
-    public Page<PositionListDto>  getAll(Pageable pageable, String search) {
-        Page<Position> positions;
-        try{
-            positions = positionRepository.findAll(pageable,search);
-        } catch (Exception e){
-//            catch truong hop trong enum khong ton tai name hien co trong database
-            throw new CustomException(e.getMessage());
-        }
-        return objectMapperUtils.mapEntityPageIntoDtoPage(positions, PositionListDto.class);
+    public PageResponse<PositionListDto> getAll(Pageable pageable, String search) {
+        Page<Position> positions = positionRepository.findAll(pageable,search);
+        return new PageResponse<>(objectMapperUtils.mapEntityPageIntoDtoPage(positions, PositionListDto.class));
     }
 }

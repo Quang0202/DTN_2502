@@ -6,11 +6,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import vti.accountmanagement.enums.Role;
-import vti.accountmanagement.exception.CustomException;
+import vti.accountmanagement.exception.NotFoundException;
 import vti.accountmanagement.exception.DuplicateException;
 import vti.accountmanagement.model.Account;
 import vti.accountmanagement.model.Department;
 import vti.accountmanagement.model.Position;
+import vti.accountmanagement.payload.PageResponse;
 import vti.accountmanagement.repository.AccountRepository;
 import vti.accountmanagement.repository.DepartmentRepository;
 import vti.accountmanagement.repository.PositionRepository;
@@ -34,21 +35,21 @@ public class AccountServiceImpl implements AccountService {
     private static final String ACCOUNT_ID_NOT_EXISTS = "account.id.not.exists";
 
     @Override
-    public Page<AccountListDto> getAll(Pageable pageable, String search) {
+    public PageResponse<AccountListDto> getAll(Pageable pageable, String search) {
         objectMapperUtils.getModelMapper().typeMap(Account.class, AccountListDto.class)
                 .addMappings(m -> {
                     m.map(acc -> acc.getDepartment().getDepartmentName(), AccountListDto::setDepartmentName);
                     m.map(acc -> acc.getPosition().getPositionName(), AccountListDto::setPositionName);
                 });
         Page<Account> accounts = accountRepository.findAll(pageable, search);
-        return objectMapperUtils.mapEntityPageIntoDtoPage(accounts, AccountListDto.class);
+        return new PageResponse<>(objectMapperUtils.mapEntityPageIntoDtoPage(accounts, AccountListDto.class));
     }
 
     @Override
     public AccountInfoDto getAccountById(int id) {
         Account account = accountRepository.findById(id).orElse(null);
         if (account == null) {
-            throw new CustomException(MessageUtil.getMessage(ACCOUNT_ID_NOT_EXISTS));
+            throw new NotFoundException(MessageUtil.getMessage(ACCOUNT_ID_NOT_EXISTS));
         }
         objectMapperUtils.getModelMapper().typeMap(Account.class, AccountInfoDto.class)
                 .addMappings(m -> {
@@ -67,10 +68,10 @@ public class AccountServiceImpl implements AccountService {
             throw new DuplicateException(MessageUtil.getMessage("account.username.exists"));
         }
         if (!positionRepository.existsById(account.getPositionId())) {
-            throw new CustomException(MessageUtil.getMessage("position.id.not.exists"));
+            throw new NotFoundException(MessageUtil.getMessage("position.id.not.exists"));
         }
         if (!departmentRepository.existsById(account.getDepartmentId())) {
-            throw new CustomException(MessageUtil.getMessage("department.id.not.exists"));
+            throw new NotFoundException(MessageUtil.getMessage("department.id.not.exists"));
         }
         Account acc = objectMapperUtils.map(account, Account.class);
         acc.setDepartment(new Department(account.getDepartmentId()));
@@ -84,16 +85,16 @@ public class AccountServiceImpl implements AccountService {
     public void update(AccountUpdateRequest account) {
         Account acc = accountRepository.findById(account.getAccountId()).orElse(null);
         if (acc == null) {
-            throw new CustomException(MessageUtil.getMessage(ACCOUNT_ID_NOT_EXISTS));
+            throw new NotFoundException(MessageUtil.getMessage(ACCOUNT_ID_NOT_EXISTS));
         }
         if (accountRepository.existsAccountByEmailAndAccountIdNot(account.getEmail(), account.getAccountId())) {
             throw new DuplicateException(MessageUtil.getMessage("account.email.exists"));
         }
         if (!positionRepository.existsById(account.getPositionId())) {
-            throw new CustomException(MessageUtil.getMessage("position.id.not.exists"));
+            throw new NotFoundException(MessageUtil.getMessage("position.id.not.exists"));
         }
         if (!departmentRepository.existsById(account.getDepartmentId())) {
-            throw new CustomException(MessageUtil.getMessage("department.id.not.exists"));
+            throw new NotFoundException(MessageUtil.getMessage("department.id.not.exists"));
         }
         objectMapperUtils.getModelMapper().map(account, acc);
         acc.setPosition(new Position(account.getPositionId()));
@@ -105,7 +106,7 @@ public class AccountServiceImpl implements AccountService {
     public void delete(Integer id) {
         Account acc = accountRepository.findById(id).orElse(null);
         if (acc == null) {
-            throw new CustomException(MessageUtil.getMessage(ACCOUNT_ID_NOT_EXISTS));
+            throw new NotFoundException(MessageUtil.getMessage(ACCOUNT_ID_NOT_EXISTS));
         }
         accountRepository.delete(acc);
     }

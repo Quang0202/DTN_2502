@@ -6,10 +6,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import vti.accountmanagement.exception.CustomException;
+import vti.accountmanagement.exception.NotFoundException;
 import vti.accountmanagement.exception.DuplicateException;
 import vti.accountmanagement.model.Account;
 import vti.accountmanagement.model.Department;
+import vti.accountmanagement.payload.PageResponse;
 import vti.accountmanagement.repository.AccountRepository;
 import vti.accountmanagement.repository.DepartmentRepository;
 import vti.accountmanagement.request.department.DepartmentCreateRequest;
@@ -33,9 +34,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     private static final String DEPARTMENT_NAME_EXISTS = "department.name.exists";
 
     @Override
-    public Page<DepartmentListDto> getAll(Pageable pageable, String search) {
+    public PageResponse<DepartmentListDto> getAll(Pageable pageable, String search) {
         Page<Department> departments = departmentRepository.findAll(pageable, search);
-        return objectMapperUtils.mapEntityPageIntoDtoPage(departments, DepartmentListDto.class);
+        return new PageResponse<>(objectMapperUtils.mapEntityPageIntoDtoPage(departments, DepartmentListDto.class));
     }
 
     @Override
@@ -52,7 +53,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void update(DepartmentUpdateRequest department) {
         Department dep = departmentRepository.findById(department.getDepartmentId()).orElse(null);
         if (dep == null) {
-            throw new CustomException(MessageUtil.getMessage(DEPARTMENT_ID_NOT_EXISTS));
+            throw new NotFoundException(MessageUtil.getMessage(DEPARTMENT_ID_NOT_EXISTS));
         }
         if (departmentRepository.findByDepartmentNameAndDepartmentIdNot(department.getDepartmentName(), department.getDepartmentId()) == null) {
             dep = objectMapperUtils.map(department, Department.class);
@@ -67,11 +68,11 @@ public class DepartmentServiceImpl implements DepartmentService {
     public void delete(Integer id) {
         Department department = departmentRepository.findByDepartmentId(id);
         if (department == null) {
-            throw new CustomException(MessageUtil.getMessage(DEPARTMENT_ID_NOT_EXISTS));
+            throw new NotFoundException(MessageUtil.getMessage(DEPARTMENT_ID_NOT_EXISTS));
         }
         List<Account> accounts = accountRepository.findByDepartment_DepartmentId(id);
         if (accounts != null && !accounts.isEmpty()) {
-            throw new CustomException(MessageUtil.getMessage("department.id.exists.reference.key.account"));
+            throw new NotFoundException(MessageUtil.getMessage("department.id.exists.reference.key.account"));
         }
         departmentRepository.delete(department);
     }

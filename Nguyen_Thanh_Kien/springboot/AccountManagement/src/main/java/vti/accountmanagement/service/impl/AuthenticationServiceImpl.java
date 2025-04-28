@@ -1,6 +1,7 @@
 package vti.accountmanagement.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -11,6 +12,7 @@ import vti.accountmanagement.request.authenticate.AuthenticationRequest;
 import vti.accountmanagement.response.authenticate.AuthenticationResponse;
 import vti.accountmanagement.service.AuthenticationService;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
@@ -20,7 +22,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        Authentication authentication =  authenticationManager.authenticate(
+        log.debug("Authenticating user: {}", request.getUsername());
+        Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
                         request.getPassword()

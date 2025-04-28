@@ -9,7 +9,7 @@ import java.util.Locale;
 @Component
 public class MessageUtil { //NOSONAR
 
-    private static MessageSource messageSource;
+    public static MessageSource messageSource;
 
     public static String getMessage(String key) {
         return messageSource.getMessage(key, null, Locale.getDefault());
