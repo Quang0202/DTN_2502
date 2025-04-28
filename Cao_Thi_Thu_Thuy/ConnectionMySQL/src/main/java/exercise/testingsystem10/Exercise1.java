@@ -1,4 +1,4 @@
-package backend.testingsystem10;
+package exercise.testingsystem10;
 
 import entity.Position;
 import utils.JdbcUtils;

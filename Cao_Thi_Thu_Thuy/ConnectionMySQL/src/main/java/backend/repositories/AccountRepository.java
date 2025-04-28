@@ -1,27 +1,30 @@
-package repositories;
+package backend.repositories;
 
 import entity.Account;
 import entity.Department;
 import entity.Position;
 import utils.JdbcUtils;
 
-import javax.swing.text.Utilities;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class AccountRepository {
+public class AccountRepository implements IAccountRepository{
     private Connection connection;
-    private DepartmentRepository departmentRepository = new DepartmentRepository();
-    private PositionRepository positionRepository = new PositionRepository();
+    private DepartmentRepository departmentRepository;
+    private PositionRepository positionRepository;
 
     public AccountRepository(){
         connection = JdbcUtils.getConnection();
+        departmentRepository = new DepartmentRepository();
+        positionRepository = new PositionRepository();
     }
-    public List<Account> getAccounts(){
-        String sql = "Select * from Account";
+    public List<Account> getListAccounts(){
+        String sql = "select * from Account\n" +
+                "inner join Department using(DepartmentID)\n" +
+                "inner join Position using(PositionID);";
         List<Account> accounts = new ArrayList<>();
         try {
             Statement statement = connection.createStatement();
@@ -32,8 +35,8 @@ public class AccountRepository {
                 account.setEmail(resultSet.getString("Email"));
                 account.setUsername(resultSet.getString("Username"));
                 account.setFullName(resultSet.getString("FullName"));
-                account.setDepartment(departmentRepository.getDepartmentByID(resultSet.getInt("DepartmentID")));
-                account.setPosition(positionRepository.getPositionByID(resultSet.getInt("PositionID")));
+                account.setDepartment(new Department(resultSet.getInt("DepartmentID"), resultSet.getString("DepartmentName")));
+                account.setPosition(new Position(resultSet.getInt("PositionID"), resultSet.getString("PositionName")));
                 account.setCreateDate(resultSet.getDate("CreateDate") != null ? resultSet.getDate("CreateDate").toLocalDate() : null);
                 accounts.add(account);
             }
@@ -80,6 +83,28 @@ public class AccountRepository {
         }
         return false;
     }
+    @Override
+    public void createAccount(Account account){
+        String sql = "insert into Account (Email, Username, Fullname, DepartmentID, PositionID) values\n" +
+                "(?, ?, ?, ?, ?);";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(sql);){
+            preparedStatement.setString(1, account.getEmail());
+            preparedStatement.setString(2, account.getUsername());
+            preparedStatement.setString(3, account.getFullName());
+            preparedStatement.setInt(4, account.getDepartment().getDepartmentId());
+            preparedStatement.setInt(5, account.getPosition().getPositionId());
+            int result = preparedStatement.executeUpdate();
+            if (result > 0){
+                System.out.println("Tạo account thành công");
+            } else {
+                System.out.println("Tạo account thất bại");
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
     public void createAccount(){
         String sql = "insert into Account (Email, Username, Fullname, DepartmentID, PositionID) values\n" +
                 "(?, ?, ?, ?, ?);";
@@ -94,16 +119,20 @@ public class AccountRepository {
             account.setFullName(scanner.nextLine());
             System.out.print("Nhập department id: ");
             int departmentId = scanner.nextInt();
+            scanner.nextLine();
             while (departmentRepository.getDepartmentByID(departmentId) == null){
                 System.out.print("Department không tồn tại, nhập lại department id: ");
                 departmentId = scanner.nextInt();
+                scanner.nextLine();
             }
             account.setDepartment(departmentRepository.getDepartmentByID(departmentId));
             System.out.print("Nhập position id: ");
             int position_id = scanner.nextInt();
+            scanner.nextLine();
             while (positionRepository.getPositionByID(position_id) == null){
                 System.out.print("Position không tồn tại, nhập lại position id: ");
                 position_id = scanner.nextInt();
+                scanner.nextLine();
             }
             account.setPosition(positionRepository.getPositionByID(position_id));
             account.setCreateDate(LocalDate.now());
@@ -127,6 +156,60 @@ public class AccountRepository {
 
     }
 
+    @Override
+    public boolean isAccountExists(int id) {
+        String sql = "Select * from Account where AccountID = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql);){
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                return true;
+            }
+        } catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public void updateAccountByID(Account updatedAccount) {
+        String sql = "Update Account Set Username = ? Where AccountID = ?;";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql);){
+            preparedStatement.setString(1, updatedAccount.getUsername());
+            preparedStatement.setInt(2, updatedAccount.getAccountId());
+            int result = preparedStatement.executeUpdate();
+            if (result > 0){
+                System.out.println("Update success!");
+            } else {
+                System.out.println("Update fail!");
+            }
+        } catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
+    public void deleteAccount(int id) {
+        String sql = "Delete from Account WHERE (AccountID = ?);";
+        try(PreparedStatement preparedStatement = connection.prepareStatement(sql);){
+            Account account = getAccountByID(id);
+            if (account == null){
+                throw new Exception("Cannot find account which has id = " + id);
+            }
+            preparedStatement.setInt(1, account.getAccountId());
+            int result = preparedStatement.executeUpdate();
+            if (result > 0){
+                System.out.println("Delete account thành công");
+            } else {
+                System.out.println("Delete account thất bại");
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public void updateUsername(){
         String sql = "UPDATE Account SET Username = ? WHERE (AccountID = ?);";
         try(Scanner scanner = new Scanner(System.in);
@@ -135,7 +218,7 @@ public class AccountRepository {
             int id = scanner.nextInt();
             Account account = getAccountByID(id);
             if (account == null){
-               throw new Exception("Cannot find account which has id = " + id);
+                throw new Exception("Cannot find account which has id = " + id);
             }
             scanner.nextLine();
             System.out.print("Nhập username mới: ");
@@ -160,27 +243,19 @@ public class AccountRepository {
     }
 
     public void deleteAccountById(){
-        String sql = "Delete from Account WHERE (AccountID = ?);";
-        try(Scanner scanner = new Scanner(System.in);
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);){
+        try(Scanner scanner = new Scanner(System.in);){
             System.out.print("Nhập account id: ");
             int id = scanner.nextInt();
+            scanner.nextLine();
             Account account = getAccountByID(id);
             if (account == null){
                 throw new Exception("Cannot find account which has id = " + id);
             }
-            preparedStatement.setInt(1, account.getAccountId());
-            int result = preparedStatement.executeUpdate();
-            if (result > 0){
-                System.out.println("Delete account thành công");
-            } else {
-                System.out.println("Delete account thất bại");
-            }
+            deleteAccount(id);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (Exception e){
             e.printStackTrace();
         }
-
     }
 }

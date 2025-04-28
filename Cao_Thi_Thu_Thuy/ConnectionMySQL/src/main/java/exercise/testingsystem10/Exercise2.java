@@ -1,17 +1,18 @@
-package backend.testingsystem10;
+package exercise.testingsystem10;
 
+import backend.repositories.AccountRepository;
+import backend.repositories.DepartmentRepository;
 import entity.Account;
-import repositories.AccountRepository;
-import repositories.DepartmentRepository;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Exercise2 {
+
     public AccountRepository accountRepository = new AccountRepository();
     public DepartmentRepository departmentRepository = new DepartmentRepository();
     public void q1(){
-        List<Account> accounts = accountRepository.getAccounts();
+        List<Account> accounts = accountRepository.getListAccounts();
         for (Account a : accounts){
             System.out.println(a);
         }

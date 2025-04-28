@@ -21,13 +21,11 @@ public class JdbcUtils {
 
                 connection = DriverManager.getConnection(url, user, password);
                 System.out.println("Connect success!");
-                return connection;
             }
-            return connection;
         } catch (Exception e){
             System.out.println(e.getMessage());
-            return null;
         }
+        return connection;
     }
     public static void disconnect(){
         try {
