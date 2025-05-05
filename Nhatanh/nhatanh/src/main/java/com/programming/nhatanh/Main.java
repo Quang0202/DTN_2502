@@ -1,7 +1,6 @@
 package com.programming.nhatanh;
 
-import com.programming.nhatanh.lesson10.backend.DepartmentRepository;
-import com.programming.nhatanh.lesson10.backend.PositionRepository;
+import com.programming.nhatanh.lesson10.backend.repository.DepartmentRepository;
 
 import java.io.IOException;
 import java.sql.SQLException;
