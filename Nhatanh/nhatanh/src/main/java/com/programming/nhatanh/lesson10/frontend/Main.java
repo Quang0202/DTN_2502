@@ -16,10 +16,6 @@ public class Main {
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException, IOException {
 
-
-
-
-
         AccountRepository accountRepository = new AccountRepository();
         DepartmentRepository departmentRepository = new DepartmentRepository();
         PositionRepository positionRepository = new PositionRepository();

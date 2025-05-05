@@ -1,5 +1,8 @@
 package com.programming.nhatanh.lesson10.entity;
 
+import com.programming.nhatanh.entity.Department;
+import com.programming.nhatanh.entity.Position;
+
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -11,6 +14,8 @@ public class Account {
     private String fullName;
     private String departmentName;
     private Integer positionId;
+    private Department department;
+    private Position position;
     private LocalDate createDate;
     private Gender gender;
 
@@ -92,6 +97,22 @@ public class Account {
     public Account() {
     }
 
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -101,6 +122,8 @@ public class Account {
                 ", fullName='" + fullName + '\'' +
                 ", departmentName='" + departmentName + '\'' +
                 ", positionId=" + positionId +
+                ", department=" + department +
+                ", position=" + position +
                 ", createDate=" + createDate +
                 ", gender=" + gender +
                 '}';
