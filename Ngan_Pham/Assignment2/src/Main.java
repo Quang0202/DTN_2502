@@ -1,5 +1,6 @@
 import model.*;
 
+import java.sql.SQLOutput;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -281,13 +282,13 @@ public class Main {
 //        exe5Question7();
 //        exe5Question8();
 //        exe5Question9(accounts,groups);
-//        exe5Question10(accounts,groups);
+        exe5Question10(accounts,groups);
 //        exe5Question11(accounts,groups);
 
         //Exercise 6 (Optional): Method
 //        exe6Question1();
 //        exe6Question2(accounts);
-        exe6Question3();
+//        exe6Question3();
 
 
 
@@ -324,10 +325,12 @@ public class Main {
         }
     }
 
+
     //Question 3: Sử dụng toán tử ternary để làm Question 1
     public static void question3(Account account) {
         System.out.println(account.getDepartment() == null ? "Nhân viên này chưa có phòng ban" :"Phòng ban của nhân viên này là " + account.getDepartment().getDepartmentName());
     }
+
 
     //Question 4: Sử dụng toán tử ternary để làm yêu cầu sau: Kiểm tra Position của account thứ 1
     //Nếu Position = Dev thì in ra text "Đây là Developer"
@@ -339,6 +342,7 @@ public class Main {
             System.out.println("Người này không phải là Developer");
         }
     }
+
 
     //Question 5: Lấy ra số lượng account trong nhóm thứ 1 và in ra theo format sau:
     //Nếu số lượng account = 1 thì in ra "Nhóm có một thành viên"
@@ -421,6 +425,7 @@ public class Main {
         }
     }
 
+
     //Question 10: In ra thông tin các account bao gồm: Email, FullName và tên phòng ban của họ theo định dạng như sau:
     //Thông tin account thứ 1 là: Email: NguyenVanA@gmail.com Full name: Nguyễn Văn A Phòng ban: Sale
     //Thông tin account thứ 2 là: Email: NguyenVanB@gmail.com Full name: Nguyễn Văn B Phòng ban: Marketting
@@ -435,6 +440,7 @@ public class Main {
         }
     }
 
+
     //Question 11: In ra thông tin các phòng ban bao gồm: id và name theo định dạng sau:
     //Thông tin department thứ 1 là: Id: 1 Name: Sale
     //Thông tin department thứ 2 là: Id: 2 Name: Marketing
@@ -444,6 +450,7 @@ public class Main {
             System.out.println("Department Name: " + departments[i].getDepartmentName());
         }
     }
+
 
     //Question 12: Chỉ in ra thông tin 2 department đầu tiên theo định dạng như Question 10
     public static void question12(Department[] departments) {
@@ -456,6 +463,7 @@ public class Main {
             System.out.println("Department Name: " + departments[i].getDepartmentName());
         }
     }
+
 
     //Question 13:In ra thông tin tất cả các account ngoại trừ account thứ 2
     public static void question13(Account[] accounts) {
@@ -470,6 +478,7 @@ public class Main {
             }
         }
     }
+
 
     //Question 14:In ra thông tin tất cả các account có id < 4
     public static void question14(Account[] accounts) {
@@ -489,6 +498,7 @@ public class Main {
             System.out.println(i);
         }
     }
+
 
     //////////Exercise 2 (Optional): System out printf
 
@@ -535,7 +545,6 @@ public class Main {
     public static void exe3Question1(Exam exam) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", new Locale("vi","VN"));
         System.out.println(exam.getCreationDate().format(formatter));
-
     }
 
     //Question 2: In ra thông tin: Exam đã tạo ngày nào theo định dạng Năm – tháng – ngày – giờ – phút – giây
@@ -618,11 +627,17 @@ public class Main {
     public static Position createPosition() {
         Scanner scanner = new Scanner(System.in);
         Position position = new Position();
+
         System.out.println("Nhập vào id của Position ");
         int positionID = scanner.nextInt();
-        position.setPositionId(positionID);
+        scanner.nextLine(); // Ăn dòng trống
+
         System.out.println("Nhập vào positionName với: 1,Dev 2,Test, 3,Scrum Master 4, PM");
         int temp = scanner.nextInt();
+        scanner.nextLine(); // Ăn dòng trống
+
+        position.setPositionId(positionID);
+
         switch (temp) {
             case 1:
                 position.setPositionName("Dev");
@@ -636,6 +651,8 @@ public class Main {
             case 4:
                 position.setPositionName("PM");
                 break;
+            default:
+                position.setPositionName("Unknown");
         }
         return position;
     }
@@ -681,16 +698,21 @@ public class Main {
         Account account = new Account();
         System.out.println("Nhap id account: ");
         account.setAccountId(myObj.nextInt());
-        myObj.nextLine();
+        myObj.nextLine(); // Bắt buộc để "ăn" Enter dư
+
         System.out.println("Nhap username account: ");
         account.setUserName(myObj.nextLine());
+
         System.out.println("Nhap full name account: ");
         account.setFullName(myObj.nextLine());
+
         System.out.println("Nhap email account: ");
         account.setEmail(myObj.nextLine());
+
         System.out.println("Nhap position account: ");
         Position position = createPosition();
         account.setPosition(position);
+
         System.out.println("Account vừa tạo là");
         System.out.println(account);
     }
@@ -699,11 +721,14 @@ public class Main {
     public static void exe5Question6() {
         Scanner myObj = new Scanner(System.in);
         Department department = new Department();
+
         System.out.println("Nhap id department: ");
         department.setDepartmentId(myObj.nextInt());
         myObj.nextLine();
+
         System.out.println("Nhap name department: ");
         department.setDepartmentName(myObj.nextLine());
+
         System.out.println("Department vừa tạo là");
         System.out.println(department);
     }
@@ -722,6 +747,18 @@ public class Main {
                 myObj.nextLine();
             }
         }
+//        Scanner myObj = new Scanner(System.in);
+//        int number;
+//        while (true){
+//            System.out.println("Nhap vao so chan: ");
+//            number = myObj.nextInt();
+//            if( number % 2 == 0 ){
+//                break;
+//            } else {
+//                System.out.println("Đây không phải số chẵn. Vui lòng thử lại. ");
+//            }
+//        }
+//        System.out.println("Bạn đã nhập số chẵn:" + number);
 
     }
 

@@ -1,4 +1,4 @@
-package org.example.utils;
+ypackage org.example.utils;
 
 import java.io.FileInputStream;
 import java.sql.Connection;

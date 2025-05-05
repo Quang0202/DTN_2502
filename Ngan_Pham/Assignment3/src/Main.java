@@ -68,7 +68,7 @@ public class Main {
 //        exe2Question1();
 
         //Exercise 3(Optional): Boxing & Unboxing
-//        exe3Question1();
+        exe3Question1();
 //        exe3Question2();
 //        exe3Question3();
 
@@ -118,8 +118,10 @@ public class Main {
     //Question 2: Lấy ngẫu nhiên 1 số có 5 chữ số (những số dưới 5 chữ số thì sẽ thêm có số 0 ở đầu cho đủ 5 chữ số)
     public static void exe1Question2() {
         Random rand = new Random();
-        int num = rand.nextInt(99999);
-        System.out.printf("%05d", num);
+        int num = rand.nextInt(100000);
+        String formatted = String.format("%05d", num); // đảm bảo đủ 5 chữ số
+
+        System.out.println("Số 5 chữ số ngẫu nhiên: " + formatted);
     }
 
     //Question 3:Lấy 2 số cuối của số ở Question 2 và in ra.
@@ -128,19 +130,37 @@ public class Main {
     //Cách 2: chia lấy dư số đó cho 100
     public static void exe1Question3() {
         Random rand = new Random();
-        int num = rand.nextInt(99999);
-        System.out.printf("%02d\n", num%100);
+        int number = rand.nextInt(100000);
+        String formatted = String.format("%05d", number);
 
+        System.out.println("Số 5 chữ số ngẫu nhiên: " + formatted);
+
+        // Cách 1: dùng chuỗi
+        String lastTwoStr = formatted.substring(3);
+        System.out.println("2 số cuối (Cách 1 - String): " + lastTwoStr);
+
+        // Cách 2: dùng số học
+        int lastTwoInt = number % 100;
+        System.out.println("2 số cuối (Cách 2 - %): " + String.format("%02d", lastTwoInt));
     }
+
 
     //Question 4: Viết 1 method nhập vào 2 số nguyên a và b và trả về thương của chúng
     public static void exe1Question4() {
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Nhap so nguyen thu 1: ");
+        System.out.print("Nhập số nguyên thứ 1: ");
         int a = myObj.nextInt();
-        System.out.println("Nhap so nguyen thu 2: ");
-        int b = myObj.nextInt();
-        System.out.println((float) a / b);
+
+        int b;
+        while (true){
+            System.out.print("Nhập số nguyên thứ 2 (khác 0): ");
+            b = myObj.nextInt();
+            if(b !=0 ) break;
+            System.out.println( "Không được chia cho 0. Vui lòng nhập lại.");
+        }
+
+        float result = (float) a/b;
+        System.out.println("Thương của hai số là: " + result);
     }
 
     ///////Exercise 2 (Optional): Default value
@@ -158,6 +178,13 @@ public class Main {
             account.setFullName("Full name" + (i + 1));
             account.setCreateDate(LocalDate.now());
             accounts[i] = account;
+        }
+        for (Account acc : accounts) {
+            System.out.println("Email: " + acc.getEmail());
+            System.out.println("Username: " + acc.getUserName());
+            System.out.println("Full name: " + acc.getFullName());
+            System.out.println("Create date: " + acc.getCreateDate());
+            System.out.println("----------");
         }
     }
 
