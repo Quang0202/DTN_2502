@@ -2,17 +2,22 @@ package com.vti.frontend;
 
 import com.vti.entity.Employee;
 import com.vti.entity.Manager;
-import com.vti.entity.User;
 import com.vti.entity.Waiter;
 
 public class Pro6_2_3 {
     public static void main(String[] args) {
-        User emp = new Employee("Ethan", 1.2);
-        User man  = new Manager("Orm", 1.5);
-        User wai = new Waiter("Tho", 1.0);
+        Employee emp = new Employee("Nguyen", 2.5);
+        Manager mgr = new Manager("Orm", 3.5);
+        Waiter waiter = new Waiter("Ling", 2);
 
-        emp.displayInfo();
-        man.displayInfo();
-        wai.displayInfo();
+        System.out.println("== Thông tin nhân viên ==");
+        emp.displayInfor();
+
+        System.out.println("\n== Thông tin quản lý ==");
+        mgr.displayInfor();
+
+        System.out.println("\n== Thông tin phục vụ ==");
+        waiter.displayInfor();
+
     }
 }

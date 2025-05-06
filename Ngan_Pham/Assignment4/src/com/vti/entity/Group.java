@@ -40,6 +40,7 @@ public class Group {
     public void setCreateDate(LocalDate createDate) {
         this.createDate = createDate;
     }
+
     public Group() {
     }
     public Group(String groupName, Account creator, Account[] accounts, LocalDate createDate) {

@@ -15,6 +15,7 @@ public class Student {
     public void setDiem(float diem) {
         this.diem = diem;
     }
+
     public void congthemDiem(float themdiem){
         this.diem += themdiem;
     }

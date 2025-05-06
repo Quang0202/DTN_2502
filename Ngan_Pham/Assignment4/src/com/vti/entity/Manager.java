@@ -1,13 +1,13 @@
 package com.vti.entity;
 
 public class Manager  extends User{
-
-    public Manager(String name, double salaryRadio) {
-        super(name, salaryRadio);
+    public Manager(String name, double salaryRatio) {
+        super(name, salaryRatio);
     }
 
     @Override
-    public double getSalary() {
-        return salaryRadio * 520;
+    public double calculatePay() {
+        return getSalaryRatio() * 520;
     }
+
 }

@@ -29,6 +29,7 @@ public class QuanLySach {
         String nxb = sc.nextLine();
         System.out.print("Nhập số bản phát hành: ");
         int soBan = sc.nextInt();
+
         switch (loai) {
             case 1:
                 System.out.println("Nhập tên tác giả: ");

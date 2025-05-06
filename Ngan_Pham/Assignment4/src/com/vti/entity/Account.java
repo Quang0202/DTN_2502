@@ -60,12 +60,14 @@ public class Account {
 
     public Account(){
     }
+
     public Account(int accountID, String email, String username, String firstName, String lastName) {
         this.accountID = accountID;
         this.email = email;
         this.userName = username;
         this.fullName = firstName + " " + lastName;
     }
+
     public Account(int accountID, String email, String username, String firstName, String lastName, Position position) {
         this.accountID = accountID;
         this.email = email;
@@ -74,6 +76,7 @@ public class Account {
         this.position = position;
         this.createDate = LocalDate.now();
     }
+
     public Account(int accountID, String email, String username, String firstName, String lastName, LocalDate createDate, Position position) {
         this.accountID = accountID;
         this.email = email;

@@ -9,4 +9,5 @@ public class Excercise1 {
         System.out.println(department);
         System.out.println(department1);
     }
+
 }

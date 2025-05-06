@@ -83,6 +83,7 @@ public class QuanLyCanBo {
             System.out.println(" Đã thêm cán bộ thành công!");
         }
     }
+
     public void timKiemTheoTen(String ten){
         for (CanBo cb : danhSachCanBo) {
             if(cb.getHoTen().equalsIgnoreCase(ten)){

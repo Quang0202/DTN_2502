@@ -1,18 +1,36 @@
 package com.vti.entity;
 
 public abstract class User {
-    protected String name;
-    protected double salaryRadio;
+    private String name;
+    private double salaryRatio;
 
-    public User(String name, double salaryRadio) {
+    public User(String name, double salaryRatio) {
         this.name = name;
-        this.salaryRadio = salaryRadio;
+        this.salaryRatio = salaryRatio;
     }
-    public abstract double getSalary();
 
-    public void displayInfo() {
-        System.out.println("Name: " + name);
-        System.out.println("Salary Ratio: " + salaryRadio);
-        System.out.println("Salary: " + getSalary());
+    public String getName() {
+        return name;
+    }
+
+    public double getSalaryRatio() {
+        return salaryRatio;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSalaryRatio(double salaryRatio) {
+        this.salaryRatio = salaryRatio;
+    }
+
+    // abstract method
+    public abstract double calculatePay();
+
+    public void displayInfor() {
+        System.out.println("Tên: " + name);
+        System.out.println("Hệ số lương: " + salaryRatio);
+        System.out.println("Lương: " + calculatePay());
     }
 }

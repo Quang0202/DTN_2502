@@ -9,6 +9,7 @@ public class TapChi extends TaiLieu {
         this.soPhatHanh = soPhatHanh;
         this.thangPhatHanh = thangPhatHanh;
     }
+
     public int getSoPhatHanh() {
         return soPhatHanh;
     }
