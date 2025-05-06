@@ -3,18 +3,37 @@ package com.vti.entity;
 import java.util.Scanner;
 
 public class Person {
-    private String name;
-    private String gioiTinh;
-    private String ngaySinh;
-    private String diaChi;
-    public Person() {
+    protected String name;
+    protected String gender;
+    protected String birthDate;
+    protected String address;
+
+    public Person() {}
+
+    public Person(String name, String gender, String birthDate, String address) {
+        this.name = name;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.address = address;
     }
 
-    public Person(String name, String gioiTinh, String ngaySinh, String diaChi) {
-        this.name = name;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.diaChi = diaChi;
+    public void inputInfo(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập tên: ");
+        name = scanner.nextLine();
+        System.out.print("Nhập giới tính: ");
+        gender = scanner.nextLine();
+        System.out.print("Nhập ngày sinh: ");
+        birthDate = scanner.nextLine();
+        System.out.print("Nhập địa chỉ: ");
+        address = scanner.nextLine();
+    }
+
+    public void showInfo(){
+        System.out.println("Tên: " + name);
+        System.out.println("Giới tính: " + gender);
+        System.out.println("Ngày sinh: " + birthDate);
+        System.out.println("Địa chỉ: " + address);
     }
 
     public String getName() {
@@ -25,44 +44,37 @@ public class Person {
         this.name = name;
     }
 
-    public String getGioiTinh() {
-        return gioiTinh;
+    public String getAddress() {
+        return address;
     }
 
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getNgaySinh() {
-        return ngaySinh;
+    public String getBirthDate() {
+        return birthDate;
     }
 
-    public void setNgaySinh(String ngaySinh) {
-        this.ngaySinh = ngaySinh;
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
-    public String getDiaChi() {
-        return diaChi;
+    public String getGender() {
+        return gender;
     }
 
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
-    public void inputInfor(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Nhập tên: ");
-        name = sc.nextLine();
-        System.out.println("Nhập giới tính: ");
-        gioiTinh = sc.nextLine();
-        System.out.println("Nhập ngay sinh: ");
-        ngaySinh = sc.nextLine();
-        System.out.println("Nhâp dia chi: ");
-        diaChi = sc.nextLine();
-    }
-    public void showInfor(){
-        System.out.println("Tên: " + name);
-        System.out.println("Giới tính: " + gioiTinh);
-        System.out.println("Ngày sinh: " + ngaySinh);
-        System.out.println("Địa chỉ: " + diaChi);
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }

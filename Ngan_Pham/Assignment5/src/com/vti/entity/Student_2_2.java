@@ -3,62 +3,44 @@ package com.vti.entity;
 import java.util.Scanner;
 
 public class Student_2_2 extends Person {
-    private int maSinhVien;
-    private double diemTrungBinh;
+    private String studentId;
+    private double gpa;
     private String email;
+
     public Student_2_2() {
         super();
     }
 
-    public double getDiemTrungBinh() {
-        return diemTrungBinh;
-    }
-
-    public void setDiemTrungBinh(double diemTrungBinh) {
-        this.diemTrungBinh = diemTrungBinh;
-    }
-
-    public int getMaSinhVien() {
-        return maSinhVien;
-    }
-
-    public void setMaSinhVien(int maSinhVien) {
-        this.maSinhVien = maSinhVien;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
+    public Student_2_2(String name, String gender, String birthDate, String address, String studentId, double gpa, String email) {
+        super(name, gender, birthDate, address);
+        this.studentId = studentId;
+        this.gpa = gpa;
         this.email = email;
     }
 
-    public Student_2_2(String name, String gioiTinh, String ngaySinh, String diaChi, int maSinhVien, double diemTrungBinh, String email) {
-        super(name, gioiTinh, ngaySinh, diaChi);
-        this.maSinhVien = maSinhVien;
-        this.diemTrungBinh = diemTrungBinh;
-        this.email = email;
-    }
     @Override
-    public void inputInfor(){
-        super.inputInfor();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Nhập mã sinh viên: ");
-        maSinhVien = sc.nextInt();
-        System.out.println("Nhập điểm trung bình:");
-        diemTrungBinh = sc.nextDouble();
-        System.out.println("Nhập email: ");
-        email = sc.nextLine();
+    public void inputInfo() {
+        super.inputInfo();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập mã sinh viên: ");
+        studentId = scanner.nextLine();
+        System.out.print("Nhập điểm trung bình: ");
+        String inputGpa = scanner.nextLine().replace(",", ".");
+        gpa = Double.parseDouble(inputGpa);
+        System.out.print("Nhập email: ");
+        email = scanner.nextLine();
     }
+
     @Override
-    public void showInfor(){
-        super.showInfor();
-        System.out.println("Mã sinh viên: " + maSinhVien);
-        System.out.println("Điểm trung bình: " + diemTrungBinh);
+    public void showInfo() {
+        super.showInfo();
+        System.out.println("Mã sinh viên: " + studentId);
+        System.out.println("GPA: " + gpa);
         System.out.println("Email: " + email);
+        System.out.println("Học bổng: " + (isEligibleScholarship() ? "Có" : "Không"));
     }
-    public boolean hocBong(){
-        return diemTrungBinh > 8.0;
+
+    public boolean isEligibleScholarship() {
+        return gpa >= 8.0;
     }
 }

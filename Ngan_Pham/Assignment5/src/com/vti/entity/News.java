@@ -1,6 +1,5 @@
 package com.vti.entity;
 
-import java.util.StringJoiner;
 
 public class News implements INews {
     private int id;
@@ -11,16 +10,12 @@ public class News implements INews {
     private float averageRate;
     private int[] rates = new int[3];
 
-    public int[] getRates() {
-        return rates;
-    }
-
-    public void setRates(int[] rates) {
-        this.rates = rates;
-    }
-
     public int getId() {
         return id;
+    }
+
+    public float getAverageRate() {
+        return averageRate;
     }
 
     public void setId(int id) {
@@ -58,11 +53,16 @@ public class News implements INews {
     public void setContent(String content) {
         this.content = content;
     }
-    public float getAverageRate() {
-        return averageRate;
+
+    public int[] getRates() {
+        return rates;
     }
 
+    public void setRates(int[] rates) {
+        this.rates = rates;
+    }
 
+    // a) In thông tin
     @Override
     public void Display() {
         System.out.println("Title: " + title);
@@ -72,6 +72,7 @@ public class News implements INews {
         System.out.println("Average Rate: " + averageRate);
     }
 
+    // b) Tính trung bình đánh giá
     @Override
     public float Calculate() {
         int sum = 0;

@@ -1,7 +1,7 @@
 package com.vti.entity;
 
 public interface IStudent {
-    void diemdanh();
+    void diemDanh();
     void hocBai();
     void diDonVeSinh();
 }

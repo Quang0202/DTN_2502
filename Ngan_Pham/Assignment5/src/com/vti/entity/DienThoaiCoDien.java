@@ -1,28 +1,28 @@
 package com.vti.entity;
 
-public class DienThoaiCoDien extends Dienthoaididong implements VuKhi{
+public class DienThoaiCoDien extends DienThoaiDiDong implements VuKhi{
     @Override
     public void nghe() {
-        System.out.println("nghe bằng điện thoại cổ điển");
+        System.out.println("Điện thoại cổ điển: Đang nghe...");
     }
 
     @Override
     public void goi() {
-        System.out.println("Gọi bằng điện thoại cổ điển");
+        System.out.println("Điện thoại cổ điển: Đang gọi...");
     }
 
     @Override
     public void guiTinNhan() {
-        System.out.println("Gửi tin nhắn bằng điện thoại cổ điển");
+        System.out.println("Điện thoại cổ điển: Gửi tin nhắn");
     }
 
     @Override
     public void nhanTinNhan() {
-        System.out.println("Nhận tin nhắn bằng điện thoại cổ điển ");
+        System.out.println("Điện thoại cổ điển: Nhận tin nhắn");
     }
 
-    public void ngheRadio(){
-        System.out.println("ngheRadio");
+    public void ngheRadio() {
+        System.out.println("Điện thoại cổ điển: Đang nghe radio ");
     }
 
     @Override

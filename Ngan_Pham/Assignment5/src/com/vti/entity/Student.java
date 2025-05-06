@@ -36,17 +36,17 @@ public class Student implements IStudent{
     }
 
     @Override
-    public void diemdanh() {
-        System.out.println(name + "điểm danh");
+    public void diemDanh() {
+        System.out.println(name + " - điểm danh");
     }
 
     @Override
     public void hocBai() {
-        System.out.println(name + "đang học bài");
+        System.out.println(name + " - đang học bài");
     }
 
     @Override
     public void diDonVeSinh() {
-        System.out.println(name + "đang đi dọn vệ sinh");
+        System.out.println(name + " - đang đi dọn vệ sinh");
     }
 }

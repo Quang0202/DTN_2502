@@ -4,13 +4,16 @@ import com.vti.entity.MyMath;
 
 public class Pro2_4 {
     public static void main(String[] args) {
-        MyMath myMath = new MyMath();
-        int a = 5, b = 10;
-        float x = 5.5f, y = 3.3f;
-        byte m = 4, n = 7;
+        MyMath math = new MyMath();
 
-        System.out.println("Tổng int: " + myMath.sum(a, b));
-        System.out.println("Tổng float: " + myMath.sum(x, y));
-        System.out.println("Tổng byte: " + myMath.sum(m, n));
+        int a = 5, b = 10;
+        byte c = 2, d = 3;
+        float e = 1.5f, f = 2.5f;
+        double g = 6.4, h = 3.6;
+
+        System.out.println("Tổng int: " + math.sum(a, b));
+        System.out.println("Tổng byte: " + math.sum(c, d));
+        System.out.println("Tổng float: " + math.sum(e, f));
+        System.out.println("Tổng double: " + math.sum(g, h));
     }
 }

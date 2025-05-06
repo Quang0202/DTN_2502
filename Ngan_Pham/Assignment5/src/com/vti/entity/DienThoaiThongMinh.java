@@ -1,32 +1,34 @@
 package com.vti.entity;
 
-public class DienThoaiThongMinh extends Dienthoaididong implements VuKhi {
+public class DienThoaiThongMinh extends DienThoaiDiDong implements VuKhi {
     @Override
     public void nghe() {
-        System.out.println("nghe bằng điện thoại thông minh");
+        System.out.println("Smartphone: Đang nghe điện thoại...");
     }
 
     @Override
     public void goi() {
-        System.out.println("Gọi bằng điện thoại thông minh");
+        System.out.println("Smartphone: Đang gọi điện thoại...");
     }
 
     @Override
     public void guiTinNhan() {
-        System.out.println("Gửi tin nhắn bằng điện thoại thông minh");
+        System.out.println("Smartphone: Đang gửi tin nhắn...");
     }
 
     @Override
     public void nhanTinNhan() {
-        System.out.println("Nhận tin nhắn bằng điện thoại thông minh");
+        System.out.println("Smartphone: Đang nhận tin nhắn...");
     }
 
-    public void suDung3G(){
-        System.out.println("Su dung 3G");
+    public void suDung3G() {
+        System.out.println("Smartphone: Đang dùng 3G...");
     }
-    public void chupHinh(){
-        System.out.println("chup hinh");
+
+    public void chupHinh() {
+        System.out.println("Smartphone: Đang chụp hình...");
     }
+
     @Override
     public void tanCongKeXau() {
         System.out.println("điện thoại thông minh tanCongKeXau");
