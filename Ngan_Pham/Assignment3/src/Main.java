@@ -2,6 +2,7 @@ import model.Account;
 import model.Department;
 import model.Group;
 
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -68,7 +69,7 @@ public class Main {
 //        exe2Question1();
 
         //Exercise 3(Optional): Boxing & Unboxing
-        exe3Question1();
+//        exe3Question1();
 //        exe3Question2();
 //        exe3Question3();
 
@@ -98,7 +99,7 @@ public class Main {
 //        exe5Question5(department,department1);
 //        exe5Question5(department,department2);
 //        exe5Question6(departments);
-//        exe5Question7(departments);
+        exe5Question7(departments);
     }
 
 
@@ -212,31 +213,49 @@ public class Main {
     //Question 1: Nhập một xâu kí tự, đếm số lượng các từ trong xâu kí tự đó (các từ có thể cách nhau bằng nhiều khoảng trắng );
     public static void exe4Question1() {
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Nhap xau ky tu: ");
-        String val = myObj.nextLine();//nguyen  van a
-        val = val.trim();
-        String[] arrStr = val.split("\\s+");
-        System.out.println(arrStr.length);
+
+        System.out.println("Nhập một xâu ký tự: ");
+        String input = myObj.nextLine();
+
+        input = input.trim(); // loại bỏ khoảng trắng đầu & cuối
+
+        if(input.isEmpty()){
+            System.out.println("Số từ: 0");
+        } else {
+            String[] words = input.split("\\s+");
+            System.out.println("Số từ: " + words.length);
+        }
     }
 
     //Question 2: Nhập hai xâu kí tự s1, s2 nối xâu kí tự s2 vào sau xâu s1;
     public static void exe4Question2() {
         Scanner myObj = new Scanner(System.in);
+
         System.out.println("Nhap xau ky tu 1: ");
         String val1 = myObj.nextLine();
+
         System.out.println("Nhap xau ky tu 2: ");
         String val2 = myObj.nextLine();
+
         System.out.println(val1.concat(val2));
     }
 
     //Question 3: Viết chương trình để người dùng nhập vào tên và kiểm tra, nếu tên chư viết hoa chữ cái đầu thì viết hoa lên
     public static void exe4Question3() {
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Nhap ten: ");
-        String val1 = myObj.nextLine();
-        System.out.println(capFirstLetter(val1));
+
+        System.out.print("Nhập tên: ");
+        String name = myObj.nextLine().trim();
+
+        if (name.isEmpty()) {
+            System.out.println("Tên không được để trống.");
+            return;
+        }
+
+        System.out.println(capFirstLetter(name));
     }
 
+    // Viết hoa chữ cái đầu
     public static String capFirstLetter(String str) {
         return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
@@ -249,21 +268,26 @@ public class Main {
     //"Ký tự thứ 1 là: M"
     public static void exe4Question4() {
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Nhap ten: ");
-        String val1 = myObj.nextLine();
-        for (int i = 0; i < val1.length(); i++) {
-            System.out.println("Ký tự thứ " + (i + 1) + " là: " + String.valueOf(val1.charAt(i)).toUpperCase());// ("" + val1.charAt(i)).toUpperCase()
-//            System.out.println("Ký tự thứ " + (i + 1) + " là: " + (""+val1.charAt(i)).toUpperCase());
+
+        System.out.print("Nhập tên của bạn: ");
+        String name = myObj.nextLine().trim();
+
+        for (int i = 0; i < name.length(); i++) {
+            char ch = Character.toUpperCase(name.charAt(i)); // Viết hoa từng ký tự
+            System.out.println("Ký tự thứ " + (i + 1) + " là: " + ch);
         }
     }
 
     //Question 5: Viết chương trình để người dùng nhập vào họ, sau đó yêu cầu người dùng nhập vào tên và hệ thống sẽ in ra họ và tên đầy đủ
     public static void exe4Question5() {
         Scanner myObj = new Scanner(System.in);
+
         System.out.println("Nhap ho: ");
         String val1 = myObj.nextLine();
+
         System.out.println("Nhap ten: ");
         String val2 = myObj.nextLine();
+
         System.out.println(val1 + " " + val2);
     }
 
@@ -274,16 +298,30 @@ public class Main {
     //"Tên là: Nam"
     public static void exe4Question6() {
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Nhap ho ten: ");
-        String val1 = myObj.nextLine();
-        String[] temp = val1.split(" ");
-        System.out.println("Ho la: " + temp[0]);
-        String tempName = "";
-        for (int i = 1; i < temp.length - 1; i++) {
-            tempName += temp[i] + " ";
+
+        System.out.print("Nhập họ và tên đầy đủ: ");
+        String fullName =myObj.nextLine().trim();
+
+        String[] parts = fullName.split("\\s+");// tách theo khoảng trắng
+
+        if (parts.length < 2) {
+            System.out.println("Vui lòng nhập đầy đủ Họ và Tên (ít nhất 2 từ).");
+            return;
         }
-        System.out.println("Ten dem la: " + tempName.trim());
-        System.out.println("Ten la: " + temp[temp.length - 1]);
+
+        String ho = parts[0];
+        String ten = parts[parts.length - 1];
+
+        StringBuilder tenDem = new StringBuilder();
+        for (int i = 0; i < parts.length - 1; i++) {
+            tenDem.append(parts[i]);
+            if (i < parts.length - 2) tenDem.append(" ");
+        }
+
+        System.out.println("Họ là: " + ho);
+        System.out.println("Tên đệm là: " + tenDem);
+        System.out.println("Tên là: " + ten);
+
     }
 
     //Question 7: Viết chương trình yêu cầu người dùng nhập vào họ và tên đầy đủ và chuẩn hóa họ và tên của họ như sau:
@@ -293,33 +331,39 @@ public class Main {
     //VD: Nếu người dùng nhập vào " nguyễn văn nam " thì sẽ chuẩn hóa thành "Nguyễn Văn Nam"
     public static void exe4Question7() {
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Nhap ho ten: ");
-        String str = myObj.nextLine();
-        str = str.trim();
-        str = str.replaceAll("\\s+", " ");
 
-        String[] arrStr = str.split(" ");
-        String result = "";
-        for (String s : arrStr) {
-            result += capFirstLetter(s) + " ";
+        System.out.print("Nhập họ và tên đầy đủ: ");
+        String fullName =myObj.nextLine().trim();
+
+        // Tách chuỗi bằng khoảng trắng (nhiều dấu cách vẫn được)
+        String[] parts = fullName.split("\\s+");
+
+        StringBuilder normalized = new StringBuilder();
+        for( String part : parts) {
+            if(!part.isEmpty()) {
+                String capitalized = part.substring(0, 1).toUpperCase() + part.substring(1).toLowerCase();
+                normalized.append(capitalized).append(" ");
+            }
         }
-        System.out.println(result.trim());
+        System.out.println("Họ và tên sau khi chuẩn hóa: " + normalized.toString().trim());
     }
 
     //Question 8: In ra tất cả các group có chứa chữ "Java"
     public static void exe4Question8(Group[] groups) {
+        System.out.println("Các group chứa 'Java':");
         for (Group group : groups) {
-            if (group.getGroupName().contains("Java")) {
-                System.out.println(group);
+            if (group.getGroupName().toLowerCase().contains("java")) {
+                System.out.println("- " + group.getGroupName());
             }
         }
     }
 
     //Question 9: In ra tất cả các group "Java"
     public static void exe4Question9(Group[] groups) {
+        System.out.println("Các group tên chính xác là 'Java':");
         for (Group group : groups) {
-            if (group.getGroupName().equals("Java")) {
-                System.out.println(group);
+            if (group.getGroupName().equalsIgnoreCase("Java")) {
+                System.out.println("- " + group.getGroupName());
             }
         }
     }
@@ -327,15 +371,18 @@ public class Main {
     //Question 10 (Optional): Kiểm tra 2 chuỗi có là đảo ngược của nhau hay không. Nếu có xuất ra “OK” ngược lại “KO”.
     //Ví dụ “word” và “drow” là 2 chuỗi đảo ngược nhau.
     public static void exe4Question10() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Nhap chuoi 1: ");
-        String chuoi1 = myObj.nextLine();
-        System.out.println("Nhap chuoi 2: ");
-        String chuoi2 = myObj.next();
+        Scanner scanner = new Scanner(System.in);
 
-        StringBuilder stringBuilder = new StringBuilder(chuoi1);
-        String temp = stringBuilder.reverse().toString();
-        if (chuoi2.equals(temp)) {
+        System.out.print("Nhập chuỗi thứ nhất: ");
+        String s1 = scanner.nextLine().trim();
+
+        System.out.print("Nhập chuỗi thứ hai: ");
+        String s2 = scanner.nextLine().trim();
+
+        // Đảo ngược chuỗi thứ nhất
+        String reversed = new StringBuilder(s1).reverse().toString();
+
+        if (reversed.equals(s2)) {
             System.out.println("OK");
         } else {
             System.out.println("KO");
@@ -344,23 +391,32 @@ public class Main {
 
     //Question 11 (Optional): Count special Character Tìm số lần xuất hiện ký tự "a" trong chuỗi
     public static void exe4Question11() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Nhap chuoi: ");
-        String chuoi = myObj.nextLine();
+        Scanner scanner = new Scanner(System.in);
 
-        chuoi = chuoi.replaceAll("[^a]", "");
-        System.out.println(chuoi);
-        System.out.println(chuoi.length());
-        // cách khac sử dụng filter
-//        long count = chuoi.chars().filter(ch -> ch == 'a').count();
+        System.out.print("Nhập chuỗi: ");
+        String input = scanner.nextLine().trim();
+
+        int count = 0;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == 'a') {
+                count++;
+            }
+        }
+        System.out.println("Số lần xuất hiện của ký tự 'a': " + count);
     }
 
     //Question 12 (Optional): Reverse String Đảo ngược chuỗi sử dụng vòng lặp
     public static void exe4Question12() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Nhap chuoi: ");
-        String chuoi = myObj.nextLine();
-        System.out.println(new StringBuilder(chuoi).reverse().toString());
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nhập chuỗi: ");
+        String input = scanner.nextLine().trim();
+
+        StringBuilder reversed = new StringBuilder();
+        for (int i = input.length() - 1; i >= 0; i--) {
+            reversed.append(input.charAt(i));
+        }
+        System.out.println("Chuỗi sau khi đảo ngược: " + reversed);
     }
 
     //Question 13 (Optional): String not contains digit
@@ -370,23 +426,32 @@ public class Main {
     //"1abc", "abc1", "123", "a1bc", null => false
     public static void exe4Question13() {
         Scanner myObj = new Scanner(System.in);
+
         System.out.println("Nhap chuoi: ");
         String chuoi = myObj.nextLine();
+
         System.out.println(!chuoi.matches(".*\\d.*"));
+
     }
 
     //Question 14 (Optional): Replace character Cho một chuỗi str, chuyển các ký tự được chỉ định sang một ký tự khác cho trước.
     //Ví dụ:
     //"VTI Academy" chuyển ký tự 'e' sang '*' kết quả " VTI Acad*my"
     public static void exe4Question14() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Nhap chuoi: ");
-        String chuoi = myObj.nextLine();
-        System.out.println("Nhap ky tu chi dinh: ");
-        String kyTuChiDinh = myObj.nextLine();
-        System.out.println("Nhap ky tu muon chuyen: ");
-        String kyTuMuonChuyen = myObj.nextLine();
-        System.out.println(chuoi.replaceAll(kyTuChiDinh, kyTuMuonChuyen));
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nhập chuỗi: ");
+        String str = scanner.nextLine();
+
+        System.out.print("Ký tự cần thay thế: ");
+        char oldChar = scanner.nextLine().charAt(0);
+
+        System.out.print("Ký tự thay vào: ");
+        char newChar = scanner.nextLine().charAt(0);
+
+        String replaced = str.replace(oldChar, newChar);
+
+        System.out.println("Chuỗi sau khi thay: " + replaced);
     }
 
     //Question 15 (Optional): Revert string by word
@@ -403,22 +468,42 @@ public class Main {
         Collections.reverse(Arrays.asList(temp));
         System.out.println(String.join(" ", temp));
 
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.print("Nhập chuỗi: ");
+//        String input = scanner.nextLine().trim();
+//
+//        String[] words = input.split("\\s+");
+//
+//        StringBuilder result = new StringBuilder();
+//        for (int i = words.length - 1; i >= 0; i--) {
+//            result.append(words[i]);
+//            if (i > 0) {
+//                result.append(" ");
+//            }
+//        }
+//        System.out.println("Chuỗi sau khi đảo ngược: " + result.toString());
+
     }
 
     //Question 16 (Optional):Cho một chuỗi str và số nguyên n >= 0. Chia chuỗi str ra làm các phần
     //bằng nhau với n ký tự. Nếu chuỗi không chia được thì xuất ra màn hình “KO”.
     public static void exe4Question16() {
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Nhap chuoi: ");
-        String chuoi = myObj.nextLine();
-        System.out.println("Nhap so nguyen n: ");
-        int n = myObj.nextInt();
-        if (chuoi.length() % n != 0) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nhập chuỗi: ");
+        String str = scanner.nextLine();
+
+        System.out.print("Nhập số nguyên n: ");
+        int n = scanner.nextInt();
+
+        if( n <= 0 || str.length() % n !=0 ) {
             System.out.println("KO");
         } else {
-            for (int i = 0; i < chuoi.length(); i += n) {
-                String result = chuoi.substring(i, i + n);
-                System.out.println(result);
+            System.out.println("Các phần chia:");
+            for (int i = 0; i < str.length(); i+=n) {
+                String part = str.substring(i, i + n);
+                System.out.println(part);
             }
         }
     }
@@ -460,12 +545,11 @@ public class Main {
     //Sale
     //Waiting room
     public static void exe5Question6(Department[] departments) {
-        Arrays.sort(departments, new Comparator<Department>() {
-            @Override
-            public int compare(Department o1, Department o2) {
-                return o1.getDepartmentName().compareTo(o2.getDepartmentName());
-            }
-        });
+        Arrays.sort(departments, (d1, d2) -> d1.getDepartmentName().compareToIgnoreCase(d2.getDepartmentName()));
+        System.out.println("Danh sách phòng ban (sắp xếp A-Z):");
+        for (Department dept : departments) {
+            System.out.println("- " + dept.getDepartmentName());
+        }
     }
 
     //Question 7: Khởi tạo 1 array học sinh gồm 5 Phòng ban, sau đó in ra danh sách phòng ban được sắp xếp theo tên
@@ -480,6 +564,7 @@ public class Main {
 //        for (Department department : departments) {
 //            System.out.println(department.toString());
 //        }
+
         Arrays.sort(departments, new Comparator<Department>() {
             @Override
             public int compare(Department o1, Department o2) {
