@@ -6,7 +6,9 @@ import java.util.Scanner;
 
 public class Account {
     private int id;
-    private String name;
+    private int age;
+    private String userName;
+    private String fullName;
     private static Scanner scanner = new Scanner(System.in);
 
     public static int inputAge() throws InvalidAgeInputingException {
@@ -26,30 +28,36 @@ public class Account {
         }
     }
 
-    public int inputAccountAge() {
+    public void inputAccountAge() {
         while (true) {
             try {
-                int age = inputAge();
-                if (age < 18) {
+                System.out.print("Nhập tuổi: ");
+                int input = ScannerUtils.inputInt("Tuổi phải là số nguyên.");
+
+                if (input <= 0) {
+                    throw new InvalidAgeInputingException("The age must be greater than 0");
+                } else if (input < 18) {
                     System.out.println("Your age must be greater than 18");
-                    continue;
+                } else {
+                    this.age = input;
+                    break;
                 }
-                return age;
+
             } catch (InvalidAgeInputingException e) {
-                System.out.println(e.getMessage());
+                System.out.println("Lỗi: " + e.getMessage());
             }
         }
     }
 
     public Account() {
-        System.out.println("Khởi tạo Account:");
-        System.out.println("Nhap id Account: ");
-        id = ScannerUtils.inputInt("ID phải là số nguyên. Nhập lại:");
-        System.out.println("Nhap name Account: ");
-        name = ScannerUtils.inputString("Tên không được để trống. Nhập lại:");
+        System.out.println("=== Nhập thông tin Account ===");
+        this.id = ScannerUtils.inputInt("ID phải là số nguyên. Nhập lại:");
+        this.userName = ScannerUtils.inputString("Username không được để trống. Nhập lại:");
+        this.fullName = ScannerUtils.inputString("Full name không được để trống. Nhập lại:");
     }
 
+    @Override
     public String toString() {
-        return "Account: ID=" + id + ", Name=" + name;
+        return "Account { ID=" + id + ", Username='" + userName + "', FullName='" + fullName + "' }";
     }
 }

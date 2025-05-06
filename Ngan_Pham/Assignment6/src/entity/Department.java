@@ -7,13 +7,13 @@ public class Department {
     private String name;
 
     public Department() {
-        System.out.println("Nhap id Department: ");
-        id = ScannerUtils.inputInt("ID phải là số nguyên. Nhập lại:");
-        System.out.println("Nhap name Department: ");
-        name = ScannerUtils.inputString("Tên không được để trống. Nhập lại:");
+        System.out.println("=== Nhập thông tin Department ===");
+        this.id = ScannerUtils.inputInt("ID phải là số nguyên. Nhập lại:");
+        this.name = ScannerUtils.inputString("Tên không được để trống. Nhập lại:");
     }
 
+    @Override
     public String toString() {
-        return "Department: ID=" + id + ", Name=" + name;
+        return "Department { ID=" + id + ", Name='" + name + "' }";
     }
 }

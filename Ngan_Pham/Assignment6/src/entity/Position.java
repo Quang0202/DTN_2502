@@ -7,13 +7,13 @@ public class Position {
     private String name;
 
     public Position() {
-        System.out.println("Nhap id Position: ");
-        id = ScannerUtils.inputInt("ID phải là số nguyên. Nhập lại:");
-        System.out.println("Nhap name Position: ");
-        name = ScannerUtils.inputString("Tên không được để trống. Nhập lại:");
+        System.out.println("=== Nhập thông tin Position ===");
+        this.id = ScannerUtils.inputInt("ID phải là số nguyên. Nhập lại:");
+        this.name = ScannerUtils.inputString("Tên chức vụ không được để trống. Nhập lại:");
     }
 
+    @Override
     public String toString() {
-        return "Position: ID=" + id + ", Name=" + name;
+        return "Position { ID=" + id + ", Name='" + name + "' }";
     }
 }
