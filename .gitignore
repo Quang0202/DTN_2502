@@ -1,53 +1,29 @@
-# Biên dịch Java
-*.class
-*.jar
-*.war
-*.ear
+**/target/
+**/build/
 
-# Log files
-*.log
-*.out
-hs_err_pid*
-
-# Tệp cài đặt IDE
 **/.idea/
-/*.iml
-/*.ipr
-/*.iws
+**/*.iml
 
-# Maven
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
+**/.project
+**/.classpath
+**/.settings/
 
-# Gradle
+**/.mvn/
+**/target/
+
 **/.gradle/
 **/build/
-gradle-app.setting
-!gradle-wrapper.jar
 
-# Eclipse
-.project
-.classpath
-.settings/
-
-# NetBeans
-/nbproject/private/
-/build/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-# VS Code
-.vscode/
-
-# Các file hệ thống
 **/.DS_Store
+
 **/Thumbs.db
-.idea
+**/ehthumbs.db
+
+**/.vscode/
+*.swp
+
+*.log
+
+*.bak
+*.tmp
+*.swp
