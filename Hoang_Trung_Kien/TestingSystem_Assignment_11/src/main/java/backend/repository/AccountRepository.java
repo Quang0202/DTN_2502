@@ -80,4 +80,67 @@ public class AccountRepository implements IAccountRepository{
         }
     }
 
+    public boolean isAccountExists(String username) {
+        String sql = "SELECT * FROM `Account`\n" +
+                "WHERE username = ?\n" +
+                "LIMIT 1;";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean isAccountExists(int id) {
+        Account account = getAccountById(id);
+        return account != null;
+//        String sql = "SELECT * FROM `Account`\n" +
+//                "WHERE accountId = ?\n" +
+//                "LIMIT 1;";
+//        try {
+//            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+//            preparedStatement.setInt(1, id);
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            if (resultSet.next()) {
+//                return true;
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return false;
+    }
+
+    public void updateAccountById(int id, String username) {
+        String sql = "UPDATE `Account`\n" +
+                "SET username = ?\n" +
+                "WHERE accountId = ?;";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            preparedStatement.setInt(2, id);
+            preparedStatement.executeUpdate();
+            System.out.println("Update success!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteAccount(int id) {
+        String sql = "DELETE FROM `Account`\n" +
+                "WHERE accountId = ?;";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+            System.out.println("Delete success!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

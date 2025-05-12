@@ -56,10 +56,11 @@ public class ScannerUtils {
         while (true) {
             if (scanner.hasNextLine()) {
                 String e = scanner.nextLine();
-                if (e.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+")) {
+                if (e.matches("^[A-Za-z0-9]+@[A-Za-z0-9.-]+$")) {
+                    System.out.println("Email hop le");
                     return e;
                 } else {
-                    System.out.println("Vui long nhap email hop le.");
+                    System.out.println("Email khong hop le. Vui long nhap lai.");
                 }
             }
         }
