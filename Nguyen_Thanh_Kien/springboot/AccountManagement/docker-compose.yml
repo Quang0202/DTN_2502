@@ -1,0 +1,39 @@
+name: docker-account-management
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile.jenkins
+    image: karobest10/jenkins-dark
+    container_name: jenkins-dark
+    user: root
+    privileged: true
+    ports:
+      - "8081:8080"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Xms1024m -Xmx4096m
+    depends_on:
+      - sonarqube
+
+  sonarqube:
+    image: karobest10/sonarqube
+    build:
+      context: .
+      dockerfile: Dockerfile.sonarqube
+    container_name: sonarqube
+    ports:
+      - "9000:9000"
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+
+volumes:
+  jenkins_home:
+    external: true
+  sonarqube_data:
+  sonarqube_extensions:

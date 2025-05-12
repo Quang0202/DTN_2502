@@ -1,0 +1,59 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven_3.9'
+    }
+
+    environment {
+        JAVA_HOME = '/usr/local/openjdk-17'
+        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Quang0202/DTN_2502.git'
+            }
+        }
+
+        // ✅ Bổ sung chạy test JUnit
+        stage('Unit Test') {
+            steps {
+                echo '🧪 Running unit tests...'
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    echo '📝 Publishing JUnit test results...'
+                    junit '**/target/surefire-reports/*.xml'
+                }
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo '🐳 Building Docker image...'
+                sh 'docker build -t karobest10/account-management:latest .'
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                echo '📤 Pushing Docker image...'
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                    sh 'docker push karobest10/account-management:latest'
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo '🚀 Deploying with Docker Compose...'
+                sh 'docker compose down || true'
+                sh 'docker compose up -d'
+            }
+        }
+    }
+}
