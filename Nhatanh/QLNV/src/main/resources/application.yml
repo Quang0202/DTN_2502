@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: QLNV
+  datasource:
+    url: "jdbc:mysql://localhost:3306/testingsystem"
+    username: root
+    password: 178555
