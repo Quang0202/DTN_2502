@@ -3,16 +3,20 @@ package com.vti.demo.entity;
 import jakarta.persistence.*;
 
 @Entity
+
 public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private int departmentId;
+
+    private int departmentID;
+
+
     private String departmentName;
 
-    public Department(int departmentId, String departmentName) {
-        this.departmentId = departmentId;
+    public Department(int departmentID, String departmentName) {
+        this.departmentID = departmentID;
         this.departmentName = departmentName;
     }
     public Department() {
@@ -20,11 +24,11 @@ public class Department {
     }
 
     public int getDepartmentId() {
-        return departmentId;
+        return departmentID;
     }
 
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartmentId(int departmentID) {
+        this.departmentID = departmentID;
     }
 
     public String getDepartmentName() {
@@ -38,7 +42,7 @@ public class Department {
     @Override
     public String toString() {
         return "Department{" +
-                "departmentId=" + departmentId +
+                "departmentId=" + departmentID +
                 ", departmentName='" + departmentName + '\'' +
                 '}';
     }
