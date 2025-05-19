@@ -1,0 +1,78 @@
+🧠 5 nguyên lý Solid
+
+👉 S – Single Responsibility Principle (Nguyên lý trách nhiệm đơn) :
+- @Controller xử lý HTTP requests
+
+- @Service xử lý logic nghiệp vụ
+
+- @Repository xử lý giao tiếp với database
+
+👉 O – Open/Closed Principle (Nguyên lý mở rộng - đóng gói)
+- "Các lớp nên mở rộng được, nhưng không sửa đổi mã gốc."
+
+👉 L – Liskov Substitution Principle (Nguyên lý thay thế Liskov)
+
+- Khi bạn tạo các dịch vụ kế thừa một interface, chúng nên giữ đúng hợp đồng (contract) đã cam kết.
+
+👉 I – Interface Segregation Principle (Nguyên lý phân tách giao diện)
+
+ Tách nhỏ các service interface, mỗi interface phục vụ một mục đích.
+
+👉 D – Dependency Inversion Principle (Nguyên lý đảo ngược sự phụ thuộc)
+ Spring hỗ trợ rất tốt qua @Autowired và container IoC (Inversion of Control).
+
+ ✅ Kết luận:
+ Việc áp dụng SOLID trong Spring Boot giúp:
+
+ Tăng khả năng mở rộng hệ thống
+
+ Giảm sự phụ thuộc cứng giữa các lớp
+
+ Viết mã sạch, dễ test, dễ bảo trì
+
+
+ ===================================================================================================================
+
+ 🧠trình bày hiểu biết về DI và IoC.
+
+✅ 1. IoC – Inversion of Control (Đảo ngược điều khiển)
+
+🧠 Khái niệm:
+IoC là nguyên lý thiết kế trong đó quyền kiểm soát việc tạo và quản lý đối tượng được chuyển từ chính đối tượng sang một framework hoặc container.
+
+📌 Giải thích đơn giản:
+Thay vì chính chúng ta (developer) tạo đối tượng và quản lý luồng chương trình, thì Spring (hoặc framework khác) sẽ làm điều đó giúp ta.
+
+🔄 "Bạn không điều khiển luồng chương trình nữa – Spring làm thay bạn."
+
+🔧 Trong Spring:
+Spring sử dụng IoC Container để tạo, cấu hình, và quản lý vòng đời của các bean (đối tượng). Khi chương trình chạy, container chịu trách nhiệm tự động tạo ra các đối tượng mà bạn cần.
+
+✅ 2. DI – Dependency Injection (Tiêm phụ thuộc)
+🧠 Khái niệm:
+DI là kỹ thuật mà Spring tự động cung cấp (inject) các phụ thuộc (dependency) vào một class thay vì để class đó tự tạo ra.
+
+🔌 “Phụ thuộc” là những đối tượng mà một class cần để hoạt động.
+
+📌 Có 3 kiểu DI chính trong Spring:
+Constructor Injection – tiêm qua constructor (phổ biến và khuyến khích)
+
+Setter Injection – tiêm qua setter
+
+Field Injection – tiêm trực tiếp vào biến (nhưng hạn chế dùng trong unit test)
+
+🔄 Mối liên hệ giữa IoC và DI:
+IoC là nguyên lý tổng quát, còn DI là cách hiện thực (implementation) nguyên lý đó.
+
+Spring áp dụng IoC thông qua cơ chế Dependency Injection.
+
+✅ Lợi ích của DI & IoC trong Spring Boot:
+Giảm phụ thuộc cứng giữa các lớp → dễ bảo trì, dễ mở rộng
+
+Tăng khả năng tái sử dụng và dễ dàng kiểm thử (test)
+
+Tối ưu hóa cấu trúc hệ thống theo nguyên lý SOLID
+
+Giúp bạn tập trung vào logic nghiệp vụ, để Spring lo việc khởi tạo và liên kết
+
+
