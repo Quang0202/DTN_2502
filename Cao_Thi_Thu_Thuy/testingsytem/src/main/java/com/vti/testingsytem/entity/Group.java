@@ -1,6 +1,7 @@
 package com.vti.testingsytem.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -12,11 +13,16 @@ public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int groupId;
+
+    @Column(nullable = false, unique = true)
     private String groupName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "creatorId")
     private Account createAccount;
+
+    @Column(updatable = false)
+    @CreationTimestamp
     private LocalDate createDate;
 
     @ManyToMany(fetch = FetchType.LAZY)

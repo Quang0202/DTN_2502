@@ -11,6 +11,8 @@ public class Department {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "departmentId", columnDefinition = "TINYINT UNSIGNED")
     private int departmentId;
+
+    @Column(nullable = false, unique = true)
     private String departmentName;
 
     @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)

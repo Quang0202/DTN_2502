@@ -10,6 +10,8 @@ public class CategoryQuestion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "categoryId", columnDefinition = "TINYINT UNSIGNED")
     private int categoryId;
+
+    @Column(nullable = false, unique = true)
     private String categoryName;
 
     @OneToMany(mappedBy = "categoryQuestion", fetch = FetchType.LAZY)

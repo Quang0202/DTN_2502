@@ -1,5 +1,6 @@
 package com.vti.testingsytem.entity;
 
+import com.vti.testingsytem.converter.TypeNameConverter;
 import jakarta.persistence.*;
 
 import java.util.Set;
@@ -11,6 +12,9 @@ public class TypeQuestion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "typeId", columnDefinition = "TINYINT UNSIGNED")
     private int typeId;
+
+    @Column(nullable = false, unique = true)
+    @Convert(converter = TypeNameConverter.class)
     private ETypeName typeName;
 
     @OneToMany(mappedBy = "typeQuestion", fetch = FetchType.LAZY)
