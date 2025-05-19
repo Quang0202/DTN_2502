@@ -1,8 +1,12 @@
 package com.vti.helloworld.service;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.WebApplicationContext;
 
 @Service
+@Scope(value = WebApplicationContext.SCOPE_APPLICATION)
 public class HelloWorldService implements IHelloWorldService{
 
     @Override

@@ -1,17 +1,23 @@
 package com.vti.helloworld.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Formula;
 
 @Entity
+@Table(name = "Department")
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int departmentId;
 
+    @Column(name = "departmentName",nullable = false, length = 50, unique = true)
+    @ColumnDefault("sale")
     private String departmentName;
+
+    @Formula("Concat(departmentName ,' ', 'abc')")
+    private String demoFormula;
+
 
     public Department(int departmentId, String departmentName) {
         this.departmentId = departmentId;
@@ -20,6 +26,14 @@ public class Department {
 
     public Department(){
 
+    }
+
+    public String getDemoFormula() {
+        return demoFormula;
+    }
+
+    public void setDemoFormula(String demoFormula) {
+        this.demoFormula = demoFormula;
     }
 
     public int getDepartmentId() {
