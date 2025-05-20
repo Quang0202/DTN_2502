@@ -2,9 +2,13 @@ package com.vti.helloworld.repository;
 
 import com.vti.helloworld.entity.Department;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
+import java.util.Objects;
 
 public interface IDepartmentRepository extends JpaRepository<Department,Integer> {
     Department findByDepartmentName(String departmentName);
@@ -14,6 +18,19 @@ public interface IDepartmentRepository extends JpaRepository<Department,Integer>
 
     @Query("SELECT a FROM Department a WHERE a.departmentName = :departmentName")
     Department findByDepartmentName2(@Param("departmentName") String departmentName);
+
+    // Thống kê mỗi phòng ban có bao nhiêu nhân viên.
+    @Query("""
+            SELECT d AS department, COUNT(a.accountId) AS SL  FROM Department d
+            LEFT JOIN d.accounts a 
+            GROUP BY d.departmentId
+            ORDER BY SL DESC
+            """)
+    List<Object> getDepartmentCountAccount();
+
+    @Modifying
+    @Query("DELETE FROM Department d WHERE d.departmentId =?1")
+    void deleteDepartmentById(int id);
 
 
 

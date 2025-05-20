@@ -1,8 +1,11 @@
 package com.vti.helloworld.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Formula;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Department")
@@ -18,6 +21,20 @@ public class Department {
     @Formula("Concat(departmentName ,' ', 'abc')")
     private String demoFormula;
 
+    @OneToMany(mappedBy = "department")
+    @JsonIgnoreProperties({"department","position"})
+    private List<Account> accounts;
+
+//    @ManyToMany
+//    @JoinTable(
+//            name = "DepartmentPosition",
+//            joinColumns = {@JoinColumn(name = "departmentId") },
+//            inverseJoinColumns = {@JoinColumn(name = "positionId") }
+//    )
+    @OneToMany(mappedBy = "department")
+    @JsonIgnoreProperties({"accounts","department"})
+    private List<DepartmentPosition> positions;
+
 
     public Department(int departmentId, String departmentName) {
         this.departmentId = departmentId;
@@ -26,6 +43,14 @@ public class Department {
 
     public Department(){
 
+    }
+
+    public List<DepartmentPosition> getPositions() {
+        return positions;
+    }
+
+    public void setPositions(List<DepartmentPosition> positions) {
+        this.positions = positions;
     }
 
     public String getDemoFormula() {
@@ -50,6 +75,14 @@ public class Department {
 
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
 
     @Override

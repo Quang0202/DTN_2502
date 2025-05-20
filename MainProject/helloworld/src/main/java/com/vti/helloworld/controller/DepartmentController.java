@@ -6,9 +6,11 @@ import com.vti.helloworld.service.HelloWorldService;
 import com.vti.helloworld.service.IHelloWorldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -19,8 +21,8 @@ public class DepartmentController {
     private IDepartmentRepository departmentRepository;
 
     @GetMapping("/")
-    public List<Department> getAllDepartment(){
-        return departmentRepository.findAll();
+    public Page<Department> getAllDepartment(Pageable pageable){
+        return departmentRepository.findAll(pageable);
     }
 
     @GetMapping("/{id}")
@@ -54,6 +56,12 @@ public class DepartmentController {
     @GetMapping("/name/contain")
     public List<Department> getDepartmentByNameContain(@RequestParam String str){
         return departmentRepository.findByDepartmentNameContainingOrderByDepartmentNameDesc(str);
+    }
+
+    @GetMapping("/count/account")
+    @Transactional
+    public List<Object> getDepartmentCountAccount(){
+        return departmentRepository.getDepartmentCountAccount();
     }
 
 
