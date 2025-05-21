@@ -15,24 +15,24 @@ public class DepartmentService implements IDepartmentService{
 
     @Override
     public List<Department> getAllDepartments() {
-        return departmentRepository.getAllDepartments();
+        return departmentRepository.findAll();
     }
 
     @Override
     public String createDepartment(Department department) {
-        departmentRepository.createDepartment(department);
+        departmentRepository.save(department);
         return "Department created";
     }
 
     @Override
     public String updateDepartment(Department department) {
-        departmentRepository.updateDepartment(department);
+        departmentRepository.save(department);
          return "Department updated";
     }
 
     @Override
     public String deleteDepartmentById(Integer departmentId) {
-        departmentRepository.deleteDepartmentById(departmentId);
+        departmentRepository.deleteById(departmentId);
          return "Department deleted";
     }
 }

@@ -2,6 +2,7 @@ package com.vti.QLNV.service;
 
 import com.vti.QLNV.entity.Position;
 import com.vti.QLNV.repository.PositionRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,11 @@ public class PositionService implements IPositionService{
 
     @Override
     public List<Position> getAllPosition() {
-        return positionRepository.getAllPosition();
+        return positionRepository.findAll();
     }
 
     @Override
+    @Transactional
     public String deletePositionById(Integer id) {
         positionRepository.deletePositionById(id);
         return "Deleted position";

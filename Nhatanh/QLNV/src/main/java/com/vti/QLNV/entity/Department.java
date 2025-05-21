@@ -1,10 +1,9 @@
 package com.vti.QLNV.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
+
+import java.util.List;
 
 @Entity
 @Table(name= "Department", uniqueConstraints = @UniqueConstraint(columnNames={"departmentName", "abc"}))
@@ -13,7 +12,11 @@ public class Department {
     private Integer departmentId;
 
     @ColumnDefault("sale")
+    @Column(nullable = false)
     private String departmentName;
+
+    @OneToMany(mappedBy = "department")
+    private List<Account> accounts;
 
 }
 

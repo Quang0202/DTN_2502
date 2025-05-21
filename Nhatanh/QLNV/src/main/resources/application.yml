@@ -5,3 +5,14 @@ spring:
     url: "jdbc:mysql://localhost:3306/testingsystem"
     username: root
     password: 178555
+#map param cho pageable. Default là page - size - sort
+#
+#
+#
+#
+#  data:
+#    web:
+#      pageable:
+#        page-parameter:
+#        size-parameter:
+#        sort-parameter:

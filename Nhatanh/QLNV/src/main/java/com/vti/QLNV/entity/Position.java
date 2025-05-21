@@ -3,6 +3,8 @@ package com.vti.QLNV.entity;
 import com.vti.QLNV.converter.PositionNameConverter;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Position")
 public class Position {
@@ -19,6 +21,9 @@ public class Position {
         this.positionId = positionId;
         this.positionName = positionName;
     }
+
+    @OneToMany(mappedBy = "position")
+    private List<Account> accounts;
 
     public Position(PositionName positionName) {
         this.positionName = positionName;
@@ -38,5 +43,13 @@ public class Position {
 
     public void setPositionName(PositionName positionName) {
         this.positionName = positionName;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
 }
