@@ -1,16 +1,19 @@
 package com.vti.QLNV.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer accountId;
-
+    @Column(nullable = false, unique = true)
     private String email;
     private String username;
     private String fullname;
@@ -18,6 +21,7 @@ public class Account {
     @ManyToOne
     @JoinColumn(name = "departmentId")
     @JsonIgnoreProperties("accounts")
+    @JsonBackReference
     private Department department;
 
     @ManyToOne
@@ -25,10 +29,12 @@ public class Account {
     @JsonIgnoreProperties("accounts")
     private Position position;
 
-    private LocalDateTime createDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    private Date createDate;
 
 
-    public Account(Integer accountId, String email, String username, String fullname, LocalDateTime createDate, Department department, Position position) {
+    public Account(Integer accountId, String email, String username, String fullname, Date createDate, Department department, Position position) {
         this.accountId = accountId;
         this.email = email;
         this.username = username;
@@ -70,11 +76,11 @@ public class Account {
         this.fullname = fullname;
     }
 
-    public LocalDateTime getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(LocalDateTime createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
