@@ -1,4 +1,9 @@
 package com.vti.hello.service;
 
-public class PositionService implements IPositionService {
+import com.vti.hello.entity.Position;
+
+import java.util.List;
+
+public class PositionService {
+
 }

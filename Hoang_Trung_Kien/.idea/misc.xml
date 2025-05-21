@@ -14,6 +14,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/Final_Exam_Javacore/pom.xml" />
         <option value="$PROJECT_DIR$/TestingSystem_Assignment_9/pom.xml" />
       </set>
     </option>
