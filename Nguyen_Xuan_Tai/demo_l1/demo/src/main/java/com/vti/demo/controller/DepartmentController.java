@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/v1/departments")
@@ -42,5 +43,11 @@ public class DepartmentController {
     @PutMapping("/{departmentName}")
     public  Department findByDepartmentName(String departmentName) {
         return departmentRepository.findByDepartmentName(departmentName);
+    }
+
+
+    @GetMapping("/count/account")
+    public List<Objects> getAllDepartmentAccount() {
+        return departmentRepository.getDepartmentCountAccount()
     }
 }
