@@ -1,16 +1,17 @@
 package com.vti.helloworld.controller;
 
+import com.vti.helloworld.DTO.DepartmentDTO;
 import com.vti.helloworld.entity.Department;
 import com.vti.helloworld.repository.IDepartmentRepository;
-import com.vti.helloworld.service.HelloWorldService;
-import com.vti.helloworld.service.IHelloWorldService;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -19,10 +20,14 @@ import java.util.List;
 public class DepartmentController {
     @Autowired
     private IDepartmentRepository departmentRepository;
+    @Autowired
+    private ModelMapper modelMapper;
 
     @GetMapping("/")
-    public Page<Department> getAllDepartment(Pageable pageable){
-        return departmentRepository.findAll(pageable);
+    public Page<DepartmentDTO> getAllDepartment(Pageable pageable){
+        Page<Department> page = departmentRepository.findAll(pageable);
+        List<DepartmentDTO> departmentDTOS = modelMapper.map(page.getContent(), new TypeToken<List<DepartmentDTO>>(){}.getType());
+        return new PageImpl<>(departmentDTOS,pageable,page.getTotalElements());
     }
 
     @GetMapping("/{id}")
