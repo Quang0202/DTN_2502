@@ -1,74 +1,88 @@
 package com.vti.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import org.hibernate.mapping.Join;
+
+import java.util.List;
 
 @Entity
-@Table(name = "account")
+@Table(name = "`Account`")
 public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private int AccountID;
-    private String Email;
-    private String Username;
-    private String FullName;
+    private int AccountId;
 
-//  @EmbeddedId
-//private GroupAccountPK id;
+    private String email;
+    private String username;
+    private String fullName;
+
+
+    @ManyToOne
+    @JoinColumn(name = "departmentId" )
+    @JsonIgnoreProperties("accounts")
+    private Department department;
+
+    @ManyToOne
+    @JoinColumn(name = "positionId")
+    @JsonIgnoreProperties("accounts")
+private Position position;
+
+
 
 public Account() {
 
 }
 
-    public int getAccountID() {
-        return AccountID;
+    public int getAccountId() {
+        return AccountId;
     }
 
-    public void setAccountID(int accountID) {
-        AccountID = accountID;
+    public void setAccountId(int accountId) {
+        AccountId = accountId;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
 
     public String getFullName() {
-        return FullName;
+        return fullName;
     }
 
     public void setFullName(String fullName) {
-        FullName = fullName;
+        this.fullName = fullName;
     }
 
-//    public GroupAccountPK getId() {
-//        return id;
-//    }
-//
-//    public void setId(GroupAccountPK id) {
-//        this.id = id;
-//    }
-
-    @Override
-    public String toString() {
-        return "Account{" +
-                "AccountID=" + AccountID +
-                ", Email='" + Email + '\'' +
-                ", Username='" + Username + '\'' +
-                ", FullName='" + FullName + '\'' +
-//                ", id=" + id +
-                '}';
+    public Department getDepartment() {
+        return department;
     }
+
+    public void setDepartment(Department department) {
+        department = department;
+    }
+
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        position = position;
+    }
+
+
 }
