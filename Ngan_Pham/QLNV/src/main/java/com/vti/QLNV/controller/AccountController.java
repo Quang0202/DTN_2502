@@ -2,6 +2,7 @@ package com.vti.QLNV.controller;
 
 import com.vti.QLNV.entity.Account;
 import com.vti.QLNV.service.IAccountService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,9 @@ public class AccountController {
 
     @Autowired
     private IAccountService accountService;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @GetMapping("/list")
     public ResponseEntity<List<Account>> getAllAccounts() {
