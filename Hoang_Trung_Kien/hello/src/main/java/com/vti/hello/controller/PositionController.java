@@ -1,12 +1,11 @@
 package com.vti.hello.controller;
 
+import com.vti.hello.entity.Department;
 import com.vti.hello.entity.Position;
 import com.vti.hello.repository.IPositionRepository;
 import com.vti.hello.service.IPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +19,15 @@ public class PositionController {
     @GetMapping("/")
     public List<Position> getAllPositions() {
         return repository.findAll();
+    }
+
+    @DeleteMapping("/delete")
+    public void deleteDepartment(@RequestBody Position position) {
+        repository.delete(position);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteDepartment(@PathVariable int id) {
+        repository.deleteById(id);
     }
 }
