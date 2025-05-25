@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int accountId;
+    private Integer accountId;
 
     private String email;
 
@@ -30,6 +30,11 @@ public class Account {
 
 
     private LocalDateTime createDate;
+
+    @PrePersist
+    public void prePersist(){
+        createDate = LocalDateTime.now();
+    }
 
     public Account(){}
     public Department getDepartment() {
@@ -72,11 +77,11 @@ public class Account {
         this.email = email;
     }
 
-    public int getAccountId() {
+    public Integer getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(int accountId) {
+    public void setAccountId(Integer accountId) {
         this.accountId = accountId;
     }
 
