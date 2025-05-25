@@ -1,11 +1,14 @@
 package com.vti.testingsytem.service;
 
+import com.vti.testingsytem.dto.AccountDTO;
 import com.vti.testingsytem.entity.Account;
 import com.vti.testingsytem.entity.Department;
 import com.vti.testingsytem.entity.Position;
 import com.vti.testingsytem.repository.IAccountRepository;
 import com.vti.testingsytem.repository.IDepartmentRepository;
 import com.vti.testingsytem.repository.IPositionRepository;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +26,14 @@ public class AccountService implements IAccountService{
     @Autowired
     private IPositionRepository positionRepository;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Override
-    public List<Account> getAllAccount() {
-        return accountRepository.findAll();
+    public List<AccountDTO> getAllAccount() {
+        List<Account> accounts = accountRepository.findAll();
+        List<AccountDTO> accountDTOS = modelMapper.map(accounts, new TypeToken<List<AccountDTO>>() {}.getType());
+        return accountDTOS;
     }
 
     @Override

@@ -1,16 +1,23 @@
 package com.vti.helloworld.controller;
 
+import com.vti.helloworld.DTO.DepartmentDTO;
+import com.vti.helloworld.entity.Account;
 import com.vti.helloworld.entity.Department;
+import com.vti.helloworld.entity.Position;
+import com.vti.helloworld.repository.IAccountRepository;
 import com.vti.helloworld.repository.IDepartmentRepository;
-import com.vti.helloworld.service.HelloWorldService;
-import com.vti.helloworld.service.IHelloWorldService;
+import com.vti.helloworld.request.DepartmentRequestForm;
+import jakarta.persistence.Access;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -20,9 +27,16 @@ public class DepartmentController {
     @Autowired
     private IDepartmentRepository departmentRepository;
 
+    @Autowired
+    private IAccountRepository accountRepository;
+    @Autowired
+    private ModelMapper modelMapper;
+
     @GetMapping("/")
-    public Page<Department> getAllDepartment(Pageable pageable){
-        return departmentRepository.findAll(pageable);
+    public Page<DepartmentDTO> getAllDepartment(Pageable pageable){
+        Page<Department> page = departmentRepository.findAll(pageable);
+        List<DepartmentDTO> departmentDTOS = modelMapper.map(page.getContent(), new TypeToken<List<DepartmentDTO>>(){}.getType());
+        return new PageImpl<>(departmentDTOS,pageable,page.getTotalElements());
     }
 
     @GetMapping("/{id}")
@@ -36,8 +50,22 @@ public class DepartmentController {
     }
 
     @PostMapping("/update")
-    public void createOrUpdateDepartment(@RequestBody Department department){
-        departmentRepository.save(department);
+    @Transactional
+    public void createOrUpdateDepartment(@RequestBody DepartmentRequestForm departmentForm){
+        try {
+            modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+            Department departmentEntity = modelMapper.map(departmentForm, Department.class);
+            Department department= departmentRepository.save(departmentEntity);
+            departmentEntity.setDepartmentName("New departmentName");
+            List<Account> accounts = departmentEntity.getAccounts();
+            for(int i=0;i<accounts.size();i++){
+                accounts.get(i).setDepartment(department);
+                accounts.get(i).setPosition(new Position(departmentForm.getAccounts().get(i).getPositionId()));
+            }
+            accountRepository.saveAll(accounts);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @DeleteMapping("/delete")

@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/v1/departments")
 public class DepartmentController {
     @Autowired
@@ -48,6 +49,6 @@ public class DepartmentController {
 
     @GetMapping("/count/account")
     public List<Objects> getAllDepartmentAccount() {
-        return departmentRepository.getDepartmentCountAccount()
+        return departmentRepository.getDepartmentCountAccount();
     }
 }

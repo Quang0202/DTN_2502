@@ -1,11 +1,21 @@
 package com.vti.testingsytem.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.vti.testingsytem.converter.PositionNameConverter;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Position {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,31 +28,4 @@ public class Position {
 
     @OneToMany(mappedBy = "position", fetch = FetchType.LAZY)
     private Set<Account> accounts;
-
-    public Position() {
-    }
-
-    public int getPositionId() {
-        return positionId;
-    }
-
-    public void setPositionId(int positionId) {
-        this.positionId = positionId;
-    }
-
-    public EPositionName getPositionName() {
-        return positionName;
-    }
-
-    public void setPositionName(EPositionName positionName) {
-        this.positionName = positionName;
-    }
-
-    public Set<Account> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(Set<Account> accounts) {
-        this.accounts = accounts;
-    }
 }

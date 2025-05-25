@@ -1,11 +1,20 @@
 package com.vti.testingsytem.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.vti.testingsytem.converter.TypeNameConverter;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class TypeQuestion {
 
     @Id
@@ -18,32 +27,6 @@ public class TypeQuestion {
     private ETypeName typeName;
 
     @OneToMany(mappedBy = "typeQuestion", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Set<Question> questions;
-
-    public TypeQuestion() {
-    }
-
-    public int getTypeId() {
-        return typeId;
-    }
-
-    public void setTypeId(int typeId) {
-        this.typeId = typeId;
-    }
-
-    public ETypeName getTypeName() {
-        return typeName;
-    }
-
-    public void setTypeName(ETypeName typeName) {
-        this.typeName = typeName;
-    }
-
-    public Set<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(Set<Question> questions) {
-        this.questions = questions;
-    }
 }

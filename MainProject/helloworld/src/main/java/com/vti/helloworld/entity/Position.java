@@ -12,7 +12,7 @@ public class Position {
     @Id
     @Column(name = "positionId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int positionId;
+    private Integer positionId;
 
     @Column(name = "positionName", nullable = false, unique = true)
     @Convert(converter = PositionNameConverter.class)
@@ -27,6 +27,10 @@ public class Position {
 
 
     public Position(){}
+
+    public Position(int positionId) {
+        this.positionId = positionId;
+    }
 
     public int getPositionId() {
         return positionId;

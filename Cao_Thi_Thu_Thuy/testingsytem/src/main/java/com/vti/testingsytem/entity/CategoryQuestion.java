@@ -1,10 +1,18 @@
 package com.vti.testingsytem.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class CategoryQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,31 +27,4 @@ public class CategoryQuestion {
 
     @OneToMany(mappedBy = "categoryQuestion", fetch = FetchType.LAZY)
     private Set<Exam> exams;
-
-    public CategoryQuestion() {
-    }
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public Set<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(Set<Question> questions) {
-        this.questions = questions;
-    }
 }
