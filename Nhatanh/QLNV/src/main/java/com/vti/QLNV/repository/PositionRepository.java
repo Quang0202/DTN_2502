@@ -12,6 +12,6 @@ import java.util.List;
 public interface PositionRepository extends JpaRepository<Position, Integer> {
 
     @Query(value = "DELETE FROM Position a WHERE a.PositionId = :positionId", nativeQuery = true)
-    void deletePositionById(@Param(("positionId")) Integer positionId);
+    void deletePositionByPositionId(@Param(("positionId")) Integer positionId);
 
 }

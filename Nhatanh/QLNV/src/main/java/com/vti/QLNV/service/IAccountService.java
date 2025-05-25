@@ -1,11 +1,13 @@
 package com.vti.QLNV.service;
 
 import com.vti.QLNV.entity.Account;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface IAccountService {
-    List<Account> getAllAccount();
+    Page<Account> getAllAccount(Pageable pageable);
     Account findAccountById(Integer id);
     String createAccount(Account newAccount);
     String updateAccount(Account newAccount);

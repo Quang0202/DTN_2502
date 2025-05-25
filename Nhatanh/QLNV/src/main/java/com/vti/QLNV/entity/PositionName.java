@@ -1,10 +1,11 @@
 package com.vti.QLNV.entity;
 
-public enum PositionName {DEV("Dev"), TEST("Test"), SCRUM_MASTER("Scrum_Master"), PM("PM");
+public enum PositionName {
+    DEV("Dev"), TEST("Test"), SCRUM_MASTER("Scrum_Master"), PM("PM");
 
     private String name;
 
-    PositionName(String name){
+    PositionName(String name) {
         this.name = name;
     }
 
@@ -13,13 +14,11 @@ public enum PositionName {DEV("Dev"), TEST("Test"), SCRUM_MASTER("Scrum_Master")
     }
 
     public static PositionName getPositionName(String name){
-
-        for(PositionName positionName: PositionName.values()){
-            if(positionName.getName().equalsIgnoreCase(name)){
-                return positionName;
+        for(PositionName position: PositionName.values()){
+            if(position.getName().equals(name)){
+                return position;
             }
         }
-
         return null;
     }
 }

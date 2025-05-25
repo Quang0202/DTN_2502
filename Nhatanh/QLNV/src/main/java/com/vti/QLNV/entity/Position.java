@@ -13,9 +13,11 @@ public class Position {
     @Column(name = "positionId")
     private Integer positionId;
     @Column(name = "positionName", nullable = false, unique = true)
-    @Enumerated(EnumType.ORDINAL)
     @Convert(converter = PositionNameConverter.class)
     private PositionName positionName;
+
+    public Position() {
+    }
 
     public Position(Integer positionId, PositionName positionName) {
         this.positionId = positionId;

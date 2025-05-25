@@ -3,6 +3,8 @@ package com.vti.QLNV.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
@@ -12,10 +14,20 @@ import java.util.Date;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "accountId")
     private Integer accountId;
     @Column(nullable = false, unique = true)
+    @NotBlank
+    @Email(message = "Email is not valid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
+
+    @NotBlank
+    @Min(value = 6, message="not enough characters")
+    @Max(value = 50, message="username has too many characters")
+    @UniqueElements
     private String username;
+    @NotBlank
+    @Max(value = 50, message="fullname has too many characters")
     private String fullname;
 
     @ManyToOne
@@ -31,6 +43,8 @@ public class Account {
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
+    @Column(name = "createDate")
+    @PastOrPresent
     private Date createDate;
 
 
@@ -42,6 +56,9 @@ public class Account {
         this.createDate = createDate;
         this.department = department;
         this.position = position;
+    }
+
+    public Account() {
     }
 
     public Integer getAccountId() {
