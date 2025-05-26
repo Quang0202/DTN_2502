@@ -24,6 +24,10 @@ public class Position {
     public Position() {
     }
 
+    public Position(int positionId) {
+        this.positionId = positionId;
+    }
+
     public int getPositionId() {
         return positionId;
     }

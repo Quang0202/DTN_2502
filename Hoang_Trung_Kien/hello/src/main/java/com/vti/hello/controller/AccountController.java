@@ -2,10 +2,14 @@ package com.vti.hello.controller;
 
 import com.vti.hello.DTO.AccountDTO;
 import com.vti.hello.entity.Account;
+import com.vti.hello.entity.Department;
+import com.vti.hello.entity.Position;
 import com.vti.hello.repository.IAccountRepository;
+import com.vti.hello.request.AccountRequestForm;
 import com.vti.hello.specification.AccountSpecification;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -28,9 +32,11 @@ public class AccountController {
     private ModelMapper modelMapper;
 
     @GetMapping("/")
-    public Page<AccountDTO> getAllAccount(Pageable pageable, @RequestParam(value = "search", required = false) String value) {
+    public Page<AccountDTO> getAllAccount(Pageable pageable, @RequestParam(value = "search", required = false) String value, @RequestParam(value = "minId", required = false) int minId, @RequestParam(value = "minId", required = false) int maxId) {
 
-        Specification<Account> specification = AccountSpecification.searchByUsername(value);
+        Specification<Account> specification = Specification.where(AccountSpecification.searchByUsername(value))
+                .and(AccountSpecification.greaterThanId(minId))
+                .and(AccountSpecification.lessThanId(maxId));
 
         Page<Account> accounts = repository.findAll(specification, pageable);
         List<AccountDTO> accountDTOS = modelMapper.map(accounts.getContent(), new TypeToken<List<AccountDTO>>(){}.getType());
@@ -66,6 +72,20 @@ public class AccountController {
     @DeleteMapping("/delete/{id}")
     public void deleteAccount(@PathVariable int id) {
         repository.deleteById(id);
+    }
+
+    @PostMapping("/create")
+    public void createAccount(@RequestBody AccountRequestForm accountRequestForm) {
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+
+//        modelMapper.typeMap(AccountRequestForm.class, Account.class).addMappings(mapper -> {
+//            mapper.map(AccountRequestForm::getName, Account::setFullName);
+//        });
+
+        Account account = modelMapper.map(accountRequestForm, Account.class);
+        account.setDepartment(new Department(accountRequestForm.getDepartmentId()));
+        account.setPosition(new Position(accountRequestForm.getPositionId()));
+        repository.save(account);
     }
 }
 

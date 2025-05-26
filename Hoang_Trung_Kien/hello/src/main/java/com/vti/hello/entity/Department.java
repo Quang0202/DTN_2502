@@ -1,5 +1,6 @@
 package com.vti.hello.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -17,10 +18,15 @@ public class Department {
     @Column(name = "departmentName", nullable = false, length = 50, unique = true)
     private String departmentName;
 
+    @JsonIgnoreProperties("department")
     @OneToMany(mappedBy = "department")
     private List<Account> accounts;
 
     public Department() {
+    }
+
+    public Department(int departmentId) {
+        this.departmentId = departmentId;
     }
 
     public int getDepartmentId() {

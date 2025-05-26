@@ -32,6 +32,11 @@ public class Account {
 
     private LocalDateTime createDate;
 
+    @PrePersist
+    public void prePersist() {
+        createDate = LocalDateTime.now();
+    }
+
     public Account() {
     }
 
