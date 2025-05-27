@@ -15,10 +15,10 @@ public enum PositionName {
 
     public static PositionName getPositionName(String name){
         for(PositionName position: PositionName.values()){
-            if(position.getName().equals(name)){
+            if(position.getName().equalsIgnoreCase(name)){
                 return position;
             }
         }
-        return null;
+        throw new IllegalArgumentException("Invalid PositionName: " + name);
     }
 }

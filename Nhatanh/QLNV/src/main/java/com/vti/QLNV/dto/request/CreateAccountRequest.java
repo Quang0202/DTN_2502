@@ -27,7 +27,7 @@ public class CreateAccountRequest {
     private String username;
 
     @NotBlank
-    @Max(value = 50, message="fullname has too many characters")
+    @Length(max = 50, message="fullname has too many characters")
     private String fullname;
 
     private String departmentName;

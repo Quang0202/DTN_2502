@@ -3,13 +3,14 @@ package com.vti.QLNV.annotation;
 import com.vti.QLNV.service.IAccountService;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-
-public abstract class EmailNotExistValidator implements ConstraintValidator<EmailNotExist, String> {
+public class EmailNotExistValidator implements ConstraintValidator<EmailNotExist, String> {
 
     @Autowired
-    private IAccountService service;
+    private IAccountService accountService;
 
     @SuppressWarnings("deprecation")
     @Override
@@ -18,6 +19,6 @@ public abstract class EmailNotExistValidator implements ConstraintValidator<Emai
             return true;
         }
 
-        return !service.isEmailExist(email);
+        return !accountService.isEmailExist(email);
     }
 }

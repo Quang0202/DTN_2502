@@ -17,6 +17,7 @@ import java.util.List;
 @Table(name= "Department", uniqueConstraints = @UniqueConstraint(columnNames={"departmentName", "abc"}))
 public class Department {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "departmentId")
     private Integer departmentId;
 

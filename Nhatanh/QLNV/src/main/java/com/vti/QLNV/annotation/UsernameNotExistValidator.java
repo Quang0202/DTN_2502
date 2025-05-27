@@ -3,10 +3,10 @@ package com.vti.QLNV.annotation;
 import com.vti.QLNV.service.IAccountService;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-
-public abstract class UsernameNotExistValidator implements ConstraintValidator<UsernameNotExist, String> {
+public class UsernameNotExistValidator implements ConstraintValidator<UsernameNotExist, String> {
 
     @Autowired
     private IAccountService service;

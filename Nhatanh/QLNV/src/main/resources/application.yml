@@ -18,6 +18,7 @@ logging:
     org:
       hibernate:
         SQL: DEBUG
+      springframework: DEBUG
 #map param cho pageable. Default là page - size - sort
 #
 #

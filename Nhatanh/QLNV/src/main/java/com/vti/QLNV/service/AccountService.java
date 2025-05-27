@@ -4,6 +4,7 @@ import com.vti.QLNV.dto.request.CreateAccountRequest;
 import com.vti.QLNV.entity.Account;
 import com.vti.QLNV.entity.Department;
 import com.vti.QLNV.entity.Position;
+import com.vti.QLNV.entity.PositionName;
 import com.vti.QLNV.repository.AccountRepository;
 import com.vti.QLNV.repository.DepartmentRepository;
 import com.vti.QLNV.repository.PositionRepository;
@@ -47,8 +48,11 @@ public class AccountService implements IAccountService{
     @Override
     @Transactional
     public String createAccount(CreateAccountRequest accountRequest) {
-        Position position = positionRepository.findByPositionName(accountRequest.getPositionName());
+        PositionName positionName = PositionName.getPositionName(accountRequest.getPositionName());
+        Position position = positionRepository.findByPositionName(positionName);
+
         Department departmentRequest = departmentRepository.findByDepartmentName(accountRequest.getDepartmentName());
+
         if(departmentRequest == null){
             Department newDepartment = new Department();
             newDepartment.setDepartmentName(accountRequest.getDepartmentName());

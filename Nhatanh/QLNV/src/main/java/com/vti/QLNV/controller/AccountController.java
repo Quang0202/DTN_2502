@@ -29,6 +29,10 @@ public class AccountController {
 
     @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> createAccount(@RequestBody @Valid CreateAccountRequest request) {
+        System.out.println(request.getEmail());
+        System.out.println(request.getFullname());
+        System.out.println(request.getUsername());
+        System.out.println(request.getDepartmentName());
         return ResponseEntity.ok(service.createAccount(request));
     }
 
