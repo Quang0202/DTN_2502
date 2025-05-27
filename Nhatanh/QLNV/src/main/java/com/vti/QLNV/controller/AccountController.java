@@ -1,11 +1,13 @@
 package com.vti.QLNV.controller;
 
+import com.vti.QLNV.dto.request.CreateAccountRequest;
 import com.vti.QLNV.entity.Account;
 import com.vti.QLNV.entity.Department;
 import com.vti.QLNV.service.AccountService;
 import com.vti.QLNV.service.DepartmentService;
 import com.vti.QLNV.service.IAccountService;
 import com.vti.QLNV.service.IDepartmentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,17 +28,17 @@ public class AccountController {
 
 
     @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> createDepartment(@RequestBody Account request) {
+    public ResponseEntity<String> createAccount(@RequestBody @Valid CreateAccountRequest request) {
         return ResponseEntity.ok(service.createAccount(request));
     }
 
     @DeleteMapping(value = "/delete/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> deleteDepartment(@PathVariable("id") Integer id) {
+    public ResponseEntity<String> deleteAccount(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(service.deleteAccountById(id));
     }
 
     @PutMapping(value = "/update", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> updateDepartment(@RequestBody Account request) {
+    public ResponseEntity<String> updateAccount(@RequestBody Account request) {
         return ResponseEntity.ok(service.updateAccount(request));
     }
 

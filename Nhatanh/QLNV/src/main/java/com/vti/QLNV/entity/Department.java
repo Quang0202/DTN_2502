@@ -1,11 +1,19 @@
 package com.vti.QLNV.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name= "Department", uniqueConstraints = @UniqueConstraint(columnNames={"departmentName", "abc"}))
 public class Department {
     @Id
@@ -19,37 +27,5 @@ public class Department {
     @OneToMany(mappedBy = "department")
     private List<Account> accounts;
 
-    public Department() {
-    }
-
-    public Department(Integer departmentId, String departmentName, List<Account> accounts) {
-        this.departmentId = departmentId;
-        this.departmentName = departmentName;
-        this.accounts = accounts;
-    }
-
-    public Integer getDepartmentId() {
-        return departmentId;
-    }
-
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
-    }
-
-    public String getDepartmentName() {
-        return departmentName;
-    }
-
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
-
-    public List<Account> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(List<Account> accounts) {
-        this.accounts = accounts;
-    }
 }
 

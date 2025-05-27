@@ -10,4 +10,7 @@ import java.util.List;
 public interface DepartmentRepository extends JpaRepository<Department, Integer> {
 
 
+    boolean existsByDepartmentName(String departmentName);
+
+    Department findByDepartmentName(String departmentName);
 }
