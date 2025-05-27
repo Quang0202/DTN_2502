@@ -11,4 +11,9 @@ import org.springframework.data.repository.query.Param;
 public interface IAccountRepository extends JpaRepository<Account, Integer>, JpaSpecificationExecutor<Account> {
     @Query("SELECT a FROM Account a") // WHERE a.userName Like %:search% AND accountId >=5
     Department finAll(Specification<Account>specification, @Param("search") String value);
+
+    boolean existsByEmail(String email);
+    boolean existsByUserName(String userName);
+
+    Account findByUserName(String userName);
 }
