@@ -3,18 +3,21 @@ package com.vti.helloworld.request;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 public class AccountRequestForm {
     private Integer accountId;
-    @NotNull(message = "email not null")
     @Email(message = "Email không hợp lệ")
     private String email;
-    @Pattern(regexp = "\\d{10}", message = "UserName phải có 10 ký tự ")
+    @Length(min = 6, max = 50)
     private String userName;
     private String fullName;
-    @Positive
-    private Integer departmentId;
+    private String departmentName;
     private Integer positionId;
+    @PastOrPresent
+    private LocalDateTime createDate;
 }

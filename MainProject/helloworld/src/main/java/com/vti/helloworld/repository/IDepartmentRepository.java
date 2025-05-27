@@ -30,6 +30,9 @@ public interface IDepartmentRepository extends JpaRepository<Department,Integer>
     @Query("DELETE FROM Department d WHERE d.departmentId =?1")
     void deleteDepartmentById(int id);
 
+    boolean existsByDepartmentName(String name);
+
+
 
 
     // find | read | get | query | count | delete | exists + By + Property + Operation  + OrderBy

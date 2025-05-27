@@ -6,36 +6,60 @@ import com.vti.helloworld.entity.AccountFilterForm;
 import com.vti.helloworld.entity.Department;
 import com.vti.helloworld.entity.Position;
 import com.vti.helloworld.repository.IAccountRepository;
+import com.vti.helloworld.request.AccountParamForm;
 import com.vti.helloworld.request.AccountRequestForm;
+import com.vti.helloworld.service.IAccountservice;
 import com.vti.helloworld.specification.AccountSpecification;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Length;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.modelmapper.convention.MatchingStrategies;
 import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/account")
+@Validated
 public class AccountController {
 
     @Autowired
     private IAccountRepository repository;
+
+    private IAccountservice accountService;
 
     @Autowired
     private ModelMapper modelMapper;
 
     @GetMapping()
     public Page<AccountDTO> getAllAccount(
+            @Valid AccountParamForm accountParam,
+            @RequestParam
+            @Length(max = 50)
+            @Pattern(regexp = "^[\\p{L}0-9\\s]*$") String search) {
+        Pageable pageable = toPageable(accountParam);
+        Page<Account> accounts = repository.findAll(pageable);
+        List<AccountDTO> accountDTOs = modelMapper.map(accounts.getContent(), new TypeToken<List<AccountDTO>>() {
+        }.getType());
+        Page<AccountDTO> page = new PageImpl<>(accountDTOs, pageable, accounts.getTotalElements());
+        return page;
+    }
+
+    @GetMapping("/specification")
+    public Page<AccountDTO> getAllAccountWithSpecification(
             Pageable pageable,
             @RequestParam(value = "userName", required = false) String userName,
             @RequestParam(value = "departmentName", required = false) String departmentName,
@@ -63,37 +87,44 @@ public class AccountController {
         return page;
     }
 
+
+
     @GetMapping("/{id}")
-    public AccountDTO getAllAccountById(@PathVariable int id) {
+    public AccountDTO getAccountById(@PathVariable int id) {
         Account account = repository.findById(id).orElse(null);
         return modelMapper.map(account, AccountDTO.class);
     }
 
     @PostMapping("/create/{id}")
-    public Boolean createAccount(@RequestBody @Valid AccountRequestForm accountForm, @PathVariable int id){
+    public ResponseEntity<Object> createAccount(@RequestBody @Valid AccountRequestForm accountForm, @PathVariable int id) throws Exception {
         try {
-            modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-
-//            modelMapper.typeMap(AccountRequestForm.class, Account.class).addMappings(mapper -> {
-//                mapper.map(Account::getFullName, AccountDto::setName);
-//            })
-
-            Account acount2 = repository.findById(id).orElse(null);
-//            Account account = modelMapper.map(accountForm, Account.class);
-//            account.setAccountId(id);
-//            account.setDepartment(new Department(accountForm.getDepartmentId()));
-//            account.setPosition(new Position(accountForm.getPositionId()));
-
-            acount2.setEmail(accountForm.getEmail());
-            acount2.setFullName(accountForm.getFullName());
-            acount2.setUserName(accountForm.getUserName());
-            acount2.setDepartment(new Department(accountForm.getDepartmentId()));
-            acount2.setPosition(new Position(accountForm.getPositionId()));
-            repository.save(acount2);
-            return true;
-        } catch (Exception e){
-            e.printStackTrace();
-            return false;
+            accountService.createAccount(accountForm, id);
+            return ResponseEntity.ok("Create account success!");
+        }catch (Exception e){
+            return new ResponseEntity<>("Create account error", HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public Pageable toPageable(AccountParamForm request) {
+        int page = request.getPageNumber() - 1;
+        int size = request.getPageSize();
+
+        if (request.getSort() != null && !request.getSort().isEmpty()) {
+            Sort sort = Sort.unsorted();
+            for (String sortParam : request.getSort()) {
+                String[] parts = sortParam.split(",");
+                if (parts.length == 2) {
+                    String field = parts[0];
+                    String direction = parts[1].toLowerCase();
+                    Sort.Order order = new Sort.Order(
+                            direction.equals("desc") ? Sort.Direction.DESC : Sort.Direction.ASC,
+                            field);
+                    sort = sort.and(Sort.by(order));
+                }
+            }
+            return PageRequest.of(page, size, sort);
+        }
+
+        return PageRequest.of(page, size);
     }
 }

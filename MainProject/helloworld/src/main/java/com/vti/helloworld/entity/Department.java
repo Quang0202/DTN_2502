@@ -49,6 +49,10 @@ public class Department {
         this.departmentId = departmentId;
     }
 
+    public Department(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
     public List<DepartmentPosition> getPositions() {
         return positions;
     }
