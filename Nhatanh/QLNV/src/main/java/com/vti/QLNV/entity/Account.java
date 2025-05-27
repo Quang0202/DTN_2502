@@ -25,6 +25,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "accountId")
     private Integer accountId;
+
     @Column(nullable = false, unique = true)
     @NotBlank
     @Email(message = "Email is not valid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
@@ -35,6 +36,7 @@ public class Account {
     @Length(min = 6, max = 50, message = "invalid username length")
     @UsernameNotExist
     private String username;
+
     @NotBlank
     @Max(value = 50, message="fullname has too many characters")
     private String fullname;

@@ -20,6 +20,7 @@ public class Position {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "positionId")
     private Integer positionId;
+
     @Column(name = "positionName", nullable = false, unique = true)
     @Convert(converter = PositionNameConverter.class)
     private PositionName positionName;
