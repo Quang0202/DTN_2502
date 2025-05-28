@@ -8,6 +8,6 @@ public class AccountSpecification {
     public static Specification<Account> searchByUsername(String value) {
         return (root, query, criteriaBuilder) ->
                 (value == null || value.isEmpty()) ? null :
-                        criteriaBuilder.like(root.get("username"), "%" + value + "%");
+                        criteriaBuilder.like(root.get("userName"), "%" + value + "%");
     }
 }
