@@ -27,4 +27,8 @@ public class Department {
 
     @OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
     private Set<Account> accounts;
+
+    public Department(Integer departmentId){
+        this.departmentId = departmentId;
+    }
 }

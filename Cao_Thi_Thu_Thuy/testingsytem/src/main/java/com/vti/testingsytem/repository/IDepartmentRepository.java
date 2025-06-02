@@ -6,10 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface IDepartmentRepository extends JpaRepository<Department, Integer> {
     boolean existsByDepartmentName(String departmentName);
+    Optional<Department> findByDepartmentName(String departmentName);
 
     @Query("""
             SELECT d.departmentName AS department, COUNT(a.accountId) AS count FROM Department d 
