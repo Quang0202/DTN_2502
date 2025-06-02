@@ -5,6 +5,20 @@ spring:
     url: "jdbc:mysql://localhost:3306/testingsystem"
     username: root
     password: 178555
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      naming:
+        physical-strategy: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+      springframework: DEBUG
 #map param cho pageable. Default là page - size - sort
 #
 #

@@ -12,7 +12,7 @@ import java.util.List;
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int departmentId;
+    private Integer departmentId;
 
     @Column(name = "departmentName",nullable = false, length = 50, unique = true)
     @ColumnDefault("sale")
@@ -43,6 +43,14 @@ public class Department {
 
     public Department(){
 
+    }
+
+    public Department(int departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public Department(String departmentName) {
+        this.departmentName = departmentName;
     }
 
     public List<DepartmentPosition> getPositions() {

@@ -1,13 +1,20 @@
 package com.vti.QLNV.service;
 
+import com.vti.QLNV.dto.request.CreateAccountRequest;
 import com.vti.QLNV.entity.Account;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface IAccountService {
-    List<Account> getAllAccount();
+public interface IAccountService extends UserDetailsService {
+    Page<Account> getAllAccount(Pageable pageable);
     Account findAccountById(Integer id);
-    String createAccount(Account newAccount);
+    String createAccount(CreateAccountRequest newAccount);
     String updateAccount(Account newAccount);
     String deleteAccountById(Integer id);
+    boolean isEmailExist(String email);
+
+    boolean isUsernameExist(String username);
 }

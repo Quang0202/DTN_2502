@@ -2,20 +2,41 @@ package com.vti.QLNV.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.vti.QLNV.annotation.EmailNotExist;
+import com.vti.QLNV.annotation.UsernameNotExist;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import lombok.*;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "accountId")
     private Integer accountId;
+
     @Column(nullable = false, unique = true)
+    @NotBlank
+    @Email(message = "Email is not valid", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
+
+    @NotBlank
+    @Length(min = 6, max = 50, message = "invalid username length")
     private String username;
+
+    @NotBlank
+    @Length(max = 50, message="fullname has too many characters")
     private String fullname;
 
     @ManyToOne
@@ -31,73 +52,10 @@ public class Account {
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
+    @Column(name = "createDate")
+    @PastOrPresent
     private Date createDate;
 
 
-    public Account(Integer accountId, String email, String username, String fullname, Date createDate, Department department, Position position) {
-        this.accountId = accountId;
-        this.email = email;
-        this.username = username;
-        this.fullname = fullname;
-        this.createDate = createDate;
-        this.department = department;
-        this.position = position;
-    }
-
-    public Integer getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(Integer accountId) {
-        this.accountId = accountId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
-    }
 }
 

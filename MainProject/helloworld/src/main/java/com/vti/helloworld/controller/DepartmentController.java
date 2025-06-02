@@ -1,14 +1,22 @@
 package com.vti.helloworld.controller;
 
 import com.vti.helloworld.DTO.DepartmentDTO;
+import com.vti.helloworld.entity.Account;
 import com.vti.helloworld.entity.Department;
+import com.vti.helloworld.entity.Position;
+import com.vti.helloworld.repository.IAccountRepository;
 import com.vti.helloworld.repository.IDepartmentRepository;
+import com.vti.helloworld.request.DepartmentRequestForm;
+import jakarta.persistence.Access;
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +24,13 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api/v1/department")
+@RequestMapping(value = "/api/v1/department")
 public class DepartmentController {
     @Autowired
     private IDepartmentRepository departmentRepository;
+
+    @Autowired
+    private IAccountRepository accountRepository;
     @Autowired
     private ModelMapper modelMapper;
 
@@ -40,9 +51,19 @@ public class DepartmentController {
         return departmentRepository.existsById(id);
     }
 
-    @PostMapping("/update")
-    public void createOrUpdateDepartment(@RequestBody Department department){
-        departmentRepository.save(department);
+    @PostMapping(value = "/update")
+    @Transactional
+    public void createOrUpdateDepartment(@RequestBody @Valid DepartmentRequestForm departmentForm){
+            modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+            Department departmentEntity = modelMapper.map(departmentForm, Department.class);
+            Department department= departmentRepository.save(departmentEntity);
+            departmentEntity.setDepartmentName("New departmentName");
+            List<Account> accounts = departmentEntity.getAccounts();
+            for(int i=0;i<accounts.size();i++){
+                accounts.get(i).setDepartment(department);
+                accounts.get(i).setPosition(new Position(departmentForm.getAccounts().get(i).getPositionId()));
+            }
+            accountRepository.saveAll(accounts);
     }
 
     @DeleteMapping("/delete")

@@ -5,6 +5,10 @@ import com.vti.QLNV.service.DepartmentService;
 import com.vti.QLNV.service.IDepartmentService;
 import com.vti.QLNV.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +22,6 @@ public class DepartmentController {
 
     @Autowired
     private IDepartmentService service;
-
-    public DepartmentController(DepartmentService service){
-        this.service = service;
-    }
 
     @PostMapping(value = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> createDepartment(@RequestBody Department request) {
@@ -39,8 +39,11 @@ public class DepartmentController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<Department>> createDepartment() {
-        return ResponseEntity.ok(service.getAllDepartments());
+    public ResponseEntity<Page<Department>> getAllDepartment(@RequestParam(defaultValue = "0") Integer pageNo,
+                                                             @RequestParam(defaultValue = "10") Integer pageSize,
+                                                             @RequestParam(defaultValue = "departmentId") String sortBy) {
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+        return ResponseEntity.ok(service.getAllDepartments(paging));
     }
 
 }

@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "`Account`")
 public class Account {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int accountId;
@@ -30,6 +31,11 @@ public class Account {
 
 
     private LocalDateTime createDate;
+
+    @PrePersist
+    public void prePersist() {
+        createDate = LocalDateTime.now();
+    }
 
     public Account() {
     }

@@ -1,6 +1,7 @@
 package com.vti.QLNV.repository;
 
 import com.vti.QLNV.entity.Position;
+import com.vti.QLNV.entity.PositionName;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,6 +13,7 @@ import java.util.List;
 public interface PositionRepository extends JpaRepository<Position, Integer> {
 
     @Query(value = "DELETE FROM Position a WHERE a.PositionId = :positionId", nativeQuery = true)
-    void deletePositionById(@Param(("positionId")) Integer positionId);
+    void deletePositionByPositionId(@Param(("positionId")) Integer positionId);
 
+    Position findByPositionName(PositionName positionName);
 }
